@@ -192,7 +192,7 @@ export default function ContactPage() {
                   <div className="pt-4 border-t border-chocolate-700/10 dark:border-night-700 space-y-2">
                     <div className="flex items-center space-x-2 text-xs text-chocolate-700 dark:text-cream-200">
                       <Clock className="w-4 h-4 text-bronze-500 shrink-0" />
-                      <span>2-Hour Rapid Response Window</span>
+                      <span>Dedicated Operations Response</span>
                     </div>
                     <div className="flex items-center space-x-2 text-xs text-chocolate-700 dark:text-cream-200">
                       <ShieldCheck className="w-4 h-4 text-bronze-500 shrink-0" />
@@ -224,7 +224,7 @@ export default function ContactPage() {
                         Manpower Request Dispatched
                       </h4>
                       <p className="text-xs sm:text-sm text-chocolate-600 dark:text-night-muted font-light max-w-md mx-auto leading-relaxed">
-                        Thank you, <strong className="text-chocolate-900 dark:text-cream-100">{formData.fullName}</strong>. Our senior duty supervisor will review your requirements and reach out at <strong className="text-chocolate-900 dark:text-cream-100">{formData.phone}</strong> within 2 hours.
+                        Thank you, <strong className="text-chocolate-900 dark:text-cream-100">{formData.fullName}</strong>. Our operations team will review your requirements and reach out at <strong className="text-chocolate-900 dark:text-cream-100">{formData.phone}</strong>.
                       </p>
                       <div className="pt-4">
                         <button
@@ -442,7 +442,7 @@ export default function ContactPage() {
 
                       <div className="flex items-center justify-between text-[11px] text-chocolate-500 dark:text-night-dim font-sans pt-2">
                         <span>• Strict Confidentiality Assured</span>
-                        <span>• 2-Hour Response Guarantee</span>
+                        <span>• Dedicated Operations Desk</span>
                       </div>
                     </form>
                   )}

@@ -137,13 +137,13 @@ export const WHY_US_PILLARS = [
     number: "01",
     title: "No Last-Minute Ghosting",
     subtitle: "Verified bench backup for every deployment",
-    desc: "We maintain an active, fully briefed standby bench of 15-20% for every deployment. If any crew member faces an emergency, their replacement is on-site before doors open."
+    desc: "We maintain an active, fully briefed standby bench for every deployment. If any crew member faces an emergency, stand-by personnel are mobilized before doors open."
   },
   {
     number: "02",
     title: "Verified & Background-Checked Crew",
     subtitle: "Identity-verified and briefed before deployment",
-    desc: "Every crew member undergoes a comprehensive 4-point verification check including government ID validation, address verification, and strict background checks."
+    desc: "Every crew member undergoes a comprehensive verification process including government ID validation, address verification, and background checks."
   },
   {
     number: "03",
@@ -155,7 +155,7 @@ export const WHY_US_PILLARS = [
     number: "04",
     title: "Rapid Replacement Capability",
     subtitle: "Trained substitutes dispatched when needed",
-    desc: "Our central operations hub operates 24/7 across Delhi NCR with motorized emergency supervisors able to deploy immediate relief within 60 minutes."
+    desc: "Our central operations desk coordinates teams across Delhi NCR with mobile supervisors ready to deploy relief personnel to active floors."
   },
   {
     number: "05",
@@ -167,7 +167,7 @@ export const WHY_US_PILLARS = [
     number: "06",
     title: "Premium Venue Experience",
     subtitle: "Teams experienced on five-star and major venue floors",
-    desc: "Our crew knows the service corridors, loading docks, and operational guidelines of every premier hotel and convention center in Delhi, Gurgaon, and Noida."
+    desc: "Our crew knows the service corridors, loading docks, and operational guidelines of premier hotels and convention centers across Delhi NCR."
   },
 ];
 
@@ -176,15 +176,15 @@ export const WORKFORCE_SYSTEM_STAGES = [
     number: "01",
     name: "Recruitment",
     summary: "Screening for aptitude, poise & communication",
-    desc: "Rigorous face-to-face evaluation assessing spoken English/Hindi fluency, hospitality mindset, punctuality, and composure under pressure.",
-    deliverable: "Top 18% candidate selection rate"
+    desc: "Face-to-face evaluation assessing spoken English/Hindi fluency, hospitality mindset, punctuality, and composure under pressure.",
+    deliverable: "Thoroughly screened candidate selection"
   },
   {
     number: "02",
     name: "Verification",
     summary: "Multi-point identity & background clearance",
-    desc: "Comprehensive Aadhaar / PAN identity validation, local police background check, and permanent residence verification.",
-    deliverable: "100% verified crew database"
+    desc: "Government identity validation, address verification, and background clearance.",
+    deliverable: "Verified crew database"
   },
   {
     number: "03",
@@ -204,8 +204,8 @@ export const WORKFORCE_SYSTEM_STAGES = [
     number: "05",
     name: "Deployment",
     summary: "Punctual mobilization & pre-shift briefing",
-    desc: "Crew arrives 90 minutes prior to call-time for venue walk-through, role alignment, uniform inspection, and communications sync.",
-    deliverable: "100% on-time floor muster"
+    desc: "Crew mobilizes in advance of call-time for venue walk-through, role alignment, uniform inspection, and communications sync.",
+    deliverable: "Punctual on-site muster"
   },
   {
     number: "06",

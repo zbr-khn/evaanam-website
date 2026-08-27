@@ -131,8 +131,8 @@ export default function OperationsTimeline() {
                 "{WORKFORCE_SYSTEM_STAGES[activeStage].deliverable}"
               </p>
               <div className="mt-4 pt-3 border-t border-chocolate-700/10 dark:border-night-700 flex items-center justify-between text-[11px] text-chocolate-500 dark:text-night-dim font-sans">
-                <span>Standard SLA</span>
-                <span className="font-semibold text-chocolate-700 dark:text-cream-200">100% Strict Protocol</span>
+                <span>Standard</span>
+                <span className="font-semibold text-chocolate-700 dark:text-cream-200">Verified Process</span>
               </div>
             </div>
           </div>

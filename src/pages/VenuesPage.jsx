@@ -199,7 +199,7 @@ export default function VenuesPage() {
             <span className="font-mono text-xs font-semibold text-bronze-600 dark:text-bronze-400">01 / ORIENTATION</span>
             <h4 className="font-serif text-2xl text-chocolate-950 dark:text-cream-50 mt-2 mb-3">Pre-Shift Venue Walkthrough</h4>
             <p className="text-xs text-chocolate-600 dark:text-night-muted leading-relaxed font-light">
-              Our teams arrive 90 minutes prior to call-time to walk the banquet halls, service corridors, and green rooms.
+              Our teams arrive ahead of call-time to walk the banquet halls, service corridors, and green rooms.
             </p>
           </div>
           <div className="p-8 border border-chocolate-700/10 dark:border-bronze-500/20 bg-cream-100/80 dark:bg-night-800">

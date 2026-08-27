@@ -255,10 +255,10 @@ export default function Footer() {
                     These terms govern the engagement and deployment of trained event manpower by EVAANAM Manpower &amp; Execution Pvt. Ltd. for events across Delhi NCR.
                   </p>
                   <p>
-                    <strong>1. Deployment &amp; Briefing:</strong> Manpower rosters are finalized following requirement sign-off. Pre-shift muster takes place on-site 90 minutes prior to call-time.
+                    <strong>1. Deployment &amp; Briefing:</strong> Manpower rosters are finalized following requirement sign-off. Pre-shift muster takes place on-site ahead of event call-time.
                   </p>
                   <p>
-                    <strong>2. Verified Backup Buffer:</strong> EVAANAM maintains a 15–20% stand-by bench for guaranteed operational continuity and replacement within 60 minutes in case of unforeseen emergencies.
+                    <strong>2. Verified Backup Buffer:</strong> EVAANAM coordinates stand-by personnel to maintain operational continuity on active event floors.
                   </p>
                   <p>
                     <strong>3. Statutory Compliance:</strong> All deployed personnel adhere to regulatory guidelines, state labor compliances, and verified identity screening before reaching venue floors.

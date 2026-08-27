@@ -86,7 +86,7 @@ export default function HomePage() {
                   OPERATIONAL COMMITMENT
                 </span>
                 <p className="font-serif text-xl italic text-cream-100 leading-snug">
-                  "Zero ghosting. Verified backup bench ready within 60 minutes."
+                  "Structured workforce operations with verified stand-by personnel."
                 </p>
                 <div className="pt-2 border-t border-bronze-500/20 flex items-center justify-between text-xs text-cream-300/80 font-mono">
                   <span>NCR Floor Ready</span>
@@ -226,7 +226,7 @@ export default function HomePage() {
                     <span>Groomed · Verified · Pre-Shift Briefed</span>
                   </div>
                   <span className="text-[10px] uppercase font-mono tracking-wider text-amber-800 dark:text-amber-400">
-                    SLA Guaranteed
+                    Floor Ready
                   </span>
                 </div>
               </div>
@@ -452,7 +452,7 @@ export default function HomePage() {
             <span className="italic text-bronze-600 dark:text-bronze-400">Let's build your team.</span>
           </h2>
           <p className="text-base text-chocolate-600 dark:text-night-muted font-light max-w-xl mx-auto leading-relaxed">
-            Tell us your venue, event dates, and crew requirements. Our operations desk responds within 2 hours with customized crew profiles.
+            Tell us your venue, event dates, and crew requirements. Our operations desk will prepare customized crew profiles for your event.
           </p>
           <div className="pt-4 flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
             <Link

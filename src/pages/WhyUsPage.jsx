@@ -80,7 +80,7 @@ export default function WhyUsPage() {
 
                   <div className="mt-8 pt-4 border-t border-chocolate-700/10 dark:border-night-700 flex items-center space-x-2 text-[11px] font-sans text-chocolate-500 dark:text-night-dim">
                     <CheckCircle2 className="w-3.5 h-3.5 text-bronze-600 dark:text-bronze-400" />
-                    <span>Guaranteed SLA Standard</span>
+                    <span>Structured Quality Standard</span>
                   </div>
                 </div>
               );

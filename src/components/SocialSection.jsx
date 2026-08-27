@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ChevronDown, ArrowUpRight, Sparkles, Radio, Check, ExternalLink } from "lucide-react";
+import { ChevronDown, ArrowUpRight, Sparkles } from "lucide-react";
 import { InstagramIcon, FacebookIcon, YoutubeIcon, WhatsappIcon } from "./SocialIcons";
 import EVAANAMGeometricMark from "./EVAANAMGeometricMark";
 
@@ -11,9 +11,9 @@ const SOCIAL_ACCOUNTS = [
     tag: "Weddings & Five-Star Hospitality",
     handle: "@evaanamhospitalitypvt.ltd",
     title: "EVAANAM Hospitality Pvt. Ltd.",
-    bio: "Real-time wedding hospitality deployments, royal bridal shadows, traditional welcome hostesses, and banquet floor setups across Delhi NCR's premier five-star luxury hotels.",
+    bio: "Real-time wedding hospitality deployments, bridal shadows, traditional welcome hostesses, and banquet floor setups across Delhi NCR's premier five-star luxury hotels.",
     badge: "Active Floor Feed",
-    highlight: "100+ Live Wedding Highlights",
+    highlight: "Live Wedding Deployments",
     ctaText: "Explore Instagram Feed",
     url: "https://instagram.com/evaanamhospitalitypvt.ltd",
     iconBg: "bg-gradient-to-tr from-amber-500/20 to-orange-500/20 text-amber-700 dark:text-amber-300",
@@ -26,9 +26,9 @@ const SOCIAL_ACCOUNTS = [
     tag: "Corporate Summits & Trade Expos",
     handle: "@evaanampvt.ltd",
     title: "EVAANAM Corporate & Operations",
-    bio: "Exhibition hall marshaling, C-suite boardroom protocol, high-speed registration check-in desks, and technical show runners at Pragati Maidan, Yashobhoomi & IEML.",
+    bio: "Exhibition hall marshaling, C-suite boardroom protocol, registration check-in desks, and technical show runners at Pragati Maidan, Yashobhoomi & IEML.",
     badge: "Operations Feed",
-    highlight: "Multi-Hall Summit Rosters",
+    highlight: "Corporate Event Rosters",
     ctaText: "View Corporate Broadcasts",
     url: "https://instagram.com/evaanampvt.ltd",
     iconBg: "bg-gradient-to-tr from-emerald-500/20 to-teal-500/20 text-emerald-800 dark:text-emerald-300",
@@ -41,9 +41,9 @@ const SOCIAL_ACCOUNTS = [
     tag: "On-Floor Highlights & Video Reels",
     handle: "@evaanam_pvt._ltd",
     title: "EVAANAM Crew On The Floor",
-    bio: "Watch our trained crews in action. High-definition event highlights, pre-shift muster briefings, venue walkthrough reels, and supervisor discipline on active floors.",
+    bio: "Watch our trained crews in action. Event highlights, pre-shift muster briefings, venue walkthrough reels, and supervisor coordination on active floors.",
     badge: "Official Video Channel",
-    highlight: "4K Floor Reels & Walkthroughs",
+    highlight: "Floor Reels & Walkthroughs",
     ctaText: "Watch YouTube Channel",
     url: "https://youtube.com/@evaanam_pvt._ltd",
     iconBg: "bg-gradient-to-tr from-red-500/20 to-rose-500/20 text-red-700 dark:text-red-300",
@@ -56,9 +56,9 @@ const SOCIAL_ACCOUNTS = [
     tag: "Production Bulletins & Company News",
     handle: "EVAANAM Official Page",
     title: "EVAANAM Operations Desk",
-    bio: "Official corporate news, upcoming summit staffing notices, verified operational updates, and event industry partnerships across the National Capital Region.",
-    badge: "Verified Business",
-    highlight: "Official Production Dispatches",
+    bio: "Official corporate news, upcoming event notices, operational updates, and event industry collaborations across the National Capital Region.",
+    badge: "Official Page",
+    highlight: "Company Announcements",
     ctaText: "Visit Facebook Page",
     url: "https://www.facebook.com/share/1UVz6xkxaY/",
     iconBg: "bg-gradient-to-tr from-blue-500/20 to-indigo-500/20 text-blue-800 dark:text-blue-300",
@@ -68,13 +68,13 @@ const SOCIAL_ACCOUNTS = [
     id: "whatsapp-direct",
     platform: "WhatsApp Operations",
     icon: WhatsappIcon,
-    tag: "Priority 24/7 Operations Line",
+    tag: "Operations Support Line",
     handle: "+91 93100 39929",
     title: "EVAANAM Direct Operations Desk",
-    bio: "Direct line for event planners, venue managers, and production directors. Instant requirement quotes, standby crew dispatch, and urgent floor replacements within 60 minutes.",
-    badge: "Instant 24/7 Dispatch",
-    highlight: "< 15 Min Guaranteed Response",
-    ctaText: "Chat With Duty Supervisor",
+    bio: "Direct chat line for event planners, venue managers, and production teams. Staffing requirements, roster inquiries, and operational coordination across Delhi NCR.",
+    badge: "Direct Desk",
+    highlight: "Dedicated Operations Support",
+    ctaText: "Chat On WhatsApp",
     url: "https://wa.me/919310039929",
     iconBg: "bg-gradient-to-tr from-emerald-600/20 to-green-500/20 text-emerald-700 dark:text-emerald-300",
     accentColor: "border-emerald-500/40",
@@ -132,7 +132,7 @@ export default function SocialSection({ showHeader = true, className = "" }) {
 
         {/* VERTICAL OPENABLE BANNER LIST */}
         <div className="space-y-4">
-          {SOCIAL_ACCOUNTS.map((acc, index) => {
+          {SOCIAL_ACCOUNTS.map((acc) => {
             const Icon = acc.icon;
             const isOpen = expandedIds.includes(acc.id);
 
@@ -218,14 +218,14 @@ export default function SocialSection({ showHeader = true, className = "" }) {
                       </div>
 
                       {/* Footer Actions: Live Status + External Direct CTA Link */}
-                      <div className="pt-4 border-t border-chocolate-700/10 dark:border-night-750 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                      <div className="pt-4 border-t border-chocolate-700/10 dark:border-night-700 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                         <div className="flex items-center space-x-2.5">
                           <span className="relative flex h-2.5 w-2.5">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-bronze-400 opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-bronze-500"></span>
                           </span>
                           <span className="text-xs font-sans text-chocolate-600 dark:text-night-muted font-medium">
-                            Live updates active
+                            Channel active
                           </span>
                         </div>
 
