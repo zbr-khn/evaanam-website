@@ -1,19 +1,25 @@
 import React, { useState } from "react";
-import { Phone, Mail, MapPin, CheckCircle2, ArrowUpRight, Clock, ShieldCheck, Send, Loader2, Calculator, FileText } from "lucide-react";
+import { Phone, Mail, MapPin, CheckCircle2, ArrowUpRight, Clock, ShieldCheck, Send, Loader2, Calculator, FileText, Calendar, MessageSquare } from "lucide-react";
 import { COMPANY_INFO } from "../data/evaanamData";
 import FollowTheFloor from "../components/FollowTheFloor";
 import ManpowerCalculator from "../components/ManpowerCalculator";
 
 export default function ContactPage() {
   const [activeMode, setActiveMode] = useState("form"); // 'form' | 'calculator'
+  
+  // Calculate today's date formatted as YYYY-MM-DD for min date attribute
+  const todayStr = new Date().toISOString().split("T")[0];
+
   const [formData, setFormData] = useState({
     fullName: "",
+    email: "",
     phone: "",
+    company: "",
     eventDate: "",
     venue: "",
-    crewCount: "",
     eventType: "Wedding Hospitality",
-    requirementDetails: "",
+    crewCount: "",
+    message: "",
   });
 
   const [focusedField, setFocusedField] = useState(null);
@@ -23,6 +29,14 @@ export default function ContactPage() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
+    // Real-time validation for date column to reject past dates
+    if (name === "eventDate" && value && value < todayStr) {
+      setFormError("Past dates cannot be selected. Please choose a present or future event date.");
+      setFormData((prev) => ({ ...prev, [name]: "" }));
+      return;
+    }
+
     setFormData((prev) => ({ ...prev, [name]: value }));
     if (formError) setFormError("");
   };
@@ -30,8 +44,28 @@ export default function ContactPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!formData.fullName.trim() || !formData.phone.trim()) {
-      setFormError("Please provide your full name and a contact number.");
+    if (!formData.fullName.trim()) {
+      setFormError("Please enter your full name.");
+      return;
+    }
+
+    if (!formData.email.trim() || !formData.email.includes("@")) {
+      setFormError("Please enter a valid email address.");
+      return;
+    }
+
+    if (!formData.phone.trim()) {
+      setFormError("Please enter a valid contact phone number.");
+      return;
+    }
+
+    if (!formData.eventDate) {
+      setFormError("Please select an event date.");
+      return;
+    }
+
+    if (formData.eventDate < todayStr) {
+      setFormError("Past dates cannot be selected. Please choose a present or future event date.");
       return;
     }
 
@@ -42,20 +76,44 @@ export default function ContactPage() {
     setTimeout(() => {
       setSubmitting(false);
       setSubmitted(true);
-    }, 1200);
+    }, 1000);
   };
 
   const handleReset = () => {
     setFormData({
       fullName: "",
+      email: "",
       phone: "",
+      company: "",
       eventDate: "",
       venue: "",
-      crewCount: "",
       eventType: "Wedding Hospitality",
-      requirementDetails: "",
+      crewCount: "",
+      message: "",
     });
     setSubmitted(false);
+    setFormError("");
+  };
+
+  const handleSendViaWhatsApp = () => {
+    const waText = `🏛️ *EVAANAM MANPOWER INQUIRY*
+━━━━━━━━━━━━━━━━━━━━
+👤 *Full Name:* ${formData.fullName}
+📧 *Email:* ${formData.email}
+📞 *Phone:* ${formData.phone}
+🏢 *Company / Organization:* ${formData.company || "Individual / Private Event"}
+📅 *Event Date:* ${formData.eventDate}
+📍 *Venue & City:* ${formData.venue || "To be decided"}
+🎪 *Event Category:* ${formData.eventType}
+👥 *Estimated Crew:* ${formData.crewCount || "To be discussed"}
+
+📝 *Requirement Notes:*
+${formData.message || "Please share staffing options and availability."}
+━━━━━━━━━━━━━━━━━━━━
+_Submitted via EVAANAM Website Contact Form_`;
+
+    const encoded = encodeURIComponent(waText);
+    window.open(`https://wa.me/919310039929?text=${encoded}`, "_blank");
   };
 
   return (
@@ -81,11 +139,11 @@ export default function ContactPage() {
                 className={`px-5 py-2.5 text-xs font-semibold uppercase tracking-wider transition-all flex items-center space-x-2 ${
                   activeMode === "form"
                     ? "bg-brand-green dark:bg-bronze-500 text-cream-50 dark:text-night-950 shadow-sm"
-                    : "bg-cream-100 dark:bg-night-800 text-chocolate-700 dark:text-cream-200 border border-chocolate-700/15 dark:border-bronze-500/20"
+                    : "bg-cream-100 dark:bg-night-800 text-chocolate-700 dark:text-cream-200 border border-chocolate-700/15 dark:border-bronze-500/20 hover:border-bronze-500/40"
                 }`}
               >
                 <FileText className="w-3.5 h-3.5" />
-                <span>Quick Requisition Form</span>
+                <span>Contact &amp; Requisition Form</span>
               </button>
 
               <button
@@ -94,7 +152,7 @@ export default function ContactPage() {
                 className={`px-5 py-2.5 text-xs font-semibold uppercase tracking-wider transition-all flex items-center space-x-2 ${
                   activeMode === "calculator"
                     ? "bg-brand-green dark:bg-bronze-500 text-cream-50 dark:text-night-950 shadow-sm"
-                    : "bg-cream-100 dark:bg-night-800 text-chocolate-700 dark:text-cream-200 border border-chocolate-700/15 dark:border-bronze-500/20"
+                    : "bg-cream-100 dark:bg-night-800 text-chocolate-700 dark:text-cream-200 border border-chocolate-700/15 dark:border-bronze-500/20 hover:border-bronze-500/40"
                 }`}
               >
                 <Calculator className="w-3.5 h-3.5 text-bronze-500" />
@@ -122,7 +180,7 @@ export default function ContactPage() {
                     Operations Desk &amp; Registered Office
                   </h2>
                   <p className="text-xs sm:text-sm text-chocolate-600 dark:text-night-muted font-light leading-relaxed">
-                    For immediate floor requirements, urgent replacements, or preliminary planning meetings, connect directly with our central desk.
+                    For immediate floor requirements, event staffing quotes, or preliminary planning meetings, connect directly with our central operations desk.
                   </p>
                 </div>
 
@@ -138,16 +196,14 @@ export default function ContactPage() {
                           className="flex items-center justify-between p-3.5 bg-cream-200 dark:bg-night-750 border border-chocolate-700/10 dark:border-bronze-500/15 hover:border-bronze-500/40 transition-all group"
                         >
                           <div className="flex items-center space-x-3">
-                            <div className="w-8 h-8 rounded-full bg-cream-100 dark:bg-night-850 flex items-center justify-center text-bronze-600 dark:text-bronze-400 group-hover:bg-brand-green dark:group-hover:bg-bronze-500 group-hover:text-cream-50 dark:group-hover:text-night-950 transition-colors">
-                              <Phone className="w-4 h-4" />
-                            </div>
+                            <Phone className="w-4 h-4 text-bronze-500" />
                             <div>
-                              <span className="block font-serif text-lg text-chocolate-950 dark:text-cream-50 font-medium">
+                              <p className="text-xs font-mono font-bold text-chocolate-900 dark:text-cream-50">
                                 {phone.display}
-                              </span>
-                              <span className="text-[10px] uppercase font-mono text-chocolate-500 dark:text-night-dim">
+                              </p>
+                              <p className="text-[10px] text-chocolate-500 dark:text-night-dim">
                                 {phone.label}
-                              </span>
+                              </p>
                             </div>
                           </div>
                           <ArrowUpRight className="w-4 h-4 text-bronze-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -156,24 +212,25 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  {/* Email Direct */}
-                  <div className="pt-2">
-                    <span className="micro-label text-bronze-600 dark:text-bronze-400">Email Dossier Desk</span>
+                  {/* Operations Email */}
+                  <div>
+                    <span className="micro-label text-bronze-600 dark:text-bronze-400">Official Email</span>
                     <a
                       href={`mailto:${COMPANY_INFO.email}`}
-                      className="mt-2 flex items-center space-x-3 p-3.5 bg-cream-200 dark:bg-night-750 border border-chocolate-700/10 dark:border-bronze-500/15 hover:border-bronze-500/40 transition-colors group"
+                      className="mt-3 flex items-center justify-between p-3.5 bg-cream-200 dark:bg-night-750 border border-chocolate-700/10 dark:border-bronze-500/15 hover:border-bronze-500/40 transition-all group"
                     >
-                      <div className="w-8 h-8 rounded-full bg-cream-100 dark:bg-night-850 flex items-center justify-center text-bronze-600 dark:text-bronze-400 group-hover:bg-brand-green dark:group-hover:bg-bronze-500 group-hover:text-cream-50 dark:group-hover:text-night-950 transition-colors">
-                        <Mail className="w-4 h-4" />
+                      <div className="flex items-center space-x-3">
+                        <Mail className="w-4 h-4 text-bronze-500" />
+                        <div>
+                          <p className="text-xs font-mono font-bold text-chocolate-900 dark:text-cream-50">
+                            {COMPANY_INFO.email}
+                          </p>
+                          <p className="text-[10px] text-chocolate-500 dark:text-night-dim">
+                            Roster &amp; Business Inquiries
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <span className="block font-mono text-xs font-semibold text-chocolate-950 dark:text-cream-50">
-                          {COMPANY_INFO.email}
-                        </span>
-                        <span className="text-[10px] text-chocolate-500 dark:text-night-dim">
-                          RFPs &amp; Manpower Inquiries
-                        </span>
-                      </div>
+                      <ArrowUpRight className="w-4 h-4 text-bronze-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                     </a>
                   </div>
 
@@ -211,48 +268,55 @@ export default function ContactPage() {
                       Tell Us What The Floor Needs
                     </h3>
                     <p className="text-xs sm:text-sm text-chocolate-600 dark:text-night-muted font-light">
-                      Complete the requisition below. Our operations team will prepare tailored crew profiles and deployment schedules.
+                      Fill in your contact and event specifics below. Past event dates cannot be selected.
                     </p>
                   </div>
 
                   {submitted ? (
-                    <div className="p-8 bg-cream-200 dark:bg-night-750 border border-bronze-500/40 text-center space-y-4 animate-fade-in">
+                    <div className="p-8 bg-cream-200 dark:bg-night-750 border border-bronze-500/40 text-center space-y-5 animate-fade-in">
                       <div className="w-14 h-14 rounded-full bg-brand-green dark:bg-bronze-500 text-cream-50 dark:text-night-950 flex items-center justify-center mx-auto shadow-md">
                         <CheckCircle2 className="w-7 h-7" />
                       </div>
                       <h4 className="font-serif text-2xl text-chocolate-950 dark:text-cream-50 font-medium">
-                        Manpower Request Dispatched
+                        Requisition Received
                       </h4>
                       <p className="text-xs sm:text-sm text-chocolate-600 dark:text-night-muted font-light max-w-md mx-auto leading-relaxed">
-                        Thank you, <strong className="text-chocolate-900 dark:text-cream-100">{formData.fullName}</strong>. Our operations team will review your requirements and reach out at <strong className="text-chocolate-900 dark:text-cream-100">{formData.phone}</strong>.
+                        Thank you, <strong className="text-chocolate-900 dark:text-cream-100">{formData.fullName}</strong>. Our operations team will review your requirements for <strong className="text-chocolate-900 dark:text-cream-100">{formData.eventDate}</strong> and reach out to you at <strong className="text-chocolate-900 dark:text-cream-100">{formData.phone}</strong>.
                       </p>
-                      <div className="pt-4">
+
+                      {/* Quick WhatsApp Forward Option */}
+                      <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
                         <button
-                          onClick={handleReset}
-                          className="btn-secondary text-xs"
+                          type="button"
+                          onClick={handleSendViaWhatsApp}
+                          className="w-full sm:w-auto px-6 py-3 bg-emerald-700 hover:bg-emerald-600 text-cream-50 text-xs font-semibold uppercase tracking-wider flex items-center justify-center space-x-2 transition-colors shadow-sm"
                         >
-                          Submit Another Requisition
+                          <MessageSquare className="w-4 h-4" />
+                          <span>Dispatch Copy to WhatsApp</span>
+                        </button>
+                        <button
+                          type="button"
+                          onClick={handleReset}
+                          className="w-full sm:w-auto btn-secondary text-xs"
+                        >
+                          <span>Submit Another Request</span>
                         </button>
                       </div>
                     </div>
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-6">
                       {formError && (
-                        <div className="p-3 bg-red-500/10 border border-red-500/30 text-red-700 dark:text-red-300 text-xs font-sans">
+                        <div className="p-3.5 bg-red-500/10 border border-red-500/30 text-red-700 dark:text-red-300 text-xs font-sans rounded-sm">
                           {formError}
                         </div>
                       )}
 
+                      {/* 1. Full Name & Email Fields */}
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        {/* Full Name Field with Floating Label */}
                         <div className="relative">
                           <label
                             htmlFor="fullName"
-                            className={`absolute left-4 transition-all duration-200 pointer-events-none ${
-                              focusedField === "fullName" || formData.fullName
-                                ? "top-2 text-[10px] uppercase tracking-wider text-bronze-600 dark:text-bronze-400 font-semibold"
-                                : "top-4 text-xs text-chocolate-500 dark:text-night-muted"
-                            }`}
+                            className="block text-[10px] uppercase tracking-wider text-chocolate-600 dark:text-bronze-400 font-semibold mb-1.5 font-sans"
                           >
                             Full Name *
                           </label>
@@ -261,103 +325,130 @@ export default function ContactPage() {
                             type="text"
                             name="fullName"
                             required
+                            placeholder="e.g. Rahul Sharma"
                             value={formData.fullName}
-                            onFocus={() => setFocusedField("fullName")}
-                            onBlur={() => setFocusedField(null)}
                             onChange={handleChange}
-                            className="w-full pt-6 pb-2.5 px-4 bg-cream-100 dark:bg-night-850 border border-chocolate-700/20 dark:border-bronze-500/25 text-xs font-sans text-chocolate-900 dark:text-cream-50 focus:outline-none focus:border-bronze-500 transition-colors"
+                            className="w-full py-3 px-4 bg-cream-100 dark:bg-night-850 border border-chocolate-700/20 dark:border-bronze-500/25 text-xs font-sans text-chocolate-900 dark:text-cream-50 focus:outline-none focus:border-bronze-500 transition-colors placeholder-chocolate-400 dark:placeholder-night-dim"
                           />
                         </div>
 
-                        {/* Phone Number Field */}
+                        <div className="relative">
+                          <label
+                            htmlFor="email"
+                            className="block text-[10px] uppercase tracking-wider text-chocolate-600 dark:text-bronze-400 font-semibold mb-1.5 font-sans"
+                          >
+                            Email Address *
+                          </label>
+                          <input
+                            id="email"
+                            type="email"
+                            name="email"
+                            required
+                            placeholder="e.g. rahul@eventcraft.com"
+                            value={formData.email}
+                            onChange={handleChange}
+                            className="w-full py-3 px-4 bg-cream-100 dark:bg-night-850 border border-chocolate-700/20 dark:border-bronze-500/25 text-xs font-sans text-chocolate-900 dark:text-cream-50 focus:outline-none focus:border-bronze-500 transition-colors placeholder-chocolate-400 dark:placeholder-night-dim"
+                          />
+                        </div>
+                      </div>
+
+                      {/* 2. Phone Number & Organization */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div className="relative">
                           <label
                             htmlFor="phone"
-                            className={`absolute left-4 transition-all duration-200 pointer-events-none ${
-                              focusedField === "phone" || formData.phone
-                                ? "top-2 text-[10px] uppercase tracking-wider text-bronze-600 dark:text-bronze-400 font-semibold"
-                                : "top-4 text-xs text-chocolate-500 dark:text-night-muted"
-                            }`}
+                            className="block text-[10px] uppercase tracking-wider text-chocolate-600 dark:text-bronze-400 font-semibold mb-1.5 font-sans"
                           >
-                            Phone Number *
+                            Phone / WhatsApp Number *
                           </label>
                           <input
                             id="phone"
                             type="tel"
                             name="phone"
                             required
+                            placeholder="e.g. +91 98765 43210"
                             value={formData.phone}
-                            onFocus={() => setFocusedField("phone")}
-                            onBlur={() => setFocusedField(null)}
                             onChange={handleChange}
-                            className="w-full pt-6 pb-2.5 px-4 bg-cream-100 dark:bg-night-850 border border-chocolate-700/20 dark:border-bronze-500/25 text-xs font-sans text-chocolate-900 dark:text-cream-50 focus:outline-none focus:border-bronze-500 transition-colors"
+                            className="w-full py-3 px-4 bg-cream-100 dark:bg-night-850 border border-chocolate-700/20 dark:border-bronze-500/25 text-xs font-sans text-chocolate-900 dark:text-cream-50 focus:outline-none focus:border-bronze-500 transition-colors placeholder-chocolate-400 dark:placeholder-night-dim"
+                          />
+                        </div>
+
+                        <div className="relative">
+                          <label
+                            htmlFor="company"
+                            className="block text-[10px] uppercase tracking-wider text-chocolate-600 dark:text-bronze-400 font-semibold mb-1.5 font-sans"
+                          >
+                            Company / Event Organization
+                          </label>
+                          <input
+                            id="company"
+                            type="text"
+                            name="company"
+                            placeholder="e.g. Event Agency / Private Host"
+                            value={formData.company}
+                            onChange={handleChange}
+                            className="w-full py-3 px-4 bg-cream-100 dark:bg-night-850 border border-chocolate-700/20 dark:border-bronze-500/25 text-xs font-sans text-chocolate-900 dark:text-cream-50 focus:outline-none focus:border-bronze-500 transition-colors placeholder-chocolate-400 dark:placeholder-night-dim"
                           />
                         </div>
                       </div>
 
+                      {/* 3. Event Date Column (No Past Dates Allowed) & Venue */}
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        {/* Event Date Field */}
                         <div className="relative">
-                          <label
-                            htmlFor="eventDate"
-                            className={`absolute left-4 transition-all duration-200 pointer-events-none ${
-                              focusedField === "eventDate" || formData.eventDate
-                                ? "top-2 text-[10px] uppercase tracking-wider text-bronze-600 dark:text-bronze-400 font-semibold"
-                                : "top-4 text-xs text-chocolate-500 dark:text-night-muted"
-                            }`}
-                          >
-                            Event Date(s)
-                          </label>
+                          <div className="flex items-center justify-between mb-1.5">
+                            <label
+                              htmlFor="eventDate"
+                              className="text-[10px] uppercase tracking-wider text-chocolate-600 dark:text-bronze-400 font-semibold font-sans flex items-center space-x-1"
+                            >
+                              <Calendar className="w-3.5 h-3.5 text-bronze-500" />
+                              <span>Event Date *</span>
+                            </label>
+                            <span className="text-[9.5px] font-mono text-bronze-600 dark:text-bronze-400">
+                              (Past dates disabled)
+                            </span>
+                          </div>
                           <input
                             id="eventDate"
-                            type="text"
+                            type="date"
                             name="eventDate"
-                            placeholder="e.g. 15-18 Nov 2026"
+                            min={todayStr}
+                            required
                             value={formData.eventDate}
-                            onFocus={() => setFocusedField("eventDate")}
-                            onBlur={() => setFocusedField(null)}
                             onChange={handleChange}
-                            className="w-full pt-6 pb-2.5 px-4 bg-cream-100 dark:bg-night-850 border border-chocolate-700/20 dark:border-bronze-500/25 text-xs font-sans text-chocolate-900 dark:text-cream-50 placeholder-chocolate-400 dark:placeholder-night-dim focus:outline-none focus:border-bronze-500 transition-colors"
+                            className="w-full py-2.5 px-4 bg-cream-100 dark:bg-night-850 border border-chocolate-700/20 dark:border-bronze-500/25 text-xs font-sans text-chocolate-900 dark:text-cream-50 focus:outline-none focus:border-bronze-500 transition-colors"
                           />
                         </div>
 
-                        {/* Venue Field */}
                         <div className="relative">
                           <label
                             htmlFor="venue"
-                            className={`absolute left-4 transition-all duration-200 pointer-events-none ${
-                              focusedField === "venue" || formData.venue
-                                ? "top-2 text-[10px] uppercase tracking-wider text-bronze-600 dark:text-bronze-400 font-semibold"
-                                : "top-4 text-xs text-chocolate-500 dark:text-night-muted"
-                            }`}
+                            className="block text-[10px] uppercase tracking-wider text-chocolate-600 dark:text-bronze-400 font-semibold mb-1.5 font-sans"
                           >
-                            Venue / City
+                            Venue / City Location
                           </label>
                           <input
                             id="venue"
                             type="text"
                             name="venue"
-                            placeholder="e.g. ITC Maurya / Pragati Maidan"
+                            placeholder="e.g. ITC Maurya / Pragati Maidan / Gurgaon"
                             value={formData.venue}
-                            onFocus={() => setFocusedField("venue")}
-                            onBlur={() => setFocusedField(null)}
                             onChange={handleChange}
-                            className="w-full pt-6 pb-2.5 px-4 bg-cream-100 dark:bg-night-850 border border-chocolate-700/20 dark:border-bronze-500/25 text-xs font-sans text-chocolate-900 dark:text-cream-50 placeholder-chocolate-400 dark:placeholder-night-dim focus:outline-none focus:border-bronze-500 transition-colors"
+                            className="w-full py-3 px-4 bg-cream-100 dark:bg-night-850 border border-chocolate-700/20 dark:border-bronze-500/25 text-xs font-sans text-chocolate-900 dark:text-cream-50 placeholder-chocolate-400 dark:placeholder-night-dim focus:outline-none focus:border-bronze-500 transition-colors"
                           />
                         </div>
                       </div>
 
+                      {/* 4. Event Category & Expected Crew Count */}
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        {/* Event Type Selector */}
                         <div>
-                          <label className="block text-[10px] uppercase tracking-wider text-chocolate-600 dark:text-night-muted font-semibold mb-1.5 font-sans">
+                          <label className="block text-[10px] uppercase tracking-wider text-chocolate-600 dark:text-bronze-400 font-semibold mb-1.5 font-sans">
                             Event Category
                           </label>
                           <select
                             name="eventType"
                             value={formData.eventType}
                             onChange={handleChange}
-                            className="w-full py-3.5 px-4 bg-cream-100 dark:bg-night-850 border border-chocolate-700/20 dark:border-bronze-500/25 text-xs font-sans text-chocolate-900 dark:text-cream-50 focus:outline-none focus:border-bronze-500 transition-colors"
+                            className="w-full py-3 px-4 bg-cream-100 dark:bg-night-850 border border-chocolate-700/20 dark:border-bronze-500/25 text-xs font-sans text-chocolate-900 dark:text-cream-50 focus:outline-none focus:border-bronze-500 transition-colors"
                           >
                             <option value="Wedding Hospitality">Wedding Hospitality</option>
                             <option value="Corporate Event / Summit">Corporate Event / Summit</option>
@@ -368,54 +459,41 @@ export default function ContactPage() {
                           </select>
                         </div>
 
-                        {/* Expected Crew Count Field */}
                         <div className="relative">
                           <label
                             htmlFor="crewCount"
-                            className={`absolute left-4 transition-all duration-200 pointer-events-none ${
-                              focusedField === "crewCount" || formData.crewCount
-                                ? "top-2 text-[10px] uppercase tracking-wider text-bronze-600 dark:text-bronze-400 font-semibold"
-                                : "top-4 text-xs text-chocolate-500 dark:text-night-muted"
-                            }`}
+                            className="block text-[10px] uppercase tracking-wider text-chocolate-600 dark:text-bronze-400 font-semibold mb-1.5 font-sans"
                           >
-                            Expected Crew Count
+                            Estimated Crew Size
                           </label>
                           <input
                             id="crewCount"
                             type="text"
                             name="crewCount"
-                            placeholder="e.g. 15-25 crew members"
+                            placeholder="e.g. 10 - 25 crew members"
                             value={formData.crewCount}
-                            onFocus={() => setFocusedField("crewCount")}
-                            onBlur={() => setFocusedField(null)}
                             onChange={handleChange}
-                            className="w-full pt-6 pb-2.5 px-4 bg-cream-100 dark:bg-night-850 border border-chocolate-700/20 dark:border-bronze-500/25 text-xs font-sans text-chocolate-900 dark:text-cream-50 placeholder-chocolate-400 dark:placeholder-night-dim focus:outline-none focus:border-bronze-500 transition-colors"
+                            className="w-full py-3 px-4 bg-cream-100 dark:bg-night-850 border border-chocolate-700/20 dark:border-bronze-500/25 text-xs font-sans text-chocolate-900 dark:text-cream-50 placeholder-chocolate-400 dark:placeholder-night-dim focus:outline-none focus:border-bronze-500 transition-colors"
                           />
                         </div>
                       </div>
 
-                      {/* Requirement Details Textarea */}
+                      {/* 5. Requirement Details / Message */}
                       <div className="relative">
                         <label
-                          htmlFor="requirementDetails"
-                          className={`absolute left-4 transition-all duration-200 pointer-events-none ${
-                            focusedField === "requirementDetails" || formData.requirementDetails
-                              ? "top-2 text-[10px] uppercase tracking-wider text-bronze-600 dark:text-bronze-400 font-semibold"
-                              : "top-4 text-xs text-chocolate-500 dark:text-night-muted"
-                          }`}
+                          htmlFor="message"
+                          className="block text-[10px] uppercase tracking-wider text-chocolate-600 dark:text-bronze-400 font-semibold mb-1.5 font-sans"
                         >
-                          Requirement Details
+                          Requirement Details &amp; Message
                         </label>
                         <textarea
-                          id="requirementDetails"
-                          name="requirementDetails"
+                          id="message"
+                          name="message"
                           rows={4}
-                          placeholder={focusedField === "requirementDetails" ? "Tell Us What The Floor Needs (roles needed, shift hours, VIP requirements...)" : ""}
-                          value={formData.requirementDetails}
-                          onFocus={() => setFocusedField("requirementDetails")}
-                          onBlur={() => setFocusedField(null)}
+                          placeholder="Please provide specifics such as preferred roles, shift timings, language preferences, or VIP protocols..."
+                          value={formData.message}
                           onChange={handleChange}
-                          className="w-full pt-7 pb-3 px-4 bg-cream-100 dark:bg-night-850 border border-chocolate-700/20 dark:border-bronze-500/25 text-xs font-sans text-chocolate-900 dark:text-cream-50 focus:outline-none focus:border-bronze-500 transition-colors"
+                          className="w-full py-3 px-4 bg-cream-100 dark:bg-night-850 border border-chocolate-700/20 dark:border-bronze-500/25 text-xs font-sans text-chocolate-900 dark:text-cream-50 focus:outline-none focus:border-bronze-500 transition-colors placeholder-chocolate-400 dark:placeholder-night-dim"
                         />
                       </div>
 
@@ -433,7 +511,7 @@ export default function ContactPage() {
                             </>
                           ) : (
                             <>
-                              <span>Request Manpower</span>
+                              <span>Submit Manpower Request</span>
                               <ArrowUpRight className="w-4 h-4 text-bronze-300 dark:text-night-950" />
                             </>
                           )}

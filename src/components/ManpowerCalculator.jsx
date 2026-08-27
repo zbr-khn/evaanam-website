@@ -444,21 +444,36 @@ _Requisition configured via EVAANAM Operational Manpower Calculator_`;
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <input
-                  type="text"
-                  placeholder="Event Dates (e.g. 18-20 Dec)"
-                  value={eventDetails.eventDate}
-                  onChange={(e) => setEventDetails({ ...eventDetails, eventDate: e.target.value })}
-                  className="w-full px-3 py-2.5 bg-cream-50 dark:bg-night-850 border border-chocolate-700/15 dark:border-bronze-500/20 text-xs text-chocolate-900 dark:text-cream-100 placeholder-chocolate-400 dark:placeholder-night-dim focus:outline-none focus:border-bronze-500"
-                />
+                <div>
+                  <label className="block text-[9.5px] uppercase font-mono tracking-wider text-chocolate-500 dark:text-night-muted mb-1">
+                    Event Date (Past dates disabled)
+                  </label>
+                  <input
+                    type="date"
+                    min={new Date().toISOString().split("T")[0]}
+                    value={eventDetails.eventDate}
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      const today = new Date().toISOString().split("T")[0];
+                      if (val && val < today) return;
+                      setEventDetails({ ...eventDetails, eventDate: val });
+                    }}
+                    className="w-full px-3 py-2 bg-cream-50 dark:bg-night-850 border border-chocolate-700/15 dark:border-bronze-500/20 text-xs text-chocolate-900 dark:text-cream-100 placeholder-chocolate-400 dark:placeholder-night-dim focus:outline-none focus:border-bronze-500"
+                  />
+                </div>
 
-                <input
-                  type="text"
-                  placeholder="Venue (e.g. Taj Palace, Delhi)"
-                  value={eventDetails.venue}
-                  onChange={(e) => setEventDetails({ ...eventDetails, venue: e.target.value })}
-                  className="w-full px-3 py-2.5 bg-cream-50 dark:bg-night-850 border border-chocolate-700/15 dark:border-bronze-500/20 text-xs text-chocolate-900 dark:text-cream-100 placeholder-chocolate-400 dark:placeholder-night-dim focus:outline-none focus:border-bronze-500"
-                />
+                <div>
+                  <label className="block text-[9.5px] uppercase font-mono tracking-wider text-chocolate-500 dark:text-night-muted mb-1">
+                    Venue Location
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Venue (e.g. Taj Palace, Delhi)"
+                    value={eventDetails.venue}
+                    onChange={(e) => setEventDetails({ ...eventDetails, venue: e.target.value })}
+                    className="w-full px-3 py-2 bg-cream-50 dark:bg-night-850 border border-chocolate-700/15 dark:border-bronze-500/20 text-xs text-chocolate-900 dark:text-cream-100 placeholder-chocolate-400 dark:placeholder-night-dim focus:outline-none focus:border-bronze-500"
+                  />
+                </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
