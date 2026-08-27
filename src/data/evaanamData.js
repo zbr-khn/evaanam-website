@@ -524,5 +524,100 @@ export const GALLERY_IMAGES = [
     aspect: "square",
     src: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=1200&q=80",
     desc: "Porch arrival coordination, umbrella protocols, and direct executive escort to the main plenary."
+  },
+
+  // 5 Brand Activations & Celebrity Highlight Moments
+  {
+    id: "h1",
+    category: "corporate",
+    categoryLabel: "Celebrity & VIP Protocol",
+    title: "Celebrity Escort & Keynote Coordination: Boman Irani",
+    subtitle: "Luxury Conclave · VIP Personal Escort",
+    aspect: "tall",
+    src: "./images/home-highlights/boman.png",
+    desc: "Dedicated green-room liaison, stage handover, and protocol escort for celebrity keynote speaker Boman Irani."
+  },
+  {
+    id: "h2",
+    category: "corporate",
+    categoryLabel: "Artist & Stage Management",
+    title: "Artist Liaison & Backstage Escort: Rajpal Yadav",
+    subtitle: "Live Event Arena · Artist Show Runners",
+    aspect: "tall",
+    src: "./images/home-highlights/rajpal.png",
+    desc: "Close-protection escort, backstage queue coordination, and stage entry synchronization for actor Rajpal Yadav."
+  },
+  {
+    id: "h3",
+    category: "corporate",
+    categoryLabel: "Brand Activation",
+    title: "Tech Experience Pavilion: Vivo Smartphone",
+    subtitle: "Brand Activation Pavilion · Experience Crew",
+    aspect: "wide",
+    src: "./images/home-highlights/vivo.png",
+    desc: "Product demonstration crew, experiential booth staffing, and customer walkthrough facilitation."
+  },
+  {
+    id: "h4",
+    category: "corporate",
+    categoryLabel: "Corporate Summit",
+    title: "Aviation Summit & Corporate Assembly: IndiGo",
+    subtitle: "Corporate Conclave · Registration & Usher Crew",
+    aspect: "wide",
+    src: "./images/home-highlights/indigo.png",
+    desc: "High-level aviation conclave management, executive seating ushering, and plenary coordination."
+  },
+  {
+    id: "h5",
+    category: "corporate",
+    categoryLabel: "Operations & Floor Management",
+    title: "Corporate Summit Floor Operations: Pronto",
+    subtitle: "Convention Floor · Operations Crew",
+    aspect: "square",
+    src: "./images/home-highlights/pronto.png",
+    desc: "Full venue staffing, stage timing synchronization, and multi-hall delegate flow management."
+  }
+];
+
+export const FEATURED_HIGHLIGHTS = [
+  {
+    id: "hl-boman",
+    tag: "Celebrity VIP Protocol",
+    title: "Celebrity Keynote Escort: Boman Irani",
+    client: "Executive Gala",
+    src: "./images/home-highlights/boman.png",
+    desc: "High-touch green room coordination and stage entry liaison."
+  },
+  {
+    id: "hl-rajpal",
+    tag: "Artist Management",
+    title: "Live Arena Artist Liaison: Rajpal Yadav",
+    client: "Live Production",
+    src: "./images/home-highlights/rajpal.png",
+    desc: "Backstage cue synchronisation and close-protection escort."
+  },
+  {
+    id: "hl-vivo",
+    tag: "Brand Activation",
+    title: "Experience Pavilion: Vivo",
+    client: "Product Launch",
+    src: "./images/home-highlights/vivo.png",
+    desc: "Interactive product demo crew and attendee walkthroughs."
+  },
+  {
+    id: "hl-indigo",
+    tag: "Corporate Conclave",
+    title: "Aviation Conclave: IndiGo",
+    client: "Corporate Assembly",
+    src: "./images/home-highlights/indigo.png",
+    desc: "Executive ushering and plenary floor operations."
+  },
+  {
+    id: "hl-pronto",
+    tag: "Summit Operations",
+    title: "Floor Operations: Pronto",
+    client: "Annual Summit",
+    src: "./images/home-highlights/pronto.png",
+    desc: "Full floor deployment and delegate flow management."
   }
 ];

@@ -7,7 +7,7 @@ import SocialSection from "../components/SocialSection";
 import ManpowerCalculator from "../components/ManpowerCalculator";
 import GeometricDivider from "../components/GeometricDivider";
 import HomeImageCarousel from "../components/HomeImageCarousel";
-import { COMPANY_INFO, GALLERY_IMAGES } from "../data/evaanamData";
+import { COMPANY_INFO, GALLERY_IMAGES, FEATURED_HIGHLIGHTS } from "../data/evaanamData";
 
 export default function HomePage() {
   // Teaser images for gallery section
@@ -381,7 +381,71 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 7. VENUE TICKER PREVIEW */}
+      {/* 7. EXECUTIVE ENGAGEMENTS & BRAND ACTIVATIONS (USER UPLOADED SPOTLIGHTS) */}
+      <section className="py-20 px-6 sm:px-8 lg:px-12 bg-transparent border-t border-chocolate-700/10 dark:border-bronze-500/15">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
+            <div>
+              <span className="micro-label text-bronze-600 dark:text-bronze-400">FEATURED SPOTLIGHTS</span>
+              <h2 className="editorial-heading text-3xl sm:text-4xl md:text-5xl text-chocolate-950 dark:text-cream-50 mt-1">
+                Executive Engagements &amp; Brand Activations
+              </h2>
+              <p className="text-xs sm:text-sm text-chocolate-600 dark:text-night-muted font-light mt-1 max-w-2xl">
+                On-ground manpower coordination for premier consumer brands, aviation conclaves, and high-profile celebrity keynotes.
+              </p>
+            </div>
+            <Link
+              to="/gallery"
+              className="btn-secondary text-xs whitespace-nowrap self-start sm:self-auto"
+            >
+              <span>Explore Portfolio</span>
+            </Link>
+          </div>
+
+          {/* Grid of Highlight Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+            {FEATURED_HIGHLIGHTS.map((item) => (
+              <div
+                key={item.id}
+                className="group relative overflow-hidden bg-night-950 border border-chocolate-700/15 dark:border-bronze-500/20 rounded-sm aspect-[4/5] shadow-md flex flex-col justify-end p-5"
+              >
+                {/* Image */}
+                <img
+                  src={item.src}
+                  alt={item.title}
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                />
+
+                {/* Dark Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-night-950 via-night-950/40 to-transparent opacity-85 group-hover:opacity-95 transition-opacity" />
+
+                {/* Micro Tag Top Left */}
+                <div className="absolute top-4 left-4 z-10">
+                  <span className="text-[9px] uppercase font-mono tracking-widest font-semibold px-2 py-0.5 bg-night-950/90 text-bronze-300 border border-bronze-500/30 rounded-sm">
+                    {item.tag}
+                  </span>
+                </div>
+
+                {/* Bottom Details */}
+                <div className="relative z-10 space-y-1 transform translate-y-1 group-hover:translate-y-0 transition-transform">
+                  <span className="text-[10px] uppercase font-mono text-bronze-400 block font-medium">
+                    {item.client}
+                  </span>
+                  <h4 className="font-serif text-base font-medium text-cream-50 leading-snug">
+                    {item.title}
+                  </h4>
+                  <p className="text-[11px] text-cream-300/80 font-sans line-clamp-2 mt-1">
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 8. VENUE TICKER PREVIEW */}
       <section className="py-16 bg-transparent">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
