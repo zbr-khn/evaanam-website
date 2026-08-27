@@ -631,3 +631,106 @@ export const FEATURED_HIGHLIGHTS = [
     desc: "Full floor deployment and delegate flow management."
   }
 ];
+
+export const TESTIMONIALS = [
+  {
+    id: "t1",
+    quote: "The team was professional and well-trained. They made our conference seamless.",
+    author: "Arsh",
+    role: "Tech Company Lead",
+    location: "Noida",
+    category: "Corporate & Tech",
+    rating: 5,
+    eventCount: "Annual Tech Conference"
+  },
+  {
+    id: "t2",
+    quote: "We've worked with many staffing agencies, but Crown Vista stands out for their reliability.",
+    author: "Manoj",
+    role: "Senior Event Planner",
+    location: "Mumbai",
+    category: "Event Production",
+    rating: 5,
+    eventCount: "Multi-City Roadshows"
+  },
+  {
+    id: "t3",
+    quote: "Last-minute request handled perfectly. Will definitely work with them again.",
+    author: "Sahil",
+    role: "Wedding Host",
+    location: "Delhi",
+    category: "Wedding Hospitality",
+    rating: 5,
+    eventCount: "Grand Wedding Reception"
+  },
+  {
+    id: "t4",
+    quote: "Our event had zero manpower issues – Crown Vista handled everything like pros.",
+    author: "Satyansh",
+    role: "Corporate Operations Lead",
+    location: "Delhi",
+    category: "Corporate Summit",
+    rating: 5,
+    eventCount: "National Leadership Summit"
+  },
+  {
+    id: "t5",
+    quote: "As a promoter, I finally feel respected and paid on time. Thank you Crown Vista!",
+    author: "Sujal",
+    role: "Event Crew & Promoter",
+    location: "Gurgaon",
+    category: "Workforce & Talent",
+    rating: 5,
+    eventCount: "Exhibition Roster"
+  },
+  {
+    id: "t6",
+    quote: "Quick response time and reliable service. Highly recommend Crown Vista for any event.",
+    author: "Jay Prakash",
+    role: "Exhibition Manager",
+    location: "Delhi NCR",
+    category: "Trade Expos",
+    rating: 5,
+    eventCount: "Pragati Maidan Expo"
+  },
+  {
+    id: "t7",
+    quote: "Professionalism at its best! The staff arrived on time and were perfectly groomed.",
+    author: "Rohan",
+    role: "Brand Manager",
+    location: "Delhi NCR",
+    category: "Brand Activations",
+    rating: 5,
+    eventCount: "Consumer Brand Pavilion"
+  },
+  {
+    id: "t8",
+    quote: "We've been using Crown Vista for all our mall activations. Consistent quality every time.",
+    author: "Priya",
+    role: "Marketing Head",
+    location: "Delhi NCR",
+    category: "Retail Activations",
+    rating: 5,
+    eventCount: "Mall Tour Series"
+  },
+  {
+    id: "t9",
+    quote: "The team handled our high-profile corporate event with discretion and efficiency.",
+    author: "Devendar",
+    role: "Event Coordinator",
+    location: "Delhi NCR",
+    category: "VIP Corporate Conclave",
+    rating: 5,
+    eventCount: "Dignitary Conclave"
+  },
+  {
+    id: "t10",
+    quote: "Best manpower partner in Delhi NCR. Their staff are always well-trained and presentable.",
+    author: "Prayanshu",
+    role: "Luxury Wedding Planner",
+    location: "Delhi NCR",
+    category: "Wedding Hospitality",
+    rating: 5,
+    eventCount: "Destination Wedding Series"
+  }
+];

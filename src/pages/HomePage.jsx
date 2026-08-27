@@ -7,6 +7,7 @@ import SocialSection from "../components/SocialSection";
 import ManpowerCalculator from "../components/ManpowerCalculator";
 import GeometricDivider from "../components/GeometricDivider";
 import HomeImageCarousel from "../components/HomeImageCarousel";
+import TestimonialMarquee from "../components/TestimonialMarquee";
 import { COMPANY_INFO, GALLERY_IMAGES, FEATURED_HIGHLIGHTS } from "../data/evaanamData";
 
 export default function HomePage() {
@@ -466,7 +467,31 @@ export default function HomePage() {
         <VenueMarquee />
       </section>
 
-      {/* 8. GALLERY TEASER */}
+      {/* 9. TESTIMONIALS & CLIENT ENDORSEMENTS RIBBON */}
+      <section className="py-20 bg-transparent border-t border-chocolate-700/10 dark:border-bronze-500/15">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 mb-8 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
+          <div>
+            <span className="micro-label text-bronze-600 dark:text-bronze-400">CLIENT ENDORSEMENTS</span>
+            <h2 className="editorial-heading text-3xl sm:text-4xl md:text-5xl text-chocolate-950 dark:text-cream-50 mt-1">
+              500+ Events Delivered – <span className="italic text-bronze-600 dark:text-bronze-400">100+ Happy Clients</span>
+            </h2>
+            <p className="text-xs sm:text-sm text-chocolate-600 dark:text-night-muted font-light mt-1 max-w-xl">
+              From corporate conclaves in Noida to luxury destination weddings in Delhi and Mumbai.
+            </p>
+          </div>
+          <Link
+            to="/testimonials"
+            className="btn-secondary text-xs whitespace-nowrap self-start sm:self-auto"
+          >
+            <span>View All Reviews (5.0 ★)</span>
+          </Link>
+        </div>
+
+        {/* Looping Cards Ribbon */}
+        <TestimonialMarquee />
+      </section>
+
+      {/* 10. GALLERY TEASER */}
       <section className="py-24 px-6 sm:px-8 lg:px-12 bg-transparent border-t border-chocolate-700/10 dark:border-bronze-500/15">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
