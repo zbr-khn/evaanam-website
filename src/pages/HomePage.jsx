@@ -99,7 +99,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. STATS STRIP (SCROLL REVEAL) */}
+      {/* 2. EXECUTIVE ENGAGEMENTS & BRAND ACTIVATIONS CAROUSEL BELOW HERO (SCROLL REVEAL) */}
+      <ScrollReveal variant="up" threshold={0.1}>
+        <ExecutiveCarousel />
+      </ScrollReveal>
+
+      {/* 3. STATS STRIP (SCROLL REVEAL) */}
       <ScrollReveal variant="up" threshold={0.15}>
         <StatCounter light={true} />
       </ScrollReveal>
@@ -423,10 +428,7 @@ export default function HomePage() {
         </section>
       </ScrollReveal>
 
-      {/* 9. EXECUTIVE ENGAGEMENTS & BRAND ACTIVATIONS ANIMATED CAROUSEL (SCROLL REVEAL) */}
-      <ScrollReveal variant="up" threshold={0.1}>
-        <ExecutiveCarousel />
-      </ScrollReveal>
+
 
       {/* 10. ANIMATED SOCIAL SECTION (SCROLL REVEAL) */}
       <ScrollReveal variant="up" threshold={0.12}>

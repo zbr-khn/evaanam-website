@@ -31,11 +31,11 @@ export default function ExecutiveCarousel({ className = "" }) {
   };
 
   return (
-    <section className={`py-20 px-6 sm:px-8 lg:px-12 bg-transparent border-t border-chocolate-700/10 dark:border-bronze-500/15 select-none overflow-hidden ${className}`}>
+    <section className={`py-16 sm:py-20 px-6 sm:px-8 lg:px-12 bg-transparent select-none overflow-hidden ${className}`}>
       <div className="max-w-7xl mx-auto">
         
         {/* Section Header with Title & Arrow Controls */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between mb-10 gap-6">
+        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between mb-8 sm:mb-10 gap-6">
           <div>
             <span className="micro-label text-bronze-600 dark:text-bronze-400 flex items-center space-x-1.5">
               <Sparkles className="w-3.5 h-3.5" />
@@ -84,7 +84,7 @@ export default function ExecutiveCarousel({ className = "" }) {
           </div>
         </div>
 
-        {/* Cinematic Animated Carousel Viewport */}
+        {/* Cinematic Dual-Layer Uncropped Viewport */}
         <div
           className="relative overflow-hidden rounded-sm border-2 border-chocolate-700/20 dark:border-bronze-500/30 shadow-2xl bg-night-950"
           onMouseEnter={() => setIsPaused(true)}
@@ -98,46 +98,62 @@ export default function ExecutiveCarousel({ className = "" }) {
             {FEATURED_HIGHLIGHTS.map((item, idx) => (
               <div
                 key={item.id}
-                className="w-full flex-shrink-0 relative aspect-[4/3] sm:aspect-[16/9] lg:aspect-[21/9] min-h-[380px] sm:min-h-[460px] bg-night-950 cursor-pointer group"
+                className="w-full flex-shrink-0 relative h-[420px] sm:h-[520px] md:h-[580px] bg-night-950 cursor-pointer group flex items-center justify-center overflow-hidden"
                 onClick={() => setLightboxIndex(idx)}
               >
-                {/* Image */}
-                <img
-                  src={item.src}
-                  alt={item.title}
-                  loading={idx === 0 ? "eager" : "lazy"}
-                  className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105 opacity-90 group-hover:opacity-100"
-                />
+                {/* 1. LAYER 1: Ambient Background Aura (Blurred & darkened so no empty black borders) */}
+                <div className="absolute inset-0 z-0 overflow-hidden">
+                  <img
+                    src={item.src}
+                    alt=""
+                    aria-hidden="true"
+                    className="w-full h-full object-cover scale-125 blur-3xl opacity-35 dark:opacity-25"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-night-950 via-night-950/50 to-night-950/40" />
+                </div>
 
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-night-950 via-night-950/45 to-transparent opacity-90 group-hover:opacity-95 transition-opacity" />
+                {/* 2. LAYER 2: Foreground Crisp Uncropped Photo (object-contain with natural aspect ratio) */}
+                <div className="relative z-10 w-full h-full flex items-center justify-center p-4 sm:p-8 pb-28 sm:pb-32">
+                  <img
+                    src={item.src}
+                    alt={item.title}
+                    loading={idx === 0 ? "eager" : "lazy"}
+                    className="max-h-full max-w-full object-contain rounded-sm shadow-2xl transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+                  />
+                </div>
 
                 {/* Top Badges */}
-                <div className="absolute top-5 left-5 z-10 flex items-center space-x-2">
-                  <span className="text-[10px] uppercase font-mono tracking-widest font-bold px-3 py-1 bg-night-950/90 text-amber-300 border border-amber-500/40 rounded-sm">
+                <div className="absolute top-4 sm:top-6 left-4 sm:left-6 z-20 flex items-center space-x-2">
+                  <span className="text-[10px] uppercase font-mono tracking-widest font-bold px-3 py-1 bg-night-950/90 text-amber-300 border border-amber-500/40 rounded-sm shadow">
                     {item.tag}
                   </span>
-                  <span className="text-[10px] uppercase font-mono tracking-widest font-semibold px-2.5 py-1 bg-night-900/80 text-bronze-300 border border-bronze-500/30 rounded-sm">
+                  <span className="text-[10px] uppercase font-mono tracking-widest font-semibold px-2.5 py-1 bg-night-900/85 text-bronze-300 border border-bronze-500/30 rounded-sm hidden sm:inline-block shadow">
                     {item.client}
                   </span>
                 </div>
 
                 {/* Zoom Icon */}
-                <div className="absolute top-5 right-5 w-10 h-10 rounded-full bg-night-900/80 border border-bronze-500/40 text-cream-100 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-105 shadow-lg">
+                <div className="absolute top-4 sm:top-6 right-4 sm:right-6 z-20 w-10 h-10 rounded-full bg-night-900/80 border border-bronze-500/40 text-cream-100 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-105 shadow-lg">
                   <Maximize2 className="w-4 h-4 text-amber-300" />
                 </div>
 
-                {/* Bottom Details */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-10 text-cream-100 space-y-2.5 transform translate-y-1 group-hover:translate-y-0 transition-transform">
-                  <span className="text-xs uppercase font-mono text-bronze-400 font-bold block">
-                    {item.client}
-                  </span>
+                {/* Bottom Caption Overlay */}
+                <div className="absolute bottom-0 left-0 right-0 z-20 p-5 sm:p-8 bg-gradient-to-t from-night-950 via-night-950/90 to-transparent text-cream-100 space-y-1 sm:space-y-2 backdrop-blur-xs">
+                  <div className="flex items-center space-x-2">
+                    <span className="text-[11px] uppercase font-mono text-bronze-400 font-bold">
+                      {item.client}
+                    </span>
+                    <span className="text-cream-400 text-xs hidden sm:inline">•</span>
+                    <span className="text-xs text-cream-300 font-sans hidden sm:inline">
+                      Verified Floor Execution
+                    </span>
+                  </div>
 
-                  <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl text-cream-50 font-medium leading-snug">
+                  <h3 className="font-serif text-xl sm:text-2xl md:text-3xl text-cream-50 font-medium leading-snug">
                     {item.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-cream-300/90 font-light max-w-2xl line-clamp-2 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-cream-300/90 font-light max-w-3xl line-clamp-2 leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
@@ -146,7 +162,7 @@ export default function ExecutiveCarousel({ className = "" }) {
           </div>
 
           {/* Bottom Progress Bar & Dot Indicators */}
-          <div className="absolute bottom-4 right-6 flex items-center space-x-1.5 z-20">
+          <div className="absolute bottom-4 right-6 flex items-center space-x-1.5 z-30">
             {FEATURED_HIGHLIGHTS.map((_, dotIdx) => (
               <button
                 key={dotIdx}
@@ -164,19 +180,19 @@ export default function ExecutiveCarousel({ className = "" }) {
         </div>
 
         {/* Thumbnail Preview Strip */}
-        <div className="mt-4 grid grid-cols-5 gap-3">
+        <div className="mt-4 grid grid-cols-5 gap-2 sm:gap-3">
           {FEATURED_HIGHLIGHTS.map((item, idx) => (
             <button
               key={item.id}
               onClick={() => setCurrentIndex(idx)}
-              className={`relative rounded-sm overflow-hidden aspect-[16/9] border-2 transition-all duration-300 text-left group ${
+              className={`relative rounded-sm overflow-hidden aspect-[16/9] border-2 transition-all duration-300 text-left group bg-night-950 ${
                 currentIndex === idx
                   ? "border-amber-400 ring-2 ring-amber-400/30 scale-100 opacity-100"
                   : "border-chocolate-700/20 dark:border-bronze-500/20 opacity-60 hover:opacity-100"
               }`}
             >
-              <img src={item.src} alt={item.title} className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-night-950/40 group-hover:bg-transparent transition-colors" />
+              <img src={item.src} alt={item.title} className="w-full h-full object-contain p-1" />
+              <div className="absolute inset-0 bg-night-950/20 group-hover:bg-transparent transition-colors" />
               <span className="absolute bottom-1 left-1.5 text-[9px] font-mono text-cream-100 font-bold drop-shadow">
                 0{idx + 1}
               </span>
