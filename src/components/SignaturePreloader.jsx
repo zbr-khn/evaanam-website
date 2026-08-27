@@ -79,18 +79,20 @@ export default function SignaturePreloader({ onComplete }) {
 
   if (isRemoved) return null;
 
-  const darkGreen = "#0C2B22";
-  const gold = "#A67C47";
-  const charcoal = "#1E2A24";
+  const isDarkMode = typeof document !== "undefined" && document.documentElement.classList.contains("dark");
+  const bgColor = isDarkMode ? "#111713" : "#F5F1E8";
+  const brandPrimary = isDarkMode ? "#F5F1E8" : "#0C2B22";
+  const gold = "#B08D57";
+  const mutedText = isDarkMode ? "#C9C1B5" : "#1E2A24";
 
   return (
     <div
       role="status"
       aria-label="EVAANAM Brand Experience Loading"
-      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-cream-200 select-none transition-all duration-500 ease-out ${
+      className={`fixed inset-0 z-[9999] flex items-center justify-center select-none transition-all duration-500 ease-out ${
         isExiting ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
-      style={{ backgroundColor: "#F5F1E8" }}
+      style={{ backgroundColor: bgColor }}
     >
       <div
         className={`relative flex flex-col items-center justify-center p-6 transition-all duration-700 ease-out ${
@@ -168,7 +170,7 @@ export default function SignaturePreloader({ onComplete }) {
               cx="250"
               cy="180"
               r="120"
-              stroke={darkGreen}
+              stroke={brandPrimary}
               strokeWidth="0.75"
               strokeDasharray="560 200"
               strokeDashoffset={phase >= 4 ? "0" : "760"}
@@ -176,8 +178,8 @@ export default function SignaturePreloader({ onComplete }) {
               className="transition-all duration-700 ease-out"
             />
             {/* Inner Orbital Nodes */}
-            <circle cx="250" cy="60" r="2.5" fill={darkGreen} fillOpacity="0.7" />
-            <circle cx="165" cy="265" r="2" fill={darkGreen} fillOpacity="0.6" />
+            <circle cx="250" cy="60" r="2.5" fill={brandPrimary} fillOpacity="0.7" />
+            <circle cx="165" cy="265" r="2" fill={brandPrimary} fillOpacity="0.6" />
             <circle cx="335" cy="95" r="2.5" fill={gold} fillOpacity="0.8" />
           </g>
 
@@ -291,7 +293,7 @@ export default function SignaturePreloader({ onComplete }) {
           {/* PHASE 03: LEFT 'E' STRUCTURE (DARK GREEN #0C2B22)            */}
           {/* ============================================================ */}
           <g
-            stroke={darkGreen}
+            stroke={brandPrimary}
             strokeWidth="4.5"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -349,7 +351,7 @@ export default function SignaturePreloader({ onComplete }) {
           {/* PHASE 03: RIGHT 'M' STRUCTURE (DARK GREEN #0C2B22)           */}
           {/* ============================================================ */}
           <g
-            stroke={darkGreen}
+            stroke={brandPrimary}
             strokeWidth="4.5"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -401,7 +403,7 @@ export default function SignaturePreloader({ onComplete }) {
             }`}
           >
             {/* Left E Solid */}
-            <g fill={darkGreen}>
+            <g fill={brandPrimary}>
               <polygon points="120,80 140,80 140,280 120,280" />
               <polygon points="120,80 184,136 170,152 120,108" />
               <polygon points="120,172 178,172 178,190 120,190" />
@@ -409,7 +411,7 @@ export default function SignaturePreloader({ onComplete }) {
             </g>
 
             {/* Right M Solid */}
-            <g fill={darkGreen}>
+            <g fill={brandPrimary}>
               <polygon points="360,80 380,80 380,280 360,280" />
               <polygon points="380,80 316,136 330,152 380,108" />
               <polygon points="316,136 336,136 336,280 316,280" />
@@ -437,7 +439,7 @@ export default function SignaturePreloader({ onComplete }) {
             }`}
           >
             {/* "E V ∧ ∧ N ∧ M" with crossbar-less A's */}
-            <g fill={darkGreen} transform="translate(0, 350)">
+            <g fill={brandPrimary} transform="translate(0, 350)">
               <path d="M 68,0 L 98,0 L 98,4 L 72,4 L 72,16 L 95,16 L 95,20 L 72,20 L 72,32 L 98,32 L 98,36 L 68,36 Z" />
               <path d="M 132,0 L 148,36 L 152,36 L 168,0 L 163,0 L 150,30 L 137,0 Z" />
               <path d="M 200,36 L 216,0 L 220,0 L 236,36 L 231,36 L 218,6 L 205,36 Z" />
@@ -467,9 +469,9 @@ export default function SignaturePreloader({ onComplete }) {
 
             {/* Divider: Hairline with Centered Gold Diamond */}
             <g transform="translate(0, 442)">
-              <line x1="160" y1="0" x2="236" y2="0" stroke={darkGreen} strokeWidth="0.9" strokeOpacity="0.8" />
+              <line x1="160" y1="0" x2="236" y2="0" stroke={brandPrimary} strokeWidth="0.9" strokeOpacity="0.8" />
               <polygon points="250,-5 255,0 250,5 245,0" fill={gold} />
-              <line x1="264" y1="0" x2="340" y2="0" stroke={darkGreen} strokeWidth="0.9" strokeOpacity="0.8" />
+              <line x1="264" y1="0" x2="340" y2="0" stroke={brandPrimary} strokeWidth="0.9" strokeOpacity="0.8" />
             </g>
 
             {/* "Pvt. Ltd." (Serif) */}
@@ -481,7 +483,7 @@ export default function SignaturePreloader({ onComplete }) {
                 fontSize="24"
                 fontWeight="500"
                 letterSpacing="4"
-                fill={charcoal}
+                fill={mutedText}
                 textAnchor="middle"
               >
                 Pvt. Ltd.

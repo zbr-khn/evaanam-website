@@ -16,7 +16,7 @@ const SOCIAL_ACCOUNTS = [
     statusText: "Active Floor Feed",
     url: "https://instagram.com/evaanamhospitalitypvt.ltd",
     gradientBorder: "group-hover:border-bronze-500",
-    iconBg: "bg-amber-500/10 text-amber-700 group-hover:bg-bronze-500 group-hover:text-chocolate-950",
+    iconBg: "bg-amber-500/10 text-amber-700 dark:text-amber-300 group-hover:bg-bronze-500 group-hover:text-chocolate-950 dark:group-hover:text-night-950",
   },
   {
     id: "insta-corporate",
@@ -29,8 +29,8 @@ const SOCIAL_ACCOUNTS = [
     badge: "Operations Feed",
     statusText: "Live Rosters",
     url: "https://instagram.com/evaanampvt.ltd",
-    gradientBorder: "group-hover:border-emerald-600/60",
-    iconBg: "bg-emerald-500/10 text-emerald-800 group-hover:bg-chocolate-700 group-hover:text-cream-50",
+    gradientBorder: "group-hover:border-emerald-600/60 dark:group-hover:border-emerald-400/60",
+    iconBg: "bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 group-hover:bg-chocolate-700 dark:group-hover:bg-brand-green group-hover:text-cream-50",
   },
   {
     id: "youtube-channel",
@@ -43,8 +43,8 @@ const SOCIAL_ACCOUNTS = [
     badge: "Video Library",
     statusText: "Official Channel",
     url: "https://youtube.com/@evaanam_pvt._ltd",
-    gradientBorder: "group-hover:border-red-500/60",
-    iconBg: "bg-red-500/10 text-red-700 group-hover:bg-red-700 group-hover:text-cream-50",
+    gradientBorder: "group-hover:border-red-500/60 dark:group-hover:border-red-400/60",
+    iconBg: "bg-red-500/10 text-red-700 dark:text-red-300 group-hover:bg-red-700 group-hover:text-cream-50",
   },
   {
     id: "facebook-page",
@@ -57,8 +57,8 @@ const SOCIAL_ACCOUNTS = [
     badge: "Official Page",
     statusText: "Verified Business",
     url: "https://www.facebook.com/share/1UVz6xkxaY/",
-    gradientBorder: "group-hover:border-blue-500/60",
-    iconBg: "bg-blue-500/10 text-blue-800 group-hover:bg-chocolate-700 group-hover:text-cream-50",
+    gradientBorder: "group-hover:border-blue-500/60 dark:group-hover:border-blue-400/60",
+    iconBg: "bg-blue-500/10 text-blue-800 dark:text-blue-300 group-hover:bg-chocolate-700 dark:group-hover:bg-night-700 group-hover:text-cream-50",
   },
   {
     id: "whatsapp-direct",
@@ -72,7 +72,7 @@ const SOCIAL_ACCOUNTS = [
     statusText: "< 15 Min Response",
     url: "https://wa.me/919310039929",
     gradientBorder: "group-hover:border-emerald-500",
-    iconBg: "bg-emerald-500/10 text-emerald-700 group-hover:bg-emerald-600 group-hover:text-cream-50",
+    iconBg: "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 group-hover:bg-emerald-600 group-hover:text-cream-50",
   },
 ];
 
@@ -80,10 +80,10 @@ export default function SocialSection({ showHeader = true, className = "" }) {
   const [hoveredCard, setHoveredCard] = useState(null);
 
   return (
-    <section className={`py-24 bg-cream-200 border-t border-chocolate-700/10 relative overflow-hidden ${className}`}>
+    <section className={`py-24 bg-cream-200 dark:bg-night-900 border-t border-chocolate-700/10 dark:border-bronze-500/20 relative overflow-hidden transition-colors duration-400 ${className}`}>
       {/* Subtle Background Architectural Hairline */}
-      <div className="absolute inset-0 pointer-events-none opacity-30">
-        <div className="max-w-7xl mx-auto h-full border-x border-chocolate-700/10" />
+      <div className="absolute inset-0 pointer-events-none opacity-30 dark:opacity-10">
+        <div className="max-w-7xl mx-auto h-full border-x border-chocolate-700/10 dark:border-bronze-500/20" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
@@ -91,10 +91,10 @@ export default function SocialSection({ showHeader = true, className = "" }) {
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
             <EVAANAMGeometricMark size={38} className="mx-auto mb-1" />
             <span className="micro-label">DIGITAL NETWORK &amp; COMMUNITY</span>
-            <h2 className="editorial-heading text-4xl sm:text-5xl text-chocolate-950">
+            <h2 className="editorial-heading text-4xl sm:text-5xl text-chocolate-950 dark:text-cream-50">
               Follow The Floor
             </h2>
-            <p className="text-sm text-chocolate-600 font-light leading-relaxed">
+            <p className="text-sm text-chocolate-600 dark:text-night-muted font-light leading-relaxed">
               Behind the scenes, on the floor and between the details. Connect directly with our official operational channels across Delhi NCR.
             </p>
           </div>
@@ -114,7 +114,7 @@ export default function SocialSection({ showHeader = true, className = "" }) {
                 rel="noopener noreferrer"
                 onMouseEnter={() => setHoveredCard(acc.id)}
                 onMouseLeave={() => setHoveredCard(null)}
-                className={`group relative bg-cream-100/90 border border-chocolate-700/15 p-8 flex flex-col justify-between transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-xl hover:bg-cream-50 ${acc.gradientBorder} overflow-hidden`}
+                className={`group relative bg-cream-100/90 dark:bg-night-800/90 border border-chocolate-700/15 dark:border-bronze-500/20 p-8 flex flex-col justify-between transition-all duration-400 ease-out hover:-translate-y-2 hover:shadow-xl hover:bg-cream-50 dark:hover:bg-night-750 ${acc.gradientBorder} overflow-hidden`}
                 style={{
                   animationDelay: `${index * 80}ms`,
                 }}
@@ -124,20 +124,20 @@ export default function SocialSection({ showHeader = true, className = "" }) {
 
                 {/* Shimmer effect highlight */}
                 <div
-                  className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-cream-50/40 to-transparent pointer-events-none"
+                  className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-cream-50/30 dark:via-night-700/40 to-transparent pointer-events-none"
                 />
 
                 <div className="space-y-5 relative z-10">
                   {/* Card Header: Icon + Badge */}
                   <div className="flex items-center justify-between">
                     <div
-                      className={`w-12 h-12 rounded-full flex items-center justify-center border border-chocolate-700/10 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 shadow-sm ${acc.iconBg}`}
+                      className={`w-12 h-12 rounded-full flex items-center justify-center border border-chocolate-700/10 dark:border-bronze-500/20 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 shadow-sm ${acc.iconBg}`}
                     >
                       <Icon className="w-5 h-5 transition-transform duration-300" />
                     </div>
 
                     <div className="flex items-center space-x-2">
-                      <span className="text-[10px] uppercase font-mono tracking-wider font-semibold px-2.5 py-1 bg-cream-200 text-chocolate-700 border border-chocolate-700/10 group-hover:border-bronze-500/40 transition-colors">
+                      <span className="text-[10px] uppercase font-mono tracking-wider font-semibold px-2.5 py-1 bg-cream-200 dark:bg-night-850 text-chocolate-700 dark:text-cream-200 border border-chocolate-700/10 dark:border-bronze-500/25 group-hover:border-bronze-500/40 transition-colors">
                         {acc.badge}
                       </span>
                     </div>
@@ -145,36 +145,36 @@ export default function SocialSection({ showHeader = true, className = "" }) {
 
                   {/* Micro Category Tag */}
                   <div>
-                    <span className="text-[10px] uppercase tracking-[0.22em] font-semibold text-bronze-600 block mb-1">
+                    <span className="text-[10px] uppercase tracking-[0.22em] font-semibold text-bronze-600 dark:text-bronze-400 block mb-1">
                       {acc.tag}
                     </span>
-                    <h3 className="font-serif text-xl sm:text-2xl text-chocolate-950 font-medium group-hover:text-bronze-700 transition-colors duration-300 leading-snug">
+                    <h3 className="font-serif text-xl sm:text-2xl text-chocolate-950 dark:text-cream-50 font-medium group-hover:text-bronze-600 dark:group-hover:text-bronze-350 transition-colors duration-300 leading-snug">
                       {acc.title}
                     </h3>
-                    <p className="font-mono text-xs text-chocolate-500 mt-1">
+                    <p className="font-mono text-xs text-chocolate-500 dark:text-night-muted mt-1">
                       {acc.handle}
                     </p>
                   </div>
 
                   {/* Bio & Details */}
-                  <p className="text-xs text-chocolate-600 font-light leading-relaxed">
+                  <p className="text-xs text-chocolate-600 dark:text-night-muted font-light leading-relaxed">
                     {acc.bio}
                   </p>
                 </div>
 
                 {/* Card Footer: Live Status & Arrow */}
-                <div className="mt-8 pt-5 border-t border-chocolate-700/10 flex items-center justify-between relative z-10">
+                <div className="mt-8 pt-5 border-t border-chocolate-700/10 dark:border-night-700 flex items-center justify-between relative z-10">
                   <div className="flex items-center space-x-2">
                     <span className="relative flex h-2 w-2">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-bronze-400 opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-bronze-500"></span>
                     </span>
-                    <span className="text-[11px] font-sans text-chocolate-500 font-medium">
+                    <span className="text-[11px] font-sans text-chocolate-500 dark:text-night-muted font-medium">
                       {acc.statusText}
                     </span>
                   </div>
 
-                  <div className="flex items-center space-x-1 text-xs uppercase tracking-[0.18em] font-semibold text-chocolate-900 group-hover:text-bronze-600 transition-colors">
+                  <div className="flex items-center space-x-1 text-xs uppercase tracking-[0.18em] font-semibold text-chocolate-900 dark:text-cream-100 group-hover:text-bronze-600 dark:group-hover:text-bronze-400 transition-colors">
                     <span className="text-[11px]">Connect</span>
                     <ArrowUpRight className="w-3.5 h-3.5 text-bronze-500 transform transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
                   </div>

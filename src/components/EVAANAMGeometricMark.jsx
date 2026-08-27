@@ -1,5 +1,6 @@
 import React from "react";
 import EVAANAMLogoSVG from "./EVAANAMLogoSVG";
+import { useTheme } from "../context/ThemeContext";
 
 /**
  * EVAANAMGeometricMark
@@ -10,15 +11,18 @@ export default function EVAANAMGeometricMark({
   className = "",
   showWordmark = false,
   showAllText = false,
-  darkTheme = false,
+  darkTheme,
 }) {
+  const { isDark } = useTheme();
+  const effectiveDark = darkTheme !== undefined ? darkTheme : isDark;
+
   return (
     <div className={`inline-flex flex-col items-center select-none ${className}`}>
       <EVAANAMLogoSVG
         width={size}
         height={size}
         showAllText={showAllText}
-        className={darkTheme ? "brightness-125 contrast-125" : ""}
+        darkTheme={effectiveDark}
       />
     </div>
   );

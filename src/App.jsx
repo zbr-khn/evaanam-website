@@ -15,13 +15,13 @@ import ContactPage from "./pages/ContactPage";
 
 function NotFoundPage() {
   return (
-    <div className="min-h-[70vh] flex items-center justify-center pt-32 pb-20 px-6 text-center bg-cream-200">
+    <div className="min-h-[70vh] flex items-center justify-center pt-32 pb-20 px-6 text-center bg-cream-200 dark:bg-night-900">
       <div className="max-w-md space-y-6">
-        <span className="micro-label text-bronze-600">PAGE NOT FOUND</span>
-        <h1 className="editorial-heading text-5xl text-chocolate-950">
+        <span className="micro-label text-bronze-600 dark:text-bronze-400">PAGE NOT FOUND</span>
+        <h1 className="editorial-heading text-5xl text-chocolate-950 dark:text-cream-50">
           The requested floor does not exist.
         </h1>
-        <p className="text-sm text-chocolate-600 font-light leading-relaxed">
+        <p className="text-sm text-chocolate-600 dark:text-night-muted font-light leading-relaxed">
           The page you are looking for may have been moved or is undergoing operational reorganization.
         </p>
         <div className="pt-4 flex items-center justify-center space-x-4">
@@ -41,7 +41,7 @@ export default function App() {
   const [showPreloader, setShowPreloader] = useState(true);
 
   return (
-    <div className="flex flex-col min-h-screen bg-cream-200 text-chocolate-700 font-sans selection:bg-bronze-500 selection:text-chocolate-950">
+    <div className="flex flex-col min-h-screen bg-cream-200 dark:bg-night-900 text-chocolate-700 dark:text-cream-200 font-sans selection:bg-bronze-500 selection:text-chocolate-950 transition-colors duration-400">
       <ScrollToTop />
       
       {/* Signature Preloader component */}

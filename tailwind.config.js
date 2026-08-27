@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -10,7 +11,7 @@ export default {
         cream: {
           50: '#FDFCF9',
           100: '#FAF8F3',
-          200: '#F5F1E8', // Primary background
+          200: '#F5F1E8', // Primary light background
           300: '#ECE6D8',
           400: '#DFD7C4',
           500: '#CCC0A8',
@@ -26,8 +27,24 @@ export default {
           400: '#7F6B6B',
           300: '#9E8B8B',
         },
+        brand: {
+          green: '#0D3025',
+          greenDark: '#081F18',
+          greenLight: '#184739',
+        },
+        night: {
+          950: '#0C100D',
+          900: '#111713', // Dark Primary Background (Deep green-black)
+          850: '#17221C', // Dark Secondary Background (Deep forest surface)
+          800: '#202B24', // Dark Elevated Surface (Cards & Fields)
+          750: '#28362D', // Higher elevated surface
+          700: '#34453A',
+          muted: '#C9C1B5', // Dark mode secondary text
+          dim: '#8E867C',
+        },
         bronze: {
           300: '#D4BA8C',
+          350: '#D1B47A', // Light Gold Highlight
           400: '#C5A46D',
           500: '#B08D57', // Primary Accent
           600: '#967442',
@@ -40,9 +57,12 @@ export default {
         display: ['"Playfair Display"', '"Cormorant Garamond"', 'serif'],
         sans: ['"Plus Jakarta Sans"', '"Inter"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
       },
+      transitionDuration: {
+        '400': '400ms',
+      },
       animation: {
-        'fade-in': 'fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-        'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'fade-in': 'fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'fade-in-up': 'fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
         'marquee': 'marquee 45s linear infinite',
         'marquee-reverse': 'marqueeReverse 45s linear infinite',
         'pulse-subtle': 'pulseSubtle 3s ease-in-out infinite',

@@ -12,7 +12,7 @@ function SingleStat({ value, suffix, label, desc, isLast }) {
         if (entry.isIntersecting && !hasAnimated) {
           setHasAnimated(true);
 
-          const duration = 1000; // 1 second (between 800ms and 1.2s)
+          const duration = 1000; // 1 second
           const startTime = performance.now();
           const targetValue = value;
 
@@ -50,25 +50,25 @@ function SingleStat({ value, suffix, label, desc, isLast }) {
   return (
     <div
       ref={elementRef}
-      className={`flex flex-col justify-between py-8 px-6 sm:px-8 transition-colors duration-300 ${
-        !isLast ? "border-b lg:border-b-0 lg:border-r border-chocolate-700/10" : ""
+      className={`flex flex-col justify-between py-8 px-6 sm:px-8 transition-colors duration-400 ${
+        !isLast ? "border-b lg:border-b-0 lg:border-r border-chocolate-700/10 dark:border-night-700" : ""
       }`}
     >
       <div>
         <div className="flex items-baseline space-x-1 mb-2">
-          <span className="font-serif text-4xl sm:text-5xl lg:text-6xl font-light text-chocolate-950 tracking-tight">
+          <span className="font-serif text-4xl sm:text-5xl lg:text-6xl font-light text-chocolate-950 dark:text-cream-50 tracking-tight">
             {count}
           </span>
-          <span className="font-serif text-2xl sm:text-3xl text-bronze-500 font-light">
+          <span className="font-serif text-2xl sm:text-3xl text-bronze-500 dark:text-bronze-400 font-light">
             {suffix}
           </span>
         </div>
-        <p className="text-xs uppercase tracking-[0.18em] font-semibold text-chocolate-700 font-sans mb-1.5">
+        <p className="text-xs uppercase tracking-[0.18em] font-semibold text-chocolate-700 dark:text-cream-200 font-sans mb-1.5">
           {label}
         </p>
       </div>
       {desc && (
-        <p className="text-[12px] text-chocolate-500 font-light leading-relaxed mt-2">
+        <p className="text-[12px] text-chocolate-500 dark:text-night-muted font-light leading-relaxed mt-2">
           {desc}
         </p>
       )}
@@ -80,8 +80,8 @@ export default function StatCounter({ className = "", light = false }) {
   return (
     <section
       aria-label="EVAANAM Operational Statistics"
-      className={`border-y border-chocolate-700/10 ${
-        light ? "bg-cream-100/70" : "bg-cream-100"
+      className={`border-y border-chocolate-700/10 dark:border-bronze-500/15 transition-colors duration-400 ${
+        light ? "bg-cream-100/70 dark:bg-night-850/70" : "bg-cream-100 dark:bg-night-850"
       } ${className}`}
     >
       <div className="max-w-7xl mx-auto">

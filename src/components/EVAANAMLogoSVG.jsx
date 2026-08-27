@@ -3,8 +3,8 @@ import React from "react";
 /**
  * EVAANAMLogoSVG
  * Exact vector recreation of the official EVAANAM Hospitality logo:
- * - Upper EAM monogram with Dark Green (#0C2B22) E and M
- * - Soaring two-tier Gold (#A67C47) central A (top arrowhead spire + wishbone legs with flared feet)
+ * - Upper EAM monogram with Dark Green (#0C2B22 / #F5F1E8 in dark mode) E and M
+ * - Soaring two-tier Gold (#A67C47 / #B08D57) central A (top arrowhead spire + wishbone legs with flared feet)
  * - Geometric "E V ∧ ∧ N ∧ M" with crossbar-less chevron A's
  * - Gold "— HOSPITALITY —" with hairlines
  * - Hairline divider with centered gold diamond
@@ -15,11 +15,11 @@ export default function EVAANAMLogoSVG({
   height = 300,
   className = "",
   showAllText = true,
-  animated = false,
+  darkTheme = false,
 }) {
-  const darkGreen = "#0C2B22";
-  const gold = "#A67C47";
-  const charcoal = "#1E2A24";
+  const brandPrimary = darkTheme ? "#F5F1E8" : "#0C2B22";
+  const gold = "#B08D57";
+  const mutedText = darkTheme ? "#C9C1B5" : "#1E2A24";
 
   return (
     <svg
@@ -27,14 +27,14 @@ export default function EVAANAMLogoSVG({
       viewBox="0 0 500 500"
       width={width}
       height={height}
-      className={`select-none overflow-visible ${className}`}
+      className={`select-none overflow-visible transition-colors duration-400 ${className}`}
     >
       {/* ================================================================ */}
       {/* 1. UPPER EAM MONOGRAM                                            */}
       {/* ================================================================ */}
       <g id="evaanam-monogram">
-        {/* LEFT 'E' STRUCTURE (Dark Green #0C2B22) */}
-        <g fill={darkGreen} id="e-structure">
+        {/* LEFT 'E' STRUCTURE */}
+        <g fill={brandPrimary} id="e-structure">
           {/* Vertical Main Spine of E */}
           <polygon points="120,80 140,80 140,280 120,280" />
           
@@ -48,8 +48,8 @@ export default function EVAANAMLogoSVG({
           <polygon points="120,280 120,252 170,208 184,224" />
         </g>
 
-        {/* RIGHT 'M' STRUCTURE (Dark Green #0C2B22) */}
-        <g fill={darkGreen} id="m-structure">
+        {/* RIGHT 'M' STRUCTURE */}
+        <g fill={brandPrimary} id="m-structure">
           {/* Outer Right Vertical Spine of M */}
           <polygon points="360,80 380,80 380,280 360,280" />
           
@@ -60,7 +60,7 @@ export default function EVAANAMLogoSVG({
           <polygon points="316,136 336,136 336,280 316,280" />
         </g>
 
-        {/* CENTRAL 'A' STRUCTURE (Gold #A67C47) */}
+        {/* CENTRAL 'A' STRUCTURE (Gold) */}
         <g fill={gold} id="a-structure">
           {/* Top Spire / Arrowhead Chevron */}
           <polygon points="250,56 268,118 250,96 232,118" />
@@ -84,7 +84,7 @@ export default function EVAANAMLogoSVG({
       {showAllText && (
         <g id="evaanam-typography">
           {/* "E V ∧ ∧ N ∧ M" with geometric crossbar-less A's */}
-          <g fill={darkGreen} transform="translate(0, 350)">
+          <g fill={brandPrimary} transform="translate(0, 350)">
             {/* E */}
             <path d="M 68,0 L 98,0 L 98,4 L 72,4 L 72,16 L 95,16 L 95,20 L 72,20 L 72,32 L 98,32 L 98,36 L 68,36 Z" />
             
@@ -107,7 +107,7 @@ export default function EVAANAMLogoSVG({
             <path d="M 456,0 L 460,0 L 476,26 L 492,0 L 496,0 L 496,36 L 492,36 L 492,8 L 477,32 L 475,32 L 460,8 L 460,36 L 456,36 Z" />
           </g>
 
-          {/* "— HOSPITALITY —" (Gold #A67C47) */}
+          {/* "— HOSPITALITY —" (Gold) */}
           <g fill={gold} stroke={gold} transform="translate(0, 404)">
             {/* Left Line */}
             <line x1="68" y1="-5" x2="136" y2="-5" strokeWidth="1.2" />
@@ -133,13 +133,13 @@ export default function EVAANAMLogoSVG({
           {/* Divider: Hairline with Centered Gold Diamond */}
           <g transform="translate(0, 442)">
             {/* Left Hairline */}
-            <line x1="160" y1="0" x2="236" y2="0" stroke={darkGreen} strokeWidth="0.9" strokeOpacity="0.8" />
+            <line x1="160" y1="0" x2="236" y2="0" stroke={brandPrimary} strokeWidth="0.9" strokeOpacity="0.8" />
             
             {/* Gold Diamond */}
             <polygon points="250,-5 255,0 250,5 245,0" fill={gold} />
             
             {/* Right Hairline */}
-            <line x1="264" y1="0" x2="340" y2="0" stroke={darkGreen} strokeWidth="0.9" strokeOpacity="0.8" />
+            <line x1="264" y1="0" x2="340" y2="0" stroke={brandPrimary} strokeWidth="0.9" strokeOpacity="0.8" />
           </g>
 
           {/* "Pvt. Ltd." (Serif) */}
@@ -151,7 +151,7 @@ export default function EVAANAMLogoSVG({
               fontSize="24"
               fontWeight="500"
               letterSpacing="4"
-              fill={charcoal}
+              fill={mutedText}
               textAnchor="middle"
             >
               Pvt. Ltd.

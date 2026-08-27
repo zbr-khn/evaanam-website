@@ -5,6 +5,21 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
+    <!-- Inline Theme Initializer (Prevents Theme Flash) -->
+    <script>
+      (function() {
+        try {
+          const storedTheme = localStorage.getItem('evaanam-theme');
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+
     <!-- Primary Meta Tags -->
     <title>EVAANAM | Event Manpower & Crew in Delhi NCR</title>
     <meta name="title" content="EVAANAM | Event Manpower & Crew in Delhi NCR" />
@@ -54,7 +69,7 @@
     }
     </script>
   </head>
-  <body class="bg-cream-200 text-chocolate-700 font-sans antialiased selection:bg-bronze-500 selection:text-cream-50 min-h-screen">
+  <body class="bg-cream-200 dark:bg-night-900 text-chocolate-700 dark:text-cream-200 font-sans antialiased selection:bg-bronze-500 selection:text-cream-50 min-h-screen transition-colors duration-500">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

@@ -10,10 +10,10 @@ export default function Footer() {
 
   return (
     <>
-      <footer className="bg-chocolate-900 text-cream-200 pt-20 pb-12 border-t border-chocolate-800">
+      <footer className="bg-chocolate-950 dark:bg-night-950 text-cream-200 pt-20 pb-12 border-t border-chocolate-800 dark:border-bronze-500/15 transition-colors duration-400">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           {/* Top Brand Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 pb-16 border-b border-chocolate-800">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 pb-16 border-b border-chocolate-800 dark:border-night-800">
             {/* Column 1: Brand & Positioning */}
             <div className="lg:col-span-2 space-y-6">
               <div className="flex items-center space-x-3.5">
@@ -49,34 +49,46 @@ export default function Footer() {
               <p className="text-xs uppercase tracking-[0.25em] font-semibold text-bronze-400">
                 Navigation
               </p>
-              <ul className="space-y-2.5 text-xs uppercase tracking-[0.18em] font-medium text-cream-300/80">
+              <ul className="space-y-2.5 text-xs font-sans text-cream-300/80">
                 <li>
-                  <Link to="/" className="hover:text-bronze-300 transition-colors">Home</Link>
+                  <Link to="/" className="hover:text-cream-50 transition-colors">
+                    Home
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/services" className="hover:text-bronze-300 transition-colors">Services</Link>
+                  <Link to="/services" className="hover:text-cream-50 transition-colors">
+                    Specialist Services (27 Roles)
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/venues" className="hover:text-bronze-300 transition-colors">Venues</Link>
+                  <Link to="/venues" className="hover:text-cream-50 transition-colors">
+                    Venue Directory (40+ Venues)
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/why-us" className="hover:text-bronze-300 transition-colors">Why Us</Link>
+                  <Link to="/why-us" className="hover:text-cream-50 transition-colors">
+                    Why Us &amp; Operations System
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/gallery" className="hover:text-bronze-300 transition-colors">Gallery</Link>
+                  <Link to="/gallery" className="hover:text-cream-50 transition-colors">
+                    Floor Visual Gallery
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/contact" className="hover:text-bronze-300 transition-colors">Contact</Link>
+                  <Link to="/contact" className="hover:text-cream-50 transition-colors">
+                    Contact &amp; Manpower Booking
+                  </Link>
                 </li>
               </ul>
             </div>
 
-            {/* Column 3: Social & Communities */}
+            {/* Column 3: Social & Community */}
             <div className="space-y-4">
               <p className="text-xs uppercase tracking-[0.25em] font-semibold text-bronze-400">
                 Follow The Floor
               </p>
-              <div className="space-y-3.5 text-xs text-cream-300/80">
+              <div className="space-y-3 text-xs text-cream-300/80">
                 <a
                   href={COMPANY_INFO.socials.instagramHospitality.url}
                   target="_blank"
@@ -106,7 +118,7 @@ export default function Footer() {
                     href={COMPANY_INFO.socials.facebook.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded bg-chocolate-850 hover:bg-bronze-600 hover:text-chocolate-950 text-cream-300 transition-colors"
+                    className="p-2 rounded bg-chocolate-900 dark:bg-night-800 hover:bg-bronze-600 hover:text-chocolate-950 text-cream-300 transition-colors"
                     aria-label="Facebook"
                   >
                     <FacebookIcon className="w-3.5 h-3.5" />
@@ -115,7 +127,7 @@ export default function Footer() {
                     href={COMPANY_INFO.socials.youtube.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded bg-chocolate-850 hover:bg-bronze-600 hover:text-chocolate-950 text-cream-300 transition-colors"
+                    className="p-2 rounded bg-chocolate-900 dark:bg-night-800 hover:bg-bronze-600 hover:text-chocolate-950 text-cream-300 transition-colors"
                     aria-label="YouTube"
                   >
                     <YoutubeIcon className="w-3.5 h-3.5" />
@@ -171,9 +183,9 @@ export default function Footer() {
               <span className="font-semibold text-cream-200">
                 {COMPANY_INFO.name}
               </span>
-              <span className="hidden sm:inline text-chocolate-700">|</span>
+              <span className="hidden sm:inline text-chocolate-700 dark:text-night-dim">|</span>
               <span>CIN: <strong className="text-cream-300 font-mono font-normal">{COMPANY_INFO.cin}</strong></span>
-              <span className="hidden sm:inline text-chocolate-700">|</span>
+              <span className="hidden sm:inline text-chocolate-700 dark:text-night-dim">|</span>
               <span>GSTIN: <strong className="text-cream-300 font-mono font-normal">{COMPANY_INFO.gstin}</strong></span>
             </div>
 
@@ -194,7 +206,7 @@ export default function Footer() {
           </div>
 
           {/* Bottom Copyright */}
-          <div className="pt-4 text-center md:text-left text-[11px] text-cream-400/50 border-t border-chocolate-850">
+          <div className="pt-4 text-center md:text-left text-[11px] text-cream-400/50 border-t border-chocolate-850 dark:border-night-800">
             <p>© 2026 EVAANAM Manpower &amp; Execution Pvt. Ltd. All rights reserved. Registered under Ministry of Corporate Affairs, Govt. of India.</p>
           </div>
         </div>
@@ -202,11 +214,11 @@ export default function Footer() {
 
       {/* Legal Information Modal */}
       {legalModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-chocolate-950/80 backdrop-blur-sm animate-fade-in">
-          <div className="bg-cream-100 text-chocolate-700 max-w-2xl w-full p-8 md:p-10 shadow-2xl border border-bronze-500/30 max-h-[85vh] overflow-y-auto relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-night-950/80 backdrop-blur-sm animate-fade-in">
+          <div className="bg-cream-100 dark:bg-night-900 text-chocolate-700 dark:text-cream-200 max-w-2xl w-full p-8 md:p-10 shadow-2xl border border-bronze-500/30 max-h-[85vh] overflow-y-auto relative">
             <button
               onClick={() => setLegalModal(null)}
-              className="absolute top-6 right-6 p-2 text-chocolate-600 hover:text-chocolate-900 transition-colors"
+              className="absolute top-6 right-6 p-2 text-chocolate-600 dark:text-cream-300 hover:text-chocolate-900 dark:hover:text-cream-50 transition-colors"
               aria-label="Close modal"
             >
               <X className="w-5 h-5" />
@@ -217,11 +229,11 @@ export default function Footer() {
               <span className="micro-label">Legal Documentation</span>
             </div>
             
-            <h3 className="font-serif text-2xl md:text-3xl text-chocolate-900 mb-6">
+            <h3 className="font-serif text-2xl md:text-3xl text-chocolate-900 dark:text-cream-50 mb-6">
               {legalModal === 'privacy' ? 'Privacy & Data Governance Policy' : 'Terms & Operational Conditions'}
             </h3>
 
-            <div className="space-y-4 text-xs md:text-sm text-chocolate-600 leading-relaxed font-light">
+            <div className="space-y-4 text-xs md:text-sm text-chocolate-600 dark:text-night-muted leading-relaxed font-light">
               {legalModal === 'privacy' ? (
                 <>
                   <p>
@@ -255,7 +267,7 @@ export default function Footer() {
               )}
             </div>
 
-            <div className="mt-8 pt-6 border-t border-chocolate-700/15 flex justify-end">
+            <div className="mt-8 pt-6 border-t border-chocolate-700/15 dark:border-night-700 flex justify-end">
               <button
                 onClick={() => setLegalModal(null)}
                 className="btn-primary"
