@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { ShieldCheck, UserCheck, Sparkles, Zap, UserPlus, Award, CheckCircle2 } from "lucide-react";
 import OperationsTimeline from "../components/OperationsTimeline";
 import StatCounter from "../components/StatCounter";
-import EVAANAMGeometricMark from "../components/EVAANAMGeometricMark";
 import { WHY_US_PILLARS } from "../data/evaanamData";
 
 const PILLAR_ICONS = [
@@ -93,7 +92,6 @@ export default function WhyUsPage() {
       <section className="py-24 px-6 sm:px-8 lg:px-12 bg-transparent border-b border-chocolate-700/10 dark:border-bronze-500/15">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-            <EVAANAMGeometricMark size={44} className="mx-auto mb-2" />
             <span className="micro-label">PROPRIETARY METHODOLOGY</span>
             <h2 className="editorial-heading text-4xl sm:text-5xl lg:text-6xl text-chocolate-950 dark:text-cream-50">
               The EVAANAM Workforce Operations System™
