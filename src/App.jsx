@@ -7,6 +7,7 @@ import MobileStickyCTA from "./components/MobileStickyCTA";
 import FloatingActions from "./components/FloatingActions";
 import SignaturePreloader from "./components/SignaturePreloader";
 import CustomCursor from "./components/CustomCursor";
+import GeometricMarginFrame from "./components/GeometricMarginFrame";
 import useScrollBackground from "./hooks/useScrollBackground";
 
 import HomePage from "./pages/HomePage";
@@ -47,9 +48,12 @@ export default function App() {
   useScrollBackground();
 
   return (
-    <div className="flex flex-col min-h-screen bg-transparent text-chocolate-700 dark:text-cream-200 font-sans selection:bg-bronze-500 selection:text-chocolate-950 transition-colors duration-400">
+    <div className="flex flex-col min-h-screen bg-transparent text-chocolate-700 dark:text-cream-200 font-sans selection:bg-bronze-500 selection:text-chocolate-950 transition-colors duration-400 relative">
       {/* Luxury Custom Dynamic Cursor (Desktop) */}
       <CustomCursor />
+
+      {/* Architectural Geometric Margin Frame & Lines */}
+      <GeometricMarginFrame />
 
       <ScrollToTop />
       

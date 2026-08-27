@@ -5,6 +5,7 @@ import StatCounter from "../components/StatCounter";
 import VenueMarquee from "../components/VenueMarquee";
 import SocialSection from "../components/SocialSection";
 import ManpowerCalculator from "../components/ManpowerCalculator";
+import GeometricDivider from "../components/GeometricDivider";
 import { COMPANY_INFO, GALLERY_IMAGES } from "../data/evaanamData";
 
 export default function HomePage() {
@@ -122,6 +123,8 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
+
+        <GeometricDivider className="max-w-4xl mx-auto mt-16" label="OPERATIONAL DIVISIONS" />
       </section>
 
       {/* 4. TWO PRIMARY SERVICE VERTICALS (ANIMATED LUXURY CARDS WITH POP-UPS) */}
