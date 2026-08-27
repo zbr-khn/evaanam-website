@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, ChevronRight, Sparkles, Check, Crown, Briefcase, Bot, MessageSquare } from "lucide-react";
+import { ArrowUpRight, ChevronRight, ChevronLeft, Sparkles, Check, Crown, Briefcase, Bot, MessageSquare } from "lucide-react";
 import StatCounter from "../components/StatCounter";
 import VenueMarquee from "../components/VenueMarquee";
 import SocialSection from "../components/SocialSection";
@@ -154,7 +154,7 @@ export default function HomePage() {
             {/* ======================================================== */}
             {/* SERVICE CARD 1: WEDDING HOSPITALITY                      */}
             {/* ======================================================== */}
-            <div className="group relative rounded-sm p-8 sm:p-10 flex flex-col justify-between overflow-hidden bg-cream-100/90 dark:bg-night-800/90 border border-chocolate-700/15 dark:border-bronze-500/20 shadow-md hover:shadow-2xl hover:-translate-y-2.5 transition-all duration-500 ease-out hover:border-amber-500/60 dark:hover:border-bronze-400/80">
+            <div className="group relative rounded-sm p-6 sm:p-10 flex flex-col justify-between overflow-hidden bg-cream-100/90 dark:bg-night-800/90 border border-chocolate-700/15 dark:border-bronze-500/20 shadow-md hover:shadow-2xl hover:-translate-y-2.5 transition-all duration-500 ease-out hover:border-amber-500/60 dark:hover:border-bronze-400/80">
               
               {/* Background Atmospheric Photo with Zoom Reveal */}
               <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-0 group-hover:opacity-20 dark:group-hover:opacity-15 transition-opacity duration-700">
@@ -403,8 +403,8 @@ export default function HomePage() {
             </Link>
           </div>
 
-          {/* Grid of Highlight Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+          {/* DESKTOP VIEW (UNTOUCHED 5-COLUMN GRID) */}
+          <div className="hidden lg:grid lg:grid-cols-5 gap-5">
             {FEATURED_HIGHLIGHTS.map((item) => (
               <div
                 key={item.id}
@@ -442,6 +442,54 @@ export default function HomePage() {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* MOBILE-ONLY TOUCH-SWIPE CAROUSEL (SMARTPHONES) */}
+          <div className="lg:hidden">
+            <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-6 px-6 scrollbar-none">
+              {FEATURED_HIGHLIGHTS.map((item, idx) => (
+                <div
+                  key={item.id}
+                  className="group relative overflow-hidden bg-night-950 border border-chocolate-700/15 dark:border-bronze-500/20 rounded-sm w-[82vw] max-w-[320px] shrink-0 snap-center aspect-[4/5] shadow-lg flex flex-col justify-end p-5"
+                >
+                  <img
+                    src={item.src}
+                    alt={item.title}
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover opacity-90"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-night-950 via-night-950/50 to-transparent opacity-90" />
+
+                  {/* Micro Badge */}
+                  <div className="absolute top-4 left-4 z-10 flex items-center space-x-2">
+                    <span className="text-[9px] uppercase font-mono tracking-widest font-semibold px-2.5 py-1 bg-night-950/90 text-bronze-300 border border-bronze-500/30 rounded-sm">
+                      {item.tag}
+                    </span>
+                    <span className="text-[9px] font-mono text-cream-300/60 bg-night-900/80 px-1.5 py-0.5 rounded">
+                      0{idx + 1}/05
+                    </span>
+                  </div>
+
+                  <div className="relative z-10 space-y-1.5">
+                    <span className="text-[10px] uppercase font-mono text-bronze-400 block font-semibold">
+                      {item.client}
+                    </span>
+                    <h4 className="font-serif text-lg font-medium text-cream-50 leading-snug">
+                      {item.title}
+                    </h4>
+                    <p className="text-xs text-cream-200/85 font-sans leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Mobile Touch Swipe Indicator */}
+            <div className="mt-3 flex items-center justify-between text-[11px] font-mono text-chocolate-500 dark:text-night-dim">
+              <span>← Swipe for next event</span>
+              <span>5 Portfolio Highlights</span>
+            </div>
           </div>
         </div>
       </section>

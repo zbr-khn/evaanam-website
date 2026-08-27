@@ -29,7 +29,7 @@ export default function GeometricMarginFrame() {
   return (
     <div
       aria-hidden="true"
-      className="fixed inset-0 pointer-events-none z-30 select-none overflow-hidden"
+      className="hidden sm:block fixed inset-0 pointer-events-none z-30 select-none overflow-hidden"
     >
       {/* ================================================================ */}
       {/* 1. LEFT ARCHITECTURAL MARGIN LINE & GEOMETRIC ACCENTS            */}

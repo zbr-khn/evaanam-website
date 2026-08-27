@@ -14,7 +14,7 @@ export default function FloatingActions() {
   return (
     <div
       aria-label="Quick Floating Actions"
-      className="fixed z-40 right-4 sm:right-6 bottom-6 flex flex-col items-end space-y-3 select-none pointer-events-none"
+      className="fixed z-40 right-3 sm:right-6 bottom-20 lg:bottom-6 flex flex-col items-end space-y-2.5 sm:space-y-3 select-none pointer-events-none transition-all duration-300"
     >
       {/* 1. TOP: Back To Top Button (Triggered after 1 full page scroll) */}
       <div className="pointer-events-auto">

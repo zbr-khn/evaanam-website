@@ -119,24 +119,18 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile Menu Toggle & Theme Quick Toggle */}
-          <div className="flex items-center space-x-3 lg:hidden">
-            <ThemeToggle isMobile={false} />
+          {/* Mobile Menu Toggle & Theme Quick Toggle (Cleanly Fitted within Viewport) */}
+          <div className="flex items-center space-x-2 lg:hidden shrink-0">
+            <ThemeToggle isMobile={true} />
 
-            <Link
-              to="/contact"
-              className="px-3 py-1.5 bg-brand-green dark:bg-bronze-500 text-cream-50 dark:text-night-950 text-[10.5px] font-sans font-semibold uppercase tracking-[0.14em]"
-            >
-              Request
-            </Link>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               type="button"
-              className="p-2 text-chocolate-700 dark:text-cream-100 hover:text-bronze-500 focus:outline-none transition-colors"
+              className="p-2 rounded text-chocolate-800 dark:text-cream-100 hover:text-bronze-500 focus:outline-none transition-colors border border-chocolate-700/10 dark:border-bronze-500/20 bg-cream-100/60 dark:bg-night-800/60"
               aria-label={mobileMenuOpen ? "Close Menu" : "Open Menu"}
               aria-expanded={mobileMenuOpen}
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5 text-bronze-500" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
