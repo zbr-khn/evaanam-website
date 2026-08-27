@@ -58,43 +58,43 @@ export default function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
           scrolled
-            ? "bg-cream-200/95 dark:bg-night-900/95 backdrop-blur-md border-b border-chocolate-700/10 dark:border-bronze-500/20 py-4 shadow-sm"
-            : "bg-cream-200/80 dark:bg-night-900/80 backdrop-blur-sm border-b border-chocolate-700/5 dark:border-bronze-500/10 py-6"
+            ? "bg-cream-200/95 dark:bg-night-900/95 backdrop-blur-md border-b border-chocolate-700/10 dark:border-bronze-500/20 py-3.5 shadow-sm"
+            : "bg-cream-200/80 dark:bg-night-900/80 backdrop-blur-sm border-b border-chocolate-700/5 dark:border-bronze-500/10 py-5"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex items-center justify-between">
-          {/* Brand Logo / Wordmark */}
+        <div className="w-full px-4 sm:px-8 lg:px-10 xl:px-14 flex items-center justify-between">
+          {/* Brand Logo / Wordmark (Far Left Corner) */}
           <Link
             to="/"
-            className="group flex items-center space-x-3 focus:outline-none"
+            className="group flex items-center space-x-3 focus:outline-none shrink-0"
             aria-label="EVAANAM Home"
           >
             <EVAANAMGeometricMark
-              size={34}
+              size={32}
               darkTheme={isDark}
               className="shrink-0 group-hover:scale-105 transition-transform duration-300"
             />
             <div className="flex flex-col items-start">
               <div className="flex items-center space-x-1.5">
-                <span className="font-serif text-2xl sm:text-3xl font-semibold tracking-[0.18em] text-chocolate-700 dark:text-cream-50 uppercase group-hover:text-bronze-500 transition-colors duration-300">
+                <span className="font-serif text-2xl sm:text-3xl font-semibold tracking-[0.16em] text-chocolate-700 dark:text-cream-50 uppercase group-hover:text-bronze-500 transition-colors duration-300">
                   EVAANAM
                 </span>
                 <span className="w-1.5 h-1.5 rounded-full bg-bronze-500 inline-block mb-1"></span>
               </div>
-              <span className="text-[8.5px] uppercase tracking-[0.26em] font-sans font-semibold text-bronze-600 dark:text-bronze-400 -mt-1 hidden sm:block">
+              <span className="text-[8px] sm:text-[8.5px] uppercase tracking-[0.24em] font-sans font-semibold text-bronze-600 dark:text-bronze-400 -mt-1 hidden sm:block">
                 Hospitality &amp; Operations
               </span>
             </div>
           </Link>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center space-x-8 xl:space-x-10" aria-label="Main Navigation">
+          {/* Desktop Navigation Links (Generous Breathing Room) */}
+          <nav className="hidden lg:flex items-center space-x-4 xl:space-x-6 2xl:space-x-8" aria-label="Main Navigation">
             {NAV_LINKS.map((link) => (
               <NavLink
                 key={link.path}
                 to={link.path}
                 className={({ isActive }) =>
-                  `relative py-1 text-xs uppercase tracking-[0.2em] font-medium transition-colors duration-300 font-sans ${
+                  `relative py-1 text-[11.5px] xl:text-xs uppercase tracking-[0.16em] font-medium transition-colors duration-300 font-sans whitespace-nowrap ${
                     isActive
                       ? "text-chocolate-950 dark:text-cream-50 font-semibold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[1.5px] after:bg-bronze-500"
                       : "text-chocolate-600 dark:text-night-muted hover:text-chocolate-950 dark:hover:text-cream-50"
@@ -106,14 +106,14 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Desktop Right CTA + Theme Toggle */}
-          <div className="hidden lg:flex items-center space-x-4">
-            {/* Minimal Pill Theme Toggle (immediately before CTA) */}
+          {/* Desktop Right Controls (Far Right Corner: Theme Toggle + CTA) */}
+          <div className="hidden lg:flex items-center space-x-4 xl:space-x-5 shrink-0 pl-2">
+            {/* Stable Width Theme Toggle */}
             <ThemeToggle />
 
             <Link
               to="/contact"
-              className="btn-primary group"
+              className="btn-primary group py-3 px-5 text-[11px] xl:text-xs"
             >
               <span>Request Manpower</span>
               <ArrowUpRight className="w-3.5 h-3.5 ml-2 text-bronze-300 dark:text-night-950 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
