@@ -129,6 +129,27 @@
   }
 }
 
+/* Ticker & Continuous Marquee Animations */
+@keyframes continuousMarquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.marquee-smooth-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: continuousMarquee 30s linear infinite;
+}
+
+.marquee-smooth-track:hover {
+  animation-play-state: paused;
+}
+
 /* Ticker Pause on Hover */
 .marquee-container:hover .marquee-content {
   animation-play-state: paused;

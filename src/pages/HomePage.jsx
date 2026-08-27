@@ -489,6 +489,17 @@ export default function HomePage() {
 
         {/* Looping Cards Ribbon */}
         <TestimonialMarquee />
+
+        {/* View All Testimonials Button */}
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 mt-8 text-center">
+          <Link
+            to="/testimonials"
+            className="btn-primary px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.18em]"
+          >
+            <span>View All Testimonials &amp; Reviews</span>
+            <ArrowUpRight className="w-3.5 h-3.5 ml-2" />
+          </Link>
+        </div>
       </section>
 
       {/* 10. GALLERY TEASER */}
