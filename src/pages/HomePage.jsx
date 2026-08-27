@@ -101,10 +101,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. CURATED IMAGE CAROUSEL BELOW HERO */}
-      <HomeImageCarousel />
-
-      {/* 3. STATS STRIP */}
+      {/* 2. STATS STRIP */}
       <StatCounter light={true} />
 
       {/* 3. CORE VALUE PROPOSITION STATEMENT */}
