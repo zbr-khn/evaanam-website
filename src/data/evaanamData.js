@@ -270,26 +270,26 @@ export const CONVENTION_AND_ARENAS = [
 ];
 
 export const GALLERY_IMAGES = [
-  // 9 Wedding Hospitality Photos
+  // 9 Wedding Hospitality Photos (Including User Uploaded Floor Photos)
   {
     id: "w1",
     category: "wedding",
     categoryLabel: "Wedding Hospitality",
-    title: "Grand Chandelier Ballroom Service",
+    title: "Grand Banquet Table & Service Alignment",
     subtitle: "ITC Maurya Ballroom · VIP Table Stewards",
     aspect: "tall",
-    src: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1200&q=80",
-    desc: "Precision banquet alignment and discreet high-touch hospitality for 600+ guests."
+    src: "./images/gallery-weddings/IMG-6449-JPG.jpg",
+    desc: "Precision banquet alignment and discreet high-touch hospitality for wedding guests."
   },
   {
     id: "w2",
     category: "wedding",
     categoryLabel: "Wedding Hospitality",
-    title: "Traditional Welcome & Aarti Protocol",
+    title: "Ceremonial Welcome & Aarti Hostesses",
     subtitle: "The Leela Palace · Welcome Hostesses",
     aspect: "wide",
-    src: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=80",
-    desc: "Ceremonial greetings and floral shower welcome for high-profile wedding entourage."
+    src: "./images/gallery-weddings/IMG-6650-JPG.jpg",
+    desc: "Ceremonial greetings and floral welcome for high-profile wedding entourage."
   },
   {
     id: "w3",
@@ -298,28 +298,28 @@ export const GALLERY_IMAGES = [
     title: "Palace Courtyard Mandap Supervision",
     subtitle: "ITC Grand Bharat · Floor Supervisors",
     aspect: "square",
-    src: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80",
+    src: "./images/gallery-weddings/IMG-2923-JPG.jpg",
     desc: "Continuous coordination between ritual pandits, wedding planners, and hospitality runners."
   },
   {
     id: "w4",
     category: "wedding",
     categoryLabel: "Wedding Hospitality",
-    title: "VIP Bridal Shadow Escort",
+    title: "VIP Bridal & Groom Shadow Escort",
     subtitle: "Taj Palace · Dedicated Personal Shadows",
     aspect: "tall",
-    src: "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=1200&q=80",
-    desc: "Attentive bridal assistance, dress trail management, and immediate touch-up coordination."
+    src: "./images/gallery-weddings/IMG-20260301-WA0010-jpg.jpg",
+    desc: "Attentive bridal assistance, attire care, and immediate touch-up coordination."
   },
   {
     id: "w5",
     category: "wedding",
     categoryLabel: "Wedding Hospitality",
-    title: "Guest Concierge & Key Distribution",
+    title: "Guest Concierge & Hamper Distribution",
     subtitle: "JW Marriott Aerocity · Helpdesk Crew",
     aspect: "wide",
-    src: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
-    desc: "Seamless check-in flow and hamper distribution for 450 residential destination wedding attendees."
+    src: "./images/gallery-weddings/IMG-20260305-WA0003-jpg.jpg",
+    desc: "Seamless check-in flow and hamper distribution for residential wedding attendees."
   },
   {
     id: "w6",
@@ -328,17 +328,17 @@ export const GALLERY_IMAGES = [
     title: "Sangeet Stage Runner Coordination",
     subtitle: "The Oberoi · Backstage Show Runners",
     aspect: "square",
-    src: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=1200&q=80",
+    src: "./images/gallery-weddings/IMG-20260509-WA0009(1)-jpg.jpg",
     desc: "Backstage green-room cues and choreography synchronization during live celebrity performances."
   },
   {
     id: "w7",
     category: "wedding",
     categoryLabel: "Wedding Hospitality",
-    title: "Fine Dining Silver Service",
+    title: "Fine Dining Silver Service & Stewards",
     subtitle: "The Westin Gurgaon · Trained Stewards",
     aspect: "wide",
-    src: "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=1200&q=80",
+    src: "./images/gallery-weddings/IMG-0856.avif",
     desc: "Discreet multi-course plated dinner service for state dignitaries and family elders."
   },
   {
@@ -348,8 +348,8 @@ export const GALLERY_IMAGES = [
     title: "Overnight Reception & Transition Desk",
     subtitle: "Roseate House · Night Desk Crew",
     aspect: "tall",
-    src: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1200&q=80",
-    desc: "24-hour continuous support managing midnight transfers, baraat setups, and morning breakfast transitions."
+    src: "./images/gallery-weddings/IMG-7056.avif",
+    desc: "24-hour continuous support managing transfers, baraat setups, and morning transitions."
   },
   {
     id: "w9",
@@ -358,7 +358,7 @@ export const GALLERY_IMAGES = [
     title: "Procession & Aisle Marshaling",
     subtitle: "Andaz Delhi · Ushers & Floor Leads",
     aspect: "square",
-    src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=80",
+    src: "./images/gallery-weddings/IMG-7965.avif",
     desc: "Calm, dignified crowd circulation directing guests seamlessly from cocktail lawns to banquet hall."
   },
 
