@@ -2,10 +2,9 @@ import React from "react";
 
 /**
  * EVAANAMLogoSVG
- * Exact vector representation of the authentic EVAANAM identity:
- * - Dual interlocking tilted diamond squares (Sacred Geometry Astrolabe)
- * - Concentric gold circle
- * - Central radiant gold origin point
+ * Exact vector representation of the authentic circular celestial EVAANAM identity:
+ * - Concentric Circular Sacred Astrolabe Rings & Cardinal Ticks
+ * - Core Radiant Gold Origin Point
  * - EVAANAM serif typography
  * - MANPOWER & EXECUTION · PRIVATE LIMITED
  */
@@ -30,38 +29,59 @@ export default function EVAANAMLogoSVG({
       className={`select-none overflow-visible transition-colors duration-400 ${className}`}
       fill="none"
     >
-      {/* 1. SACRED GEOMETRY EMBLEM */}
+      {/* 1. CONCENTRIC CIRCULAR SACRED EMBLEM */}
       <g transform={showAllText ? "translate(100, 0)" : "translate(0, 0)"}>
-        {/* Outer Diamond Square 1 (Rotated 45deg) */}
-        <rect
-          x="62"
-          y="62"
-          width="76"
-          height="76"
+        {/* Outer Dotted/Hashed Celestial Ring */}
+        <circle
+          cx="100"
+          cy="100"
+          r="68"
+          stroke={gold}
+          strokeWidth="1"
+          strokeDasharray="3 5"
+        />
+
+        {/* 4 Cardinal Crosshairs */}
+        <line x1="100" y1="26" x2="100" y2="32" stroke={goldLight} strokeWidth="1.5" />
+        <line x1="100" y1="168" x2="100" y2="174" stroke={goldLight} strokeWidth="1.5" />
+        <line x1="26" y1="100" x2="32" y2="100" stroke={goldLight} strokeWidth="1.5" />
+        <line x1="168" y1="100" x2="174" y2="100" stroke={goldLight} strokeWidth="1.5" />
+
+        {/* Primary Sacred Gold Circle */}
+        <circle
+          cx="100"
+          cy="100"
+          r="54"
           stroke={goldLight}
           strokeWidth="2"
-          transform="rotate(45 100 100)"
         />
 
-        {/* Inner Diamond Square 2 (Rotated 28deg) */}
-        <rect
-          x="62"
-          y="62"
-          width="76"
-          height="76"
+        {/* Middle Sacred Ring */}
+        <circle
+          cx="100"
+          cy="100"
+          r="40"
           stroke={gold}
-          strokeWidth="1.6"
-          strokeOpacity="0.8"
-          transform="rotate(28 100 100)"
+          strokeWidth="1.2"
+          strokeDasharray="6 3"
         />
 
-        {/* Concentric Circle */}
+        {/* Inner Concentric Circle */}
         <circle
           cx="100"
           cy="100"
           r="26"
           stroke={goldLight}
           strokeWidth="1.8"
+        />
+
+        {/* Core Enclosure Ring */}
+        <circle
+          cx="100"
+          cy="100"
+          r="14"
+          stroke={gold}
+          strokeWidth="1.2"
         />
 
         {/* Central Origin Dot */}

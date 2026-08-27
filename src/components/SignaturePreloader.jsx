@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 
 /**
- * SignaturePreloader (Luxury Brand Edition)
- * An elevated celestial astrolabe calibration animation in signature EVAANAM colors:
+ * SignaturePreloader (Luxury Brand Edition - Circular Sacred Emblem)
+ * An elevated celestial circular astrolabe calibration animation in signature EVAANAM colors:
+ * - Emblem Shape: Concentric Circular Celestial Astrolabe Rings & Radial Compass Ticks
  * - Background: Deep British Racing Green / Forest Night (#081F18 -> #0C2B22)
- * - Emblem: Imperial Gold (#D4BA8C & #B08D57) with Sacred Gyroscope Astrolabe & Vertex Flares
+ * - Emblem: Imperial Gold (#D4BA8C & #B08D57) with Sacred Circular Gyroscope
  * - Typography: Alabaster Cream (#FAF8F3) with Gold Shimmer & Staggered Glyph Reveal
  * - Baseline: MANPOWER & EXECUTION · PRIVATE LIMITED · WHERE EVERY DETAIL IS AN EXPERIENCE
  */
@@ -18,13 +19,13 @@ export default function SignaturePreloader({ onComplete }) {
   useEffect(() => {
     const timers = [];
 
-    // Phase 1: Origin Core & Radial Compass Ticks (150ms)
+    // Phase 1: Origin Core & Central Ring (150ms)
     timers.push(setTimeout(() => setPhase(1), 150));
 
-    // Phase 2: Concentric Calibration Ring & Orbital Drift (550ms)
+    // Phase 2: Concentric Inner & Middle Circles (550ms)
     timers.push(setTimeout(() => setPhase(2), 550));
 
-    // Phase 3: Dual Geometric Diamond Astrolabe Expansion & Vertex Flares (1050ms)
+    // Phase 3: Outer Celestial Astrolabe Circles & Radial Crosshairs (1050ms)
     timers.push(setTimeout(() => setPhase(3), 1050));
 
     // Phase 4: Staggered Serif Letter Reveal (1650ms)
@@ -66,13 +67,13 @@ export default function SignaturePreloader({ onComplete }) {
         isExiting ? "opacity-0 scale-[1.04] pointer-events-none" : "opacity-100 scale-100"
       }`}
     >
-      {/* Scoped CSS Keyframes for High-Fidelity Astrolabe Motion */}
+      {/* Scoped CSS Keyframes for Circular Astrolabe Motion */}
       <style>{`
-        @keyframes astrolabeRotateClockwise {
+        @keyframes circularRotateClockwise {
           0% { transform: rotate(0deg); }
           100% { transform: rotate(360deg); }
         }
-        @keyframes astrolabeRotateCounter {
+        @keyframes circularRotateCounter {
           0% { transform: rotate(0deg); }
           100% { transform: rotate(-360deg); }
         }
@@ -132,7 +133,7 @@ export default function SignaturePreloader({ onComplete }) {
         }}
       />
 
-      {/* Corner Precision Crosshairs */}
+      {/* Corner Precision Coordinates */}
       <div className="absolute top-8 left-8 text-[#B08D57]/40 font-mono text-[10px] tracking-widest hidden sm:block">
         + 28°33'N 77°16'E
       </div>
@@ -149,7 +150,7 @@ export default function SignaturePreloader({ onComplete }) {
       {/* 2. Main Identity Centerpiece */}
       <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 max-w-2xl mx-auto space-y-7">
         
-        {/* A. Sacred Geometry Gyroscope Astrolabe */}
+        {/* A. Concentric Circular Sacred Astrolabe Emblem */}
         <div className="relative w-40 h-40 sm:w-48 sm:h-48 flex items-center justify-center">
           <svg
             viewBox="0 0 200 200"
@@ -157,111 +158,105 @@ export default function SignaturePreloader({ onComplete }) {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            {/* Outer Compass Calibration Ring with 12 Micro Ticks */}
+            {/* 1. Outer Celestial Compass Ring with Micro Ticks */}
             <g
               style={{
                 transformOrigin: "100px 100px",
-                animation: phase >= 2 ? "astrolabeRotateClockwise 60s linear infinite" : "none",
-                opacity: phase >= 2 ? 0.45 : 0,
+                animation: phase >= 2 ? "circularRotateClockwise 60s linear infinite" : "none",
+                opacity: phase >= 2 ? 0.5 : 0,
                 transition: "opacity 1s ease-out",
               }}
             >
               <circle
                 cx="100"
                 cy="100"
-                r="64"
+                r="70"
                 stroke="#B08D57"
                 strokeWidth="0.75"
-                strokeDasharray="2 6"
+                strokeDasharray="3 6"
               />
-              {/* 4 Cardinal Ticks */}
-              <line x1="100" y1="32" x2="100" y2="38" stroke="#D4BA8C" strokeWidth="1.2" />
-              <line x1="100" y1="162" x2="100" y2="168" stroke="#D4BA8C" strokeWidth="1.2" />
-              <line x1="32" y1="100" x2="38" y2="100" stroke="#D4BA8C" strokeWidth="1.2" />
-              <line x1="162" y1="100" x2="168" y2="100" stroke="#D4BA8C" strokeWidth="1.2" />
+              {/* 4 Cardinal Crosshair Ticks */}
+              <line x1="100" y1="24" x2="100" y2="30" stroke="#D4BA8C" strokeWidth="1.2" />
+              <line x1="100" y1="170" x2="100" y2="176" stroke="#D4BA8C" strokeWidth="1.2" />
+              <line x1="24" y1="100" x2="30" y2="100" stroke="#D4BA8C" strokeWidth="1.2" />
+              <line x1="170" y1="100" x2="176" y2="100" stroke="#D4BA8C" strokeWidth="1.2" />
             </g>
 
-            {/* Middle Counter-Rotating Astrolabe Ring */}
+            {/* 2. Primary Outer Sacred Circle */}
+            <circle
+              cx="100"
+              cy="100"
+              r="56"
+              stroke="#D4BA8C"
+              strokeWidth="1.3"
+              strokeDasharray="352"
+              strokeDashoffset={phase >= 3 ? "0" : "352"}
+              style={{
+                transition: "stroke-dashoffset 1.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.7s",
+                opacity: phase >= 3 ? 0.95 : 0,
+              }}
+            />
+
+            {/* 3. Middle Counter-Rotating Sacred Astrolabe Ring */}
             <g
               style={{
                 transformOrigin: "100px 100px",
-                animation: phase >= 2 ? "astrolabeRotateCounter 45s linear infinite" : "none",
-                opacity: phase >= 2 ? 0.65 : 0,
+                animation: phase >= 2 ? "circularRotateCounter 45s linear infinite" : "none",
+                opacity: phase >= 2 ? 0.7 : 0,
                 transition: "opacity 0.8s ease-out",
               }}
             >
               <circle
                 cx="100"
                 cy="100"
-                r="48"
-                stroke="#D4BA8C"
-                strokeWidth="0.85"
-                strokeDasharray="6 3"
+                r="42"
+                stroke="#B08D57"
+                strokeWidth="0.9"
+                strokeDasharray="8 4"
               />
             </g>
 
-            {/* Inner Precision Concentric Gold Ring */}
+            {/* 4. Inner Concentric Sacred Ring */}
             <circle
               cx="100"
               cy="100"
-              r="26"
+              r="28"
               stroke="#D4BA8C"
               strokeWidth="1.4"
-              strokeDasharray="164"
-              strokeDashoffset={phase >= 2 ? "0" : "164"}
+              strokeDasharray="176"
+              strokeDashoffset={phase >= 2 ? "0" : "176"}
               style={{
                 transition: "stroke-dashoffset 1.1s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s",
                 opacity: phase >= 2 ? 0.95 : 0,
               }}
             />
 
-            {/* Primary Diamond Square 1 (45° Rotated Rhombus) */}
-            <rect
-              x="62"
-              y="62"
-              width="76"
-              height="76"
-              stroke="#D4BA8C"
-              strokeWidth="1.3"
-              strokeDasharray="304"
-              strokeDashoffset={phase >= 3 ? "0" : "304"}
-              style={{
-                transformOrigin: "100px 100px",
-                transform: "rotate(45deg)",
-                transition: "stroke-dashoffset 1.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.7s",
-                opacity: phase >= 3 ? 0.95 : 0,
-              }}
-            />
-
-            {/* Secondary Interlocking Diamond Square 2 (28° Rotated Rhombus) */}
-            <rect
-              x="62"
-              y="62"
-              width="76"
-              height="76"
+            {/* 5. Core Sacred Enclosure Ring */}
+            <circle
+              cx="100"
+              cy="100"
+              r="15"
               stroke="#B08D57"
               strokeWidth="1"
-              strokeDasharray="304"
-              strokeDashoffset={phase >= 3 ? "0" : "304"}
+              strokeDasharray="94"
+              strokeDashoffset={phase >= 1 ? "0" : "94"}
               style={{
-                transformOrigin: "100px 100px",
-                transform: "rotate(28deg)",
-                transition: "stroke-dashoffset 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s, opacity 0.7s",
-                opacity: phase >= 3 ? 0.85 : 0,
+                transition: "stroke-dashoffset 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s",
+                opacity: phase >= 1 ? 0.85 : 0,
               }}
             />
 
-            {/* 4 Glowing Vertex Flare Dots on the Main Diamond (Top, Right, Bottom, Left) */}
+            {/* 4 Orbital Vertex Flares on the Primary Circle */}
             {phase >= 3 && (
               <g className="transition-opacity duration-700">
-                <circle cx="100" cy="46" r="2" fill="#FAF8F3" filter="drop-shadow(0 0 4px #D4BA8C)" />
-                <circle cx="154" cy="100" r="2" fill="#FAF8F3" filter="drop-shadow(0 0 4px #D4BA8C)" />
-                <circle cx="100" cy="154" r="2" fill="#FAF8F3" filter="drop-shadow(0 0 4px #D4BA8C)" />
-                <circle cx="46" cy="100" r="2" fill="#FAF8F3" filter="drop-shadow(0 0 4px #D4BA8C)" />
+                <circle cx="100" cy="44" r="2.2" fill="#FAF8F3" filter="drop-shadow(0 0 5px #D4BA8C)" />
+                <circle cx="156" cy="100" r="2.2" fill="#FAF8F3" filter="drop-shadow(0 0 5px #D4BA8C)" />
+                <circle cx="100" cy="156" r="2.2" fill="#FAF8F3" filter="drop-shadow(0 0 5px #D4BA8C)" />
+                <circle cx="44" cy="100" r="2.2" fill="#FAF8F3" filter="drop-shadow(0 0 5px #D4BA8C)" />
               </g>
             )}
 
-            {/* Radiant Central Gold Origin Core */}
+            {/* 6. Radiant Central Gold Origin Core */}
             <circle
               cx="100"
               cy="100"
