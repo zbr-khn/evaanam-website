@@ -29,12 +29,12 @@ export default function GeometricMarginFrame() {
   return (
     <div
       aria-hidden="true"
-      className="hidden sm:block fixed inset-0 pointer-events-none z-30 select-none overflow-hidden"
+      className="fixed inset-0 pointer-events-none z-30 select-none overflow-hidden"
     >
       {/* ================================================================ */}
       {/* 1. LEFT ARCHITECTURAL MARGIN LINE & GEOMETRIC ACCENTS            */}
       {/* ================================================================ */}
-      <div className="absolute top-0 bottom-0 left-4 sm:left-8 lg:left-12 xl:left-16 flex flex-col justify-between">
+      <div className="absolute top-0 bottom-0 left-2 sm:left-6 lg:left-12 xl:left-16 flex flex-col justify-between">
         {/* Top-Left Geometric Crosshair Node */}
         <div className="pt-24 flex flex-col items-center -ml-[7px]">
           {/* Geometric Diamond Crosshair */}
@@ -71,7 +71,7 @@ export default function GeometricMarginFrame() {
           <div className="relative flex items-center justify-center w-3.5 h-3.5">
             <div className="absolute w-[1px] h-3.5 bg-bronze-500/60" />
             <div className="absolute h-[1px] w-3.5 bg-bronze-500/60" />
-            <div className="w-1 h-1 bg-bronze-500" />
+            <div className="w-1.5 h-1.5 rotate-45 border border-bronze-500/80 bg-cream-100 dark:bg-night-900" />
           </div>
         </div>
       </div>
@@ -79,19 +79,17 @@ export default function GeometricMarginFrame() {
       {/* ================================================================ */}
       {/* 2. RIGHT ARCHITECTURAL MARGIN LINE & GEOMETRIC ACCENTS           */}
       {/* ================================================================ */}
-      <div className="absolute top-0 bottom-0 right-4 sm:right-8 lg:right-12 xl:right-16 flex flex-col justify-between">
+      <div className="absolute top-0 bottom-0 right-2 sm:right-6 lg:right-12 xl:right-16 flex flex-col justify-between">
         {/* Top-Right Geometric Crosshair Node */}
         <div className="pt-24 flex flex-col items-center -mr-[7px]">
-          {/* Geometric Diamond Crosshair */}
           <div className="relative flex items-center justify-center w-3.5 h-3.5">
             <div className="absolute w-[1px] h-3.5 bg-bronze-500/60" />
             <div className="absolute h-[1px] w-3.5 bg-bronze-500/60" />
             <div className="w-1.5 h-1.5 rotate-45 border border-bronze-500/80 bg-cream-100 dark:bg-night-900" />
           </div>
 
-          {/* Micro Vertical Title Text */}
           <span className="hidden xl:block mt-3 rotate-90 origin-right translate-y-12 text-[8px] font-mono tracking-[0.28em] uppercase text-chocolate-400/80 dark:text-bronze-400/60">
-            EVAANAM · OPS FRAME
+            DELHI · 77.2090° E
           </span>
         </div>
 
@@ -116,7 +114,7 @@ export default function GeometricMarginFrame() {
           <div className="relative flex items-center justify-center w-3.5 h-3.5">
             <div className="absolute w-[1px] h-3.5 bg-bronze-500/60" />
             <div className="absolute h-[1px] w-3.5 bg-bronze-500/60" />
-            <div className="w-1 h-1 bg-bronze-500" />
+            <div className="w-1.5 h-1.5 rotate-45 border border-bronze-500/80 bg-cream-100 dark:bg-night-900" />
           </div>
         </div>
       </div>
