@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>EVAANAM | Trained Event Manpower & Crew in Delhi NCR</title>
+    <script type="text/javascript">
+      // SPA redirect for GitHub Pages and static hosts
+      var l = window.location;
+      var path = l.pathname;
+      var segmentCount = (path.indexOf('/evaanam-website') === 0) ? 1 : 0;
+      
+      var newUrl = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        path.split('/').slice(0, 1 + segmentCount).join('/') + '/?/' +
+        path.slice(1).split('/').slice(segmentCount).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.hash;
+        
+      l.replace(newUrl);
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
