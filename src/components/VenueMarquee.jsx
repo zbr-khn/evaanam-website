@@ -27,7 +27,7 @@ export default function VenueMarquee({ theme }) {
           display: flex;
           width: max-content;
           will-change: transform;
-          animation: venueScrollLeftToRight 38s linear infinite !important;
+          animation: venueScrollLeftToRight 75s linear infinite !important;
         }
         .venue-marquee-track:hover {
           animation-play-state: paused !important;

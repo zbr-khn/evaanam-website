@@ -19,7 +19,7 @@ export default function TestimonialMarquee({ className = "" }) {
           display: flex;
           width: max-content;
           will-change: transform;
-          animation: evaanamScrollRightToLeft 28s linear infinite !important;
+          animation: evaanamScrollRightToLeft 48s linear infinite !important;
         }
         .evaanam-reviews-track:hover {
           animation-play-state: paused !important;
