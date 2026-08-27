@@ -27,6 +27,12 @@ export function ThemeProvider({ children }) {
 
   useEffect(() => {
     const root = document.documentElement;
+    // Clean up any inline background color styles so CSS variables and classes take full immediate effect
+    if (document.body) {
+      document.body.style.removeProperty("background-color");
+    }
+    root.style.removeProperty("background-color");
+
     if (isDark) {
       root.classList.add("dark");
       localStorage.setItem("evaanam-theme", "dark");

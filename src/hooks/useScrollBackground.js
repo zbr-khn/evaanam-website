@@ -27,27 +27,30 @@ export function useScrollBackground() {
   const { theme } = useTheme();
 
   useEffect(() => {
-    const isDark = theme === "dark" || document.documentElement.classList.contains("dark");
-    const colorSet = isDark ? PALETTES.dark : PALETTES.light;
+    // Clear any conflicting inline styles on body so CSS variables and classes take full priority
+    document.body.style.removeProperty("background-color");
 
     let ticking = false;
+
+    const updateScrollColors = () => {
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollProgress = docHeight > 0 ? Math.max(0, Math.min(1, window.scrollY / docHeight)) : 0;
+      
+      const totalSegments = PALETTES.light.length - 1;
+      const segmentIndex = Math.min(totalSegments, Math.floor(scrollProgress * totalSegments));
+      
+      const lightColor = PALETTES.light[segmentIndex];
+      const darkColor = PALETTES.dark[segmentIndex];
+
+      // Set both CSS variables simultaneously on documentElement
+      document.documentElement.style.setProperty("--scroll-bg-light", lightColor);
+      document.documentElement.style.setProperty("--scroll-bg-dark", darkColor);
+    };
 
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-          if (docHeight <= 0) return;
-
-          const scrollProgress = Math.max(0, Math.min(1, window.scrollY / docHeight));
-          
-          // Determine color interpolation index
-          const totalSegments = colorSet.length - 1;
-          const segmentIndex = Math.min(totalSegments - 1, Math.floor(scrollProgress * totalSegments));
-          const activeColor = colorSet[segmentIndex];
-
-          document.documentElement.style.setProperty("--current-scroll-bg", activeColor);
-          document.body.style.backgroundColor = activeColor;
-
+          updateScrollColors();
           ticking = false;
         });
         ticking = true;
@@ -55,7 +58,7 @@ export function useScrollBackground() {
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // Initial invoke on route change
+    updateScrollColors(); // Immediate sync on mount, route change, or theme toggle
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
