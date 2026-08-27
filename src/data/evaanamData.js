@@ -37,11 +37,13 @@ export const COMPANY_INFO = {
     },
     facebook: {
       name: "EVAANAM Operations",
-      url: "https://facebook.com"
+      handle: "@evaanampvt.ltd",
+      url: "https://facebook.com/evaanampvt.ltd"
     },
     youtube: {
       name: "EVAANAM Crew On The Floor",
-      url: "https://youtube.com"
+      handle: "@evaanampvt.ltd",
+      url: "https://youtube.com/@evaanampvt.ltd"
     }
   },
   stats: [

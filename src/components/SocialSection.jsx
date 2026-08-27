@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { ArrowUpRight, Sparkles, Radio, CheckCircle2 } from "lucide-react";
-import { InstagramIcon, FacebookIcon, YoutubeIcon, LinkedinIcon, WhatsappIcon } from "./SocialIcons";
+import { ArrowUpRight } from "lucide-react";
+import { InstagramIcon, FacebookIcon, YoutubeIcon, WhatsappIcon } from "./SocialIcons";
 import EVAANAMGeometricMark from "./EVAANAMGeometricMark";
 
 const SOCIAL_ACCOUNTS = [
@@ -37,40 +37,26 @@ const SOCIAL_ACCOUNTS = [
     platform: "YouTube",
     icon: YoutubeIcon,
     tag: "Floor In Motion",
-    handle: "@evaanam_operations",
+    handle: "@evaanampvt.ltd",
     title: "EVAANAM Crew On The Floor",
     bio: "On-floor event highlights, briefing videos & VIP banquet floor reels",
     badge: "Video Library",
-    statusText: "4K Floor Reels",
-    url: "https://youtube.com",
+    statusText: "Official Channel",
+    url: "https://youtube.com/@evaanampvt.ltd",
     gradientBorder: "group-hover:border-red-500/60",
     iconBg: "bg-red-500/10 text-red-700 group-hover:bg-red-700 group-hover:text-cream-50",
-  },
-  {
-    id: "linkedin-network",
-    platform: "LinkedIn",
-    icon: LinkedinIcon,
-    tag: "B2B & Enterprise Staffing",
-    handle: "evaanam-manpower",
-    title: "EVAANAM Manpower & Execution Pvt. Ltd.",
-    bio: "Corporate event manpower solutions, executive staffing & career networks",
-    badge: "Enterprise Network",
-    statusText: "B2B Partnerships",
-    url: "https://linkedin.com",
-    gradientBorder: "group-hover:border-blue-600/60",
-    iconBg: "bg-blue-500/10 text-blue-700 group-hover:bg-blue-700 group-hover:text-cream-50",
   },
   {
     id: "facebook-page",
     platform: "Facebook",
     icon: FacebookIcon,
     tag: "Production Updates",
-    handle: "evaanam.operations",
+    handle: "@evaanampvt.ltd",
     title: "EVAANAM Operations",
     bio: "Official company page, deployment notices & event production updates",
     badge: "Official Page",
     statusText: "Verified Business",
-    url: "https://facebook.com",
+    url: "https://facebook.com/evaanampvt.ltd",
     gradientBorder: "group-hover:border-blue-500/60",
     iconBg: "bg-blue-500/10 text-blue-800 group-hover:bg-chocolate-700 group-hover:text-cream-50",
   },
@@ -109,7 +95,7 @@ export default function SocialSection({ showHeader = true, className = "" }) {
               Follow The Floor
             </h2>
             <p className="text-sm text-chocolate-600 font-light leading-relaxed">
-              Behind the scenes, on the floor and between the details. Connect with our live operational channels across Delhi NCR.
+              Behind the scenes, on the floor and between the details. Connect directly with our official operational channels across Delhi NCR.
             </p>
           </div>
         )}
@@ -138,7 +124,7 @@ export default function SocialSection({ showHeader = true, className = "" }) {
 
                 {/* Shimmer effect highlight */}
                 <div
-                  className={`absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-cream-50/40 to-transparent pointer-events-none`}
+                  className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-cream-50/40 to-transparent pointer-events-none"
                 />
 
                 <div className="space-y-5 relative z-10">
