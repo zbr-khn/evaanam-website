@@ -93,10 +93,10 @@ export default function Navbar() {
                 key={link.path}
                 to={link.path}
                 className={({ isActive }) =>
-                  `relative py-1 text-[11.5px] xl:text-xs uppercase tracking-[0.16em] font-medium transition-colors duration-300 font-sans whitespace-nowrap ${
+                  `relative py-1 text-[11.5px] xl:text-xs uppercase tracking-[0.18em] font-bold transition-colors duration-300 font-sans whitespace-nowrap ${
                     isActive
-                      ? "text-chocolate-950 dark:text-cream-50 font-semibold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[1.5px] after:bg-bronze-500"
-                      : "text-chocolate-600 dark:text-night-muted hover:text-chocolate-950 dark:hover:text-cream-50"
+                      ? "text-chocolate-950 dark:text-cream-50 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-bronze-500"
+                      : "text-chocolate-700 dark:text-night-muted hover:text-chocolate-950 dark:hover:text-cream-50"
                   }`
                 }
               >
