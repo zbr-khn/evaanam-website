@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 
 /**
  * SignaturePreloader
- * Plays the official preloader animation video from /brand/preloader.mp4
- * with seamless video duration detection, safe autoplay, and smooth crossfade.
+ * Plays the official preloader animation video in full screen with ultra-sharp fidelity,
+ * non-skippable full playback, and seamless exit to the website upon completion.
  */
 export default function SignaturePreloader({ onComplete }) {
   const [isExiting, setIsExiting] = useState(false);
@@ -16,21 +16,21 @@ export default function SignaturePreloader({ onComplete }) {
     setTimeout(() => {
       setIsRemoved(true);
       if (onComplete) onComplete();
-    }, 600);
+    }, 700);
   };
 
   useEffect(() => {
     // Attempt playback immediately on mount
     if (videoRef.current) {
       videoRef.current.play().catch(() => {
-        // If browser blocks autoplay, continue gracefully
+        // Fallback if browser requires user interaction
       });
     }
 
-    // Safety fallback timer so user is never stuck
+    // Safety fallback timer so user is never stuck if video fails silently
     const safetyTimer = setTimeout(() => {
       handleFinish();
-    }, 9000);
+    }, 15000);
 
     return () => clearTimeout(safetyTimer);
   }, []);
@@ -40,14 +40,13 @@ export default function SignaturePreloader({ onComplete }) {
   return (
     <div
       role="status"
-      aria-label="EVAANAM Brand Loading"
-      onClick={handleFinish}
-      className={`fixed inset-0 z-[99999] flex items-center justify-center select-none bg-night-950 text-cream-100 transition-opacity duration-600 ease-out cursor-pointer ${
+      aria-label="EVAANAM Experience Loading"
+      className={`fixed inset-0 z-[999999] w-screen h-screen bg-night-950 flex items-center justify-center overflow-hidden select-none transition-opacity duration-700 ease-out pointer-events-auto ${
         isExiting ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
     >
-      <div className="relative w-full max-w-5xl max-h-[88vh] flex items-center justify-center p-4">
-        {!videoFailed ? (
+      {!videoFailed ? (
+        <div className="relative w-full h-full flex items-center justify-center bg-night-950">
           <video
             ref={videoRef}
             src="./brand/preloader.mp4"
@@ -57,38 +56,44 @@ export default function SignaturePreloader({ onComplete }) {
             preload="auto"
             onEnded={handleFinish}
             onError={() => setVideoFailed(true)}
-            className="w-auto h-auto max-w-full max-h-[80vh] object-contain rounded-sm shadow-2xl"
+            className="w-full h-full object-cover sm:object-contain"
+            style={{
+              imageRendering: "-webkit-optimize-contrast",
+              filter: "contrast(1.08) brightness(1.03) saturate(1.06)",
+              transform: "translateZ(0)",
+              backfaceVisibility: "hidden",
+              willChange: "transform",
+            }}
           />
-        ) : (
-          /* Fallback if video is unavailable */
-          <div className="flex flex-col items-center justify-center space-y-5 animate-fade-in text-center">
-            <img
-              src="./brand/logo.jpg"
-              alt="EVAANAM"
-              className="w-24 h-24 object-contain rounded-sm shadow-lg animate-pulse-subtle"
-              onError={(e) => {
-                e.target.style.display = "none";
-              }}
-            />
-            <div className="space-y-1.5">
-              <span className="font-serif text-3xl sm:text-4xl font-light tracking-[0.2em] text-cream-50 uppercase">
-                EVAANAM
-              </span>
-              <p className="text-[10px] uppercase font-mono tracking-[0.3em] text-bronze-400">
-                Hospitality &amp; Operations
-              </p>
-            </div>
-            <div className="w-24 h-[1.5px] bg-bronze-500/40 rounded-full overflow-hidden mt-4">
-              <div className="w-full h-full bg-bronze-400 animate-marquee" />
-            </div>
+        </div>
+      ) : (
+        /* Fallback if video is unavailable */
+        <div className="flex flex-col items-center justify-center space-y-6 animate-fade-in text-center p-6">
+          <img
+            src="./brand/logo.jpg"
+            alt="EVAANAM"
+            className="w-28 h-28 object-contain rounded-sm shadow-2xl animate-pulse-subtle"
+            style={{
+              imageRendering: "-webkit-optimize-contrast",
+              filter: "contrast(1.08) brightness(1.02)",
+            }}
+            onError={(e) => {
+              e.target.style.display = "none";
+            }}
+          />
+          <div className="space-y-2">
+            <span className="font-serif text-3xl sm:text-5xl font-light tracking-[0.22em] text-cream-50 uppercase">
+              EVAANAM
+            </span>
+            <p className="text-xs uppercase font-mono tracking-[0.35em] text-bronze-400">
+              Hospitality &amp; Operations
+            </p>
           </div>
-        )}
-      </div>
-
-      {/* Subtle Skip Prompt */}
-      <div className="absolute bottom-6 text-[11px] font-mono tracking-widest text-cream-400/50 uppercase hover:text-cream-200 transition-colors">
-        Click anywhere to skip
-      </div>
+          <div className="w-32 h-[2px] bg-bronze-500/30 rounded-full overflow-hidden mt-6">
+            <div className="w-full h-full bg-bronze-400 animate-marquee" />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
