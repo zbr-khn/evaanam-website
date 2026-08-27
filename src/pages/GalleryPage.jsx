@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Maximize2, Sparkles, Crown, Briefcase, Camera, ArrowUpRight } from "lucide-react";
+import { Maximize2, Sparkles, Crown, Briefcase, Camera, ArrowUpRight, Award } from "lucide-react";
 import LightboxModal from "../components/LightboxModal";
 import GeometricDivider from "../components/GeometricDivider";
 import { GALLERY_IMAGES } from "../data/evaanamData";
 
 export default function GalleryPage() {
-  const [activeCategory, setActiveCategory] = useState("all"); // 'all' | 'wedding' | 'corporate' | 'bts'
+  const [activeCategory, setActiveCategory] = useState("all"); // 'all' | 'activations' | 'wedding' | 'corporate' | 'bts'
   const [lightboxIndex, setLightboxIndex] = useState(null);
 
+  const activationImages = GALLERY_IMAGES.filter((img) => img.category === "activations");
   const weddingImages = GALLERY_IMAGES.filter((img) => img.category === "wedding");
   const corporateImages = GALLERY_IMAGES.filter((img) => img.category === "corporate");
   const btsImages = GALLERY_IMAGES.filter((img) => img.category === "bts");
@@ -52,14 +53,16 @@ export default function GalleryPage() {
               <span className="italic text-bronze-600 dark:text-bronze-400">in motion.</span>
             </h1>
             <p className="text-base sm:text-lg text-chocolate-600 dark:text-night-muted font-light leading-relaxed">
-              Curated glimpses of our deployment crews across Delhi NCR's premier five-star hotel ballrooms, diplomatic conclaves, trade expos, and behind-the-scenes muster briefings.
+              Curated glimpses of our deployment crews across celebrity VIP keynotes, brand experience pavilions, five-star hotel ballrooms, diplomatic conclaves, trade expos, and behind-the-scenes muster briefings.
             </p>
 
             {/* Quick Stats Strip */}
-            <div className="pt-2 flex flex-wrap items-center gap-4 text-xs font-mono text-chocolate-600 dark:text-night-muted">
-              <span className="px-3 py-1 bg-cream-100 dark:bg-night-800 border border-chocolate-700/10 dark:border-bronze-500/20 rounded">
+            <div className="pt-2 flex flex-wrap items-center gap-3 text-xs font-mono text-chocolate-600 dark:text-night-muted">
+              <span className="px-3 py-1 bg-cream-100 dark:bg-night-800 border border-chocolate-700/10 dark:border-bronze-500/20 rounded font-bold">
                 <strong>{GALLERY_IMAGES.length}</strong> Total Photographs
               </span>
+              <span>•</span>
+              <span><strong>{activationImages.length}</strong> Executive &amp; Activations</span>
               <span>•</span>
               <span><strong>{weddingImages.length}</strong> Wedding Hospitality</span>
               <span>•</span>
@@ -75,10 +78,10 @@ export default function GalleryPage() {
       <section className="py-6 px-6 sm:px-8 lg:px-12 bg-cream-100/90 dark:bg-night-850/90 border-b border-chocolate-700/10 dark:border-bronze-500/15 sticky top-[72px] z-20 backdrop-blur-md">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center space-x-2 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0">
-            {/* 1. All Photos Tab (Common Gallery) */}
+            {/* 1. All Photos Tab */}
             <button
               onClick={() => setActiveCategory("all")}
-              className={`px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.18em] transition-all whitespace-nowrap flex items-center space-x-1.5 ${
+              className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.16em] transition-all whitespace-nowrap flex items-center space-x-1.5 rounded-sm ${
                 activeCategory === "all"
                   ? "bg-brand-green dark:bg-bronze-500 text-cream-50 dark:text-night-950 shadow-sm"
                   : "bg-cream-200 dark:bg-night-800 text-chocolate-600 dark:text-night-muted hover:text-chocolate-900 dark:hover:text-cream-50 border border-chocolate-700/10 dark:border-bronze-500/15"
@@ -88,10 +91,23 @@ export default function GalleryPage() {
               <span>All Portfolio ({GALLERY_IMAGES.length})</span>
             </button>
 
-            {/* 2. Wedding Hospitality Tab */}
+            {/* 2. Executive Engagements & Brand Activations Tab */}
+            <button
+              onClick={() => setActiveCategory("activations")}
+              className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.16em] transition-all whitespace-nowrap flex items-center space-x-1.5 rounded-sm ${
+                activeCategory === "activations"
+                  ? "bg-amber-600 dark:bg-amber-500 text-cream-50 dark:text-night-950 shadow-sm font-bold"
+                  : "bg-cream-200 dark:bg-night-800 text-chocolate-600 dark:text-night-muted hover:text-chocolate-900 dark:hover:text-cream-50 border border-chocolate-700/10 dark:border-bronze-500/15"
+              }`}
+            >
+              <Award className="w-3.5 h-3.5" />
+              <span>Executive &amp; Activations ({activationImages.length})</span>
+            </button>
+
+            {/* 3. Wedding Hospitality Tab */}
             <button
               onClick={() => setActiveCategory("wedding")}
-              className={`px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.18em] transition-all whitespace-nowrap flex items-center space-x-1.5 ${
+              className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.16em] transition-all whitespace-nowrap flex items-center space-x-1.5 rounded-sm ${
                 activeCategory === "wedding"
                   ? "bg-brand-green dark:bg-bronze-500 text-cream-50 dark:text-night-950 shadow-sm"
                   : "bg-cream-200 dark:bg-night-800 text-chocolate-600 dark:text-night-muted hover:text-chocolate-900 dark:hover:text-cream-50 border border-chocolate-700/10 dark:border-bronze-500/15"
@@ -101,10 +117,10 @@ export default function GalleryPage() {
               <span>Weddings ({weddingImages.length})</span>
             </button>
 
-            {/* 3. Corporate & Expos Tab */}
+            {/* 4. Corporate & Expos Tab */}
             <button
               onClick={() => setActiveCategory("corporate")}
-              className={`px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.18em] transition-all whitespace-nowrap flex items-center space-x-1.5 ${
+              className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.16em] transition-all whitespace-nowrap flex items-center space-x-1.5 rounded-sm ${
                 activeCategory === "corporate"
                   ? "bg-brand-green dark:bg-bronze-500 text-cream-50 dark:text-night-950 shadow-sm"
                   : "bg-cream-200 dark:bg-night-800 text-chocolate-600 dark:text-night-muted hover:text-chocolate-900 dark:hover:text-cream-50 border border-chocolate-700/10 dark:border-bronze-500/15"
@@ -114,10 +130,10 @@ export default function GalleryPage() {
               <span>Corporate &amp; Expos ({corporateImages.length})</span>
             </button>
 
-            {/* 4. Behind The Scenes & Extra Tab */}
+            {/* 5. Behind The Scenes Tab */}
             <button
               onClick={() => setActiveCategory("bts")}
-              className={`px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.18em] transition-all whitespace-nowrap flex items-center space-x-1.5 ${
+              className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.16em] transition-all whitespace-nowrap flex items-center space-x-1.5 rounded-sm ${
                 activeCategory === "bts"
                   ? "bg-brand-green dark:bg-bronze-500 text-cream-50 dark:text-night-950 shadow-sm"
                   : "bg-cream-200 dark:bg-night-800 text-chocolate-600 dark:text-night-muted hover:text-chocolate-900 dark:hover:text-cream-50 border border-chocolate-700/10 dark:border-bronze-500/15"
@@ -141,11 +157,47 @@ export default function GalleryPage() {
           {/* A. If viewing All Portfolio, show curated sections with dividers */}
           {activeCategory === "all" ? (
             <div className="space-y-20">
-              {/* WEDDING SECTION */}
+              
+              {/* 1. EXECUTIVE ENGAGEMENTS & BRAND ACTIVATIONS SECTION */}
               <div>
                 <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
                   <div>
-                    <span className="micro-label text-amber-700 dark:text-amber-400">SECTION 01 / FIVE-STAR FLOORS</span>
+                    <span className="micro-label text-amber-700 dark:text-amber-400">SECTION 01 / CELEBRITIES &amp; BRAND PAVILIONS</span>
+                    <h2 className="editorial-heading text-3xl sm:text-4xl text-chocolate-950 dark:text-cream-50 mt-1">
+                      Executive Engagements &amp; Brand Activations
+                    </h2>
+                    <p className="text-xs text-chocolate-600 dark:text-night-muted mt-1 font-light">
+                      High-profile celebrity VIP escorts (Boman Irani, Rajpal Yadav), tech pavilions (Vivo), and aviation summits (IndiGo, Pronto).
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setActiveCategory("activations")}
+                    className="text-xs uppercase font-mono tracking-wider font-semibold text-bronze-600 dark:text-bronze-400 hover:text-chocolate-950 dark:hover:text-cream-50 flex items-center space-x-1"
+                  >
+                    <span>View All {activationImages.length} Activation Photos</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {activationImages.map((image) => (
+                    <GalleryCard
+                      key={image.id}
+                      image={image}
+                      onOpen={() => handleOpenLightbox(GALLERY_IMAGES.findIndex((img) => img.id === image.id))}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <GeometricDivider label="FIVE-STAR FLOORS" />
+
+              {/* 2. WEDDING SECTION */}
+              <div>
+                <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+                  <div>
+                    <span className="micro-label text-amber-700 dark:text-amber-400">SECTION 02 / FIVE-STAR FLOORS</span>
                     <h2 className="editorial-heading text-3xl sm:text-4xl text-chocolate-950 dark:text-cream-50 mt-1">
                       Wedding Hospitality Portfolio
                     </h2>
@@ -164,7 +216,7 @@ export default function GalleryPage() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {weddingImages.slice(0, 6).map((image, idx) => (
+                  {weddingImages.slice(0, 6).map((image) => (
                     <GalleryCard
                       key={image.id}
                       image={image}
@@ -176,11 +228,11 @@ export default function GalleryPage() {
 
               <GeometricDivider label="EXPOS & CONVENTIONS" />
 
-              {/* CORPORATE SECTION */}
+              {/* 3. CORPORATE SECTION */}
               <div>
                 <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
                   <div>
-                    <span className="micro-label text-emerald-700 dark:text-emerald-400">SECTION 02 / PLENARIES & SUMMITS</span>
+                    <span className="micro-label text-emerald-700 dark:text-emerald-400">SECTION 03 / PLENARIES &amp; SUMMITS</span>
                     <h2 className="editorial-heading text-3xl sm:text-4xl text-chocolate-950 dark:text-cream-50 mt-1">
                       Corporate Summits &amp; Expos Portfolio
                     </h2>
@@ -199,7 +251,7 @@ export default function GalleryPage() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {corporateImages.slice(0, 6).map((image, idx) => (
+                  {corporateImages.slice(0, 6).map((image) => (
                     <GalleryCard
                       key={image.id}
                       image={image}
@@ -211,11 +263,11 @@ export default function GalleryPage() {
 
               <GeometricDivider label="OPERATIONAL DEPLOYMENTS" />
 
-              {/* BEHIND THE SCENES SECTION */}
+              {/* 4. BEHIND THE SCENES SECTION */}
               <div>
                 <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
                   <div>
-                    <span className="micro-label text-bronze-600 dark:text-bronze-400">SECTION 03 / OPERATIONAL MOMENTS</span>
+                    <span className="micro-label text-bronze-600 dark:text-bronze-400">SECTION 04 / OPERATIONAL MOMENTS</span>
                     <h2 className="editorial-heading text-3xl sm:text-4xl text-chocolate-950 dark:text-cream-50 mt-1">
                       Behind The Scenes &amp; Field Coordination
                     </h2>
@@ -233,31 +285,15 @@ export default function GalleryPage() {
                   </button>
                 </div>
 
-                {btsImages.length > 0 ? (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {btsImages.map((image, idx) => (
-                      <GalleryCard
-                        key={image.id}
-                        image={image}
-                        onOpen={() => handleOpenLightbox(GALLERY_IMAGES.findIndex((img) => img.id === image.id))}
-                      />
-                    ))}
-                  </div>
-                ) : (
-                  <div className="p-10 border border-dashed border-chocolate-700/20 dark:border-bronze-500/30 rounded-sm bg-cream-100/60 dark:bg-night-800/60 text-center space-y-4">
-                    <div className="w-12 h-12 rounded-full bg-cream-200 dark:bg-night-750 border border-bronze-500/30 text-bronze-500 flex items-center justify-center mx-auto">
-                      <Camera className="w-5 h-5" />
-                    </div>
-                    <div className="max-w-md mx-auto space-y-1">
-                      <h4 className="font-serif text-lg text-chocolate-950 dark:text-cream-50 font-medium">
-                        Behind The Scenes Photos Awaiting Drop
-                      </h4>
-                      <p className="text-xs text-chocolate-600 dark:text-night-muted font-light leading-relaxed">
-                        Drop your backstage crew briefing, uniform muster, or radio sync photos into <code className="font-mono text-bronze-600 dark:text-bronze-400 bg-cream-200 dark:bg-night-900 px-1.5 py-0.5 rounded text-[11px]">public/images/gallery-bts/</code> to feature them in this section.
-                      </p>
-                    </div>
-                  </div>
-                )}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {btsImages.map((image) => (
+                    <GalleryCard
+                      key={image.id}
+                      image={image}
+                      onOpen={() => handleOpenLightbox(GALLERY_IMAGES.findIndex((img) => img.id === image.id))}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           ) : (
@@ -265,21 +301,27 @@ export default function GalleryPage() {
             <div>
               <div className="mb-10">
                 <span className="micro-label text-bronze-600 dark:text-bronze-400">
-                  {activeCategory === "wedding"
+                  {activeCategory === "activations"
+                    ? "EXECUTIVE & BRAND ACTIVATIONS DIVISION"
+                    : activeCategory === "wedding"
                     ? "WEDDING HOSPITALITY DIVISION"
                     : activeCategory === "corporate"
                     ? "CORPORATE & EXPOS DIVISION"
                     : "OPERATIONS & BEHIND THE SCENES"}
                 </span>
                 <h2 className="editorial-heading text-4xl sm:text-5xl text-chocolate-950 dark:text-cream-50 mt-2">
-                  {activeCategory === "wedding"
+                  {activeCategory === "activations"
+                    ? "Executive Engagements & Brand Activations"
+                    : activeCategory === "wedding"
                     ? "Wedding Hospitality Gallery"
                     : activeCategory === "corporate"
                     ? "Corporate Summits & Expos Gallery"
                     : "Behind The Scenes & Operations Gallery"}
                 </h2>
                 <p className="text-sm text-chocolate-600 dark:text-night-muted font-light mt-2 max-w-2xl">
-                  {activeCategory === "wedding"
+                  {activeCategory === "activations"
+                    ? "On-ground manpower coordination for celebrity keynotes, actor escorts, product launch pavilions, and aviation assemblies."
+                    : activeCategory === "wedding"
                     ? "Explore five-star banquet ballrooms, royal courtyard mandaps, and dedicated VIP shadow deployments across Delhi NCR."
                     : activeCategory === "corporate"
                     ? "Explore high-throughput badge scanning, plenary stage coordination, and C-suite lounge staffing at India's largest convention centres."
@@ -287,7 +329,7 @@ export default function GalleryPage() {
                 </p>
               </div>
 
-              {/* Asymmetric Editorial Grid for Selected Category */}
+              {/* Editorial Grid for Selected Category */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {filteredImages.map((image, idx) => {
                   const isLarge = idx % 4 === 0;
@@ -299,26 +341,35 @@ export default function GalleryPage() {
                         isLarge ? "md:col-span-2 aspect-[16/10]" : "aspect-[4/3]"
                       }`}
                     >
+                      {/* Ambient Blur Backdrop */}
+                      <img
+                        src={image.src}
+                        alt=""
+                        aria-hidden="true"
+                        className="absolute inset-0 w-full h-full object-cover scale-110 blur-xl opacity-40 pointer-events-none"
+                      />
+
+                      {/* Foreground Image */}
                       <img
                         src={image.src}
                         alt={image.title}
                         loading="lazy"
-                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02] opacity-90 dark:opacity-80 group-hover:opacity-100"
+                        className="relative z-10 w-full h-full object-contain p-2 transition-transform duration-700 ease-out group-hover:scale-[1.02] opacity-95 group-hover:opacity-100"
                       />
 
                       {/* Gradient Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-night-950/85 via-night-950/20 to-transparent opacity-70 group-hover:opacity-95 transition-opacity duration-300" />
+                      <div className="absolute inset-0 z-10 bg-gradient-to-t from-night-950/90 via-night-950/30 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-300" />
 
                       {/* Hover Quick Zoom Icon */}
-                      <div className="absolute top-4 right-4 w-9 h-9 rounded-full bg-night-900/80 border border-bronze-500/30 text-cream-100 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-105">
-                        <Maximize2 className="w-4 h-4 text-bronze-400" />
+                      <div className="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-night-900/80 border border-bronze-500/30 text-cream-100 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-105">
+                        <Maximize2 className="w-4 h-4 text-amber-300" />
                       </div>
 
                       {/* Captions (Hidden for BTS images) */}
                       {image.title && (
-                        <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 text-cream-100 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                        <div className="absolute bottom-0 left-0 right-0 z-20 p-6 sm:p-8 text-cream-100 transform translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
                           <div className="flex items-center space-x-2 mb-1.5">
-                            <span className="text-[10px] font-mono text-bronze-400 uppercase tracking-widest px-2 py-0.5 bg-night-950/90 rounded-sm">
+                            <span className="text-[10px] font-mono text-amber-300 uppercase tracking-widest px-2 py-0.5 bg-night-950/90 border border-amber-500/30 rounded-sm">
                               {image.categoryLabel}
                             </span>
                           </div>
@@ -371,7 +422,7 @@ export default function GalleryPage() {
             Contact our operations coordinators to reserve trained personnel and supervisors for your dates.
           </p>
           <div className="pt-2">
-            <Link to="/contact" className="btn-primary px-8 py-4">
+            <Link to="/contact" className="btn-primary px-8 py-4 font-bold">
               Request Crew Availability
             </Link>
           </div>
@@ -386,27 +437,36 @@ function GalleryCard({ image, onOpen }) {
   return (
     <div
       onClick={onOpen}
-      className="group relative overflow-hidden bg-night-950 border border-chocolate-700/15 dark:border-bronze-500/20 cursor-pointer shadow-sm aspect-[4/3] rounded-sm"
+      className="group relative overflow-hidden bg-night-950 border border-chocolate-700/15 dark:border-bronze-500/20 cursor-pointer shadow-sm aspect-[4/3] rounded-sm flex items-center justify-center"
     >
+      {/* Ambient Blur Backdrop */}
+      <img
+        src={image.src}
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full object-cover scale-110 blur-xl opacity-35 pointer-events-none"
+      />
+
+      {/* Foreground Crisp Image */}
       <img
         src={image.src}
         alt={image.title}
         loading="lazy"
-        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 opacity-90 group-hover:opacity-100"
+        className="relative z-10 w-full h-full object-contain p-2 transition-transform duration-700 ease-out group-hover:scale-105 opacity-95 group-hover:opacity-100"
       />
 
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-night-950/85 via-night-950/20 to-transparent opacity-75 group-hover:opacity-95 transition-opacity" />
+      <div className="absolute inset-0 z-10 bg-gradient-to-t from-night-950/90 via-night-950/30 to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
 
       {/* Zoom Icon */}
-      <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-night-900/80 border border-bronze-500/30 text-cream-100 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-        <Maximize2 className="w-3.5 h-3.5 text-bronze-400" />
+      <div className="absolute top-3 right-3 z-20 w-8 h-8 rounded-full bg-night-900/80 border border-bronze-500/30 text-cream-100 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+        <Maximize2 className="w-3.5 h-3.5 text-amber-300" />
       </div>
 
-      {/* Captions (Only if title exists) */}
+      {/* Captions */}
       {image.title && (
-        <div className="absolute bottom-0 left-0 right-0 p-5 text-cream-100">
-          <span className="text-[9px] font-mono text-bronze-300 uppercase tracking-widest px-2 py-0.5 bg-night-950/90 rounded-sm inline-block mb-1">
+        <div className="absolute bottom-0 left-0 right-0 z-20 p-5 text-cream-100">
+          <span className="text-[9px] font-mono text-amber-300 uppercase tracking-widest px-2 py-0.5 bg-night-950/90 border border-amber-500/30 rounded-sm inline-block mb-1">
             {image.categoryLabel}
           </span>
           <h4 className="font-serif text-lg font-medium text-cream-50 leading-snug line-clamp-1">

@@ -536,11 +536,11 @@ export const GALLERY_IMAGES = [
     desc: ""
   },
 
-  // 5 Brand Activations & Celebrity Highlight Moments
+  // 5 Brand Activations & Executive Celebrity Highlight Moments
   {
     id: "h1",
-    category: "corporate",
-    categoryLabel: "Celebrity & VIP Protocol",
+    category: "activations",
+    categoryLabel: "Executive & Activations",
     title: "Celebrity Escort & Keynote Coordination: Boman Irani",
     subtitle: "Luxury Conclave · VIP Personal Escort",
     aspect: "tall",
@@ -549,8 +549,8 @@ export const GALLERY_IMAGES = [
   },
   {
     id: "h2",
-    category: "corporate",
-    categoryLabel: "Artist & Stage Management",
+    category: "activations",
+    categoryLabel: "Executive & Activations",
     title: "Artist Liaison & Backstage Escort: Rajpal Yadav",
     subtitle: "Live Event Arena · Artist Show Runners",
     aspect: "tall",
@@ -559,8 +559,8 @@ export const GALLERY_IMAGES = [
   },
   {
     id: "h3",
-    category: "corporate",
-    categoryLabel: "Brand Activation",
+    category: "activations",
+    categoryLabel: "Executive & Activations",
     title: "Tech Experience Pavilion: Vivo Smartphone",
     subtitle: "Brand Activation Pavilion · Experience Crew",
     aspect: "wide",
@@ -569,8 +569,8 @@ export const GALLERY_IMAGES = [
   },
   {
     id: "h4",
-    category: "corporate",
-    categoryLabel: "Corporate Summit",
+    category: "activations",
+    categoryLabel: "Executive & Activations",
     title: "Aviation Summit & Corporate Assembly: IndiGo",
     subtitle: "Corporate Conclave · Registration & Usher Crew",
     aspect: "wide",
@@ -579,8 +579,8 @@ export const GALLERY_IMAGES = [
   },
   {
     id: "h5",
-    category: "corporate",
-    categoryLabel: "Operations & Floor Management",
+    category: "activations",
+    categoryLabel: "Executive & Activations",
     title: "Corporate Summit Floor Operations: Pronto",
     subtitle: "Convention Floor · Operations Crew",
     aspect: "square",
