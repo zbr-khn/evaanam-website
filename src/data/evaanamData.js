@@ -645,7 +645,7 @@ export const TESTIMONIALS = [
   },
   {
     id: "t2",
-    quote: "We've worked with many staffing agencies, but Crown Vista stands out for their reliability.",
+    quote: "We've worked with many staffing agencies, but Evaanam stands out for their reliability.",
     author: "Manoj",
     role: "Senior Event Planner",
     location: "Mumbai",
@@ -665,7 +665,7 @@ export const TESTIMONIALS = [
   },
   {
     id: "t4",
-    quote: "Our event had zero manpower issues – Crown Vista handled everything like pros.",
+    quote: "Our event had zero manpower issues – Evaanam handled everything like pros.",
     author: "Satyansh",
     role: "Corporate Operations Lead",
     location: "Delhi",
@@ -675,7 +675,7 @@ export const TESTIMONIALS = [
   },
   {
     id: "t5",
-    quote: "As a promoter, I finally feel respected and paid on time. Thank you Crown Vista!",
+    quote: "As a promoter, I finally feel respected and paid on time. Thank you Evaanam!",
     author: "Sujal",
     role: "Event Crew & Promoter",
     location: "Gurgaon",
@@ -685,7 +685,7 @@ export const TESTIMONIALS = [
   },
   {
     id: "t6",
-    quote: "Quick response time and reliable service. Highly recommend Crown Vista for any event.",
+    quote: "Quick response time and reliable service. Highly recommend Evaanam for any event.",
     author: "Jay Prakash",
     role: "Exhibition Manager",
     location: "Delhi NCR",
@@ -705,7 +705,7 @@ export const TESTIMONIALS = [
   },
   {
     id: "t8",
-    quote: "We've been using Crown Vista for all our mall activations. Consistent quality every time.",
+    quote: "We've been using Evaanam for all our mall activations. Consistent quality every time.",
     author: "Priya",
     role: "Marketing Head",
     location: "Delhi NCR",
