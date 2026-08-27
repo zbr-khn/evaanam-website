@@ -9,6 +9,7 @@ import SignaturePreloader from "./components/SignaturePreloader";
 import CustomCursor from "./components/CustomCursor";
 import GeometricMarginFrame from "./components/GeometricMarginFrame";
 import DynamicScrollGradient from "./components/DynamicScrollGradient";
+import EVAANAMChatbot from "./components/EVAANAMChatbot";
 import useScrollBackground from "./hooks/useScrollBackground";
 
 import HomePage from "./pages/HomePage";
@@ -84,6 +85,9 @@ export default function App() {
 
       {/* Floating Actions: Live Progress Back-To-Top + Dedicated WhatsApp Button */}
       <FloatingActions />
+
+      {/* EVAANAM AI Operations Concierge Chatbot */}
+      <EVAANAMChatbot />
 
       <Footer />
       <MobileStickyCTA />
