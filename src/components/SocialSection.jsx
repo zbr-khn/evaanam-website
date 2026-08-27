@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { ChevronDown, ArrowUpRight, Sparkles, Radio, Check, ExternalLink } from "lucide-react";
 import { InstagramIcon, FacebookIcon, YoutubeIcon, WhatsappIcon } from "./SocialIcons";
 import EVAANAMGeometricMark from "./EVAANAMGeometricMark";
 
@@ -8,178 +8,241 @@ const SOCIAL_ACCOUNTS = [
     id: "insta-hospitality",
     platform: "Instagram",
     icon: InstagramIcon,
-    tag: "Weddings & Five-Star Floors",
+    tag: "Weddings & Five-Star Hospitality",
     handle: "@evaanamhospitalitypvt.ltd",
     title: "EVAANAM Hospitality Pvt. Ltd.",
-    bio: "Wedding hospitality crew · Five-star floors · Delhi NCR",
-    badge: "101 Posts",
-    statusText: "Active Floor Feed",
+    bio: "Real-time wedding hospitality deployments, royal bridal shadows, traditional welcome hostesses, and banquet floor setups across Delhi NCR's premier five-star luxury hotels.",
+    badge: "Active Floor Feed",
+    highlight: "100+ Live Wedding Highlights",
+    ctaText: "Explore Instagram Feed",
     url: "https://instagram.com/evaanamhospitalitypvt.ltd",
-    gradientBorder: "group-hover:border-bronze-500",
-    iconBg: "bg-amber-500/10 text-amber-700 dark:text-amber-300 group-hover:bg-bronze-500 group-hover:text-chocolate-950 dark:group-hover:text-night-950",
+    iconBg: "bg-gradient-to-tr from-amber-500/20 to-orange-500/20 text-amber-700 dark:text-amber-300",
+    accentColor: "border-amber-500/40",
   },
   {
     id: "insta-corporate",
     platform: "Instagram",
     icon: InstagramIcon,
-    tag: "Corporate Summits & Expos",
+    tag: "Corporate Summits & Trade Expos",
     handle: "@evaanampvt.ltd",
     title: "EVAANAM Corporate & Operations",
-    bio: "Expos, summits, activations & convention floor crews across Delhi NCR",
+    bio: "Exhibition hall marshaling, C-suite boardroom protocol, high-speed registration check-in desks, and technical show runners at Pragati Maidan, Yashobhoomi & IEML.",
     badge: "Operations Feed",
-    statusText: "Live Rosters",
+    highlight: "Multi-Hall Summit Rosters",
+    ctaText: "View Corporate Broadcasts",
     url: "https://instagram.com/evaanampvt.ltd",
-    gradientBorder: "group-hover:border-emerald-600/60 dark:group-hover:border-emerald-400/60",
-    iconBg: "bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 group-hover:bg-chocolate-700 dark:group-hover:bg-brand-green group-hover:text-cream-50",
+    iconBg: "bg-gradient-to-tr from-emerald-500/20 to-teal-500/20 text-emerald-800 dark:text-emerald-300",
+    accentColor: "border-emerald-500/40",
   },
   {
     id: "youtube-channel",
     platform: "YouTube",
     icon: YoutubeIcon,
-    tag: "Floor In Motion",
+    tag: "On-Floor Highlights & Video Reels",
     handle: "@evaanam_pvt._ltd",
     title: "EVAANAM Crew On The Floor",
-    bio: "On-floor event highlights, briefing videos & VIP banquet floor reels",
-    badge: "Video Library",
-    statusText: "Official Channel",
+    bio: "Watch our trained crews in action. High-definition event highlights, pre-shift muster briefings, venue walkthrough reels, and supervisor discipline on active floors.",
+    badge: "Official Video Channel",
+    highlight: "4K Floor Reels & Walkthroughs",
+    ctaText: "Watch YouTube Channel",
     url: "https://youtube.com/@evaanam_pvt._ltd",
-    gradientBorder: "group-hover:border-red-500/60 dark:group-hover:border-red-400/60",
-    iconBg: "bg-red-500/10 text-red-700 dark:text-red-300 group-hover:bg-red-700 group-hover:text-cream-50",
+    iconBg: "bg-gradient-to-tr from-red-500/20 to-rose-500/20 text-red-700 dark:text-red-300",
+    accentColor: "border-red-500/40",
   },
   {
     id: "facebook-page",
     platform: "Facebook",
     icon: FacebookIcon,
-    tag: "Production Updates",
+    tag: "Production Bulletins & Company News",
     handle: "EVAANAM Official Page",
-    title: "EVAANAM Operations",
-    bio: "Official company page, deployment notices & event production updates",
-    badge: "Official Page",
-    statusText: "Verified Business",
+    title: "EVAANAM Operations Desk",
+    bio: "Official corporate news, upcoming summit staffing notices, verified operational updates, and event industry partnerships across the National Capital Region.",
+    badge: "Verified Business",
+    highlight: "Official Production Dispatches",
+    ctaText: "Visit Facebook Page",
     url: "https://www.facebook.com/share/1UVz6xkxaY/",
-    gradientBorder: "group-hover:border-blue-500/60 dark:group-hover:border-blue-400/60",
-    iconBg: "bg-blue-500/10 text-blue-800 dark:text-blue-300 group-hover:bg-chocolate-700 dark:group-hover:bg-night-700 group-hover:text-cream-50",
+    iconBg: "bg-gradient-to-tr from-blue-500/20 to-indigo-500/20 text-blue-800 dark:text-blue-300",
+    accentColor: "border-blue-500/40",
   },
   {
     id: "whatsapp-direct",
     platform: "WhatsApp Operations",
     icon: WhatsappIcon,
-    tag: "Instant 24/7 Booking",
+    tag: "Priority 24/7 Operations Line",
     handle: "+91 93100 39929",
-    title: "EVAANAM Priority Operations Desk",
-    bio: "Instant event floor inquiries, rapid crew substitutions & immediate call-outs",
-    badge: "24/7 Rapid Desk",
-    statusText: "< 15 Min Response",
+    title: "EVAANAM Direct Operations Desk",
+    bio: "Direct line for event planners, venue managers, and production directors. Instant requirement quotes, standby crew dispatch, and urgent floor replacements within 60 minutes.",
+    badge: "Instant 24/7 Dispatch",
+    highlight: "< 15 Min Guaranteed Response",
+    ctaText: "Chat With Duty Supervisor",
     url: "https://wa.me/919310039929",
-    gradientBorder: "group-hover:border-emerald-500",
-    iconBg: "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 group-hover:bg-emerald-600 group-hover:text-cream-50",
+    iconBg: "bg-gradient-to-tr from-emerald-600/20 to-green-500/20 text-emerald-700 dark:text-emerald-300",
+    accentColor: "border-emerald-500/40",
   },
 ];
 
 export default function SocialSection({ showHeader = true, className = "" }) {
-  const [hoveredCard, setHoveredCard] = useState(null);
+  // Store expanded item IDs (first item open by default for immediate discoverability)
+  const [expandedIds, setExpandedIds] = useState(["insta-hospitality"]);
+
+  const toggleItem = (id) => {
+    setExpandedIds((prev) =>
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
+    );
+  };
+
+  const handleExpandAll = () => {
+    if (expandedIds.length === SOCIAL_ACCOUNTS.length) {
+      setExpandedIds([]);
+    } else {
+      setExpandedIds(SOCIAL_ACCOUNTS.map((acc) => acc.id));
+    }
+  };
 
   return (
-    <section className={`py-24 bg-cream-200 dark:bg-night-900 border-t border-chocolate-700/10 dark:border-bronze-500/20 relative overflow-hidden transition-colors duration-400 ${className}`}>
-      {/* Subtle Background Architectural Hairline */}
-      <div className="absolute inset-0 pointer-events-none opacity-30 dark:opacity-10">
-        <div className="max-w-7xl mx-auto h-full border-x border-chocolate-700/10 dark:border-bronze-500/20" />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+    <section
+      className={`py-24 bg-transparent border-t border-chocolate-700/10 dark:border-bronze-500/15 relative overflow-hidden ${className}`}
+    >
+      <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         {showHeader && (
-          <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-            <EVAANAMGeometricMark size={38} className="mx-auto mb-1" />
-            <span className="micro-label">DIGITAL NETWORK &amp; COMMUNITY</span>
-            <h2 className="editorial-heading text-4xl sm:text-5xl text-chocolate-950 dark:text-cream-50">
-              Follow The Floor
+          <div className="text-center max-w-3xl mx-auto mb-16 space-y-5">
+            <EVAANAMGeometricMark size={40} className="mx-auto mb-2" />
+            <span className="micro-label">FOLLOW OUR JOURNEY</span>
+            <h2 className="editorial-heading text-4xl sm:text-5xl md:text-6xl text-chocolate-950 dark:text-cream-50">
+              Follow Us Behind The Scenes
             </h2>
-            <p className="text-sm text-chocolate-600 dark:text-night-muted font-light leading-relaxed">
-              Behind the scenes, on the floor and between the details. Connect directly with our official operational channels across Delhi NCR.
+            <p className="text-base sm:text-lg text-chocolate-600 dark:text-night-muted font-light leading-relaxed">
+              Step directly into luxury ballrooms, backstage docks, and VIP green rooms. Follow our daily floor deployments, crew briefings, and behind-the-scenes action across Delhi NCR.
             </p>
+
+            {/* Quick Helper Toggle Bar */}
+            <div className="pt-3 flex items-center justify-center space-x-3">
+              <button
+                type="button"
+                onClick={handleExpandAll}
+                className="text-xs uppercase tracking-[0.18em] font-semibold text-bronze-600 dark:text-bronze-400 hover:text-chocolate-950 dark:hover:text-cream-50 border-b border-bronze-500/40 pb-0.5 transition-colors"
+              >
+                {expandedIds.length === SOCIAL_ACCOUNTS.length
+                  ? "Collapse All Channels"
+                  : "Expand All Channels (5)"}
+              </button>
+            </div>
           </div>
         )}
 
-        {/* Animated Responsive Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        {/* VERTICAL OPENABLE BANNER LIST */}
+        <div className="space-y-4">
           {SOCIAL_ACCOUNTS.map((acc, index) => {
             const Icon = acc.icon;
-            const isHovered = hoveredCard === acc.id;
+            const isOpen = expandedIds.includes(acc.id);
 
             return (
-              <a
+              <div
                 key={acc.id}
-                href={acc.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                onMouseEnter={() => setHoveredCard(acc.id)}
-                onMouseLeave={() => setHoveredCard(null)}
-                className={`group relative bg-cream-100/90 dark:bg-night-800/90 border border-chocolate-700/15 dark:border-bronze-500/20 p-8 flex flex-col justify-between transition-all duration-400 ease-out hover:-translate-y-2 hover:shadow-xl hover:bg-cream-50 dark:hover:bg-night-750 ${acc.gradientBorder} overflow-hidden`}
-                style={{
-                  animationDelay: `${index * 80}ms`,
-                }}
+                className={`border rounded-sm transition-all duration-400 overflow-hidden shadow-sm ${
+                  isOpen
+                    ? "bg-cream-100 dark:bg-night-800 border-bronze-500/60 ring-1 ring-bronze-500/20"
+                    : "bg-cream-100/80 dark:bg-night-850/80 border-chocolate-700/15 dark:border-bronze-500/20 hover:border-bronze-500/40 hover:bg-cream-50 dark:hover:bg-night-800"
+                }`}
               >
-                {/* Top Subtle Animated Accent Line */}
-                <div className="absolute top-0 left-0 right-0 h-[2px] bg-transparent group-hover:bg-gradient-to-r group-hover:from-bronze-500/40 group-hover:via-bronze-500 group-hover:to-bronze-500/40 transition-all duration-500" />
-
-                {/* Shimmer effect highlight */}
-                <div
-                  className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-cream-50/30 dark:via-night-700/40 to-transparent pointer-events-none"
-                />
-
-                <div className="space-y-5 relative z-10">
-                  {/* Card Header: Icon + Badge */}
-                  <div className="flex items-center justify-between">
+                {/* 1. COMPACT COLLAPSIBLE BANNER HEADER */}
+                <button
+                  type="button"
+                  onClick={() => toggleItem(acc.id)}
+                  aria-expanded={isOpen}
+                  className="w-full p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-left focus:outline-none transition-colors"
+                >
+                  {/* Left: Icon & Platform Info */}
+                  <div className="flex items-center space-x-4">
                     <div
-                      className={`w-12 h-12 rounded-full flex items-center justify-center border border-chocolate-700/10 dark:border-bronze-500/20 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 shadow-sm ${acc.iconBg}`}
+                      className={`w-12 h-12 rounded-full flex items-center justify-center border border-chocolate-700/10 dark:border-bronze-500/20 shrink-0 shadow-sm transition-transform duration-300 ${acc.iconBg} ${
+                        isOpen ? "scale-105" : ""
+                      }`}
                     >
-                      <Icon className="w-5 h-5 transition-transform duration-300" />
+                      <Icon className="w-5 h-5" />
                     </div>
 
-                    <div className="flex items-center space-x-2">
-                      <span className="text-[10px] uppercase font-mono tracking-wider font-semibold px-2.5 py-1 bg-cream-200 dark:bg-night-850 text-chocolate-700 dark:text-cream-200 border border-chocolate-700/10 dark:border-bronze-500/25 group-hover:border-bronze-500/40 transition-colors">
-                        {acc.badge}
-                      </span>
+                    <div className="space-y-0.5">
+                      <div className="flex items-center space-x-2">
+                        <span className="text-[10px] uppercase font-mono tracking-widest font-semibold text-bronze-600 dark:text-bronze-400">
+                          {acc.platform}
+                        </span>
+                        <span className="text-chocolate-400 dark:text-night-dim text-xs">•</span>
+                        <span className="text-xs text-chocolate-500 dark:text-night-muted font-sans hidden sm:inline">
+                          {acc.tag}
+                        </span>
+                      </div>
+
+                      <h3 className="font-serif text-xl sm:text-2xl text-chocolate-950 dark:text-cream-50 font-medium leading-snug">
+                        {acc.title}
+                      </h3>
+                      <p className="text-xs font-mono text-chocolate-500 dark:text-night-dim">
+                        {acc.handle}
+                      </p>
                     </div>
                   </div>
 
-                  {/* Micro Category Tag */}
-                  <div>
-                    <span className="text-[10px] uppercase tracking-[0.22em] font-semibold text-bronze-600 dark:text-bronze-400 block mb-1">
-                      {acc.tag}
+                  {/* Right: Badge & Dropdown Arrow */}
+                  <div className="flex items-center justify-between sm:justify-end space-x-3 pt-2 sm:pt-0 border-t sm:border-t-0 border-chocolate-700/10 dark:border-night-700">
+                    <span className="text-[10px] uppercase font-mono tracking-wider font-semibold px-2.5 py-1 bg-cream-200 dark:bg-night-750 text-chocolate-700 dark:text-cream-200 border border-chocolate-700/10 dark:border-bronze-500/20">
+                      {acc.badge}
                     </span>
-                    <h3 className="font-serif text-xl sm:text-2xl text-chocolate-950 dark:text-cream-50 font-medium group-hover:text-bronze-600 dark:group-hover:text-bronze-350 transition-colors duration-300 leading-snug">
-                      {acc.title}
-                    </h3>
-                    <p className="font-mono text-xs text-chocolate-500 dark:text-night-muted mt-1">
-                      {acc.handle}
-                    </p>
-                  </div>
 
-                  {/* Bio & Details */}
-                  <p className="text-xs text-chocolate-600 dark:text-night-muted font-light leading-relaxed">
-                    {acc.bio}
-                  </p>
-                </div>
-
-                {/* Card Footer: Live Status & Arrow */}
-                <div className="mt-8 pt-5 border-t border-chocolate-700/10 dark:border-night-700 flex items-center justify-between relative z-10">
-                  <div className="flex items-center space-x-2">
-                    <span className="relative flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-bronze-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-bronze-500"></span>
-                    </span>
-                    <span className="text-[11px] font-sans text-chocolate-500 dark:text-night-muted font-medium">
-                      {acc.statusText}
-                    </span>
+                    {/* Animated Dropdown Toggle Button */}
+                    <div
+                      className={`w-9 h-9 rounded-full flex items-center justify-center border transition-all duration-300 ${
+                        isOpen
+                          ? "bg-brand-green dark:bg-bronze-500 text-cream-50 dark:text-night-950 border-transparent rotate-180 shadow-sm"
+                          : "bg-cream-200 dark:bg-night-750 text-chocolate-700 dark:text-cream-200 border-chocolate-700/15 dark:border-bronze-500/20 hover:bg-bronze-500 hover:text-chocolate-950"
+                      }`}
+                    >
+                      <ChevronDown className="w-4 h-4" />
+                    </div>
                   </div>
+                </button>
 
-                  <div className="flex items-center space-x-1 text-xs uppercase tracking-[0.18em] font-semibold text-chocolate-900 dark:text-cream-100 group-hover:text-bronze-600 dark:group-hover:text-bronze-400 transition-colors">
-                    <span className="text-[11px]">Connect</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 text-bronze-500 transform transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+                {/* 2. FULL EXPANDED LUXURY CARD CONTENT */}
+                {isOpen && (
+                  <div className="px-6 pb-6 pt-2 border-t border-chocolate-700/10 dark:border-night-700 animate-fade-in">
+                    <div className="p-6 bg-cream-50 dark:bg-night-900 border border-chocolate-700/10 dark:border-bronze-500/15 rounded-sm space-y-5">
+                      {/* Bio & Details */}
+                      <div className="space-y-2">
+                        <div className="flex items-center space-x-2 text-xs font-semibold text-bronze-600 dark:text-bronze-400 font-mono">
+                          <Sparkles className="w-3.5 h-3.5" />
+                          <span>{acc.highlight}</span>
+                        </div>
+
+                        <p className="text-xs sm:text-sm text-chocolate-600 dark:text-night-muted font-light leading-relaxed">
+                          {acc.bio}
+                        </p>
+                      </div>
+
+                      {/* Footer Actions: Live Status + External Direct CTA Link */}
+                      <div className="pt-4 border-t border-chocolate-700/10 dark:border-night-750 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div className="flex items-center space-x-2.5">
+                          <span className="relative flex h-2.5 w-2.5">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-bronze-400 opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-bronze-500"></span>
+                          </span>
+                          <span className="text-xs font-sans text-chocolate-600 dark:text-night-muted font-medium">
+                            Live updates active
+                          </span>
+                        </div>
+
+                        <a
+                          href={acc.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn-primary py-3 px-6 text-xs font-semibold uppercase tracking-wider flex items-center justify-center space-x-2 group"
+                        >
+                          <span>{acc.ctaText}</span>
+                          <ArrowUpRight className="w-4 h-4 text-bronze-300 dark:text-night-950 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                        </a>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </a>
+                )}
+              </div>
             );
           })}
         </div>
