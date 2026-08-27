@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { ChevronDown, ArrowUpRight, Sparkles } from "lucide-react";
 import { InstagramIcon, FacebookIcon, YoutubeIcon, WhatsappIcon } from "./SocialIcons";
-import EVAANAMGeometricMark from "./EVAANAMGeometricMark";
 
 const SOCIAL_ACCOUNTS = [
   {
@@ -105,8 +104,7 @@ export default function SocialSection({ showHeader = true, className = "" }) {
     >
       <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         {showHeader && (
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-5">
-            <EVAANAMGeometricMark size={40} className="mx-auto mb-2" />
+          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-4 sm:space-y-5">
             <span className="micro-label">FOLLOW OUR JOURNEY</span>
             <h2 className="editorial-heading text-4xl sm:text-5xl md:text-6xl text-chocolate-950 dark:text-cream-50">
               Follow Us Behind The Scenes
