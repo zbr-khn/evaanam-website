@@ -362,16 +362,16 @@ export const GALLERY_IMAGES = [
     desc: "Calm, dignified crowd circulation directing guests seamlessly from cocktail lawns to banquet hall."
   },
 
-  // 10 Corporate & Expo Photos
+  // 10 Corporate & Expo Photos (Including User Uploaded Floor Photos)
   {
     id: "c1",
     category: "corporate",
     categoryLabel: "Corporate & Expos",
-    title: "Plenary Hall Stage Management",
-    subtitle: "Bharat Mandapam · Corporate Show Runners",
+    title: "Plenary Hall Stage Management & Registration",
+    subtitle: "Bharat Mandapam · Corporate Floor Team",
     aspect: "wide",
-    src: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=1200&q=80",
-    desc: "Precision timing, teleprompter liaison, and dignitary stage handover for 1,200 delegates."
+    src: "./images/gallery-corporate/IMG-20250419-WA0007-jpg.jpg",
+    desc: "Precision timing, registration desk coordination, and delegate check-in management."
   },
   {
     id: "c2",
@@ -380,8 +380,8 @@ export const GALLERY_IMAGES = [
     title: "Digital Badge Printing & Express Check-In",
     subtitle: "Yashobhoomi (IICC) · Registration Crew",
     aspect: "tall",
-    src: "https://images.unsplash.com/photo-1551818255-e6e10975bc17?auto=format&fit=crop&w=1200&q=80",
-    desc: "High-throughput QR scanning desks processing 3,000+ attendees during morning peak hours."
+    src: "./images/gallery-corporate/IMG-20250419-WA0011-jpg.jpg",
+    desc: "High-throughput QR scanning desks processing attendees during morning peak hours."
   },
   {
     id: "c3",
@@ -390,7 +390,7 @@ export const GALLERY_IMAGES = [
     title: "Global Tech Expo Stall Engagement",
     subtitle: "Pragati Maidan (IECC) · Exhibition Stall Crew",
     aspect: "square",
-    src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80",
+    src: "./images/gallery-corporate/IMG-20251023-WA0046-jpg.jpg",
     desc: "Lead qualification, collateral dissemination, and executive booth hosting."
   },
   {
@@ -400,8 +400,8 @@ export const GALLERY_IMAGES = [
     title: "C-Suite VIP Lounge Hospitality",
     subtitle: "Leela Ambience Convention · Corporate Hostesses",
     aspect: "tall",
-    src: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80",
-    desc: "Discreet catering coordination and meeting room facilitation for global enterprise leaders."
+    src: "./images/gallery-corporate/IMG-20251108-WA0002-jpg.jpg",
+    desc: "Discreet catering coordination and meeting room facilitation for enterprise leaders."
   },
   {
     id: "c5",
@@ -410,7 +410,7 @@ export const GALLERY_IMAGES = [
     title: "Automotive Brand Activation Pavilion",
     subtitle: "India Exposition Mart (IEML) · Brand Ambassadors",
     aspect: "wide",
-    src: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=1200&q=80",
+    src: "./images/gallery-corporate/IMG-20260221-WA0010-jpg.jpg",
     desc: "Product unveiling walkthroughs and interactive simulator onboarding."
   },
   {
@@ -418,20 +418,20 @@ export const GALLERY_IMAGES = [
     category: "corporate",
     categoryLabel: "Corporate & Expos",
     title: "Leadership Gala Awards & Felicitations",
-    subtitle: "Pullman Aerocity · Professional Models & Ushers",
+    subtitle: "Pullman Aerocity · Professional Ushers & Crew",
     aspect: "square",
-    src: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80",
+    src: "./images/gallery-corporate/IMG-20260309-WA0022-jpg-(1).jpg",
     desc: "Trophy handover decorum and onstage dignitary alignment during annual corporate gala."
   },
   {
     id: "c7",
     category: "corporate",
     categoryLabel: "Corporate & Expos",
-    title: "Multi-Hall Breakout Session Management",
-    subtitle: "India Habitat Centre · Session Supervisors",
+    title: "Executive Convention Floor Operations",
+    subtitle: "India Habitat Centre · Event Crew",
     aspect: "wide",
-    src: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=80",
-    desc: "Microphone distribution, live Q&A coordination, and punctual room changeovers."
+    src: "./images/gallery-corporate/IMG.png",
+    desc: "Full floor management, badge issuance, and delegate directional guidance."
   },
   {
     id: "c8",
