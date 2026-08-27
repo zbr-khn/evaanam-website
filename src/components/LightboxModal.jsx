@@ -37,7 +37,8 @@ export default function LightboxModal({
       role="dialog"
       aria-modal="true"
       aria-label="Image Lightbox"
-      className="fixed inset-0 z-50 flex items-center justify-center bg-chocolate-950/95 backdrop-blur-md animate-fade-in text-cream-100"
+      onClick={onClose}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-chocolate-950/95 backdrop-blur-md animate-fade-in text-cream-100 cursor-pointer"
     >
       {/* Top Bar Controls */}
       <div className="absolute top-0 left-0 right-0 p-6 flex items-center justify-between z-20">
