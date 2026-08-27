@@ -462,5 +462,67 @@ export const GALLERY_IMAGES = [
     aspect: "wide",
     src: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1200&q=80",
     desc: "Rigging inspection, cue sheet synchronization, and artist escort across major arena concourses."
+  },
+
+  // 6 Behind The Scenes & Operational Extra Photos
+  {
+    id: "b1",
+    category: "bts",
+    categoryLabel: "Behind The Scenes",
+    title: "Pre-Shift Crew Muster & Grooming Audit",
+    subtitle: "ITC Maurya · Floor Supervisors",
+    aspect: "tall",
+    src: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
+    desc: "Detailed briefing on VIP guest profiles, banquet flow timing, uniform inspection, and communications sync."
+  },
+  {
+    id: "b2",
+    category: "bts",
+    categoryLabel: "Behind The Scenes",
+    title: "Two-Way Radio Comms & Zone Deployment",
+    subtitle: "Pragati Maidan · Operations Coordinators",
+    aspect: "wide",
+    src: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80",
+    desc: "Live channel testing and multi-hall perimeter station assignments prior to delegate doors opening."
+  },
+  {
+    id: "b3",
+    category: "bts",
+    categoryLabel: "Behind The Scenes",
+    title: "VIP Green Room & Dressing Suite Prep",
+    subtitle: "The Leela Palace · Hospitality Leads",
+    aspect: "square",
+    src: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80",
+    desc: "Hamper placement, private refreshment staging, and ceremonial escort standby."
+  },
+  {
+    id: "b4",
+    category: "bts",
+    categoryLabel: "Behind The Scenes",
+    title: "Backstage Cue Lineup & Artist Escort",
+    subtitle: "Bharat Mandapam · Show Runners",
+    aspect: "tall",
+    src: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=1200&q=80",
+    desc: "Timing synchronization between stage teleprompters, lighting desks, and guest speakers."
+  },
+  {
+    id: "b5",
+    category: "bts",
+    categoryLabel: "Behind The Scenes",
+    title: "Midnight Banquet Floor Transition",
+    subtitle: "Taj Palace · Overnight Crew",
+    aspect: "wide",
+    src: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=80",
+    desc: "Swift ballroom resetting from cocktail reception to breakfast symposium layout."
+  },
+  {
+    id: "b6",
+    category: "bts",
+    categoryLabel: "Behind The Scenes",
+    title: "Dignitary Motorcade Reception Alignment",
+    subtitle: "Vigyan Bhawan · Protocol Leads",
+    aspect: "square",
+    src: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=1200&q=80",
+    desc: "Porch arrival coordination, umbrella protocols, and direct executive escort to the main plenary."
   }
 ];

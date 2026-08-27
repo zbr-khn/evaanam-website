@@ -6,6 +6,7 @@ import VenueMarquee from "../components/VenueMarquee";
 import SocialSection from "../components/SocialSection";
 import ManpowerCalculator from "../components/ManpowerCalculator";
 import GeometricDivider from "../components/GeometricDivider";
+import HomeImageCarousel from "../components/HomeImageCarousel";
 import { COMPANY_INFO, GALLERY_IMAGES } from "../data/evaanamData";
 
 export default function HomePage() {
@@ -99,7 +100,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. STATS STRIP */}
+      {/* 2. CURATED IMAGE CAROUSEL BELOW HERO */}
+      <HomeImageCarousel />
+
+      {/* 3. STATS STRIP */}
       <StatCounter light={true} />
 
       {/* 3. CORE VALUE PROPOSITION STATEMENT */}
