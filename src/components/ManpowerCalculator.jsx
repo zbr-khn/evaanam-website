@@ -2,7 +2,6 @@ import React, { useState, useMemo } from "react";
 import { Plus, Minus, Check, Trash2, Send, Calculator, Users, Calendar, MapPin, Sparkles, RefreshCw, Copy, CheckCheck } from "lucide-react";
 import { WEDDING_ROLES, CORPORATE_ROLES, COMPANY_INFO } from "../data/evaanamData";
 import { WhatsappIcon } from "./SocialIcons";
-import EVAANAMGeometricMark from "./EVAANAMGeometricMark";
 
 // Combine all roles with default initial selections
 const ALL_AVAILABLE_ROLES = [
@@ -204,10 +203,9 @@ _Requisition configured via EVAANAM Operational Manpower Calculator_`;
   return (
     <div className={`w-full max-w-7xl mx-auto ${className}`}>
       {/* Header */}
-      <div className="text-center max-w-3xl mx-auto mb-14 space-y-4">
-        <EVAANAMGeometricMark size={40} className="mx-auto mb-2" />
+      <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 space-y-3 sm:space-y-4">
         <span className="micro-label">INTERACTIVE ROSTER ESTIMATOR</span>
-        <h2 className="editorial-heading text-4xl sm:text-5xl text-chocolate-950 dark:text-cream-50">
+        <h2 className="editorial-heading text-3xl sm:text-5xl text-chocolate-950 dark:text-cream-50">
           Manpower Floor Calculator
         </h2>
         <p className="text-sm text-chocolate-600 dark:text-night-muted font-light leading-relaxed">
