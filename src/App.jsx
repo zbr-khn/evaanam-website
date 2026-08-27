@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import MobileStickyCTA from "./components/MobileStickyCTA";
+import FloatingActions from "./components/FloatingActions";
 import SignaturePreloader from "./components/SignaturePreloader";
 import useScrollBackground from "./hooks/useScrollBackground";
 
@@ -66,6 +67,9 @@ export default function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
+
+      {/* Floating Actions: Live Progress Back-To-Top + Dedicated WhatsApp Button */}
+      <FloatingActions />
 
       <Footer />
       <MobileStickyCTA />
