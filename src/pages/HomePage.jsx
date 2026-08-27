@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight, ShieldCheck, Users, CalendarCheck, Clock, Award, CheckCircle2, ChevronRight } from "lucide-react";
 import StatCounter from "../components/StatCounter";
 import VenueMarquee from "../components/VenueMarquee";
+import SocialSection from "../components/SocialSection";
 import { COMPANY_INFO, GALLERY_IMAGES } from "../data/evaanamData";
 
 export default function HomePage() {
@@ -316,8 +317,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 8. FINAL CALL TO CONVERSATION */}
-      <section className="py-24 px-6 sm:px-8 lg:px-12 bg-cream-200 border-t border-chocolate-700/10">
+      {/* 8. ANIMATED SOCIAL SECTION */}
+      <SocialSection showHeader={true} />
+
+      {/* 9. FINAL CALL TO CONVERSATION */}
+      <section className="py-24 px-6 sm:px-8 lg:px-12 bg-cream-100 border-t border-chocolate-700/10">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <span className="micro-label">START A CONVERSATION</span>
           <h2 className="editorial-heading text-4xl sm:text-5xl lg:text-6xl text-chocolate-950">
