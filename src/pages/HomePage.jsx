@@ -471,35 +471,25 @@ export default function HomePage() {
       <section className="py-20 bg-transparent border-t border-chocolate-700/10 dark:border-bronze-500/15">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 mb-8 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
           <div>
-            <span className="micro-label text-bronze-600 dark:text-bronze-400">CLIENT ENDORSEMENTS</span>
+            <span className="micro-label text-bronze-600 dark:text-bronze-400">CLIENT ENDORSEMENTS &amp; REVIEWS</span>
             <h2 className="editorial-heading text-3xl sm:text-4xl md:text-5xl text-chocolate-950 dark:text-cream-50 mt-1">
               500+ Events Delivered – <span className="italic text-bronze-600 dark:text-bronze-400">100+ Happy Clients</span>
             </h2>
             <p className="text-xs sm:text-sm text-chocolate-600 dark:text-night-muted font-light mt-1 max-w-xl">
-              From corporate conclaves in Noida to luxury destination weddings in Delhi and Mumbai.
+              Authentic feedback from corporate organizers, luxury wedding planners, and exhibition managers.
             </p>
           </div>
-          <Link
-            to="/testimonials"
-            className="btn-secondary text-xs whitespace-nowrap self-start sm:self-auto"
-          >
-            <span>View All Reviews (5.0 ★)</span>
-          </Link>
+          
+          <div className="flex items-center space-x-2 px-3.5 py-2 bg-cream-100 dark:bg-night-800 border border-chocolate-700/10 dark:border-bronze-500/20 rounded-sm">
+            <span className="text-xs font-mono font-bold text-amber-600 dark:text-amber-400">★★★★★</span>
+            <span className="text-xs font-mono font-semibold text-chocolate-900 dark:text-cream-100">
+              5.0 / 5.0 Rating
+            </span>
+          </div>
         </div>
 
-        {/* Looping Cards Ribbon */}
+        {/* Looping Cards Ribbon Running Right to Left */}
         <TestimonialMarquee />
-
-        {/* View All Testimonials Button */}
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 mt-8 text-center">
-          <Link
-            to="/testimonials"
-            className="btn-primary px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.18em]"
-          >
-            <span>View All Testimonials &amp; Reviews</span>
-            <ArrowUpRight className="w-3.5 h-3.5 ml-2" />
-          </Link>
-        </div>
       </section>
 
       {/* 10. GALLERY TEASER */}

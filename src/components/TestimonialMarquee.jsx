@@ -1,23 +1,42 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Star, Quote, CheckCircle2 } from "lucide-react";
 import { TESTIMONIALS } from "../data/evaanamData";
 
 export default function TestimonialMarquee({ className = "" }) {
   return (
     <div className={`relative w-full overflow-hidden select-none py-6 ${className}`}>
+      {/* Scoped Keyframes for Guaranteed Right-to-Left Continuous Motion */}
+      <style>{`
+        @keyframes evaanamScrollRightToLeft {
+          0% {
+            transform: translateX(0%);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        .evaanam-reviews-track {
+          display: flex;
+          width: max-content;
+          will-change: transform;
+          animation: evaanamScrollRightToLeft 28s linear infinite !important;
+        }
+        .evaanam-reviews-track:hover {
+          animation-play-state: paused !important;
+        }
+      `}</style>
+
       {/* Left and Right Luxury Edge Fades */}
       <div className="absolute top-0 bottom-0 left-0 w-16 sm:w-28 bg-gradient-to-r from-cream-200 dark:from-night-900 to-transparent z-10 pointer-events-none" />
       <div className="absolute top-0 bottom-0 right-0 w-16 sm:w-28 bg-gradient-to-l from-cream-200 dark:from-night-900 to-transparent z-10 pointer-events-none" />
 
-      {/* Continuously Moving Looping Ribbon Track */}
-      <div className="marquee-smooth-track space-x-6 items-stretch">
+      {/* Continuously Moving Looping Ribbon Track (Right to Left) */}
+      <div className="evaanam-reviews-track space-x-6 items-stretch">
         {/* SET 1 */}
         {TESTIMONIALS.map((item, index) => (
-          <Link
-            to="/testimonials"
+          <div
             key={`track-1-${item.id}-${index}`}
-            className="w-[310px] sm:w-[360px] p-6 bg-cream-100 dark:bg-night-800 border border-chocolate-700/15 dark:border-bronze-500/25 rounded-sm shadow-sm hover:border-bronze-500 dark:hover:border-bronze-400 hover:shadow-md transition-all duration-300 flex flex-col justify-between space-y-4 shrink-0 group text-left block"
+            className="w-[310px] sm:w-[360px] p-6 bg-cream-100 dark:bg-night-800 border border-chocolate-700/15 dark:border-bronze-500/25 rounded-sm shadow-sm hover:border-bronze-500 dark:hover:border-bronze-400 hover:shadow-md transition-all duration-300 flex flex-col justify-between space-y-4 shrink-0 group text-left cursor-default"
           >
             {/* Top Bar: 5 Golden Stars & Category Tag */}
             <div className="flex items-center justify-between">
@@ -62,15 +81,14 @@ export default function TestimonialMarquee({ className = "" }) {
                 {item.location}
               </span>
             </div>
-          </Link>
+          </div>
         ))}
 
         {/* SET 2 (Duplicate for Seamless Infinite Loop) */}
         {TESTIMONIALS.map((item, index) => (
-          <Link
-            to="/testimonials"
+          <div
             key={`track-2-${item.id}-${index}`}
-            className="w-[310px] sm:w-[360px] p-6 bg-cream-100 dark:bg-night-800 border border-chocolate-700/15 dark:border-bronze-500/25 rounded-sm shadow-sm hover:border-bronze-500 dark:hover:border-bronze-400 hover:shadow-md transition-all duration-300 flex flex-col justify-between space-y-4 shrink-0 group text-left block"
+            className="w-[310px] sm:w-[360px] p-6 bg-cream-100 dark:bg-night-800 border border-chocolate-700/15 dark:border-bronze-500/25 rounded-sm shadow-sm hover:border-bronze-500 dark:hover:border-bronze-400 hover:shadow-md transition-all duration-300 flex flex-col justify-between space-y-4 shrink-0 group text-left cursor-default"
           >
             {/* Top Bar: 5 Golden Stars & Category Tag */}
             <div className="flex items-center justify-between">
@@ -115,7 +133,7 @@ export default function TestimonialMarquee({ className = "" }) {
                 {item.location}
               </span>
             </div>
-          </Link>
+          </div>
         ))}
       </div>
     </div>
