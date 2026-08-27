@@ -212,39 +212,10 @@ export default function EVAANAMChatbot() {
     ]);
   };
 
+  if (!isOpen) return null;
+
   return (
-    <>
-      {/* Floating Trigger: Meet Eva */}
-      <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end space-y-2 select-none">
-        {!isOpen && (
-          <button
-            onClick={() => setIsOpen(true)}
-            className="group flex items-center space-x-3 bg-brand-green dark:bg-night-800 text-cream-50 dark:text-cream-100 pl-3.5 pr-4 py-2.5 rounded-full border border-bronze-500/40 shadow-xl hover:border-bronze-500 hover:shadow-2xl hover:scale-105 transition-all duration-300 focus:outline-none"
-            aria-label="Chat with Eva · AI Operations Assistant"
-          >
-            {/* Animated Avatar Icon */}
-            <div className="relative w-8 h-8 rounded-full bg-cream-100/10 border border-bronze-400/50 flex items-center justify-center text-amber-300">
-              <Sparkles className="w-4 h-4 animate-pulse" />
-              <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-emerald-500 rounded-full animate-ping" />
-              <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-emerald-500 rounded-full" />
-            </div>
-
-            <div className="flex flex-col items-start pr-0.5 text-left">
-              <span className="text-[11.5px] font-sans font-bold uppercase tracking-wider text-cream-50 flex items-center space-x-1">
-                <span>Meet Eva</span>
-                <span className="text-[9px] px-1.5 py-0.2 bg-bronze-500/30 text-amber-300 rounded font-mono">AI</span>
-              </span>
-              <span className="text-[9px] font-mono text-bronze-300">
-                Online 24/7 · WhatsApp
-              </span>
-            </div>
-          </button>
-        )}
-      </div>
-
-      {/* Floating Interactive Chat Window */}
-      {isOpen && (
-        <div className="fixed bottom-6 right-4 sm:right-6 z-50 w-[92vw] sm:w-[410px] h-[550px] max-h-[85vh] bg-cream-100 dark:bg-night-850 border border-chocolate-700/20 dark:border-bronze-500/30 rounded-lg shadow-2xl flex flex-col overflow-hidden animate-fade-in text-chocolate-900 dark:text-cream-100">
+    <div className="fixed bottom-6 right-4 sm:right-6 z-50 w-[92vw] sm:w-[410px] h-[550px] max-h-[85vh] bg-cream-100 dark:bg-night-850 border border-chocolate-700/20 dark:border-bronze-500/30 rounded-lg shadow-2xl flex flex-col overflow-hidden animate-fade-in text-chocolate-900 dark:text-cream-100">
           
           {/* Header Bar: Eva Branding */}
           <div className="p-4 bg-brand-green dark:bg-night-900 text-cream-50 border-b border-chocolate-700/20 dark:border-bronze-500/20 flex items-center justify-between">
@@ -346,13 +317,11 @@ export default function EVAANAMChatbot() {
             </div>
           )}
 
-          {/* Bottom Security / Trust Footer Note */}
-          <div className="p-3 bg-cream-200/80 dark:bg-night-900 border-t border-chocolate-700/15 dark:border-bronze-500/20 flex items-center justify-center space-x-1.5 text-[10px] font-mono text-chocolate-500 dark:text-bronze-400/80">
-            <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
-            <span>Verified 1-Tap Option Flow · Direct WhatsApp Dispatch</span>
-          </div>
+        {/* Bottom Security / Trust Footer Note */}
+        <div className="p-3 bg-cream-200/80 dark:bg-night-900 border-t border-chocolate-700/15 dark:border-bronze-500/20 flex items-center justify-center space-x-1.5 text-[10px] font-mono text-chocolate-500 dark:text-bronze-400/80">
+          <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
+          <span>Verified 1-Tap Option Flow · Direct WhatsApp Dispatch</span>
         </div>
-      )}
-    </>
+      </div>
   );
 }

@@ -18,7 +18,8 @@ export default function BackToTopButton() {
         setScrollProgress(progress);
       }
 
-      if (scrollTop > 220) {
+      // Display only when user has scrolled down at least 1 entire page (viewport height)
+      if (scrollTop > window.innerHeight * 0.95) {
         setVisible(true);
       } else {
         setVisible(false);
