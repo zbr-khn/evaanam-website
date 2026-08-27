@@ -34,6 +34,13 @@
     transition: background-color 300ms ease-out, color 300ms ease-out;
   }
 
+  /* Hide default browser cursor on desktop devices to enable stylish custom cursor */
+  @media (hover: hover) and (pointer: fine) {
+    *, *::before, *::after {
+      cursor: none !important;
+    }
+  }
+
   /* Editorial Serif Headings */
   h1, h2, h3, .font-serif-luxury {
     font-family: 'Cormorant Garamond', Georgia, serif;
