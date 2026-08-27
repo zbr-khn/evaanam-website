@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 
 /**
  * SignaturePreloader
- * Plays the official preloader animation video in full screen with ultra-sharp fidelity,
- * non-skippable full playback, and seamless exit to the website upon completion.
+ * Plays the official preloader animation video stretched edge-to-edge covering 100% of the screen,
+ * non-skippable, enhanced with high-definition clarity filters, and crossfades to website on finish.
  */
 export default function SignaturePreloader({ onComplete }) {
   const [isExiting, setIsExiting] = useState(false);
@@ -23,11 +23,11 @@ export default function SignaturePreloader({ onComplete }) {
     // Attempt playback immediately on mount
     if (videoRef.current) {
       videoRef.current.play().catch(() => {
-        // Fallback if browser requires user interaction
+        // Handle autoplay policy
       });
     }
 
-    // Safety fallback timer so user is never stuck if video fails silently
+    // Safety fallback timer so user is never stuck if video errors
     const safetyTimer = setTimeout(() => {
       handleFinish();
     }, 15000);
@@ -45,8 +45,19 @@ export default function SignaturePreloader({ onComplete }) {
         isExiting ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
     >
+      {/* SVG Convolution Filter for Edge Sharpening */}
+      <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true">
+        <filter id="video-sharpen">
+          <feConvolveMatrix
+            order="3"
+            preserveAlpha="true"
+            kernelMatrix="0 -0.5 0 -0.5 3 -0.5 0 -0.5 0"
+          />
+        </filter>
+      </svg>
+
       {!videoFailed ? (
-        <div className="relative w-full h-full flex items-center justify-center bg-night-950">
+        <div className="absolute inset-0 w-full h-full overflow-hidden bg-night-950 flex items-center justify-center">
           <video
             ref={videoRef}
             src="./brand/preloader.mp4"
@@ -56,13 +67,16 @@ export default function SignaturePreloader({ onComplete }) {
             preload="auto"
             onEnded={handleFinish}
             onError={() => setVideoFailed(true)}
-            className="w-full h-full object-cover sm:object-contain"
+            className="w-full h-full min-w-full min-h-full object-cover"
             style={{
+              width: "100vw",
+              height: "100vh",
+              objectFit: "cover",
               imageRendering: "-webkit-optimize-contrast",
-              filter: "contrast(1.08) brightness(1.03) saturate(1.06)",
-              transform: "translateZ(0)",
+              filter: "contrast(1.16) brightness(1.04) saturate(1.1) url(#video-sharpen)",
+              transform: "translate3d(0, 0, 0) scale(1.002)",
               backfaceVisibility: "hidden",
-              willChange: "transform",
+              willChange: "transform, filter",
             }}
           />
         </div>
@@ -75,7 +89,7 @@ export default function SignaturePreloader({ onComplete }) {
             className="w-28 h-28 object-contain rounded-sm shadow-2xl animate-pulse-subtle"
             style={{
               imageRendering: "-webkit-optimize-contrast",
-              filter: "contrast(1.08) brightness(1.02)",
+              filter: "contrast(1.15) brightness(1.05)",
             }}
             onError={(e) => {
               e.target.style.display = "none";
