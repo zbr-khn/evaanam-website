@@ -145,3 +145,17 @@
 .marquee-container:hover .marquee-content {
   animation-play-state: paused;
 }
+
+/* Subtle Cloud Pop Float Animation */
+@keyframes subtleFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.animate-cloud-float {
+  animation: subtleFloat 3.5s ease-in-out infinite;
+}
