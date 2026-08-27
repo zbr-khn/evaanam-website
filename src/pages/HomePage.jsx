@@ -6,9 +6,9 @@ import VenueMarquee from "../components/VenueMarquee";
 import SocialSection from "../components/SocialSection";
 import ManpowerCalculator from "../components/ManpowerCalculator";
 import GeometricDivider from "../components/GeometricDivider";
-import HomeImageCarousel from "../components/HomeImageCarousel";
+import ExecutiveCarousel from "../components/ExecutiveCarousel";
 import TestimonialMarquee from "../components/TestimonialMarquee";
-import { COMPANY_INFO, GALLERY_IMAGES, FEATURED_HIGHLIGHTS } from "../data/evaanamData";
+import { COMPANY_INFO, GALLERY_IMAGES } from "../data/evaanamData";
 
 export default function HomePage() {
   // Teaser images for gallery section
@@ -382,117 +382,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 7. EXECUTIVE ENGAGEMENTS & BRAND ACTIVATIONS (USER UPLOADED SPOTLIGHTS) */}
-      <section className="py-20 px-6 sm:px-8 lg:px-12 bg-transparent border-t border-chocolate-700/10 dark:border-bronze-500/15">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
-            <div>
-              <span className="micro-label text-bronze-600 dark:text-bronze-400">FEATURED SPOTLIGHTS</span>
-              <h2 className="editorial-heading text-3xl sm:text-4xl md:text-5xl text-chocolate-950 dark:text-cream-50 mt-1">
-                Executive Engagements &amp; Brand Activations
-              </h2>
-              <p className="text-xs sm:text-sm text-chocolate-600 dark:text-night-muted font-light mt-1 max-w-2xl">
-                On-ground manpower coordination for premier consumer brands, aviation conclaves, and high-profile celebrity keynotes.
-              </p>
-            </div>
-            <Link
-              to="/gallery"
-              className="btn-secondary text-xs whitespace-nowrap self-start sm:self-auto"
-            >
-              <span>Explore Portfolio</span>
-            </Link>
-          </div>
 
-          {/* DESKTOP VIEW (UNTOUCHED 5-COLUMN GRID) */}
-          <div className="hidden lg:grid lg:grid-cols-5 gap-5">
-            {FEATURED_HIGHLIGHTS.map((item) => (
-              <div
-                key={item.id}
-                className="group relative overflow-hidden bg-night-950 border border-chocolate-700/15 dark:border-bronze-500/20 rounded-sm aspect-[4/5] shadow-md flex flex-col justify-end p-5"
-              >
-                {/* Image */}
-                <img
-                  src={item.src}
-                  alt={item.title}
-                  loading="lazy"
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 opacity-90 group-hover:opacity-100"
-                />
-
-                {/* Dark Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-night-950 via-night-950/40 to-transparent opacity-85 group-hover:opacity-95 transition-opacity" />
-
-                {/* Micro Tag Top Left */}
-                <div className="absolute top-4 left-4 z-10">
-                  <span className="text-[9px] uppercase font-mono tracking-widest font-semibold px-2 py-0.5 bg-night-950/90 text-bronze-300 border border-bronze-500/30 rounded-sm">
-                    {item.tag}
-                  </span>
-                </div>
-
-                {/* Bottom Details */}
-                <div className="relative z-10 space-y-1 transform translate-y-1 group-hover:translate-y-0 transition-transform">
-                  <span className="text-[10px] uppercase font-mono text-bronze-400 block font-medium">
-                    {item.client}
-                  </span>
-                  <h4 className="font-serif text-base font-medium text-cream-50 leading-snug">
-                    {item.title}
-                  </h4>
-                  <p className="text-[11px] text-cream-300/80 font-sans line-clamp-2 mt-1">
-                    {item.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* MOBILE-ONLY TOUCH-SWIPE CAROUSEL (SMARTPHONES) */}
-          <div className="lg:hidden">
-            <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-6 px-6 scrollbar-none">
-              {FEATURED_HIGHLIGHTS.map((item, idx) => (
-                <div
-                  key={item.id}
-                  className="group relative overflow-hidden bg-night-950 border border-chocolate-700/15 dark:border-bronze-500/20 rounded-sm w-[82vw] max-w-[320px] shrink-0 snap-center aspect-[4/5] shadow-lg flex flex-col justify-end p-5"
-                >
-                  <img
-                    src={item.src}
-                    alt={item.title}
-                    loading="lazy"
-                    className="absolute inset-0 w-full h-full object-cover opacity-90"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-night-950 via-night-950/50 to-transparent opacity-90" />
-
-                  {/* Micro Badge */}
-                  <div className="absolute top-4 left-4 z-10 flex items-center space-x-2">
-                    <span className="text-[9px] uppercase font-mono tracking-widest font-semibold px-2.5 py-1 bg-night-950/90 text-bronze-300 border border-bronze-500/30 rounded-sm">
-                      {item.tag}
-                    </span>
-                    <span className="text-[9px] font-mono text-cream-300/60 bg-night-900/80 px-1.5 py-0.5 rounded">
-                      0{idx + 1}/05
-                    </span>
-                  </div>
-
-                  <div className="relative z-10 space-y-1.5">
-                    <span className="text-[10px] uppercase font-mono text-bronze-400 block font-semibold">
-                      {item.client}
-                    </span>
-                    <h4 className="font-serif text-lg font-medium text-cream-50 leading-snug">
-                      {item.title}
-                    </h4>
-                    <p className="text-xs text-cream-200/85 font-sans leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Mobile Touch Swipe Indicator */}
-            <div className="mt-3 flex items-center justify-between text-[11px] font-mono text-chocolate-500 dark:text-night-dim">
-              <span>← Swipe for next event</span>
-              <span>5 Portfolio Highlights</span>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* 8. VENUE TICKER PREVIEW */}
       <section className="py-16 bg-transparent">
@@ -540,8 +430,8 @@ export default function HomePage() {
         <TestimonialMarquee />
       </section>
 
-      {/* 10. ON-FLOOR GALLERY CAROUSEL (WEDDINGS & CORPORATE MIX) */}
-      <HomeImageCarousel />
+      {/* 10. EXECUTIVE ENGAGEMENTS & BRAND ACTIVATIONS ANIMATED CAROUSEL */}
+      <ExecutiveCarousel />
 
       {/* 9. ANIMATED SOCIAL SECTION */}
       <SocialSection showHeader={true} />
