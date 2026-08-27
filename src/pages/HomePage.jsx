@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, ChevronRight } from "lucide-react";
+import { ArrowUpRight, ChevronRight, Sparkles, Check, Crown, Briefcase } from "lucide-react";
 import StatCounter from "../components/StatCounter";
 import VenueMarquee from "../components/VenueMarquee";
 import SocialSection from "../components/SocialSection";
@@ -124,7 +124,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. TWO PRIMARY SERVICE VERTICALS */}
+      {/* 4. TWO PRIMARY SERVICE VERTICALS (ANIMATED LUXURY CARDS WITH POP-UPS) */}
       <section className="py-24 px-6 sm:px-8 lg:px-12 bg-transparent border-t border-chocolate-700/10 dark:border-bronze-500/15">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
@@ -143,80 +143,202 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-            {/* Service Box 1: Wedding Hospitality */}
-            <div className="card-luxury p-8 sm:p-10 flex flex-col justify-between group hover:border-bronze-500/50 transition-all dark:bg-night-800 dark:border-bronze-500/20">
-              <div className="space-y-4">
+            {/* ======================================================== */}
+            {/* SERVICE CARD 1: WEDDING HOSPITALITY                      */}
+            {/* ======================================================== */}
+            <div className="group relative rounded-sm p-8 sm:p-10 flex flex-col justify-between overflow-hidden bg-cream-100/90 dark:bg-night-800/90 border border-chocolate-700/15 dark:border-bronze-500/20 shadow-md hover:shadow-2xl hover:-translate-y-2.5 transition-all duration-500 ease-out hover:border-amber-500/60 dark:hover:border-bronze-400/80">
+              
+              {/* Background Atmospheric Photo with Zoom Reveal */}
+              <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-0 group-hover:opacity-20 dark:group-hover:opacity-15 transition-opacity duration-700">
+                <img
+                  src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80"
+                  alt="Luxury Wedding Hospitality"
+                  className="w-full h-full object-cover scale-100 group-hover:scale-110 transition-transform duration-1000 ease-out"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-cream-100 via-cream-100/80 to-transparent dark:from-night-800 dark:via-night-800/80" />
+              </div>
+
+              {/* Shimmer Light Beam */}
+              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-amber-400/20 dark:via-bronze-400/20 to-transparent pointer-events-none" />
+
+              {/* Top Golden Hairline Glow */}
+              <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-transparent group-hover:bg-gradient-to-r group-hover:from-amber-400 group-hover:via-bronze-500 group-hover:to-amber-400 transition-all duration-500" />
+
+              {/* Content Container */}
+              <div className="space-y-6 relative z-10">
+                {/* Header Row: Label & Pop-Up Floating Role Count Badge */}
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs font-semibold text-bronze-600 dark:text-bronze-400">01 / WEDDING</span>
-                  <span className="text-[11px] uppercase tracking-wider text-chocolate-500 dark:text-night-muted font-sans">14 Specialist Roles</span>
+                  <div className="flex items-center space-x-2">
+                    <span className="w-2 h-2 rounded-full bg-amber-500 inline-block group-hover:animate-ping" />
+                    <span className="font-mono text-xs font-semibold text-bronze-600 dark:text-bronze-400">
+                      01 / WEDDING HOSPITALITY
+                    </span>
+                  </div>
+
+                  {/* Pop-Up Interactive Floating Badge */}
+                  <div className="flex items-center space-x-1.5 px-3 py-1 bg-amber-500/10 dark:bg-amber-400/10 border border-amber-500/30 text-amber-800 dark:text-amber-300 rounded-full text-[10.5px] font-mono font-semibold transform group-hover:scale-105 group-hover:-translate-y-1 transition-all duration-300 shadow-sm">
+                    <Crown className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
+                    <span>14 Specialist Roles</span>
+                  </div>
                 </div>
-                <h3 className="font-serif text-3xl text-chocolate-950 dark:text-cream-50 font-medium">
-                  Wedding Hospitality
-                </h3>
-                <p className="text-sm text-chocolate-600 dark:text-bronze-300/90 font-serif italic">
-                  Five-star floors, multi-day functions, VIP coverage.
-                </p>
-                <p className="text-xs text-chocolate-600/90 dark:text-night-muted font-light leading-relaxed">
+
+                {/* Title & Subtitle */}
+                <div>
+                  <h3 className="font-serif text-3xl sm:text-4xl text-chocolate-950 dark:text-cream-50 font-medium group-hover:text-amber-700 dark:group-hover:text-bronze-350 transition-colors duration-300">
+                    Wedding Hospitality
+                  </h3>
+                  <p className="text-sm text-chocolate-600 dark:text-bronze-300/90 font-serif italic mt-1">
+                    Five-star floors, multi-day functions, VIP coverage.
+                  </p>
+                </div>
+
+                <p className="text-xs sm:text-sm text-chocolate-600/90 dark:text-night-muted font-light leading-relaxed">
                   From VIP personal shadows and traditional welcome hostesses to round-the-clock helpdesks and floor runners, our wedding teams blend warmth with operational precision.
                 </p>
-                <div className="flex flex-wrap gap-2 pt-2">
-                  {["VIP Shadows", "Welcome Hostesses", "Helpdesk Crew", "Runners", "Stewards"].map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-[11px] px-2.5 py-1 bg-cream-200 dark:bg-night-850 text-chocolate-700 dark:text-cream-200 border border-chocolate-700/10 dark:border-bronze-500/20"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+
+                {/* Interactive Animated Role Pills */}
+                <div className="space-y-2 pt-1">
+                  <span className="text-[10px] uppercase font-mono tracking-widest text-chocolate-400 dark:text-night-dim block">
+                    Featured Floor Roles
+                  </span>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      { name: "VIP Shadows", count: "Personal VIP" },
+                      { name: "Welcome Hostesses", count: "Groomed" },
+                      { name: "Helpdesk Crew", count: "24/7 Desk" },
+                      { name: "Floor Runners", count: "Agile" },
+                      { name: "Banquet Stewards", count: "Silver Service" },
+                    ].map((tag) => (
+                      <span
+                        key={tag.name}
+                        className="text-[11px] px-3 py-1.5 bg-cream-200 dark:bg-night-850 text-chocolate-800 dark:text-cream-100 border border-chocolate-700/10 dark:border-bronze-500/20 rounded-sm font-medium transition-all duration-300 group-hover:border-amber-500/40 group-hover:bg-cream-50 dark:group-hover:bg-night-750 group-hover:shadow-sm"
+                      >
+                        {tag.name}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Pop-Up Highlight Strip on Hover */}
+                <div className="p-3.5 bg-amber-500/5 dark:bg-night-750/90 border border-amber-500/20 rounded text-xs font-sans text-chocolate-700 dark:text-cream-200 flex items-center justify-between opacity-90 group-hover:opacity-100 group-hover:border-amber-500/50 transition-all duration-300">
+                  <div className="flex items-center space-x-2 text-amber-700 dark:text-amber-300 font-semibold text-[11px]">
+                    <Check className="w-3.5 h-3.5 text-amber-600" />
+                    <span>Groomed · Verified · Pre-Shift Briefed</span>
+                  </div>
+                  <span className="text-[10px] uppercase font-mono tracking-wider text-amber-800 dark:text-amber-400">
+                    SLA Guaranteed
+                  </span>
                 </div>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-chocolate-700/10 dark:border-night-700">
+              {/* Bottom Animated CTA Button */}
+              <div className="mt-8 pt-6 border-t border-chocolate-700/10 dark:border-night-700 relative z-10">
                 <Link
                   to="/services"
-                  className="inline-flex items-center space-x-2 text-xs uppercase tracking-[0.18em] font-semibold text-chocolate-900 dark:text-cream-100 group-hover:text-bronze-600 dark:group-hover:text-bronze-400 transition-colors"
+                  className="w-full py-3.5 px-5 bg-cream-200/90 dark:bg-night-750 border border-chocolate-700/15 dark:border-bronze-500/25 rounded-sm flex items-center justify-between text-xs uppercase tracking-[0.18em] font-semibold text-chocolate-900 dark:text-cream-50 group-hover:bg-brand-green dark:group-hover:bg-bronze-500 group-hover:text-cream-50 dark:group-hover:text-night-950 group-hover:border-transparent transition-all duration-300 shadow-sm"
                 >
-                  <span>Explore Wedding Crew Roles</span>
-                  <ChevronRight className="w-4 h-4 text-bronze-500 group-hover:translate-x-1 transition-transform" />
+                  <span>Explore 14 Wedding Roles</span>
+                  <ChevronRight className="w-4 h-4 transform group-hover:translate-x-1.5 transition-transform duration-300" />
                 </Link>
               </div>
             </div>
 
-            {/* Service Box 2: Corporate & Expos */}
-            <div className="card-luxury p-8 sm:p-10 flex flex-col justify-between group hover:border-bronze-500/50 transition-all dark:bg-night-800 dark:border-bronze-500/20">
-              <div className="space-y-4">
+            {/* ======================================================== */}
+            {/* SERVICE CARD 2: CORPORATE & EXPOS                        */}
+            {/* ======================================================== */}
+            <div className="group relative rounded-sm p-8 sm:p-10 flex flex-col justify-between overflow-hidden bg-cream-100/90 dark:bg-night-800/90 border border-chocolate-700/15 dark:border-bronze-500/20 shadow-md hover:shadow-2xl hover:-translate-y-2.5 transition-all duration-500 ease-out hover:border-emerald-500/60 dark:hover:border-emerald-400/80">
+              
+              {/* Background Atmospheric Photo with Zoom Reveal */}
+              <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-0 group-hover:opacity-20 dark:group-hover:opacity-15 transition-opacity duration-700">
+                <img
+                  src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80"
+                  alt="Corporate Summits & Expos"
+                  className="w-full h-full object-cover scale-100 group-hover:scale-110 transition-transform duration-1000 ease-out"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-cream-100 via-cream-100/80 to-transparent dark:from-night-800 dark:via-night-800/80" />
+              </div>
+
+              {/* Shimmer Light Beam */}
+              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-emerald-400/20 dark:via-emerald-400/20 to-transparent pointer-events-none" />
+
+              {/* Top Green Hairline Glow */}
+              <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-transparent group-hover:bg-gradient-to-r group-hover:from-emerald-400 group-hover:via-teal-500 group-hover:to-emerald-400 transition-all duration-500" />
+
+              {/* Content Container */}
+              <div className="space-y-6 relative z-10">
+                {/* Header Row: Label & Pop-Up Floating Role Count Badge */}
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs font-semibold text-bronze-600 dark:text-bronze-400">02 / CORPORATE</span>
-                  <span className="text-[11px] uppercase tracking-wider text-chocolate-500 dark:text-night-muted font-sans">13 Specialist Roles</span>
+                  <div className="flex items-center space-x-2">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block group-hover:animate-ping" />
+                    <span className="font-mono text-xs font-semibold text-bronze-600 dark:text-bronze-400">
+                      02 / CORPORATE &amp; EXPOS
+                    </span>
+                  </div>
+
+                  {/* Pop-Up Interactive Floating Badge */}
+                  <div className="flex items-center space-x-1.5 px-3 py-1 bg-emerald-500/10 dark:bg-emerald-400/10 border border-emerald-500/30 text-emerald-800 dark:text-emerald-300 rounded-full text-[10.5px] font-mono font-semibold transform group-hover:scale-105 group-hover:-translate-y-1 transition-all duration-300 shadow-sm">
+                    <Briefcase className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+                    <span>13 Specialist Roles</span>
+                  </div>
                 </div>
-                <h3 className="font-serif text-3xl text-chocolate-950 dark:text-cream-50 font-medium">
-                  Corporate &amp; Expos
-                </h3>
-                <p className="text-sm text-chocolate-600 dark:text-bronze-300/90 font-serif italic">
-                  Expos, activations, launches and conventions.
-                </p>
-                <p className="text-xs text-chocolate-600/90 dark:text-night-muted font-light leading-relaxed">
+
+                {/* Title & Subtitle */}
+                <div>
+                  <h3 className="font-serif text-3xl sm:text-4xl text-chocolate-950 dark:text-cream-50 font-medium group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors duration-300">
+                    Corporate &amp; Expos
+                  </h3>
+                  <p className="text-sm text-chocolate-600 dark:text-bronze-300/90 font-serif italic mt-1">
+                    Expos, activations, launches and conventions.
+                  </p>
+                </div>
+
+                <p className="text-xs sm:text-sm text-chocolate-600/90 dark:text-night-muted font-light leading-relaxed">
                   High-throughput badge registration, C-suite lounge hostesses, stage show runners, brand ambassadors, and technical production supervisors for premier business events.
                 </p>
-                <div className="flex flex-wrap gap-2 pt-2">
-                  {["Registration Desks", "Show Runners", "Brand Ambassadors", "Stall Crew", "Supervisors"].map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-[11px] px-2.5 py-1 bg-cream-200 dark:bg-night-850 text-chocolate-700 dark:text-cream-200 border border-chocolate-700/10 dark:border-bronze-500/20"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+
+                {/* Interactive Animated Role Pills */}
+                <div className="space-y-2 pt-1">
+                  <span className="text-[10px] uppercase font-mono tracking-widest text-chocolate-400 dark:text-night-dim block">
+                    Featured Summit Roles
+                  </span>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      { name: "Registration Desks", count: "QR Check-in" },
+                      { name: "Show Runners", count: "Stage & AV" },
+                      { name: "Brand Ambassadors", count: "Bilingual" },
+                      { name: "Stall Crew", count: "Lead Capture" },
+                      { name: "Floor Supervisors", count: "Multi-Hall" },
+                    ].map((tag) => (
+                      <span
+                        key={tag.name}
+                        className="text-[11px] px-3 py-1.5 bg-cream-200 dark:bg-night-850 text-chocolate-800 dark:text-cream-100 border border-chocolate-700/10 dark:border-bronze-500/20 rounded-sm font-medium transition-all duration-300 group-hover:border-emerald-500/40 group-hover:bg-cream-50 dark:group-hover:bg-night-750 group-hover:shadow-sm"
+                      >
+                        {tag.name}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Pop-Up Highlight Strip on Hover */}
+                <div className="p-3.5 bg-emerald-500/5 dark:bg-night-750/90 border border-emerald-500/20 rounded text-xs font-sans text-chocolate-700 dark:text-cream-200 flex items-center justify-between opacity-90 group-hover:opacity-100 group-hover:border-emerald-500/50 transition-all duration-300">
+                  <div className="flex items-center space-x-2 text-emerald-700 dark:text-emerald-300 font-semibold text-[11px]">
+                    <Check className="w-3.5 h-3.5 text-emerald-600" />
+                    <span>Tech-App Savvy · Articulate · Rapid Roster</span>
+                  </div>
+                  <span className="text-[10px] uppercase font-mono tracking-wider text-emerald-800 dark:text-emerald-400">
+                    High Throughput
+                  </span>
                 </div>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-chocolate-700/10 dark:border-night-700">
+              {/* Bottom Animated CTA Button */}
+              <div className="mt-8 pt-6 border-t border-chocolate-700/10 dark:border-night-700 relative z-10">
                 <Link
                   to="/services"
-                  className="inline-flex items-center space-x-2 text-xs uppercase tracking-[0.18em] font-semibold text-chocolate-900 dark:text-cream-100 group-hover:text-bronze-600 dark:group-hover:text-bronze-400 transition-colors"
+                  className="w-full py-3.5 px-5 bg-cream-200/90 dark:bg-night-750 border border-chocolate-700/15 dark:border-bronze-500/25 rounded-sm flex items-center justify-between text-xs uppercase tracking-[0.18em] font-semibold text-chocolate-900 dark:text-cream-50 group-hover:bg-brand-green dark:group-hover:bg-bronze-500 group-hover:text-cream-50 dark:group-hover:text-night-950 group-hover:border-transparent transition-all duration-300 shadow-sm"
                 >
-                  <span>Explore Corporate Crew Roles</span>
-                  <ChevronRight className="w-4 h-4 text-bronze-500 group-hover:translate-x-1 transition-transform" />
+                  <span>Explore 13 Corporate Roles</span>
+                  <ChevronRight className="w-4 h-4 transform group-hover:translate-x-1.5 transition-transform duration-300" />
                 </Link>
               </div>
             </div>
