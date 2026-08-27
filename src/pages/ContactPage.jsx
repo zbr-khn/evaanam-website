@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin, CheckCircle2, ArrowUpRight, Clock, ShieldCheck, Send, Loader2, Calculator, FileText, Calendar, MessageSquare, Compass } from "lucide-react";
+import { Phone, Mail, MapPin, CheckCircle2, ArrowUpRight, Clock, ShieldCheck, Send, Loader2, Calculator, FileText, Calendar, MessageSquare, Compass, Sparkles, Bot } from "lucide-react";
 import { COMPANY_INFO } from "../data/evaanamData";
 import FollowTheFloor from "../components/FollowTheFloor";
 import ManpowerCalculator from "../components/ManpowerCalculator";
@@ -282,6 +282,33 @@ _Submitted via EVAANAM Website Contact Form_`;
                         <ArrowUpRight className="w-3 h-3" />
                       </Link>
                     </div>
+                  </div>
+
+                  {/* Meet Eva AI Assistant Card */}
+                  <div className="p-4 bg-gradient-to-br from-brand-green/90 to-night-900 border border-bronze-500/30 rounded text-cream-100 space-y-3">
+                    <div className="flex items-center space-x-2.5">
+                      <div className="w-8 h-8 rounded-full bg-bronze-500/20 border border-bronze-400/40 flex items-center justify-center text-amber-300">
+                        <Sparkles className="w-4 h-4" />
+                      </div>
+                      <div>
+                        <h4 className="text-xs font-bold text-cream-50 flex items-center space-x-1">
+                          <span>Meet Eva</span>
+                          <span className="text-[8px] font-mono px-1 py-0.2 bg-amber-400/20 text-amber-300 rounded">AI</span>
+                        </h4>
+                        <p className="text-[9px] font-mono text-emerald-400">● 24/7 Operations Concierge</p>
+                      </div>
+                    </div>
+                    <p className="text-[11px] text-cream-200/80 font-light leading-relaxed">
+                      Need quick headcount calculations or venue guidance? Chat with Eva for instant WhatsApp requisitions.
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => window.dispatchEvent(new CustomEvent("open-eva-chat"))}
+                      className="w-full py-2 px-3 bg-amber-500 hover:bg-amber-400 text-night-950 rounded text-xs font-bold uppercase tracking-wider flex items-center justify-center space-x-1.5 transition-colors shadow-sm"
+                    >
+                      <MessageSquare className="w-3.5 h-3.5" />
+                      <span>Chat with Eva</span>
+                    </button>
                   </div>
 
                   {/* Operations Guarantees */}
