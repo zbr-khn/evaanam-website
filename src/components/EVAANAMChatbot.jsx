@@ -1,17 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
-import { MessageSquare, X, Send, Bot, User, Sparkles, ArrowUpRight, Phone, CheckCircle2, ChevronRight, RefreshCw, Heart } from "lucide-react";
+import { MessageSquare, X, Bot, User, Sparkles, ArrowUpRight, Phone, CheckCircle2, ChevronRight, RefreshCw, ShieldCheck } from "lucide-react";
 import { COMPANY_INFO } from "../data/evaanamData";
 import EVAANAMGeometricMark from "./EVAANAMGeometricMark";
 
 /**
  * Eva · AI Operations Assistant
+ * Guided option-driven assistant without free-text vulnerabilities.
  * Guides clients through event scope, manpower headcounts, venue selection,
  * or direct 1-on-1 consultation, and dispatches directly to WhatsApp & email.
  */
 export default function EVAANAMChatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([]);
-  const [inputText, setInputText] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [chatData, setChatData] = useState({
     eventType: "",
@@ -35,7 +35,7 @@ export default function EVAANAMChatbot() {
         {
           id: 1,
           sender: "bot",
-          text: "Hi there! I'm Eva, your AI Operations Assistant at EVAANAM. 👋 I can help you estimate manpower rosters, check venue feasibility, or connect you directly with our dispatch team. What are you planning?",
+          text: "Hi there! I'm Eva, your AI Operations Assistant at EVAANAM. 👋 I can help you estimate manpower rosters, check venue feasibility, or connect you directly with our dispatch team. Please select an option below:",
           options: [
             { label: "💍 Luxury Wedding Hospitality", value: "Wedding Hospitality" },
             { label: "🏢 Corporate Summit & Expo", value: "Corporate & Expos" },
@@ -52,7 +52,7 @@ export default function EVAANAMChatbot() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isTyping, isOpen]);
 
-  const addBotResponse = (text, options = [], delay = 550) => {
+  const addBotResponse = (text, options = [], delay = 500) => {
     setIsTyping(true);
     setTimeout(() => {
       setIsTyping(false);
@@ -69,7 +69,7 @@ export default function EVAANAMChatbot() {
   };
 
   const handleOptionSelect = (option) => {
-    // Add user message
+    // Add user selection message
     const userMsg = { id: Date.now(), sender: "user", text: option.label || option.value };
     setMessages((prev) => [...prev, userMsg]);
 
@@ -83,7 +83,7 @@ export default function EVAANAMChatbot() {
         [
           { label: "⚡ Connect on WhatsApp Dispatch", value: "LAUNCH_WHATSAPP" },
           { label: "📞 Call Operations Desk Directly", value: "CALL_OPS" },
-          { label: "🔄 Ask Eva Something Else", value: "RESET_CHAT" },
+          { label: "🔄 Start Over with Eva", value: "RESET_CHAT" },
         ]
       );
       return;
@@ -151,46 +151,6 @@ export default function EVAANAMChatbot() {
           { label: "⚡ Send Requisition to WhatsApp Dispatch", value: "LAUNCH_WHATSAPP" },
           { label: "📞 Speak with Operations Lead", value: "CALL_OPS" },
           { label: "🔄 Start New Requisition with Eva", value: "RESET_CHAT" },
-        ]
-      );
-    }
-  };
-
-  const handleCustomSend = (e) => {
-    e.preventDefault();
-    if (!inputText.trim()) return;
-
-    const text = inputText.trim();
-    setInputText("");
-
-    // Add user message
-    setMessages((prev) => [...prev, { id: Date.now(), sender: "user", text }]);
-
-    // Smart response based on text keywords
-    const lower = text.toLowerCase();
-    if (lower.includes("price") || lower.includes("cost") || lower.includes("rate") || lower.includes("quotation")) {
-      addBotResponse(
-        "Our manpower rates depend on deployment tier (Stewards, VIP Shadows, Bouncers, Stage Runners). Would you like our operations desk to generate a customized quote for you on WhatsApp?",
-        [
-          { label: "⚡ Get Instant Quote on WhatsApp", value: "LAUNCH_WHATSAPP" },
-          { label: "💬 Go Straight to Consultation", value: "Direct Consultation" },
-        ]
-      );
-    } else if (lower.includes("urgent") || lower.includes("today") || lower.includes("tomorrow") || lower.includes("now")) {
-      addBotResponse(
-        "For urgent / 24-hour turnaround deployments, our fast-response dispatch coordinators in Delhi NCR can mobilize immediately.",
-        [
-          { label: "⚡ Dispatch Urgent WhatsApp Request", value: "LAUNCH_WHATSAPP" },
-          { label: "📞 Call +91 93100 39929 Directly", value: "CALL_OPS" },
-        ]
-      );
-    } else {
-      addBotResponse(
-        `Thanks for sharing! Would you like me to forward these details to our operations desk on WhatsApp so they can prepare your staff roster?`,
-        [
-          { label: "⚡ Forward to WhatsApp Dispatch", value: "LAUNCH_WHATSAPP" },
-          { label: "💬 Speak with Operations Coordinator", value: "Direct Consultation" },
-          { label: "🔄 Ask Eva Another Question", value: "RESET_CHAT" },
         ]
       );
     }
@@ -284,7 +244,7 @@ export default function EVAANAMChatbot() {
 
       {/* Floating Interactive Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-6 right-4 sm:right-6 z-50 w-[92vw] sm:w-[410px] h-[570px] max-h-[86vh] bg-cream-100 dark:bg-night-850 border border-chocolate-700/20 dark:border-bronze-500/30 rounded-lg shadow-2xl flex flex-col overflow-hidden animate-fade-in text-chocolate-900 dark:text-cream-100">
+        <div className="fixed bottom-6 right-4 sm:right-6 z-50 w-[92vw] sm:w-[410px] h-[550px] max-h-[85vh] bg-cream-100 dark:bg-night-850 border border-chocolate-700/20 dark:border-bronze-500/30 rounded-lg shadow-2xl flex flex-col overflow-hidden animate-fade-in text-chocolate-900 dark:text-cream-100">
           
           {/* Header Bar: Eva Branding */}
           <div className="p-4 bg-brand-green dark:bg-night-900 text-cream-50 border-b border-chocolate-700/20 dark:border-bronze-500/20 flex items-center justify-between">
@@ -301,7 +261,7 @@ export default function EVAANAMChatbot() {
                   </span>
                 </h3>
                 <p className="text-[10px] font-mono text-bronze-300 flex items-center space-x-1">
-                  <span>24/7 Operations Concierge · WhatsApp Dispatch</span>
+                  <span>24/7 Operations Concierge · Verified Requisitions</span>
                 </p>
               </div>
             </div>
@@ -348,12 +308,12 @@ export default function EVAANAMChatbot() {
                       <button
                         key={idx}
                         onClick={() => handleOptionSelect(opt)}
-                        className={`text-left text-[11.5px] px-3.5 py-2 rounded transition-all duration-200 border flex items-center justify-between ${
+                        className={`text-left text-[11.5px] px-3.5 py-2.5 rounded transition-all duration-200 border flex items-center justify-between shadow-sm ${
                           opt.value.includes("WHATSAPP")
-                            ? "bg-emerald-600 hover:bg-emerald-700 text-white font-semibold border-emerald-500 shadow-sm"
+                            ? "bg-emerald-600 hover:bg-emerald-700 text-white font-bold border-emerald-500 shadow-md"
                             : opt.value.includes("CALL")
-                            ? "bg-amber-600 hover:bg-amber-700 text-white font-semibold border-amber-500 shadow-sm"
-                            : "bg-cream-100 dark:bg-night-750 hover:bg-cream-300 dark:hover:bg-night-700 border-chocolate-700/15 dark:border-bronze-500/20 text-chocolate-800 dark:text-cream-200 hover:text-chocolate-950 dark:hover:text-cream-50"
+                            ? "bg-amber-600 hover:bg-amber-700 text-white font-bold border-amber-500 shadow-md"
+                            : "bg-cream-100 dark:bg-night-750 hover:bg-cream-300 dark:hover:bg-night-700 border-chocolate-700/15 dark:border-bronze-500/20 text-chocolate-900 dark:text-cream-100 hover:text-chocolate-950 dark:hover:text-cream-50 font-medium"
                         }`}
                       >
                         <span>{opt.label}</span>
@@ -367,7 +327,7 @@ export default function EVAANAMChatbot() {
 
             {isTyping && (
               <div className="flex items-center space-x-1.5 p-3 bg-cream-200/90 dark:bg-night-800 border border-chocolate-700/10 dark:border-bronze-500/20 rounded-sm w-fit">
-                <span className="text-[10px] font-mono text-bronze-500 mr-1 font-semibold">Eva is thinking</span>
+                <span className="text-[10px] font-mono text-bronze-500 mr-1 font-semibold">Eva is preparing</span>
                 <span className="w-1.5 h-1.5 rounded-full bg-bronze-500 animate-bounce" />
                 <span className="w-1.5 h-1.5 rounded-full bg-bronze-500 animate-bounce [animation-delay:0.2s]" />
                 <span className="w-1.5 h-1.5 rounded-full bg-bronze-500 animate-bounce [animation-delay:0.4s]" />
@@ -379,33 +339,18 @@ export default function EVAANAMChatbot() {
 
           {/* Quick Summary Pill Bar */}
           {(chatData.eventType || chatData.headcount || chatData.venueLocation) && (
-            <div className="px-3 py-1.5 bg-cream-200 dark:bg-night-800 border-t border-chocolate-700/10 dark:border-bronze-500/15 text-[10px] font-mono text-chocolate-600 dark:text-night-dim flex items-center justify-between overflow-x-auto whitespace-nowrap">
-              <span>Scope: {chatData.eventType || "General"}</span>
+            <div className="px-3.5 py-2 bg-cream-200 dark:bg-night-800 border-t border-chocolate-700/10 dark:border-bronze-500/15 text-[10px] font-mono text-chocolate-700 dark:text-cream-200 flex items-center justify-between overflow-x-auto whitespace-nowrap">
+              <span>Requisition: {chatData.eventType || "General"}</span>
               {chatData.headcount && <span>• {chatData.headcount}</span>}
               {chatData.venueLocation && <span>• {chatData.venueLocation}</span>}
             </div>
           )}
 
-          {/* Bottom Free-Text Input Bar */}
-          <form
-            onSubmit={handleCustomSend}
-            className="p-3 bg-cream-100 dark:bg-night-850 border-t border-chocolate-700/15 dark:border-bronze-500/20 flex items-center space-x-2"
-          >
-            <input
-              type="text"
-              value={inputText}
-              onChange={(e) => setInputText(e.target.value)}
-              placeholder="Ask Eva anything about manpower..."
-              className="flex-1 px-3.5 py-2 text-xs rounded bg-cream-200 dark:bg-night-800 border border-chocolate-700/15 dark:border-bronze-500/20 text-chocolate-950 dark:text-cream-50 placeholder:text-chocolate-400 dark:placeholder:text-night-dim focus:outline-none focus:border-bronze-500"
-            />
-            <button
-              type="submit"
-              className="p-2 bg-brand-green dark:bg-bronze-500 text-cream-50 dark:text-night-950 rounded hover:bg-bronze-500 dark:hover:bg-bronze-400 transition-colors focus:outline-none"
-              aria-label="Send message to Eva"
-            >
-              <Send className="w-4 h-4" />
-            </button>
-          </form>
+          {/* Bottom Security / Trust Footer Note */}
+          <div className="p-3 bg-cream-200/80 dark:bg-night-900 border-t border-chocolate-700/15 dark:border-bronze-500/20 flex items-center justify-center space-x-1.5 text-[10px] font-mono text-chocolate-500 dark:text-bronze-400/80">
+            <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
+            <span>Verified 1-Tap Option Flow · Direct WhatsApp Dispatch</span>
+          </div>
         </div>
       )}
     </>
