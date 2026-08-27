@@ -444,96 +444,96 @@ export const GALLERY_IMAGES = [
     desc: "Pre-event briefing, hall entrance access control, and delegate crowd circulation."
   },
 
-  // 9 Behind The Scenes & Operational Deployments (User Uploaded)
+  // 9 Behind The Scenes & Operational Deployments (No Captions)
   {
     id: "b1",
     category: "bts",
     categoryLabel: "Behind The Scenes",
-    title: "Pre-Shift Crew Muster & Floor Deployment",
-    subtitle: "ITC Maurya · Operations Supervisors",
+    title: "",
+    subtitle: "",
     aspect: "tall",
     src: "./images/gallery-bts/Screenshot 2026-08-28 014230.png",
-    desc: "Detailed briefing on VIP guest profiles, banquet flow timing, uniform inspection, and communications sync."
+    desc: ""
   },
   {
     id: "b2",
     category: "bts",
     categoryLabel: "Behind The Scenes",
-    title: "Two-Way Radio Comms & Channel Alignment",
-    subtitle: "Pragati Maidan (IECC) · Floor Leads",
+    title: "",
+    subtitle: "",
     aspect: "wide",
     src: "./images/gallery-bts/Screenshot 2026-08-28 014407.png",
-    desc: "Live channel testing and multi-hall perimeter station assignments prior to delegate doors opening."
+    desc: ""
   },
   {
     id: "b3",
     category: "bts",
     categoryLabel: "Behind The Scenes",
-    title: "Grooming Standards & Uniform Inspection",
-    subtitle: "The Leela Palace · Hospitality Supervisors",
+    title: "",
+    subtitle: "",
     aspect: "square",
     src: "./images/gallery-bts/Screenshot 2026-08-28 014432.png",
-    desc: "Rigorous personal grooming inspection, badge alignment, and protocol briefing."
+    desc: ""
   },
   {
     id: "b4",
     category: "bts",
     categoryLabel: "Behind The Scenes",
-    title: "Backstage Cue Lineup & Artist Handover",
-    subtitle: "Bharat Mandapam · Show Runners",
+    title: "",
+    subtitle: "",
     aspect: "tall",
     src: "./images/gallery-bts/Screenshot 2026-08-28 014736.png",
-    desc: "Timing synchronization between stage teleprompters, lighting desks, and guest speakers."
+    desc: ""
   },
   {
     id: "b5",
     category: "bts",
     categoryLabel: "Behind The Scenes",
-    title: "Ballroom Alignment & Banquet Table Setup",
-    subtitle: "Taj Palace · Overnight Crew",
+    title: "",
+    subtitle: "",
     aspect: "wide",
     src: "./images/gallery-bts/Screenshot 2026-08-28 014815.png",
-    desc: "Swift ballroom resetting from cocktail reception to breakfast symposium layout."
+    desc: ""
   },
   {
     id: "b6",
     category: "bts",
     categoryLabel: "Behind The Scenes",
-    title: "Dignitary Arrival Protocol & Porch Ushering",
-    subtitle: "Vigyan Bhawan · Protocol Leads",
+    title: "",
+    subtitle: "",
     aspect: "square",
     src: "./images/gallery-bts/Screenshot 2026-08-28 015039.png",
-    desc: "Porch arrival coordination, umbrella protocols, and direct executive escort to the main plenary."
+    desc: ""
   },
   {
     id: "b7",
     category: "bts",
     categoryLabel: "Behind The Scenes",
-    title: "Convention Hall Door Control & Badge Scanning",
-    subtitle: "Yashobhoomi (IICC) · Registration Leads",
+    title: "",
+    subtitle: "",
     aspect: "wide",
     src: "./images/gallery-bts/Screenshot 2026-08-28 015124.png",
-    desc: "High-volume delegate check-in monitoring and scanner battery rotation."
+    desc: ""
   },
   {
     id: "b8",
     category: "bts",
     categoryLabel: "Behind The Scenes",
-    title: "Backstage Queue Marshaling & VIP Standby",
-    subtitle: "India Exposition Mart (IEML) · Field Marshals",
+    title: "",
+    subtitle: "",
     aspect: "tall",
     src: "./images/gallery-bts/Screenshot 2026-08-28 015214.png",
-    desc: "Green room staging, artist escort corridors, and safe stage entrance protocols."
+    desc: ""
   },
   {
     id: "b9",
     category: "bts",
     categoryLabel: "Behind The Scenes",
-    title: "Post-Event De-brief & Night Shift Handover",
-    subtitle: "JW Marriott Aerocity · Operations Desk",
+    title: "",
+    subtitle: "",
     aspect: "square",
     src: "./images/gallery-bts/Screenshot 2026-08-28 015319.png",
-    desc: "End-of-shift headcount reconciliation, incident log review, and handover to morning roster."
+    desc: ""
   },
 
   // 5 Brand Activations & Celebrity Highlight Moments

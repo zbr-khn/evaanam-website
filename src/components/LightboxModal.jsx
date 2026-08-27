@@ -97,18 +97,26 @@ export default function LightboxModal({
           />
         </div>
 
-        {/* Captions & Operational Details */}
-        <div className="mt-4 text-center max-w-2xl px-4 animate-fade-in">
-          <h4 className="font-serif text-xl sm:text-2xl text-cream-50 font-normal">
-            {currentImage.title}
-          </h4>
-          <p className="text-xs font-sans text-bronze-400 uppercase tracking-widest mt-1">
-            {currentImage.subtitle}
-          </p>
-          <p className="text-xs text-cream-300/80 font-light mt-2 leading-relaxed">
-            {currentImage.desc}
-          </p>
-        </div>
+        {/* Captions & Operational Details (Hidden if no title/caption provided) */}
+        {(currentImage.title || currentImage.desc) && (
+          <div className="mt-4 text-center max-w-2xl px-4 animate-fade-in">
+            {currentImage.title && (
+              <h4 className="font-serif text-xl sm:text-2xl text-cream-50 font-normal">
+                {currentImage.title}
+              </h4>
+            )}
+            {currentImage.subtitle && (
+              <p className="text-xs font-sans text-bronze-400 uppercase tracking-widest mt-1">
+                {currentImage.subtitle}
+              </p>
+            )}
+            {currentImage.desc && (
+              <p className="text-xs text-cream-300/80 font-light mt-2 leading-relaxed">
+                {currentImage.desc}
+              </p>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

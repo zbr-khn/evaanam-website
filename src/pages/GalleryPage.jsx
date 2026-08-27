@@ -314,26 +314,32 @@ export default function GalleryPage() {
                         <Maximize2 className="w-4 h-4 text-bronze-400" />
                       </div>
 
-                      {/* Captions */}
-                      <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 text-cream-100 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                        <div className="flex items-center space-x-2 mb-1.5">
-                          <span className="text-[10px] font-mono text-bronze-400 uppercase tracking-widest px-2 py-0.5 bg-night-950/90 rounded-sm">
-                            {image.categoryLabel}
-                          </span>
+                      {/* Captions (Hidden for BTS images) */}
+                      {image.title && (
+                        <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 text-cream-100 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                          <div className="flex items-center space-x-2 mb-1.5">
+                            <span className="text-[10px] font-mono text-bronze-400 uppercase tracking-widest px-2 py-0.5 bg-night-950/90 rounded-sm">
+                              {image.categoryLabel}
+                            </span>
+                          </div>
+
+                          <h3 className="font-serif text-xl sm:text-2xl font-medium text-cream-50 leading-snug">
+                            {image.title}
+                          </h3>
+
+                          {image.subtitle && (
+                            <p className="text-xs text-cream-300/80 font-sans mt-1">
+                              {image.subtitle}
+                            </p>
+                          )}
+
+                          {image.desc && (
+                            <p className="text-xs text-cream-300/60 font-light mt-2 line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden sm:block">
+                              {image.desc}
+                            </p>
+                          )}
                         </div>
-
-                        <h3 className="font-serif text-xl sm:text-2xl font-medium text-cream-50 leading-snug">
-                          {image.title}
-                        </h3>
-
-                        <p className="text-xs text-cream-300/80 font-sans mt-1">
-                          {image.subtitle}
-                        </p>
-
-                        <p className="text-xs text-cream-300/60 font-light mt-2 line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden sm:block">
-                          {image.desc}
-                        </p>
-                      </div>
+                      )}
                     </div>
                   );
                 })}
@@ -397,18 +403,22 @@ function GalleryCard({ image, onOpen }) {
         <Maximize2 className="w-3.5 h-3.5 text-bronze-400" />
       </div>
 
-      {/* Captions */}
-      <div className="absolute bottom-0 left-0 right-0 p-5 text-cream-100">
-        <span className="text-[9px] font-mono text-bronze-300 uppercase tracking-widest px-2 py-0.5 bg-night-950/90 rounded-sm inline-block mb-1">
-          {image.categoryLabel}
-        </span>
-        <h4 className="font-serif text-lg font-medium text-cream-50 leading-snug line-clamp-1">
-          {image.title}
-        </h4>
-        <p className="text-[11px] text-cream-300/80 font-sans mt-0.5 line-clamp-1">
-          {image.subtitle}
-        </p>
-      </div>
+      {/* Captions (Only if title exists) */}
+      {image.title && (
+        <div className="absolute bottom-0 left-0 right-0 p-5 text-cream-100">
+          <span className="text-[9px] font-mono text-bronze-300 uppercase tracking-widest px-2 py-0.5 bg-night-950/90 rounded-sm inline-block mb-1">
+            {image.categoryLabel}
+          </span>
+          <h4 className="font-serif text-lg font-medium text-cream-50 leading-snug line-clamp-1">
+            {image.title}
+          </h4>
+          {image.subtitle && (
+            <p className="text-[11px] text-cream-300/80 font-sans mt-0.5 line-clamp-1">
+              {image.subtitle}
+            </p>
+          )}
+        </div>
+      )}
     </div>
   );
 }
