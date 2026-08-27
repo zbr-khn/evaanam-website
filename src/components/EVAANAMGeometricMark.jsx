@@ -22,11 +22,17 @@ export default function EVAANAMGeometricMark({
     <div className={`inline-flex items-center justify-center select-none ${className}`}>
       {!imageError ? (
         <img
-          src="./brand/logo.png"
+          src="./brand/logo.jpg"
           alt="EVAANAM Brand Logo"
           style={{ width: `${size}px`, height: `${size}px` }}
-          className="object-contain"
-          onError={() => setImageError(true)}
+          className="object-contain rounded-sm"
+          onError={(e) => {
+            if (e.target.src.endsWith(".jpg")) {
+              e.target.src = "./brand/logo.png";
+            } else {
+              setImageError(true);
+            }
+          }}
         />
       ) : (
         <EVAANAMLogoSVG

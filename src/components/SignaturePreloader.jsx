@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 
 /**
  * SignaturePreloader
- * Plays the official preloader animation video from /brand/preloader.mp4 (or .webm)
- * with graceful fallback and seamless transition to the main website.
+ * Plays the official preloader animation video from /brand/preloader.mp4
+ * with seamless video duration detection, safe autoplay, and smooth crossfade.
  */
 export default function SignaturePreloader({ onComplete }) {
   const [isExiting, setIsExiting] = useState(false);
@@ -20,10 +20,17 @@ export default function SignaturePreloader({ onComplete }) {
   };
 
   useEffect(() => {
-    // Safety max timer so user is never stuck
+    // Attempt playback immediately on mount
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {
+        // If browser blocks autoplay, continue gracefully
+      });
+    }
+
+    // Safety fallback timer so user is never stuck
     const safetyTimer = setTimeout(() => {
       handleFinish();
-    }, 4500);
+    }, 9000);
 
     return () => clearTimeout(safetyTimer);
   }, []);
@@ -39,7 +46,7 @@ export default function SignaturePreloader({ onComplete }) {
         isExiting ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
     >
-      <div className="relative w-full max-w-4xl max-h-[85vh] flex items-center justify-center p-6">
+      <div className="relative w-full max-w-5xl max-h-[88vh] flex items-center justify-center p-4">
         {!videoFailed ? (
           <video
             ref={videoRef}
@@ -47,17 +54,18 @@ export default function SignaturePreloader({ onComplete }) {
             autoPlay
             muted
             playsInline
+            preload="auto"
             onEnded={handleFinish}
             onError={() => setVideoFailed(true)}
-            className="w-auto h-auto max-w-full max-h-[75vh] object-contain rounded-sm shadow-2xl"
+            className="w-auto h-auto max-w-full max-h-[80vh] object-contain rounded-sm shadow-2xl"
           />
         ) : (
-          /* Elegant Fallback if video is not yet placed in /brand/ */
+          /* Fallback if video is unavailable */
           <div className="flex flex-col items-center justify-center space-y-5 animate-fade-in text-center">
             <img
-              src="./brand/logo.png"
+              src="./brand/logo.jpg"
               alt="EVAANAM"
-              className="w-20 h-20 object-contain animate-pulse-subtle"
+              className="w-24 h-24 object-contain rounded-sm shadow-lg animate-pulse-subtle"
               onError={(e) => {
                 e.target.style.display = "none";
               }}
@@ -78,7 +86,7 @@ export default function SignaturePreloader({ onComplete }) {
       </div>
 
       {/* Subtle Skip Prompt */}
-      <div className="absolute bottom-8 text-[11px] font-mono tracking-widest text-cream-400/50 uppercase">
+      <div className="absolute bottom-6 text-[11px] font-mono tracking-widest text-cream-400/50 uppercase hover:text-cream-200 transition-colors">
         Click anywhere to skip
       </div>
     </div>
