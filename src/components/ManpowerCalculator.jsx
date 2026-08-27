@@ -157,10 +157,37 @@ _Requisition configured via EVAANAM Operational Manpower Calculator_`;
     return message;
   };
 
-  // Submit via WhatsApp
+  // Submit via WhatsApp + Quietly send background email to ops@evaanam.com
   const handleSubmitWhatsApp = (e) => {
     e.preventDefault();
     const rawMsg = generateWhatsAppMessage();
+
+    // Quietly transmit to company's official email (ops@evaanam.com) in background
+    try {
+      fetch("https://formsubmit.co/ajax/ops@evaanam.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          clientName: eventDetails.clientName || "Event Host",
+          phone: eventDetails.phone || "Not provided",
+          eventDate: eventDetails.eventDate || "Upcoming",
+          venue: eventDetails.venue || "Delhi NCR",
+          eventType: eventDetails.eventType,
+          shiftDuration: eventDetails.shiftDays,
+          totalCrewCount: totalCrewCount,
+          recommendedSupervisors: recommendedSupervisors,
+          specialNotes: eventDetails.specialNotes || "None",
+          rosterSummary: rawMsg,
+          _subject: `New Roster Calculator Requisition: ${eventDetails.clientName || "Client"} (${totalCrewCount} Crew)`,
+          _template: "table",
+          _captcha: "false",
+        }),
+      }).catch((err) => console.warn("Background email notification:", err));
+    } catch (err) {}
+
     const encoded = encodeURIComponent(rawMsg);
     const waUrl = `https://wa.me/919310039929?text=${encoded}`;
     window.open(waUrl, "_blank", "noopener,noreferrer");
