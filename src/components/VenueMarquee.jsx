@@ -10,23 +10,45 @@ export default function VenueMarquee({ theme }) {
 
   return (
     <div
-      className="relative overflow-hidden py-4 border-y bg-cream-100 dark:bg-night-850 border-chocolate-700/10 dark:border-bronze-500/15 text-chocolate-700 dark:text-cream-100 marquee-container transition-colors duration-400"
+      className="relative overflow-hidden py-4 border-y bg-cream-100 dark:bg-night-850 border-chocolate-700/10 dark:border-bronze-500/15 text-chocolate-700 dark:text-cream-100 transition-colors duration-400 select-none"
       aria-label="Venue Footprint Ticker"
     >
+      {/* Scoped CSS Keyframes for Guaranteed LEFT-TO-RIGHT Continuous Motion */}
+      <style>{`
+        @keyframes venueScrollLeftToRight {
+          0% {
+            transform: translateX(-50%);
+          }
+          100% {
+            transform: translateX(0%);
+          }
+        }
+        .venue-marquee-track {
+          display: flex;
+          width: max-content;
+          will-change: transform;
+          animation: venueScrollLeftToRight 38s linear infinite !important;
+        }
+        .venue-marquee-track:hover {
+          animation-play-state: paused !important;
+        }
+      `}</style>
+
       {/* Subtle edge fade overlays for luxury presentation */}
       <div
-        className="absolute top-0 bottom-0 left-0 w-24 z-10 pointer-events-none bg-gradient-to-r from-cream-100 dark:from-night-850 to-transparent"
+        className="absolute top-0 bottom-0 left-0 w-20 sm:w-32 z-10 pointer-events-none bg-gradient-to-r from-cream-100 dark:from-night-850 to-transparent"
       />
       <div
-        className="absolute top-0 bottom-0 right-0 w-24 z-10 pointer-events-none bg-gradient-to-l from-cream-100 dark:from-night-850 to-transparent"
+        className="absolute top-0 bottom-0 right-0 w-20 sm:w-32 z-10 pointer-events-none bg-gradient-to-l from-cream-100 dark:from-night-850 to-transparent"
       />
 
-      <div className="flex w-max animate-marquee marquee-content select-none items-center">
+      {/* Continuously Moving Looping Ribbon Track (Left to Right) */}
+      <div className="venue-marquee-track items-center">
         {/* Set 1 */}
         {marqueeItems.map((item, index) => (
           <div
             key={`ticker-1-${index}`}
-            className="flex items-center space-x-4 mx-6 group cursor-default"
+            className="flex items-center space-x-4 mx-6 group cursor-default shrink-0"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-bronze-500/60 group-hover:bg-bronze-500 transition-colors"></span>
             <span className="font-serif text-base sm:text-lg tracking-wider whitespace-nowrap text-chocolate-800 dark:text-cream-100 group-hover:text-bronze-600 dark:group-hover:text-bronze-350 transition-colors">
@@ -42,7 +64,7 @@ export default function VenueMarquee({ theme }) {
         {marqueeItems.map((item, index) => (
           <div
             key={`ticker-2-${index}`}
-            className="flex items-center space-x-4 mx-6 group cursor-default"
+            className="flex items-center space-x-4 mx-6 group cursor-default shrink-0"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-bronze-500/60 group-hover:bg-bronze-500 transition-colors"></span>
             <span className="font-serif text-base sm:text-lg tracking-wider whitespace-nowrap text-chocolate-800 dark:text-cream-100 group-hover:text-bronze-600 dark:group-hover:text-bronze-350 transition-colors">
