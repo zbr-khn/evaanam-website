@@ -16,6 +16,7 @@ import VenuesPage from "./pages/VenuesPage";
 import WhyUsPage from "./pages/WhyUsPage";
 import GalleryPage from "./pages/GalleryPage";
 import ContactPage from "./pages/ContactPage";
+import LocationPage from "./pages/LocationPage";
 
 function NotFoundPage() {
   return (
@@ -72,6 +73,7 @@ export default function App() {
           <Route path="/why-us" element={<WhyUsPage />} />
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/location" element={<LocationPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>

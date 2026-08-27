@@ -76,6 +76,11 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
+                  <Link to="/location" className="hover:text-cream-50 transition-colors text-bronze-300">
+                    Office Location &amp; Google Map
+                  </Link>
+                </li>
+                <li>
                   <Link to="/contact" className="hover:text-cream-50 transition-colors">
                     Contact &amp; Manpower Booking
                   </Link>

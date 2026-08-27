@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Phone, Mail, MapPin, CheckCircle2, ArrowUpRight, Clock, ShieldCheck, Send, Loader2, Calculator, FileText, Calendar, MessageSquare } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Phone, Mail, MapPin, CheckCircle2, ArrowUpRight, Clock, ShieldCheck, Send, Loader2, Calculator, FileText, Calendar, MessageSquare, Compass } from "lucide-react";
 import { COMPANY_INFO } from "../data/evaanamData";
 import FollowTheFloor from "../components/FollowTheFloor";
 import ManpowerCalculator from "../components/ManpowerCalculator";
@@ -265,11 +266,21 @@ _Submitted via EVAANAM Website Contact Form_`;
                   {/* Physical Location */}
                   <div className="pt-2">
                     <span className="micro-label text-bronze-600 dark:text-bronze-400">Registered Office</span>
-                    <div className="mt-2 flex items-start space-x-3 p-3.5 bg-cream-200 dark:bg-night-750 border border-chocolate-700/10 dark:border-bronze-500/15">
-                      <MapPin className="w-4 h-4 text-bronze-500 shrink-0 mt-0.5" />
-                      <p className="text-xs text-chocolate-600 dark:text-night-muted leading-relaxed font-light">
-                        {COMPANY_INFO.address.full}
-                      </p>
+                    <div className="mt-2 p-3.5 bg-cream-200 dark:bg-night-750 border border-chocolate-700/10 dark:border-bronze-500/15 space-y-2">
+                      <div className="flex items-start space-x-3">
+                        <MapPin className="w-4 h-4 text-bronze-500 shrink-0 mt-0.5" />
+                        <p className="text-xs text-chocolate-600 dark:text-night-muted leading-relaxed font-light">
+                          {COMPANY_INFO.address.full}
+                        </p>
+                      </div>
+                      <Link
+                        to="/location"
+                        className="inline-flex items-center space-x-1.5 text-[11px] font-mono font-semibold uppercase tracking-wider text-bronze-600 dark:text-bronze-400 hover:text-chocolate-950 dark:hover:text-cream-50 pt-1"
+                      >
+                        <Compass className="w-3.5 h-3.5" />
+                        <span>View on Interactive Google Map</span>
+                        <ArrowUpRight className="w-3 h-3" />
+                      </Link>
                     </div>
                   </div>
 
