@@ -4,6 +4,7 @@ import { ArrowUpRight, ChevronRight } from "lucide-react";
 import StatCounter from "../components/StatCounter";
 import VenueMarquee from "../components/VenueMarquee";
 import SocialSection from "../components/SocialSection";
+import ManpowerCalculator from "../components/ManpowerCalculator";
 import { COMPANY_INFO, GALLERY_IMAGES } from "../data/evaanamData";
 
 export default function HomePage() {
@@ -60,12 +61,12 @@ export default function HomePage() {
                   <ArrowUpRight className="w-4 h-4 ml-2 text-night-950 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </Link>
 
-                <Link
-                  to="/services"
+                <a
+                  href="#calculator-section"
                   className="inline-flex items-center justify-center px-7 py-3.5 border border-cream-200/30 text-cream-100 font-sans text-xs font-semibold uppercase tracking-[0.18em] transition-all hover:bg-cream-200 hover:text-chocolate-950 dark:hover:bg-night-800 dark:hover:text-cream-50"
                 >
-                  <span>Explore Our Services</span>
-                </Link>
+                  <span>Roster Calculator</span>
+                </a>
               </div>
 
               {/* Credibility Line */}
@@ -78,16 +79,18 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Asymmetric Side Badge */}
-            <div className="lg:col-span-4 hidden lg:flex flex-col justify-end">
-              <div className="p-6 bg-night-900/80 border border-bronze-500/20 backdrop-blur-sm space-y-3">
-                <span className="micro-label text-bronze-400">Execution Standard</span>
-                <p className="font-serif text-lg text-cream-100 italic leading-snug">
-                  “Hospitality on the surface. Operations underneath.”
+            {/* Hero Quick Badge Column */}
+            <div className="lg:col-span-4 hidden lg:block">
+              <div className="p-6 bg-night-900/80 backdrop-blur-md border border-bronze-500/30 text-cream-200 space-y-4 shadow-xl">
+                <span className="micro-label text-bronze-300">
+                  OPERATIONAL COMMITMENT
+                </span>
+                <p className="font-serif text-xl italic text-cream-100 leading-snug">
+                  "Zero ghosting. Verified backup bench ready within 60 minutes."
                 </p>
-                <div className="pt-2 border-t border-chocolate-800 dark:border-night-700 flex items-center justify-between text-[11px] text-cream-300/70 font-sans">
-                  <span>Delhi · Gurgaon · Noida</span>
-                  <span className="text-bronze-400 font-medium">5-Star Ready</span>
+                <div className="pt-2 border-t border-bronze-500/20 flex items-center justify-between text-xs text-cream-300/80 font-mono">
+                  <span>NCR Floor Ready</span>
+                  <span className="text-bronze-400 font-semibold">24/7 Dispatch</span>
                 </div>
               </div>
             </div>
@@ -95,58 +98,45 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. INTRODUCTION / POSITIONING */}
-      <section className="py-24 px-6 sm:px-8 lg:px-12 bg-cream-200 dark:bg-night-900 border-b border-chocolate-700/10 dark:border-bronze-500/15">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Left: Large Typography */}
-            <div className="lg:col-span-6 space-y-4">
-              <span className="micro-label">BUILT FOR TWO WORLDS</span>
-              <h2 className="editorial-heading text-4xl sm:text-5xl lg:text-6xl text-chocolate-950 dark:text-cream-50">
-                Hospitality on the surface. <br />
-                <span className="text-bronze-600 dark:text-bronze-400 italic">Operations underneath.</span>
-              </h2>
-            </div>
+      {/* 2. STATS STRIP */}
+      <StatCounter light={true} />
 
-            {/* Right: Detailed Context & Navigation Gateway */}
-            <div className="lg:col-span-6 space-y-6">
-              <p className="text-base sm:text-lg text-chocolate-700 dark:text-cream-100 font-light leading-relaxed">
-                EVAANAM provides trained event manpower and execution support for weddings, corporate events, brand activations, exhibitions, government events and sports events across Delhi NCR.
-              </p>
-              <p className="text-sm text-chocolate-600 dark:text-night-muted leading-relaxed font-light">
-                Our teams are recruited, verified, trained, groomed and supervised before they reach the floor — so clients can focus on the event, not the manpower.
-              </p>
-              <div className="pt-2">
-                <Link
-                  to="/why-us"
-                  className="inline-flex items-center space-x-2 text-xs uppercase tracking-[0.2em] font-semibold text-chocolate-900 dark:text-cream-100 hover:text-bronze-600 dark:hover:text-bronze-400 transition-colors border-b border-bronze-500/50 pb-1"
-                >
-                  <span>Explore Our Operational Pillars</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-bronze-500" />
-                </Link>
-              </div>
-            </div>
+      {/* 3. CORE VALUE PROPOSITION STATEMENT */}
+      <section className="py-28 px-6 sm:px-8 lg:px-12 bg-transparent">
+        <div className="max-w-4xl mx-auto text-center space-y-8">
+          <span className="micro-label">THE EVAANAM PHILOSOPHY</span>
+          <h2 className="editorial-heading text-4xl sm:text-5xl md:text-6xl text-chocolate-950 dark:text-cream-50">
+            Manpower is easy to arrange. <br />
+            <span className="italic text-bronze-600 dark:text-bronze-400">Reliable manpower is not.</span>
+          </h2>
+          <p className="text-base sm:text-lg text-chocolate-600 dark:text-night-muted font-light leading-relaxed max-w-2xl mx-auto">
+            In luxury hospitality, there is no second take. EVAANAM was founded to replace unvetted freelance chaos with structured, disciplined, and professionally supervised workforce operations.
+          </p>
+          <div className="pt-2">
+            <Link
+              to="/why-us"
+              className="inline-flex items-center space-x-2 text-xs uppercase tracking-[0.2em] font-semibold text-bronze-600 dark:text-bronze-400 hover:text-chocolate-950 dark:hover:text-cream-50 transition-colors border-b border-bronze-500/40 pb-1"
+            >
+              <span>Explore The Workforce Operations System™</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* 3. STATISTICS SECTION */}
-      <StatCounter />
-
-      {/* 4. CONCISE SERVICE PREVIEW */}
-      <section className="py-24 px-6 sm:px-8 lg:px-12 bg-cream-200 dark:bg-night-900">
+      {/* 4. TWO PRIMARY SERVICE VERTICALS */}
+      <section className="py-24 px-6 sm:px-8 lg:px-12 bg-transparent border-t border-chocolate-700/10 dark:border-bronze-500/15">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
             <div>
-              <span className="micro-label">OUR CORE CAPABILITIES</span>
+              <span className="micro-label">SPECIALIZED DIVISIONS</span>
               <h2 className="editorial-heading text-4xl sm:text-5xl text-chocolate-950 dark:text-cream-50 mt-2">
-                Built for two worlds. <br />
-                <span className="italic text-bronze-600 dark:text-bronze-400">Held to one standard.</span>
+                Engineered for High-Pressure Floors
               </h2>
             </div>
             <Link
               to="/services"
-              className="btn-secondary self-start md:self-auto"
+              className="btn-secondary"
             >
               <span>View All 27 Roles</span>
             </Link>
@@ -234,7 +224,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. LARGE VISUAL BREAK (KEN BURNS) */}
+      {/* 5. INTERACTIVE MANPOWER CALCULATOR SECTION */}
+      <section id="calculator-section" className="py-24 px-6 sm:px-8 lg:px-12 bg-transparent border-t border-chocolate-700/10 dark:border-bronze-500/15">
+        <ManpowerCalculator />
+      </section>
+
+      {/* 6. LARGE VISUAL BREAK (KEN BURNS) */}
       <section className="relative h-[480px] sm:h-[550px] flex items-center justify-center overflow-hidden bg-night-950 text-cream-100 text-center px-6">
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
@@ -257,8 +252,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. VENUE TICKER PREVIEW */}
-      <section className="py-16 bg-cream-200 dark:bg-night-900">
+      {/* 7. VENUE TICKER PREVIEW */}
+      <section className="py-16 bg-transparent">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
             <span className="micro-label">DEPLOYMENT FOOTPRINT</span>
@@ -278,8 +273,8 @@ export default function HomePage() {
         <VenueMarquee />
       </section>
 
-      {/* 7. GALLERY TEASER */}
-      <section className="py-24 px-6 sm:px-8 lg:px-12 bg-cream-100/80 dark:bg-night-850 border-t border-chocolate-700/10 dark:border-bronze-500/15">
+      {/* 8. GALLERY TEASER */}
+      <section className="py-24 px-6 sm:px-8 lg:px-12 bg-transparent border-t border-chocolate-700/10 dark:border-bronze-500/15">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
             <div>
@@ -323,11 +318,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 8. ANIMATED SOCIAL SECTION */}
+      {/* 9. ANIMATED SOCIAL SECTION */}
       <SocialSection showHeader={true} />
 
-      {/* 9. FINAL CALL TO CONVERSATION */}
-      <section className="py-24 px-6 sm:px-8 lg:px-12 bg-cream-100 dark:bg-night-850 border-t border-chocolate-700/10 dark:border-bronze-500/15">
+      {/* 10. FINAL CALL TO CONVERSATION */}
+      <section className="py-24 px-6 sm:px-8 lg:px-12 bg-transparent border-t border-chocolate-700/10 dark:border-bronze-500/15">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <span className="micro-label">START A CONVERSATION</span>
           <h2 className="editorial-heading text-4xl sm:text-5xl lg:text-6xl text-chocolate-950 dark:text-cream-50">

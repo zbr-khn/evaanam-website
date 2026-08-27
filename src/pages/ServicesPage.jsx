@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Plus, Minus, Check } from "lucide-react";
 import { WEDDING_ROLES, CORPORATE_ROLES, EVENT_TYPES } from "../data/evaanamData";
+import ManpowerCalculator from "../components/ManpowerCalculator";
 
 export default function ServicesPage() {
   const [openWeddingRole, setOpenWeddingRole] = useState(WEDDING_ROLES[0].id);
@@ -19,7 +20,7 @@ export default function ServicesPage() {
   return (
     <div className="animate-fade-in pt-28">
       {/* 1. DEDICATED PAGE INTRODUCTION HERO */}
-      <section className="py-20 px-6 sm:px-8 lg:px-12 bg-cream-200 dark:bg-night-900 border-b border-chocolate-700/10 dark:border-bronze-500/15">
+      <section className="py-20 px-6 sm:px-8 lg:px-12 bg-transparent border-b border-chocolate-700/10 dark:border-bronze-500/15">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl space-y-6">
             <span className="micro-label">OUR SERVICES</span>
@@ -35,7 +36,7 @@ export default function ServicesPage() {
       </section>
 
       {/* 2. WEDDING HOSPITALITY SECTION */}
-      <section className="py-24 px-6 sm:px-8 lg:px-12 bg-cream-100 dark:bg-night-850 border-b border-chocolate-700/10 dark:border-bronze-500/15">
+      <section className="py-24 px-6 sm:px-8 lg:px-12 bg-transparent border-b border-chocolate-700/10 dark:border-bronze-500/15">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
             {/* Left Header info */}
@@ -52,12 +53,12 @@ export default function ServicesPage() {
                   From ceremonial entrances to midnight logistics, our 14 dedicated wedding hospitality roles ensure every family member, VIP guest, and dignitary experiences flawless Indian hospitality.
                 </p>
                 <div className="pt-4">
-                  <Link
-                    to="/contact"
+                  <a
+                    href="#calculator-section"
                     className="btn-primary w-full sm:w-auto text-center"
                   >
-                    <span>Request Wedding Crew</span>
-                  </Link>
+                    <span>Configure Wedding Roster</span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -77,7 +78,7 @@ export default function ServicesPage() {
                     className={`border transition-all duration-300 ${
                       isOpen
                         ? "bg-cream-50 dark:bg-night-800 border-bronze-500/60 shadow-sm"
-                        : "bg-cream-200/60 dark:bg-night-800/60 border-chocolate-700/10 dark:border-bronze-500/15 hover:border-bronze-500/30"
+                        : "bg-cream-100/70 dark:bg-night-800/60 border-chocolate-700/10 dark:border-bronze-500/15 hover:border-bronze-500/30"
                     }`}
                   >
                     <button
@@ -126,7 +127,7 @@ export default function ServicesPage() {
       </section>
 
       {/* 3. CORPORATE & EXPOS SECTION */}
-      <section className="py-24 px-6 sm:px-8 lg:px-12 bg-cream-200 dark:bg-night-900 border-b border-chocolate-700/10 dark:border-bronze-500/15">
+      <section className="py-24 px-6 sm:px-8 lg:px-12 bg-transparent border-b border-chocolate-700/10 dark:border-bronze-500/15">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
             {/* Left Header info */}
@@ -143,12 +144,12 @@ export default function ServicesPage() {
                   Engineered for high-throughput delegate scanning, multi-hall management, C-suite hospitality, and live show running across Delhi NCR's top convention venues.
                 </p>
                 <div className="pt-4">
-                  <Link
-                    to="/contact"
+                  <a
+                    href="#calculator-section"
                     className="btn-primary w-full sm:w-auto text-center"
                   >
-                    <span>Request Corporate Crew</span>
-                  </Link>
+                    <span>Configure Corporate Crew</span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -168,7 +169,7 @@ export default function ServicesPage() {
                     className={`border transition-all duration-300 ${
                       isOpen
                         ? "bg-cream-50 dark:bg-night-800 border-bronze-500/60 shadow-sm"
-                        : "bg-cream-100/80 dark:bg-night-800/60 border-chocolate-700/10 dark:border-bronze-500/15 hover:border-bronze-500/30"
+                        : "bg-cream-100/70 dark:bg-night-800/60 border-chocolate-700/10 dark:border-bronze-500/15 hover:border-bronze-500/30"
                     }`}
                   >
                     <button
@@ -216,8 +217,13 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* 4. EVENT TYPES (EDITORIAL HOVER SECTION) */}
-      <section className="py-24 px-6 sm:px-8 lg:px-12 bg-cream-100 dark:bg-night-850">
+      {/* 4. MANPOWER ROSTER CALCULATOR SECTION */}
+      <section id="calculator-section" className="py-24 px-6 sm:px-8 lg:px-12 bg-transparent border-b border-chocolate-700/10 dark:border-bronze-500/15">
+        <ManpowerCalculator />
+      </section>
+
+      {/* 5. EVENT TYPES (EDITORIAL HOVER SECTION) */}
+      <section className="py-24 px-6 sm:px-8 lg:px-12 bg-transparent">
         <div className="max-w-7xl mx-auto">
           <div className="mb-16">
             <span className="micro-label">SECTOR SPECIALIZATION</span>
@@ -308,8 +314,8 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* 5. BOTTOM CONVERSION CTA */}
-      <section className="py-20 px-6 sm:px-8 lg:px-12 bg-cream-200 dark:bg-night-900 text-center border-t border-chocolate-700/10 dark:border-bronze-500/15">
+      {/* 6. BOTTOM CONVERSION CTA */}
+      <section className="py-20 px-6 sm:px-8 lg:px-12 bg-transparent text-center border-t border-chocolate-700/10 dark:border-bronze-500/15">
         <div className="max-w-3xl mx-auto space-y-6">
           <span className="micro-label">CUSTOM ROSTER DEPLOYMENT</span>
           <h3 className="font-serif text-3xl sm:text-4xl text-chocolate-950 dark:text-cream-50">

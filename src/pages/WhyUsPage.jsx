@@ -19,7 +19,7 @@ export default function WhyUsPage() {
   return (
     <div className="animate-fade-in pt-28">
       {/* 1. DEDICATED PAGE INTRODUCTION HERO */}
-      <section className="py-20 px-6 sm:px-8 lg:px-12 bg-cream-200 dark:bg-night-900 border-b border-chocolate-700/10 dark:border-bronze-500/15">
+      <section className="py-20 px-6 sm:px-8 lg:px-12 bg-transparent border-b border-chocolate-700/10 dark:border-bronze-500/15">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl space-y-6">
             <span className="micro-label">WHY EVAANAM</span>
@@ -35,7 +35,7 @@ export default function WhyUsPage() {
       </section>
 
       {/* 2. THE SIX REFINED PILLARS */}
-      <section className="py-24 px-6 sm:px-8 lg:px-12 bg-cream-100 dark:bg-night-850 border-b border-chocolate-700/10 dark:border-bronze-500/15">
+      <section className="py-24 px-6 sm:px-8 lg:px-12 bg-transparent border-b border-chocolate-700/10 dark:border-bronze-500/15">
         <div className="max-w-7xl mx-auto">
           <div className="mb-16">
             <span className="micro-label">CORE PROMISES</span>
@@ -90,7 +90,7 @@ export default function WhyUsPage() {
       </section>
 
       {/* 3. THE EVAANAM WORKFORCE OPERATIONS SYSTEM™ */}
-      <section className="py-24 px-6 sm:px-8 lg:px-12 bg-cream-200 dark:bg-night-900 border-b border-chocolate-700/10 dark:border-bronze-500/15">
+      <section className="py-24 px-6 sm:px-8 lg:px-12 bg-transparent border-b border-chocolate-700/10 dark:border-bronze-500/15">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
             <EVAANAMGeometricMark size={44} className="mx-auto mb-2" />
@@ -112,7 +112,7 @@ export default function WhyUsPage() {
       <StatCounter light={true} />
 
       {/* 5. BOTTOM CONVERSION CTA */}
-      <section className="py-20 px-6 sm:px-8 lg:px-12 bg-cream-200 dark:bg-night-900 text-center border-t border-chocolate-700/10 dark:border-bronze-500/15">
+      <section className="py-20 px-6 sm:px-8 lg:px-12 bg-transparent text-center border-t border-chocolate-700/10 dark:border-bronze-500/15">
         <div className="max-w-3xl mx-auto space-y-6">
           <span className="micro-label">OPERATIONS CONSULTATION</span>
           <h3 className="font-serif text-3xl sm:text-4xl text-chocolate-950 dark:text-cream-50">

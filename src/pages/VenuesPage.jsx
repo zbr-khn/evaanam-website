@@ -24,7 +24,7 @@ export default function VenuesPage() {
   return (
     <div className="animate-fade-in pt-28">
       {/* 1. DEDICATED PAGE INTRODUCTION HERO */}
-      <section className="py-20 px-6 sm:px-8 lg:px-12 bg-cream-200 dark:bg-night-900 border-b border-chocolate-700/10 dark:border-bronze-500/15">
+      <section className="py-20 px-6 sm:px-8 lg:px-12 bg-transparent border-b border-chocolate-700/10 dark:border-bronze-500/15">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl space-y-6">
             <span className="micro-label">DEPLOYMENT FOOTPRINT</span>
@@ -40,12 +40,12 @@ export default function VenuesPage() {
       </section>
 
       {/* 2. SLOW HORIZONTAL MARQUEE / TICKER */}
-      <div className="py-6 bg-cream-100 dark:bg-night-850 border-b border-chocolate-700/10 dark:border-bronze-500/15">
+      <div className="py-6 bg-transparent border-b border-chocolate-700/10 dark:border-bronze-500/15">
         <VenueMarquee />
       </div>
 
       {/* 3. VENUE DIRECTORY & DIRECTORY BOARD */}
-      <section className="py-24 px-6 sm:px-8 lg:px-12 bg-cream-200 dark:bg-night-900">
+      <section className="py-24 px-6 sm:px-8 lg:px-12 bg-transparent">
         <div className="max-w-7xl mx-auto">
           {/* Filter Bar & Search */}
           <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between pb-8 mb-12 border-b border-chocolate-700/15 dark:border-night-700 gap-4">
@@ -193,23 +193,23 @@ export default function VenuesPage() {
       </section>
 
       {/* 4. OPERATIONAL VENUE ASSURANCE */}
-      <section className="py-20 px-6 sm:px-8 lg:px-12 bg-cream-100 dark:bg-night-850 border-t border-chocolate-700/10 dark:border-bronze-500/15">
+      <section className="py-20 px-6 sm:px-8 lg:px-12 bg-transparent border-t border-chocolate-700/10 dark:border-bronze-500/15">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="p-8 border border-chocolate-700/10 dark:border-bronze-500/20 bg-cream-200 dark:bg-night-800">
+          <div className="p-8 border border-chocolate-700/10 dark:border-bronze-500/20 bg-cream-100/80 dark:bg-night-800">
             <span className="font-mono text-xs font-semibold text-bronze-600 dark:text-bronze-400">01 / ORIENTATION</span>
             <h4 className="font-serif text-2xl text-chocolate-950 dark:text-cream-50 mt-2 mb-3">Pre-Shift Venue Walkthrough</h4>
             <p className="text-xs text-chocolate-600 dark:text-night-muted leading-relaxed font-light">
               Our teams arrive 90 minutes prior to call-time to walk the banquet halls, service corridors, and green rooms.
             </p>
           </div>
-          <div className="p-8 border border-chocolate-700/10 dark:border-bronze-500/20 bg-cream-200 dark:bg-night-800">
+          <div className="p-8 border border-chocolate-700/10 dark:border-bronze-500/20 bg-cream-100/80 dark:bg-night-800">
             <span className="font-mono text-xs font-semibold text-bronze-600 dark:text-bronze-400">02 / PROTOCOL</span>
             <h4 className="font-serif text-2xl text-chocolate-950 dark:text-cream-50 mt-2 mb-3">Venue Property Respect</h4>
             <p className="text-xs text-chocolate-600 dark:text-night-muted leading-relaxed font-light">
               Strict adherence to hotel security policies, loading dock timing, fire exits, and hygiene compliances.
             </p>
           </div>
-          <div className="p-8 border border-chocolate-700/10 dark:border-bronze-500/20 bg-cream-200 dark:bg-night-800">
+          <div className="p-8 border border-chocolate-700/10 dark:border-bronze-500/20 bg-cream-100/80 dark:bg-night-800">
             <span className="font-mono text-xs font-semibold text-bronze-600 dark:text-bronze-400">03 / BADGING</span>
             <h4 className="font-serif text-2xl text-chocolate-950 dark:text-cream-50 mt-2 mb-3">Access Gating &amp; Passes</h4>
             <p className="text-xs text-chocolate-600 dark:text-night-muted leading-relaxed font-light">
@@ -220,7 +220,7 @@ export default function VenuesPage() {
       </section>
 
       {/* 5. BOTTOM CALL TO ACTION */}
-      <section className="py-20 px-6 sm:px-8 lg:px-12 bg-cream-200 dark:bg-night-900 text-center border-t border-chocolate-700/10 dark:border-bronze-500/15">
+      <section className="py-20 px-6 sm:px-8 lg:px-12 bg-transparent text-center border-t border-chocolate-700/10 dark:border-bronze-500/15">
         <div className="max-w-3xl mx-auto space-y-6">
           <span className="micro-label">VENUE DEPLOYMENT DESK</span>
           <h3 className="font-serif text-3xl sm:text-4xl text-chocolate-950 dark:text-cream-50">

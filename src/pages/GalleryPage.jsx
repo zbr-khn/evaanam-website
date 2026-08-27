@@ -35,7 +35,7 @@ export default function GalleryPage() {
   return (
     <div className="animate-fade-in pt-28">
       {/* 1. DEDICATED PAGE INTRODUCTION HERO */}
-      <section className="py-20 px-6 sm:px-8 lg:px-12 bg-cream-200 dark:bg-night-900 border-b border-chocolate-700/10 dark:border-bronze-500/15">
+      <section className="py-20 px-6 sm:px-8 lg:px-12 bg-transparent border-b border-chocolate-700/10 dark:border-bronze-500/15">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl space-y-6">
             <span className="micro-label">ON THE FLOOR</span>
@@ -51,7 +51,7 @@ export default function GalleryPage() {
       </section>
 
       {/* 2. CATEGORY TABS & FILTER */}
-      <section className="py-8 px-6 sm:px-8 lg:px-12 bg-cream-100 dark:bg-night-850 border-b border-chocolate-700/10 dark:border-bronze-500/15 sticky top-[72px] z-20 backdrop-blur-md bg-cream-100/95 dark:bg-night-850/95">
+      <section className="py-8 px-6 sm:px-8 lg:px-12 bg-cream-100/90 dark:bg-night-850/90 border-b border-chocolate-700/10 dark:border-bronze-500/15 sticky top-[72px] z-20 backdrop-blur-md">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center space-x-2 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0">
             <button
@@ -93,7 +93,7 @@ export default function GalleryPage() {
       </section>
 
       {/* 3. ASYMMETRIC EDITORIAL GALLERY GRID */}
-      <section className="py-16 px-6 sm:px-8 lg:px-12 bg-cream-200 dark:bg-night-900">
+      <section className="py-16 px-6 sm:px-8 lg:px-12 bg-transparent">
         <div className="max-w-7xl mx-auto">
           {/* Asymmetric layout with varied column spans */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -163,7 +163,7 @@ export default function GalleryPage() {
       )}
 
       {/* 5. BOTTOM CONVERSION CTA */}
-      <section className="py-20 px-6 sm:px-8 lg:px-12 bg-cream-100 dark:bg-night-850 text-center border-t border-chocolate-700/10 dark:border-bronze-500/15">
+      <section className="py-20 px-6 sm:px-8 lg:px-12 bg-transparent text-center border-t border-chocolate-700/10 dark:border-bronze-500/15">
         <div className="max-w-3xl mx-auto space-y-6">
           <span className="micro-label">ON-GROUND EXCELLENCE</span>
           <h3 className="font-serif text-3xl sm:text-4xl text-chocolate-950 dark:text-cream-50">

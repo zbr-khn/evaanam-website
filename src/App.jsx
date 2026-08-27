@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import MobileStickyCTA from "./components/MobileStickyCTA";
 import SignaturePreloader from "./components/SignaturePreloader";
+import useScrollBackground from "./hooks/useScrollBackground";
 
 import HomePage from "./pages/HomePage";
 import ServicesPage from "./pages/ServicesPage";
@@ -15,7 +16,7 @@ import ContactPage from "./pages/ContactPage";
 
 function NotFoundPage() {
   return (
-    <div className="min-h-[70vh] flex items-center justify-center pt-32 pb-20 px-6 text-center bg-cream-200 dark:bg-night-900">
+    <div className="min-h-[70vh] flex items-center justify-center pt-32 pb-20 px-6 text-center bg-transparent">
       <div className="max-w-md space-y-6">
         <span className="micro-label text-bronze-600 dark:text-bronze-400">PAGE NOT FOUND</span>
         <h1 className="editorial-heading text-5xl text-chocolate-950 dark:text-cream-50">
@@ -39,9 +40,12 @@ function NotFoundPage() {
 
 export default function App() {
   const [showPreloader, setShowPreloader] = useState(true);
+  
+  // Register global scroll background color shifts
+  useScrollBackground();
 
   return (
-    <div className="flex flex-col min-h-screen bg-cream-200 dark:bg-night-900 text-chocolate-700 dark:text-cream-200 font-sans selection:bg-bronze-500 selection:text-chocolate-950 transition-colors duration-400">
+    <div className="flex flex-col min-h-screen bg-transparent text-chocolate-700 dark:text-cream-200 font-sans selection:bg-bronze-500 selection:text-chocolate-950 transition-colors duration-400">
       <ScrollToTop />
       
       {/* Signature Preloader component */}
