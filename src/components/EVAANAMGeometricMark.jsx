@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import EVAANAMLogoSVG from "./EVAANAMLogoSVG";
 import { useTheme } from "../context/ThemeContext";
 
 /**
  * EVAANAMGeometricMark
- * Reusable brand mark derived directly from the official EVAANAM logo.
+ * Displays user's official brand logo image from /brand/ if available,
+ * with fallback to vector geometric mark.
  */
 export default function EVAANAMGeometricMark({
-  size = 48,
+  size = 36,
   className = "",
   showWordmark = false,
   showAllText = false,
@@ -15,15 +16,26 @@ export default function EVAANAMGeometricMark({
 }) {
   const { isDark } = useTheme();
   const effectiveDark = darkTheme !== undefined ? darkTheme : isDark;
+  const [imageError, setImageError] = useState(false);
 
   return (
-    <div className={`inline-flex flex-col items-center select-none ${className}`}>
-      <EVAANAMLogoSVG
-        width={size}
-        height={size}
-        showAllText={showAllText}
-        darkTheme={effectiveDark}
-      />
+    <div className={`inline-flex items-center justify-center select-none ${className}`}>
+      {!imageError ? (
+        <img
+          src="./brand/logo.png"
+          alt="EVAANAM Brand Logo"
+          style={{ width: `${size}px`, height: `${size}px` }}
+          className="object-contain"
+          onError={() => setImageError(true)}
+        />
+      ) : (
+        <EVAANAMLogoSVG
+          width={size}
+          height={size}
+          showAllText={showAllText}
+          darkTheme={effectiveDark}
+        />
+      )}
     </div>
   );
 }
