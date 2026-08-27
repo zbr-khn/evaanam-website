@@ -540,50 +540,8 @@ export default function HomePage() {
         <TestimonialMarquee />
       </section>
 
-      {/* 10. GALLERY TEASER */}
-      <section className="py-24 px-6 sm:px-8 lg:px-12 bg-transparent border-t border-chocolate-700/10 dark:border-bronze-500/15">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-            <div>
-              <span className="micro-label">ON THE FLOOR</span>
-              <h2 className="editorial-heading text-4xl sm:text-5xl text-chocolate-950 dark:text-cream-50 mt-2">
-                The work, in motion.
-              </h2>
-            </div>
-            <Link to="/gallery" className="btn-secondary">
-              <span>View Full Gallery (19 Photos)</span>
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {teaserImages.map((img) => (
-              <Link
-                key={img.id}
-                to="/gallery"
-                className="group relative overflow-hidden bg-cream-200 dark:bg-night-800 border border-chocolate-700/10 dark:border-bronze-500/20 aspect-[4/3] block"
-              >
-                <img
-                  src={img.src}
-                  alt={img.title}
-                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-night-950/80 via-transparent to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-cream-100">
-                  <span className="text-[10px] font-mono text-bronze-400 uppercase tracking-wider block mb-1">
-                    {img.categoryLabel}
-                  </span>
-                  <h4 className="font-serif text-lg font-medium text-cream-50 leading-snug">
-                    {img.title}
-                  </h4>
-                  <p className="text-[11px] text-cream-300/80 font-sans mt-1">
-                    {img.subtitle}
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* 10. ON-FLOOR GALLERY CAROUSEL (WEDDINGS & CORPORATE MIX) */}
+      <HomeImageCarousel />
 
       {/* 9. ANIMATED SOCIAL SECTION */}
       <SocialSection showHeader={true} />
