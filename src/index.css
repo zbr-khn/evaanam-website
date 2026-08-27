@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-cream: #F5F1E8;
+    --text-chocolate: #3B2F2F;
+    --accent-bronze: #B08D57;
+  }
+
+  html {
+    background-color: #F5F1E8;
+    color: #3B2F2F;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    overflow-x: hidden;
+    background-color: #F5F1E8;
+    color: #3B2F2F;
+  }
+
+  /* Editorial Serif Headings */
+  h1, h2, h3, .font-serif-luxury {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+
+  /* Custom subtle scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #ECE6D8;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #C5A46D;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #967442;
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Custom Components & Utilities */
+@layer components {
+  .editorial-heading {
+    @apply font-serif font-light tracking-tight text-chocolate-700 leading-[1.08];
+  }
+
+  .micro-label {
+    @apply text-[11px] uppercase tracking-[0.25em] font-semibold text-bronze-500 font-sans;
+  }
+
+  .bronze-divider {
+    @apply h-[1px] bg-gradient-to-r from-transparent via-bronze-500/40 to-transparent;
+  }
+
+  .bronze-border {
+    @apply border border-bronze-500/25;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-7 py-3.5 bg-chocolate-700 text-cream-50 font-sans text-xs font-semibold uppercase tracking-[0.18em] transition-all duration-300 hover:bg-bronze-500 hover:text-chocolate-950 focus:outline-none focus:ring-2 focus:ring-bronze-500 focus:ring-offset-2 focus:ring-offset-cream-200 shadow-sm active:scale-[0.99];
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-7 py-3.5 border border-chocolate-700/30 text-chocolate-700 bg-transparent font-sans text-xs font-semibold uppercase tracking-[0.18em] transition-all duration-300 hover:border-chocolate-700 hover:bg-chocolate-700 hover:text-cream-50 focus:outline-none focus:ring-2 focus:ring-chocolate-700 focus:ring-offset-2 active:scale-[0.99];
+  }
+
+  .btn-bronze {
+    @apply inline-flex items-center justify-center px-7 py-3.5 bg-bronze-500 text-cream-50 font-sans text-xs font-semibold uppercase tracking-[0.18em] transition-all duration-300 hover:bg-chocolate-700 hover:text-cream-50 focus:outline-none focus:ring-2 focus:ring-bronze-500 focus:ring-offset-2 shadow-sm active:scale-[0.99];
+  }
+
+  .card-luxury {
+    @apply bg-cream-100/90 border border-chocolate-700/10 transition-all duration-300;
+  }
+
+  .card-luxury-hover {
+    @apply hover:border-bronze-500/50 hover:bg-cream-50;
+  }
+
+  /* Slow Ken Burns image effect */
+  .ken-burns {
+    animation: kenBurnsZoom 75s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes kenBurnsZoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.08);
+  }
+}
+
+/* Ticker Pause on Hover */
+.marquee-container:hover .marquee-content {
+  animation-play-state: paused;
+}
