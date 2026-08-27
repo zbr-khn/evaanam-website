@@ -233,15 +233,31 @@ export default function GalleryPage() {
                   </button>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {btsImages.map((image, idx) => (
-                    <GalleryCard
-                      key={image.id}
-                      image={image}
-                      onOpen={() => handleOpenLightbox(GALLERY_IMAGES.findIndex((img) => img.id === image.id))}
-                    />
-                  ))}
-                </div>
+                {btsImages.length > 0 ? (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {btsImages.map((image, idx) => (
+                      <GalleryCard
+                        key={image.id}
+                        image={image}
+                        onOpen={() => handleOpenLightbox(GALLERY_IMAGES.findIndex((img) => img.id === image.id))}
+                      />
+                    ))}
+                  </div>
+                ) : (
+                  <div className="p-10 border border-dashed border-chocolate-700/20 dark:border-bronze-500/30 rounded-sm bg-cream-100/60 dark:bg-night-800/60 text-center space-y-4">
+                    <div className="w-12 h-12 rounded-full bg-cream-200 dark:bg-night-750 border border-bronze-500/30 text-bronze-500 flex items-center justify-center mx-auto">
+                      <Camera className="w-5 h-5" />
+                    </div>
+                    <div className="max-w-md mx-auto space-y-1">
+                      <h4 className="font-serif text-lg text-chocolate-950 dark:text-cream-50 font-medium">
+                        Behind The Scenes Photos Awaiting Drop
+                      </h4>
+                      <p className="text-xs text-chocolate-600 dark:text-night-muted font-light leading-relaxed">
+                        Drop your backstage crew briefing, uniform muster, or radio sync photos into <code className="font-mono text-bronze-600 dark:text-bronze-400 bg-cream-200 dark:bg-night-900 px-1.5 py-0.5 rounded text-[11px]">public/images/gallery-bts/</code> to feature them in this section.
+                      </p>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           ) : (

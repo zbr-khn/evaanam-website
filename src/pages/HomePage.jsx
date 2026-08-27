@@ -20,7 +20,7 @@ export default function HomePage() {
         {/* Background Image with slow Ken Burns effect & luxury dark overlay */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
-            src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=2000&q=85"
+            src="./images/gallery-weddings/IMG-6449-JPG.jpg"
             alt="Luxury Wedding & Banquet Event Floor"
             className="w-full h-full object-cover object-center ken-burns opacity-35 dark:opacity-25"
           />
@@ -362,7 +362,7 @@ export default function HomePage() {
       <section className="relative h-[480px] sm:h-[550px] flex items-center justify-center overflow-hidden bg-night-950 text-cream-100 text-center px-6">
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
-            src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=2000&q=85"
+            src="./images/gallery-corporate/IMG-20250419-WA0011-jpg.jpg"
             alt="Event Floor in Motion"
             className="w-full h-full object-cover object-center ken-burns opacity-30 dark:opacity-20"
           />
