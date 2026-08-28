@@ -1,32 +1,123 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, ChevronRight, Sparkles, Check, Crown, Briefcase, MessageSquare, Calculator } from "lucide-react";
+import { 
+  ArrowUpRight, 
+  Sparkles, 
+  Users, 
+  Building2, 
+  ShieldCheck, 
+  Camera, 
+  MapPin, 
+  PhoneCall, 
+  Calculator,
+  Crown,
+  Briefcase
+} from "lucide-react";
 import StatCounter from "../components/StatCounter";
-import VenueMarquee from "../components/VenueMarquee";
-import SocialSection from "../components/SocialSection";
-import ExecutiveCarousel from "../components/ExecutiveCarousel";
-import TestimonialMarquee from "../components/TestimonialMarquee";
 import ScrollReveal from "../components/ScrollReveal";
-import ContactFormSection from "../components/ContactFormSection";
-import CalculatorModal from "../components/CalculatorModal";
 import ColorCreepSection from "../components/ColorCreepSection";
 import { COMPANY_INFO } from "../data/evaanamData";
 
 export default function HomePage() {
-  const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
+  const PORTAL_PAGES = [
+    {
+      id: "services",
+      number: "01",
+      tag: "WORKFORCE & ROLES",
+      title: "Specialist Services",
+      subtitle: "27 Tailored Operational Roles & Calculator",
+      desc: "Explore our specialized deployment divisions: 14 dedicated wedding hospitality positions (VIP shadows, welcome hostesses, banquet stewards) and 13 corporate summit roles (show runners, registration teams, brand ambassadors). Includes the interactive floor roster calculator.",
+      link: "/services",
+      linkText: "Explore Services & 27 Roles",
+      icon: Users,
+      badge: "14 Wedding + 13 Corporate Roles",
+      themeColor: "amber",
+      image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80"
+    },
+    {
+      id: "venues",
+      number: "02",
+      tag: "DEPLOYMENT FOOTPRINT",
+      title: "Venue Directory",
+      subtitle: "40+ Premier Venues Across Delhi NCR",
+      desc: "Discover where our teams operate daily: 20 luxury five-star hotel ballrooms (The Leela Palace, ITC Maurya, Taj Palace, JW Marriott Aerocity) and 20 major convention arenas and exhibition centers (Bharat Mandapam, Yashobhoomi IICC, Pragati Maidan, IEML).",
+      link: "/venues",
+      linkText: "Explore 40+ Venues",
+      icon: Building2,
+      badge: "20 Hotels + 20 Arenas",
+      themeColor: "emerald",
+      image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1000&q=80"
+    },
+    {
+      id: "why-us",
+      number: "03",
+      tag: "STANDARDS & ASSURANCE",
+      title: "Why Us System™",
+      subtitle: "Structured Workforce Operations",
+      desc: "Learn about the EVAANAM quality guarantee: our 7-stage recruitment to performance review protocol, verified standby backup bench (zero ghosting), 5-star grooming standards, and dedicated on-floor supervisory management.",
+      link: "/why-us",
+      linkText: "Discover Operations System",
+      icon: ShieldCheck,
+      badge: "7-Stage Standard · Zero Ghosting",
+      themeColor: "amber",
+      image: "./images/gallery-corporate/IMG-20250419-WA0011-jpg.jpg"
+    },
+    {
+      id: "gallery",
+      number: "04",
+      tag: "FLOOR DOSSIER",
+      title: "Visual Gallery",
+      subtitle: "Active Deployments & Celebrity Highlights",
+      desc: "View our photo and video documentation: real-time banquet silver service alignments, mandap coordination, behind-the-scenes muster briefings, and executive celebrity escorts including Boman Irani and Rajpal Yadav.",
+      link: "/gallery",
+      linkText: "View Floor Gallery",
+      icon: Camera,
+      badge: "Floor Photos & VIP Highlights",
+      themeColor: "emerald",
+      image: "./images/home-highlights/boman.png"
+    },
+    {
+      id: "location",
+      number: "05",
+      tag: "CENTRAL BASE",
+      title: "Location & Transit",
+      subtitle: "Operations HQ & Rapid Response Hubs",
+      desc: "Inspect our central operations office in New Friends Colony, South Delhi. View rapid transit routes via Jamia Millia Islamia Metro Station (Magenta Line) and our 4 regional response corridors covering Central Delhi, Aerocity, Gurgaon, and Noida.",
+      link: "/location",
+      linkText: "View Location & Metro Guide",
+      icon: MapPin,
+      badge: "South Delhi HQ · Metro Access",
+      themeColor: "amber",
+      image: "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1000&q=80"
+    },
+    {
+      id: "contact",
+      number: "06",
+      tag: "PRIORITY DISPATCH",
+      title: "Contact & Booking",
+      subtitle: "Custom Roster & Instant WhatsApp Desk",
+      desc: "Submit your event schedule, venue details, and headcount expectations directly to our senior coordinators. Switch between the comprehensive requisition form and the interactive roster calculator for instant WhatsApp quotes.",
+      link: "/contact",
+      linkText: "Book Deployment Crew",
+      icon: PhoneCall,
+      badge: "24/7 Operations Line",
+      themeColor: "emerald",
+      image: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1000&q=80"
+    },
+  ];
 
   return (
     <div className="animate-fade-in">
       {/* ========================================================================= */}
       {/* 1. HERO SECTION                                                            */}
       {/* ========================================================================= */}
-      <section data-tone="a" className="relative min-h-[92vh] sm:min-h-screen flex items-center justify-center pt-28 pb-16 px-6 sm:px-8 lg:px-12 overflow-hidden text-cream-100 bg-brand-dark">
+      <section data-tone="a" className="relative min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center pt-28 pb-16 px-6 sm:px-8 lg:px-12 overflow-hidden text-cream-100 bg-brand-dark">
         {/* Background Image with slow Ken Burns effect & luxury dark overlay */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
             src="./gallery/hero-updated.png"
             alt="EVAANAM Luxury Event Floor Manpower & Execution"
-            className="w-full h-full object-cover object-center ken-burns opacity-40 dark:opacity-30"
+            className="w-full h-full object-cover object-center ken-burns opacity-35 dark:opacity-25"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-night-950 via-night-950/80 to-night-950/90" />
         </div>
@@ -36,66 +127,67 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
             <div className="lg:col-span-8 space-y-6">
               {/* Micro Eyebrow */}
-              <div className="inline-flex items-center space-x-2.5 px-3 py-1.5 bg-night-900/90 border border-bronze-500/30 rounded-sm">
-                <span className="w-1.5 h-1.5 rounded-full bg-bronze-400"></span>
-                <span className="micro-label text-bronze-300 font-bold">
-                  Event Manpower &amp; Execution
+              <div className="inline-flex items-center space-x-2.5 px-3 py-1.5 bg-night-900/90 border border-amber-500/30 rounded-sm">
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                <span className="micro-label text-amber-300 font-bold">
+                  Event Manpower &amp; Execution · Delhi NCR
                 </span>
               </div>
 
               {/* Main Headline */}
               <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-cream-50 leading-[1.04] tracking-tight">
                 The Right People <br />
-                <span className="italic font-normal text-bronze-300">For Every Floor.</span>
+                <span className="italic font-normal text-amber-300">For Every Floor.</span>
               </h1>
 
               {/* Supporting Text */}
               <p className="text-base sm:text-lg text-cream-200 font-light max-w-2xl leading-relaxed">
-                Trained, verified and professionally managed event crew for weddings, corporate events, exhibitions and large-scale experiences across Delhi NCR.
+                Trained, verified and professionally managed event crews engineered for five-star wedding banquets, corporate summits, and large-scale industrial exhibitions across Delhi NCR.
               </p>
 
               {/* CTAs */}
               <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center space-y-3.5 sm:space-y-0 sm:space-x-4">
-                <a
-                  href="#contact-form-section"
-                  className="btn-bronze group"
-                >
-                  <span>Request Manpower</span>
-                  <ArrowUpRight className="w-4 h-4 ml-2 text-night-950 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </a>
-
-                {/* Hero Button: Roster Calculator redirects to Services calculator section */}
                 <Link
                   to="/services#calculator-section"
+                  className="btn-primary group"
+                >
+                  <Calculator className="w-3.5 h-3.5 mr-2 text-amber-300 dark:text-night-950 group-hover:rotate-12 transition-transform duration-300" />
+                  <span>Configure Crew Roster ⚡</span>
+                </Link>
+
+                <Link
+                  to="/contact"
                   className="btn-secondary group"
                 >
-                  <Calculator className="w-3.5 h-3.5 mr-2 text-amber-500 dark:text-amber-300 group-hover:rotate-12 transition-transform duration-300" />
-                  <span>Roster Calculator</span>
+                  <span>Request Floor Booking</span>
+                  <ArrowUpRight className="w-4 h-4 ml-2 text-amber-400 dark:text-cream-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </Link>
               </div>
 
               {/* Credibility Line */}
-              <div className="pt-6 flex items-center space-x-2 text-xs font-sans tracking-wider text-bronze-400 font-medium">
+              <div className="pt-6 flex items-center space-x-2 text-xs font-sans tracking-wider text-amber-400/90 font-medium">
                 <span>200+ Crew Network</span>
-                <span className="text-chocolate-600 dark:text-night-dim">·</span>
+                <span className="text-cream-400/40">·</span>
                 <span>300+ Projects</span>
-                <span className="text-chocolate-600 dark:text-night-dim">·</span>
-                <span>30+ Premium Venues</span>
+                <span className="text-cream-400/40">·</span>
+                <span>30+ Five-Star Venues</span>
+                <span className="text-cream-400/40">·</span>
+                <span>24-Hr Rapid Dispatch</span>
               </div>
             </div>
 
             {/* Hero Quick Badge Column */}
             <div className="lg:col-span-4 hidden lg:block">
-              <div className="p-6 bg-night-900/80 backdrop-blur-md border border-bronze-500/30 text-cream-200 space-y-4 shadow-xl">
-                <span className="micro-label text-bronze-300 font-bold">
-                  OPERATIONAL COMMITMENT
+              <div className="p-6 bg-night-900/85 backdrop-blur-md border border-amber-500/30 text-cream-200 space-y-4 shadow-2xl rounded-sm">
+                <span className="micro-label text-amber-400 font-bold">
+                  OPERATIONAL ASSURANCE
                 </span>
                 <p className="font-serif text-xl italic text-cream-100 leading-snug">
-                  "Structured workforce operations with verified stand-by personnel."
+                  "Structured workforce operations with verified stand-by personnel and zero dropouts."
                 </p>
-                <div className="pt-2 border-t border-bronze-500/20 flex items-center justify-between text-xs text-cream-300/80 font-mono">
-                  <span>NCR Floor Ready</span>
-                  <span className="text-bronze-400 font-semibold">24/7 Dispatch</span>
+                <div className="pt-2 border-t border-amber-500/20 flex items-center justify-between text-xs text-cream-300/80 font-mono">
+                  <span>Delhi NCR Ready</span>
+                  <span className="text-amber-400 font-semibold">24/7 Desk</span>
                 </div>
               </div>
             </div>
@@ -104,390 +196,132 @@ export default function HomePage() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 2. EXECUTIVE ENGAGEMENTS CAROUSEL (BLEED A -> B)                           */}
+      {/* 2. REAL-TIME STATS STRIP (TONE A)                                          */}
       {/* ========================================================================= */}
-      <ColorCreepSection tone="b">
-        <ScrollReveal variant="up" threshold={0.1}>
-          <ExecutiveCarousel />
-        </ScrollReveal>
-      </ColorCreepSection>
-
-      {/* ========================================================================= */}
-      {/* 3. STATS STRIP & PHILOSOPHY (BLEED B -> A)                                 */}
-      {/* ========================================================================= */}
-      <ColorCreepSection tone="a">
+      <ColorCreepSection tone="a" className="py-12 border-b border-chocolate-700/10 dark:border-bronze-500/15">
         <ScrollReveal variant="up" threshold={0.15}>
           <StatCounter />
         </ScrollReveal>
-
-        <ScrollReveal variant="up" threshold={0.15}>
-          <div className="py-20 px-6 sm:px-8 lg:px-12">
-            <div className="max-w-4xl mx-auto text-center space-y-8">
-              <span className="micro-label">THE EVAANAM PHILOSOPHY</span>
-              <h2 className="editorial-heading text-4xl sm:text-5xl md:text-6xl">
-                Manpower is easy to arrange. <br />
-                <span className="italic text-emerald-700 dark:text-emerald-400">Reliable manpower is not.</span>
-              </h2>
-              <p className="text-base sm:text-lg font-light leading-relaxed max-w-2xl mx-auto">
-                In luxury hospitality, there is no second take. EVAANAM was founded to replace unvetted freelance chaos with structured, disciplined, and professionally supervised workforce operations.
-              </p>
-              <div className="pt-4 flex justify-center">
-                <Link
-                  to="/why-us"
-                  className="btn-primary group"
-                >
-                  <span>Explore The Workforce Operations System™</span>
-                  <ArrowUpRight className="w-4 h-4 ml-2.5 text-bronze-300 dark:text-night-950 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </ScrollReveal>
       </ColorCreepSection>
 
       {/* ========================================================================= */}
-      {/* 4. TWO PRIMARY SERVICE VERTICALS (BLEED A -> B)                            */}
+      {/* 3. EXECUTIVE PORTAL FEED: WHAT TO FIND ON EACH PAGE                        */}
       {/* ========================================================================= */}
       <ColorCreepSection tone="b" className="py-24 px-6 sm:px-8 lg:px-12">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto space-y-16">
+          
+          {/* Section Header */}
           <ScrollReveal variant="up">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-              <div>
-                <span className="micro-label">SPECIALIZED DIVISIONS</span>
-                <h2 className="editorial-heading text-4xl sm:text-5xl mt-2">
-                  Engineered for High-Pressure Floors
-                </h2>
-              </div>
-              <Link
-                to="/services"
-                className="btn-primary group"
-              >
-                <span>View All 27 Roles</span>
-                <ArrowUpRight className="w-4 h-4 ml-2 text-bronze-300 dark:text-night-950 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </Link>
+            <div className="max-w-3xl space-y-4">
+              <span className="micro-label text-amber-700 dark:text-amber-400 font-bold">
+                WEBSITE DIRECTORY &amp; CHAPTERS
+              </span>
+              <h2 className="editorial-heading text-4xl sm:text-5xl md:text-6xl text-chocolate-950 dark:text-cream-50">
+                Explore the EVAANAM Platform
+              </h2>
+              <p className="text-base sm:text-lg text-chocolate-600 dark:text-night-muted font-light leading-relaxed">
+                Select a section below to dive directly into detailed role descriptions, venue intelligence, operational standards, or booking tools.
+              </p>
             </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-            {/* SERVICE CARD 1: WEDDING HOSPITALITY */}
-            <ScrollReveal variant="left" delay={100}>
-              <div className="group relative rounded-sm p-6 sm:p-10 flex flex-col justify-between overflow-hidden bg-cream-100/90 dark:bg-night-800/90 border border-chocolate-700/15 dark:border-bronze-500/20 shadow-md hover:shadow-2xl hover:-translate-y-2.5 transition-all duration-500 ease-out hover:border-amber-500/60 dark:hover:border-bronze-400/80 h-full">
-                <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-0 group-hover:opacity-20 dark:group-hover:opacity-15 transition-opacity duration-700">
-                  <img
-                    src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80"
-                    alt="Luxury Wedding Hospitality"
-                    className="w-full h-full object-cover scale-100 group-hover:scale-110 transition-transform duration-1000 ease-out"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-cream-100 via-cream-100/80 to-transparent dark:from-night-800 dark:via-night-800/80" />
-                </div>
-
-                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-amber-400/20 dark:via-bronze-400/20 to-transparent pointer-events-none" />
-                <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-transparent group-hover:bg-gradient-to-r group-hover:from-amber-400 group-hover:via-bronze-500 group-hover:to-amber-400 transition-all duration-500" />
-
-                <div className="space-y-6 relative z-10">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-2">
-                      <span className="w-2 h-2 rounded-full bg-amber-500 inline-block group-hover:animate-ping" />
-                      <span className="font-mono text-xs font-semibold text-amber-700 dark:text-amber-400">
-                        01 / WEDDING HOSPITALITY
-                      </span>
-                    </div>
-
-                    <div className="flex items-center space-x-1.5 px-3 py-1 bg-amber-500/10 dark:bg-amber-400/10 border border-amber-500/30 text-amber-800 dark:text-amber-300 rounded-full text-[10.5px] font-mono font-semibold transform group-hover:scale-105 group-hover:-translate-y-1 transition-all duration-300 shadow-sm">
-                      <Crown className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
-                      <span>14 Specialist Roles</span>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h3 className="font-serif text-3xl sm:text-4xl text-chocolate-950 dark:text-cream-50 font-medium group-hover:text-amber-700 dark:group-hover:text-bronze-350 transition-colors duration-300">
-                      Wedding Hospitality
-                    </h3>
-                    <p className="text-sm text-chocolate-600 dark:text-bronze-300/90 font-serif italic mt-1">
-                      Five-star floors, multi-day functions, VIP coverage.
-                    </p>
-                  </div>
-
-                  <p className="text-xs sm:text-sm text-chocolate-600/90 dark:text-night-muted font-light leading-relaxed">
-                    From VIP personal shadows and traditional welcome hostesses to round-the-clock helpdesks and floor runners, our wedding teams blend warmth with operational precision.
-                  </p>
-
-                  <div className="space-y-2 pt-1">
-                    <span className="text-[10px] uppercase font-mono tracking-widest text-chocolate-400 dark:text-night-dim block">
-                      Featured Floor Roles
-                    </span>
-                    <div className="flex flex-wrap gap-2">
-                      {[
-                        { name: "VIP Shadows", count: "Personal VIP" },
-                        { name: "Welcome Hostesses", count: "Groomed" },
-                        { name: "Helpdesk Crew", count: "24/7 Desk" },
-                        { name: "Floor Runners", count: "Agile" },
-                        { name: "Banquet Stewards", count: "Silver Service" },
-                      ].map((tag) => (
-                        <span
-                          key={tag.name}
-                          className="text-[11px] px-3 py-1.5 bg-cream-200 dark:bg-night-850 text-chocolate-800 dark:text-cream-100 border border-chocolate-700/10 dark:border-bronze-500/20 rounded-sm font-medium transition-all duration-300 group-hover:border-amber-500/40 group-hover:bg-cream-50 dark:group-hover:bg-night-750 group-hover:shadow-sm"
-                        >
-                          {tag.name}
+          {/* 6 Clean Portal Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {PORTAL_PAGES.map((page, idx) => {
+              const Icon = page.icon;
+              return (
+                <ScrollReveal key={page.id} variant="up" delay={idx * 80}>
+                  <div className="group relative rounded-sm p-8 flex flex-col justify-between overflow-hidden bg-cream-100/90 dark:bg-night-800/90 border-2 border-chocolate-700/15 dark:border-bronze-500/20 shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-400 ease-out hover:border-amber-500/70 dark:hover:border-amber-400/70 h-full">
+                    
+                    {/* Top Indicator & Number */}
+                    <div className="space-y-5">
+                      <div className="flex items-center justify-between">
+                        <span className="font-mono text-xs font-extrabold text-amber-700 dark:text-amber-400 tracking-widest">
+                          CHAPTER {page.number}
                         </span>
-                      ))}
-                    </div>
-                  </div>
 
-                  <div className="p-3.5 bg-amber-500/5 dark:bg-night-750/90 border border-amber-500/20 rounded text-xs font-sans text-chocolate-700 dark:text-cream-200 flex items-center justify-between opacity-90 group-hover:opacity-100 group-hover:border-amber-500/50 transition-all duration-300">
-                    <div className="flex items-center space-x-2 text-amber-700 dark:text-amber-300 font-semibold text-[11px]">
-                      <Check className="w-3.5 h-3.5 text-amber-600" />
-                      <span>Groomed · Verified · Pre-Shift Briefed</span>
-                    </div>
-                    <span className="text-[10px] uppercase font-mono tracking-wider text-amber-800 dark:text-amber-400">
-                      Floor Ready
-                    </span>
-                  </div>
-                </div>
+                        <div className="p-2.5 rounded-sm bg-cream-200 dark:bg-night-750 border border-chocolate-700/10 dark:border-bronze-500/20 text-amber-700 dark:text-amber-400 group-hover:bg-amber-500 group-hover:text-night-950 transition-colors duration-300">
+                          <Icon className="w-5 h-5" />
+                        </div>
+                      </div>
 
-                <div className="mt-8 pt-6 border-t border-chocolate-700/10 dark:border-night-700 relative z-10">
-                  <Link
-                    to="/services"
-                    className="btn-primary w-full py-4 px-6 text-xs uppercase tracking-[0.2em] font-extrabold flex items-center justify-between group"
-                  >
-                    <span>Explore 14 Wedding Roles</span>
-                    <ChevronRight className="w-4 h-4 transform group-hover:translate-x-1.5 transition-transform duration-300" />
-                  </Link>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* SERVICE CARD 2: CORPORATE & EXPOS */}
-            <ScrollReveal variant="right" delay={200}>
-              <div className="group relative rounded-sm p-8 sm:p-10 flex flex-col justify-between overflow-hidden bg-cream-100/90 dark:bg-night-800/90 border border-chocolate-700/15 dark:border-bronze-500/20 shadow-md hover:shadow-2xl hover:-translate-y-2.5 transition-all duration-500 ease-out hover:border-emerald-500/60 dark:hover:border-emerald-400/80 h-full">
-                <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-0 group-hover:opacity-20 dark:group-hover:opacity-15 transition-opacity duration-700">
-                  <img
-                    src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80"
-                    alt="Corporate Summits & Expos"
-                    className="w-full h-full object-cover scale-100 group-hover:scale-110 transition-transform duration-1000 ease-out"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-cream-100 via-cream-100/80 to-transparent dark:from-night-800 dark:via-night-800/80" />
-                </div>
-
-                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-emerald-400/20 dark:via-emerald-400/20 to-transparent pointer-events-none" />
-                <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-transparent group-hover:bg-gradient-to-r group-hover:from-emerald-400 group-hover:via-teal-500 group-hover:to-emerald-400 transition-all duration-500" />
-
-                <div className="space-y-6 relative z-10">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-2">
-                      <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block group-hover:animate-ping" />
-                      <span className="font-mono text-xs font-semibold text-emerald-700 dark:text-emerald-400">
-                        02 / CORPORATE &amp; EXPOS
-                      </span>
-                    </div>
-
-                    <div className="flex items-center space-x-1.5 px-3 py-1 bg-emerald-500/10 dark:bg-emerald-400/10 border border-emerald-500/30 text-emerald-800 dark:text-emerald-300 rounded-full text-[10.5px] font-mono font-semibold transform group-hover:scale-105 group-hover:-translate-y-1 transition-all duration-300 shadow-sm">
-                      <Briefcase className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-                      <span>13 Specialist Roles</span>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h3 className="font-serif text-3xl sm:text-4xl text-chocolate-950 dark:text-cream-50 font-medium group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors duration-300">
-                      Corporate &amp; Expos
-                    </h3>
-                    <p className="text-sm text-chocolate-600 dark:text-bronze-300/90 font-serif italic mt-1">
-                      Expos, activations, launches and conventions.
-                    </p>
-                  </div>
-
-                  <p className="text-xs sm:text-sm text-chocolate-600/90 dark:text-night-muted font-light leading-relaxed">
-                    High-throughput badge registration, C-suite lounge hostesses, stage show runners, brand ambassadors, and technical production supervisors for premier business events.
-                  </p>
-
-                  <div className="space-y-2 pt-1">
-                    <span className="text-[10px] uppercase font-mono tracking-widest text-chocolate-400 dark:text-night-dim block">
-                      Featured Summit Roles
-                    </span>
-                    <div className="flex flex-wrap gap-2">
-                      {[
-                        { name: "Registration Desks", count: "QR Check-in" },
-                        { name: "Show Runners", count: "Stage & AV" },
-                        { name: "Brand Ambassadors", count: "Bilingual" },
-                        { name: "Stall Crew", count: "Lead Capture" },
-                        { name: "Floor Supervisors", count: "Multi-Hall" },
-                      ].map((tag) => (
-                        <span
-                          key={tag.name}
-                          className="text-[11px] px-3 py-1.5 bg-cream-200 dark:bg-night-850 text-chocolate-800 dark:text-cream-100 border border-chocolate-700/10 dark:border-bronze-500/20 rounded-sm font-medium transition-all duration-300 group-hover:border-emerald-500/40 group-hover:bg-cream-50 dark:group-hover:bg-night-750 group-hover:shadow-sm"
-                        >
-                          {tag.name}
+                      {/* Title & Subtitle */}
+                      <div>
+                        <span className="text-[10px] uppercase font-mono tracking-widest text-chocolate-500 dark:text-night-dim font-bold block mb-1">
+                          {page.tag}
                         </span>
-                      ))}
+                        <h3 className="font-serif text-2xl sm:text-3xl text-chocolate-950 dark:text-cream-50 font-medium group-hover:text-amber-800 dark:group-hover:text-amber-300 transition-colors">
+                          {page.title}
+                        </h3>
+                        <p className="text-xs text-amber-800 dark:text-amber-300/90 font-serif italic mt-0.5">
+                          {page.subtitle}
+                        </p>
+                      </div>
+
+                      {/* Brief Explanation */}
+                      <p className="text-xs sm:text-sm text-chocolate-700 dark:text-night-muted font-light leading-relaxed">
+                        {page.desc}
+                      </p>
+
+                      {/* Badge Tag */}
+                      <div className="pt-2">
+                        <span className="inline-block text-[10.5px] font-mono font-semibold px-3 py-1 bg-cream-200/90 dark:bg-night-850 text-chocolate-800 dark:text-cream-200 border border-chocolate-700/10 dark:border-bronze-500/20 rounded-sm">
+                          {page.badge}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Bottom CTA Button */}
+                    <div className="mt-8 pt-6 border-t border-chocolate-700/10 dark:border-night-700">
+                      <Link
+                        to={page.link}
+                        className="btn-primary group w-full py-3.5 px-5 text-xs font-bold uppercase tracking-wider flex items-center justify-between"
+                      >
+                        <span>{page.linkText}</span>
+                        <ArrowUpRight className="w-4 h-4 ml-1.5 text-amber-300 dark:text-night-950 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                      </Link>
                     </div>
                   </div>
-
-                  <div className="p-3.5 bg-emerald-500/5 dark:bg-night-750/90 border border-emerald-500/20 rounded text-xs font-sans text-chocolate-700 dark:text-cream-200 flex items-center justify-between opacity-90 group-hover:opacity-100 group-hover:border-emerald-500/50 transition-all duration-300">
-                    <div className="flex items-center space-x-2 text-emerald-700 dark:text-emerald-300 font-semibold text-[11px]">
-                      <Check className="w-3.5 h-3.5 text-emerald-600" />
-                      <span>Tech-App Savvy · Articulate · Rapid Roster</span>
-                    </div>
-                    <span className="text-[10px] uppercase font-mono tracking-wider text-emerald-800 dark:text-emerald-400">
-                      High Throughput
-                    </span>
-                  </div>
-                </div>
-
-                <div className="mt-8 pt-6 border-t border-chocolate-700/10 dark:border-night-700 relative z-10">
-                  <Link
-                    to="/services"
-                    className="btn-primary w-full py-4 px-6 text-xs uppercase tracking-[0.2em] font-extrabold flex items-center justify-between group"
-                  >
-                    <span>Explore 13 Corporate Roles</span>
-                    <ChevronRight className="w-4 h-4 transform group-hover:translate-x-1.5 transition-transform duration-300" />
-                  </Link>
-                </div>
-              </div>
-            </ScrollReveal>
+                </ScrollReveal>
+              );
+            })}
           </div>
         </div>
       </ColorCreepSection>
 
       {/* ========================================================================= */}
-      {/* 5. OPERATIONAL ASSURANCE BANNER (BLEED B -> A)                             */}
-      {/* ========================================================================= */}
-      <ColorCreepSection tone="a">
-        <ScrollReveal variant="scale" threshold={0.15}>
-          <div className="relative h-[480px] sm:h-[550px] flex items-center justify-center overflow-hidden text-center px-6">
-            <div className="absolute inset-0 z-0 overflow-hidden">
-              <img
-                src="./images/gallery-corporate/IMG-20250419-WA0011-jpg.jpg"
-                alt="Event Floor in Motion"
-                className="w-full h-full object-cover object-center ken-burns opacity-30 dark:opacity-20"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-night-950/90 via-night-950/60 to-night-950/90" />
-            </div>
-
-            <div className="relative z-10 max-w-3xl mx-auto space-y-6 text-cream-100">
-              <span className="micro-label text-amber-400 font-bold">OPERATIONAL ASSURANCE</span>
-              <h3 className="font-serif text-3xl sm:text-4xl md:text-5xl font-light leading-snug">
-                From first arrival to final departure, <br />
-                <span className="italic text-amber-300">the floor stays covered.</span>
-              </h3>
-              <p className="text-xs sm:text-sm text-cream-300/90 font-light tracking-wide max-w-xl mx-auto">
-                Zero last-minute dropouts. Verified replacements on standby. A single point of coordination for your entire production team.
-              </p>
-            </div>
-          </div>
-        </ScrollReveal>
-      </ColorCreepSection>
-
-      {/* ========================================================================= */}
-      {/* 6. VENUE FOOTPRINT (BLEED A -> B)                                          */}
-      {/* ========================================================================= */}
-      <ColorCreepSection tone="b" className="py-16">
-        <ScrollReveal variant="up" threshold={0.12}>
-          <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <div>
-              <span className="micro-label text-amber-700 dark:text-amber-400 font-bold">DEPLOYMENT FOOTPRINT</span>
-              <h3 className="editorial-heading text-2xl sm:text-3xl font-medium mt-1">
-                Experienced where the standard is already high.
-              </h3>
-            </div>
-            <Link
-              to="/venues"
-              className="btn-primary group"
-            >
-              <span>Explore 40+ Venues</span>
-              <ArrowUpRight className="w-4 h-4 ml-2 text-bronze-300 dark:text-night-950 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </Link>
-          </div>
-
-          <VenueMarquee />
-        </ScrollReveal>
-      </ColorCreepSection>
-
-      {/* ========================================================================= */}
-      {/* 7. TESTIMONIALS (BLEED B -> A)                                             */}
-      {/* ========================================================================= */}
-      <ColorCreepSection tone="a" className="py-20">
-        <ScrollReveal variant="up" threshold={0.12}>
-          <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 mb-8 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
-            <div>
-              <span className="micro-label font-bold">CLIENT ENDORSEMENTS &amp; REVIEWS</span>
-              <h2 className="editorial-heading text-3xl sm:text-4xl md:text-5xl mt-1">
-                500+ Events Delivered – <span className="italic text-emerald-700 dark:text-emerald-400">100+ Happy Clients</span>
-              </h2>
-              <p className="text-xs sm:text-sm font-light mt-1 max-w-xl">
-                Authentic feedback from corporate organizers, luxury wedding planners, and exhibition managers.
-              </p>
-            </div>
-            
-            <div className="flex items-center space-x-2 px-3.5 py-2 bg-cream-100/80 dark:bg-night-800/80 border border-chocolate-700/10 dark:border-emerald-500/20 rounded-sm">
-              <span className="text-xs font-mono font-bold text-amber-600 dark:text-amber-400">★★★★★</span>
-              <span className="text-xs font-mono font-semibold text-chocolate-900 dark:text-cream-100">
-                5.0 / 5.0 Rating
-              </span>
-            </div>
-          </div>
-
-          <TestimonialMarquee />
-        </ScrollReveal>
-      </ColorCreepSection>
-
-      {/* ========================================================================= */}
-      {/* 8. SOCIAL JOURNEY (BLEED A -> B)                                           */}
-      {/* ========================================================================= */}
-      <ColorCreepSection tone="b">
-        <ScrollReveal variant="up" threshold={0.12}>
-          <SocialSection showHeader={true} />
-        </ScrollReveal>
-      </ColorCreepSection>
-
-      {/* ========================================================================= */}
-      {/* 9. MEET EVA SPOTLIGHT (BLEED B -> A)                                       */}
+      {/* 4. MEET EVA AI OPERATIONS ASSISTANT BANNER (TONE A)                        */}
       {/* ========================================================================= */}
       <ColorCreepSection tone="a" className="py-20 px-6 sm:px-8 lg:px-12">
         <ScrollReveal variant="scale" threshold={0.12}>
           <div className="max-w-7xl mx-auto">
-            <div className="relative overflow-hidden rounded-lg bg-cream-100/95 dark:bg-gradient-to-br dark:from-brand-green dark:via-night-900 dark:to-night-950 border-2 border-chocolate-700/20 dark:border-bronze-500/30 p-8 sm:p-12 shadow-2xl text-chocolate-950 dark:text-cream-100 transition-all duration-300">
-              <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 dark:bg-bronze-500/10 rounded-full blur-3xl pointer-events-none" />
-              <div className="absolute bottom-0 left-0 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
-
+            <div className="relative overflow-hidden rounded-sm bg-cream-100/95 dark:bg-night-900 border-2 border-chocolate-700/20 dark:border-amber-500/30 p-8 sm:p-12 shadow-2xl text-chocolate-950 dark:text-cream-100 transition-all duration-300">
               <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                {/* Left Column: Information & Brand Pitch */}
-                <div className="lg:col-span-7 space-y-5">
-                  <div className="inline-flex items-center space-x-2 px-3 py-1 bg-cream-200 dark:bg-night-900/90 border border-amber-600/30 dark:border-bronze-400/40 rounded-full text-amber-800 dark:text-amber-300 shadow-sm">
+                
+                {/* Left Pitch */}
+                <div className="lg:col-span-8 space-y-4">
+                  <div className="inline-flex items-center space-x-2 px-3 py-1 bg-cream-200 dark:bg-night-850 border border-amber-600/30 dark:border-amber-400/40 rounded-full text-amber-800 dark:text-amber-300 shadow-sm">
                     <Sparkles className="w-3.5 h-3.5 animate-pulse" />
                     <span className="text-[10px] font-mono uppercase tracking-widest font-bold">
-                      AI Operations Concierge · 24/7
+                      24/7 AI OPERATIONS CONCIERGE
                     </span>
                   </div>
 
-                  <h2 className="editorial-heading text-3xl sm:text-4xl md:text-5xl text-chocolate-950 dark:text-cream-50 leading-tight">
-                    Meet <span className="italic text-amber-700 dark:text-amber-300">Eva</span> — Your Instant Staffing &amp; Operations Assistant.
-                  </h2>
+                  <h3 className="editorial-heading text-3xl sm:text-4xl text-chocolate-950 dark:text-cream-50 leading-tight">
+                    Need instant headcount estimates or urgent crew coverage?
+                  </h3>
 
                   <p className="text-xs sm:text-sm text-chocolate-700 dark:text-cream-200/90 font-light leading-relaxed max-w-xl">
-                    Planning an event in Delhi NCR or pan-India? Eva estimates your exact crew headcounts, verifies venue logistics across 40+ five-star hotels, and transfers structured briefing requisitions directly to our on-duty WhatsApp dispatch coordinators.
+                    Meet <strong>Eva</strong>, our operations assistant. Calculate exact banquet stewards, hostesses, and supervisors, or forward your brief directly to our on-duty WhatsApp coordinators.
                   </p>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-                    <div className="p-3 bg-cream-200/90 dark:bg-night-850/80 border border-chocolate-700/15 dark:border-bronze-500/20 rounded-sm shadow-sm">
-                      <p className="text-[11px] font-bold text-chocolate-950 dark:text-cream-50">⚡ Instant Headcounts</p>
-                      <p className="text-[10px] text-chocolate-600 dark:text-cream-300/70 font-light mt-0.5">Calculates stewards, VIP shadows &amp; runners</p>
-                    </div>
-                    <div className="p-3 bg-cream-200/90 dark:bg-night-850/80 border border-chocolate-700/15 dark:border-bronze-500/20 rounded-sm shadow-sm">
-                      <p className="text-[11px] font-bold text-chocolate-950 dark:text-cream-50">📍 40+ Venues</p>
-                      <p className="text-[10px] text-chocolate-600 dark:text-cream-300/70 font-light mt-0.5">Taj, ITC, Leela &amp; Pragati Maidan ready</p>
-                    </div>
-                    <div className="p-3 bg-cream-200/90 dark:bg-night-850/80 border border-chocolate-700/15 dark:border-bronze-500/20 rounded-sm shadow-sm">
-                      <p className="text-[11px] font-bold text-chocolate-950 dark:text-cream-50">💬 1-Click WhatsApp</p>
-                      <p className="text-[10px] text-chocolate-600 dark:text-cream-300/70 font-light mt-0.5">Pre-formatted roster briefing sent in 1 tap</p>
-                    </div>
-                  </div>
-
-                  <div className="pt-3 flex flex-wrap items-center gap-4">
+                  <div className="pt-2 flex flex-wrap items-center gap-3">
                     <button
+                      type="button"
                       onClick={() => window.dispatchEvent(new CustomEvent("open-eva-chat"))}
-                      className="btn-bronze group"
+                      className="btn-primary group py-3 px-6 text-xs font-bold uppercase tracking-wider cursor-pointer"
                     >
-                      <MessageSquare className="w-4 h-4 mr-2" />
+                      <Sparkles className="w-4 h-4 mr-2" />
                       <span>Chat with Eva Now</span>
                     </button>
 
@@ -495,53 +329,32 @@ export default function HomePage() {
                       href="https://wa.me/919310039929?text=Hello%20Eva%20%26%20EVAANAM%20Team,%20I%20would%20like%20to%20consult%20on%20manpower%20staffing%20for%20an%20upcoming%20event."
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn-secondary group"
+                      className="btn-secondary group py-3 px-6 text-xs font-bold uppercase tracking-wider cursor-pointer"
                     >
-                      <span>Consult On-Duty Coordinator</span>
-                      <ArrowUpRight className="w-4 h-4 ml-2 text-amber-500 dark:text-bronze-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                      <span>WhatsApp Operations Desk</span>
+                      <ArrowUpRight className="w-4 h-4 ml-1.5 text-amber-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                     </a>
                   </div>
                 </div>
 
-                {/* Right Column: Visual Mockup Card */}
-                <div className="lg:col-span-5 flex justify-center">
-                  <div
-                    onClick={() => window.dispatchEvent(new CustomEvent("open-eva-chat"))}
-                    className="w-full max-w-sm bg-cream-50 dark:bg-night-900/90 border-2 border-chocolate-700/20 dark:border-bronze-500/40 rounded-lg p-5 shadow-2xl space-y-4 cursor-pointer hover:border-amber-500/70 dark:hover:border-amber-400/70 transition-all duration-300 group"
-                  >
-                    <div className="flex items-center justify-between border-b border-chocolate-700/15 dark:border-chocolate-700/30 pb-3">
-                      <div className="flex items-center space-x-2.5">
-                        <div className="w-8 h-8 rounded-full bg-amber-500/15 dark:bg-bronze-500/20 border border-amber-500/30 dark:border-bronze-400/40 flex items-center justify-center text-amber-700 dark:text-amber-300">
-                          <Sparkles className="w-4 h-4" />
-                        </div>
-                        <div>
-                          <h4 className="text-xs font-bold text-chocolate-950 dark:text-cream-50 flex items-center space-x-1">
-                            <span>Eva</span>
-                            <span className="text-[8px] font-mono px-1 py-0.2 bg-amber-500/20 text-amber-800 dark:text-amber-300 rounded font-bold">AI</span>
-                          </h4>
-                          <p className="text-[9px] font-mono text-emerald-700 dark:text-emerald-400 font-semibold">● Active Dispatch Concierge</p>
-                        </div>
-                      </div>
-                      <span className="text-[10px] font-mono text-amber-800 dark:text-bronze-400 uppercase tracking-widest group-hover:text-amber-600 dark:group-hover:text-amber-300 transition-colors">
-                        Tap to Chat →
-                      </span>
-                    </div>
+                {/* Right Feature Highlights */}
+                <div className="lg:col-span-4 space-y-2.5">
+                  <div className="p-3.5 bg-cream-200/80 dark:bg-night-800 border border-chocolate-700/10 dark:border-bronze-500/20 rounded-sm">
+                    <p className="text-xs font-bold text-chocolate-950 dark:text-cream-50">⚡ Instant Headcounts</p>
+                    <p className="text-[11px] text-chocolate-600 dark:text-night-muted font-light mt-0.5">Calculates stewards, hostesses, shadows &amp; supervisors</p>
+                  </div>
 
-                    <div className="space-y-2.5 text-xs">
-                      <div className="p-3 bg-cream-200 dark:bg-night-800/90 rounded text-chocolate-800 dark:text-cream-200 text-[11px] leading-relaxed border border-chocolate-700/15 dark:border-chocolate-700/20 shadow-sm">
-                        "Hi! I can calculate the exact number of stewards, hostesses, and supervisors needed for your banquet floor. Where is your event taking place?"
-                      </div>
-                      <div className="flex flex-wrap gap-1.5 pt-1">
-                        <span className="text-[10px] px-2.5 py-1 bg-amber-500/15 dark:bg-amber-500/20 text-amber-900 dark:text-amber-200 border border-amber-500/30 dark:border-amber-500/40 rounded-full font-mono">
-                          ITC Maurya / Taj Palace
-                        </span>
-                        <span className="text-[10px] px-2.5 py-1 bg-cream-200 dark:bg-night-800 text-chocolate-700 dark:text-cream-300 border border-chocolate-700/20 dark:border-chocolate-700/30 rounded-full font-mono">
-                          Yashobhoomi / Expo
-                        </span>
-                      </div>
-                    </div>
+                  <div className="p-3.5 bg-cream-200/80 dark:bg-night-800 border border-chocolate-700/10 dark:border-bronze-500/20 rounded-sm">
+                    <p className="text-xs font-bold text-chocolate-950 dark:text-cream-50">📍 40+ Venues NCR</p>
+                    <p className="text-[11px] text-chocolate-600 dark:text-night-muted font-light mt-0.5">Taj, ITC, Leela, Yashobhoomi &amp; Pragati Maidan ready</p>
+                  </div>
+
+                  <div className="p-3.5 bg-cream-200/80 dark:bg-night-800 border border-chocolate-700/10 dark:border-bronze-500/20 rounded-sm">
+                    <p className="text-xs font-bold text-chocolate-950 dark:text-cream-50">💬 1-Tap Dispatch</p>
+                    <p className="text-[11px] text-chocolate-600 dark:text-night-muted font-light mt-0.5">Structured briefing sent to WhatsApp in seconds</p>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
@@ -549,53 +362,39 @@ export default function HomePage() {
       </ColorCreepSection>
 
       {/* ========================================================================= */}
-      {/* 10. EVENT REQUISITION CONTACT FORM (BLEED A -> B)                          */}
+      {/* 5. BOTTOM DIRECT CALL TO ACTION (TONE B)                                   */}
       {/* ========================================================================= */}
-      <ColorCreepSection tone="b" id="contact-form-section" className="py-24 px-6 sm:px-8 lg:px-12">
-        <ScrollReveal variant="up" threshold={0.08}>
-          <ContactFormSection />
-        </ScrollReveal>
-      </ColorCreepSection>
-
-      {/* ========================================================================= */}
-      {/* 11. FINAL CALL TO CONVERSATION (BLEED B -> A)                              */}
-      {/* ========================================================================= */}
-      <ColorCreepSection tone="a" className="py-24 px-6 sm:px-8 lg:px-12">
-        <ScrollReveal variant="up" threshold={0.15}>
-          <div className="max-w-4xl mx-auto text-center space-y-8">
-            <span className="micro-label">START A CONVERSATION</span>
-            <h2 className="editorial-heading text-4xl sm:text-5xl lg:text-6xl">
-              Planning an event? <br />
-              <span className="italic text-emerald-700 dark:text-emerald-400">Let's build your team.</span>
+      <ColorCreepSection tone="b" className="py-20 px-6 sm:px-8 lg:px-12 text-center border-t border-chocolate-700/10 dark:border-bronze-500/15">
+        <ScrollReveal variant="up">
+          <div className="max-w-3xl mx-auto space-y-6">
+            <span className="micro-label text-amber-700 dark:text-amber-400 font-bold">
+              LET'S BUILD YOUR EVENT TEAM
+            </span>
+            <h2 className="editorial-heading text-4xl sm:text-5xl">
+              Ready to deploy structured event manpower?
             </h2>
-            <p className="text-base font-light max-w-xl mx-auto leading-relaxed">
-              Tell us your venue, event dates, and crew requirements. Our operations desk will prepare customized crew profiles for your event.
+            <p className="text-sm font-light max-w-xl mx-auto leading-relaxed">
+              Share your schedule, headcount requirements, and shift timings. Our operations desk will structure fully briefed personnel matching your exact venue standards.
             </p>
-            <div className="pt-4 flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-              <a
-                href="#contact-form-section"
-                className="btn-primary px-10 py-4 text-xs font-bold"
+            <div className="pt-3 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link
+                to="/contact"
+                className="btn-primary group px-8 py-4 text-xs font-bold uppercase tracking-wider"
               >
-                <span>Request Manpower</span>
-              </a>
+                <span>Book Deployment Crew</span>
+                <ArrowUpRight className="w-4 h-4 ml-2 text-amber-300 dark:text-night-950 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </Link>
+
               <a
                 href={`tel:${COMPANY_INFO.phones[0].number}`}
-                className="btn-secondary px-8 py-4 text-xs font-bold"
+                className="btn-secondary group px-8 py-4 text-xs font-bold uppercase tracking-wider"
               >
-                <span>Call Operations: {COMPANY_INFO.phones[0].display}</span>
+                <span>Call Hotline: {COMPANY_INFO.phones[0].display}</span>
               </a>
             </div>
           </div>
         </ScrollReveal>
       </ColorCreepSection>
-
-      {/* ========================================================================= */}
-      {/* INTERACTIVE ROSTER CALCULATOR MODAL (Triggered via Hero Button)            */}
-      {/* ========================================================================= */}
-      <CalculatorModal
-        isOpen={isCalculatorOpen}
-        onClose={() => setIsCalculatorOpen(false)}
-      />
     </div>
   );
 }
