@@ -14,7 +14,7 @@ function SingleStat({ value, suffix, label, desc }) {
       if (hasAnimatedRef.current) return;
       hasAnimatedRef.current = true;
 
-      const duration = 1400; // 1.4s smooth fluid count-up
+      const duration = 2400; // 2.4s smooth, sustained count-up
       const startTime = performance.now();
       const targetValue = value;
 
@@ -22,8 +22,8 @@ function SingleStat({ value, suffix, label, desc }) {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
 
-        // Smooth Ease-Out Quart curve
-        const easeProgress = 1 - Math.pow(1 - progress, 4);
+        // Smooth Ease-Out Cubic curve: 1 - (1 - t)^3
+        const easeProgress = 1 - Math.pow(1 - progress, 3);
         const currentNumber = Math.round(easeProgress * targetValue);
 
         if (numberRef.current) {
