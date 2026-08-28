@@ -180,7 +180,7 @@ export default function GalleryPage() {
                   </button>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                   {activationImages.map((image) => (
                     <GalleryCard
                       key={image.id}
@@ -215,8 +215,8 @@ export default function GalleryPage() {
                   </button>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {weddingImages.slice(0, 6).map((image) => (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                  {weddingImages.map((image) => (
                     <GalleryCard
                       key={image.id}
                       image={image}
@@ -250,8 +250,8 @@ export default function GalleryPage() {
                   </button>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {corporateImages.slice(0, 6).map((image) => (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                  {corporateImages.map((image) => (
                     <GalleryCard
                       key={image.id}
                       image={image}
@@ -285,7 +285,7 @@ export default function GalleryPage() {
                   </button>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                   {btsImages.map((image) => (
                     <GalleryCard
                       key={image.id}
@@ -297,7 +297,7 @@ export default function GalleryPage() {
               </div>
             </div>
           ) : (
-            /* B. Filtered Category Dedicated Grid */
+            /* B. Filtered Category Dedicated Grid - Uniform Closed Shape Grid */
             <div>
               <div className="mb-10">
                 <span className="micro-label font-bold">
@@ -329,71 +329,15 @@ export default function GalleryPage() {
                 </p>
               </div>
 
-              {/* Editorial Grid for Selected Category */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {filteredImages.map((image, idx) => {
-                  const isLarge = idx % 4 === 0;
-                  return (
-                    <div
-                      key={image.id}
-                      onClick={() => handleOpenLightbox(idx)}
-                      className={`group relative overflow-hidden bg-night-950 border border-chocolate-700/15 dark:border-bronze-500/20 cursor-pointer shadow-sm rounded-sm ${
-                        isLarge ? "md:col-span-2 aspect-[16/10]" : "aspect-[4/3]"
-                      }`}
-                    >
-                      {/* Ambient Blur Backdrop */}
-                      <img
-                        src={image.src}
-                        alt=""
-                        aria-hidden="true"
-                        className="absolute inset-0 w-full h-full object-cover scale-110 blur-xl opacity-40 pointer-events-none"
-                      />
-
-                      {/* Foreground Image */}
-                      <img
-                        src={image.src}
-                        alt={image.title}
-                        loading="lazy"
-                        className="relative z-10 w-full h-full object-contain p-2 transition-transform duration-700 ease-out group-hover:scale-[1.02] opacity-95 group-hover:opacity-100"
-                      />
-
-                      {/* Gradient Overlay */}
-                      <div className="absolute inset-0 z-10 bg-gradient-to-t from-night-950/90 via-night-950/30 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-300" />
-
-                      {/* Hover Quick Zoom Icon */}
-                      <div className="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-night-900/80 border border-bronze-500/30 text-cream-100 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-105">
-                        <Maximize2 className="w-4 h-4 text-amber-300" />
-                      </div>
-
-                      {/* Captions */}
-                      {image.title && (
-                        <div className="absolute bottom-0 left-0 right-0 z-20 p-6 sm:p-8 text-cream-100 transform translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
-                          <div className="flex items-center space-x-2 mb-1.5">
-                            <span className="text-[10px] font-mono text-amber-300 uppercase tracking-widest px-2 py-0.5 bg-night-950/90 border border-amber-500/30 rounded-sm font-bold">
-                              {image.categoryLabel}
-                            </span>
-                          </div>
-
-                          <h3 className="font-serif text-xl sm:text-2xl font-medium text-cream-50 leading-snug">
-                            {image.title}
-                          </h3>
-
-                          {image.subtitle && (
-                            <p className="text-xs text-cream-300/80 font-sans mt-1">
-                              {image.subtitle}
-                            </p>
-                          )}
-
-                          {image.desc && (
-                            <p className="text-xs text-cream-300/60 font-light mt-2 line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden sm:block">
-                              {image.desc}
-                            </p>
-                          )}
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
+              {/* Uniform Bounded Grid: Clean, consistent closed shape cards */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                {filteredImages.map((image, idx) => (
+                  <GalleryCard
+                    key={image.id}
+                    image={image}
+                    onOpen={() => handleOpenLightbox(idx)}
+                  />
+                ))}
               </div>
             </div>
           )}
@@ -432,46 +376,51 @@ export default function GalleryPage() {
   );
 }
 
-// Sub-component for clean card rendering in the All Portfolio layout
+// Sub-component for clean, bounded, closed-shape card rendering
 function GalleryCard({ image, onOpen }) {
+  const isPortrait = image.aspect === "tall" || image.id === "h1" || image.id === "h2";
+
   return (
     <div
       onClick={onOpen}
-      className="group relative overflow-hidden bg-night-950 border border-chocolate-700/15 dark:border-bronze-500/20 cursor-pointer shadow-sm aspect-[4/3] rounded-sm flex items-center justify-center"
+      className="group relative overflow-hidden rounded-sm bg-night-950 border-2 border-chocolate-700/20 dark:border-bronze-500/30 cursor-pointer shadow-md hover:shadow-2xl hover:border-amber-500/70 dark:hover:border-bronze-400/90 transition-all duration-500 ease-out aspect-[4/3] flex flex-col justify-end"
     >
-      {/* Ambient Blur Backdrop */}
+      {/* 1. Crisp Closed-Shape Fitted Photo */}
       <img
         src={image.src}
-        alt=""
-        aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover scale-110 blur-xl opacity-35 pointer-events-none"
-      />
-
-      {/* Foreground Crisp Image */}
-      <img
-        src={image.src}
-        alt={image.title}
+        alt={image.title || "EVAANAM Event Portfolio"}
         loading="lazy"
-        className="relative z-10 w-full h-full object-contain p-2 transition-transform duration-700 ease-out group-hover:scale-105 opacity-95 group-hover:opacity-100"
+        className={`w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 opacity-90 group-hover:opacity-100 ${
+          isPortrait ? "object-top" : "object-center"
+        }`}
       />
 
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 z-10 bg-gradient-to-t from-night-950/90 via-night-950/30 to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
+      {/* 2. Gradient Shade Layer for crystal-clear readable typography */}
+      <div className="absolute inset-0 bg-gradient-to-t from-night-950/95 via-night-950/35 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-300 pointer-events-none" />
 
-      {/* Zoom Icon */}
-      <div className="absolute top-3 right-3 z-20 w-8 h-8 rounded-full bg-night-900/80 border border-bronze-500/30 text-cream-100 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-        <Maximize2 className="w-3.5 h-3.5 text-amber-300" />
+      {/* 3. Inset Hairline Decorative Museum Frame */}
+      <div className="absolute inset-2 border border-cream-100/10 pointer-events-none rounded-xs group-hover:border-amber-400/30 transition-colors duration-300" />
+
+      {/* 4. Top Category Badge */}
+      <div className="absolute top-3.5 left-3.5 z-10">
+        <span className="text-[9.5px] font-mono uppercase tracking-widest px-2.5 py-1 bg-night-950/90 text-amber-300 border border-amber-500/40 rounded-sm font-bold shadow-sm backdrop-blur-xs">
+          {image.categoryLabel || "Operations"}
+        </span>
       </div>
 
-      {/* Captions */}
-      {image.title && (
-        <div className="absolute bottom-0 left-0 right-0 z-20 p-5 text-cream-100">
-          <span className="text-[9px] font-mono text-amber-300 uppercase tracking-widest px-2 py-0.5 bg-night-950/90 border border-amber-500/30 rounded-sm inline-block mb-1 font-bold">
-            {image.categoryLabel}
-          </span>
-          <h4 className="font-serif text-lg font-medium text-cream-50 leading-snug line-clamp-1">
-            {image.title}
-          </h4>
+      {/* 5. Top Right Zoom Icon */}
+      <div className="absolute top-3.5 right-3.5 z-10 w-8 h-8 rounded-full bg-night-900/85 border border-bronze-500/40 text-amber-300 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-105 shadow-md">
+        <Maximize2 className="w-3.5 h-3.5" />
+      </div>
+
+      {/* 6. Bottom Anchored Typography inside the Closed Shape */}
+      {(image.title || image.subtitle) && (
+        <div className="relative z-10 p-4 sm:p-5 text-cream-100 transform translate-y-0.5 group-hover:translate-y-0 transition-transform duration-300">
+          {image.title && (
+            <h4 className="font-serif text-lg sm:text-xl font-medium text-cream-50 leading-snug line-clamp-1 group-hover:text-amber-200 transition-colors">
+              {image.title}
+            </h4>
+          )}
           {image.subtitle && (
             <p className="text-[11px] text-cream-300/80 font-sans mt-0.5 line-clamp-1">
               {image.subtitle}
