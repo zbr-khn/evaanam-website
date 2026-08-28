@@ -24,6 +24,15 @@
     overflow-x: hidden;
   }
 
+  /* Hide default browser cursor on desktop with mouse pointer to avoid dual cursor overlap */
+  @media (pointer: fine) {
+    *,
+    *::before,
+    *::after {
+      cursor: none !important;
+    }
+  }
+
   html.dark body {
     @apply bg-night-950 text-cream-100 selection:bg-bronze-500 selection:text-night-950;
   }
