@@ -124,7 +124,7 @@ export default function LocationPage() {
                     <Train className="w-4 h-4" />
                     <span className="text-[11px] font-mono font-bold uppercase tracking-wider">Metro Access</span>
                   </div>
-                  <p className="text-xs text-chocolate-900 dark:text-cream-100 font-medium">Sukhdev Vihar / Jamia Station</p>
+                  <p className="text-xs text-chocolate-900 dark:text-cream-100 font-medium">Jamia Millia Islamia</p>
                   <p className="text-[11px] text-chocolate-500 dark:text-night-dim">Magenta Line (~1.2 km / 4 mins)</p>
                 </div>
 
