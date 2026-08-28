@@ -10,7 +10,7 @@ const FEATURED_HIGHLIGHTS = [
     tag: "Brand Activation",
     title: "Experience Pavilion: Vivo",
     desc: "Interactive product demo crew and attendee walkthroughs at premier technology launch pavillion.",
-    src: "./gallery/vivo.png",
+    src: "./images/home-highlights/vivo.png",
     aspect: "landscape",
   },
   {
@@ -19,7 +19,7 @@ const FEATURED_HIGHLIGHTS = [
     tag: "Aviation Summit",
     title: "Leadership Plenary: IndiGo",
     desc: "High-throughput delegate registration, executive seating coordination, and VIP protocol management.",
-    src: "./gallery/indigo.png",
+    src: "./images/home-highlights/indigo.png",
     aspect: "landscape",
   },
   {
@@ -28,7 +28,7 @@ const FEATURED_HIGHLIGHTS = [
     tag: "Product Launch",
     title: "Brand Showcase: Pronto",
     desc: "Bilingual stall hosts, product demonstration assistance, and visitor engagement coordination.",
-    src: "./gallery/pronto.png",
+    src: "./images/home-highlights/pronto.png",
     aspect: "landscape",
   },
   {
@@ -37,7 +37,7 @@ const FEATURED_HIGHLIGHTS = [
     tag: "Celebrity VIP Escort",
     title: "VIP Escort: Boman Irani",
     desc: "Discreet close-protection coordination, stage transit escort, and green room access management.",
-    src: "./gallery/boman-irani.png",
+    src: "./images/home-highlights/boman.png",
     aspect: "portrait",
   },
   {
@@ -46,7 +46,7 @@ const FEATURED_HIGHLIGHTS = [
     tag: "Celebrity VIP Escort",
     title: "Celebrity Handling: Rajpal Yadav",
     desc: "Red carpet arrival security, holding area hospitality, and stage transit support.",
-    src: "./gallery/rajpal-yadav.png",
+    src: "./images/home-highlights/rajpal.png",
     aspect: "portrait",
   },
 ];
