@@ -10,8 +10,10 @@
     --scroll-bg-current: #081F18;
     --scroll-bg-light: #FCFAF6;
     --scroll-bg-dark: #081F18;
-    --tone-a-blend: #FAF8F3;
-    --tone-b-blend: #EFE8DE;
+    --tone-a-color: #FAF8F3;
+    --tone-b-color: #EFE8DE;
+    --tone-a-to-b-mid: #F5EFEB;
+    --tone-b-to-a-mid: #F5EFEB;
   }
 
   html {
@@ -25,8 +27,10 @@
   }
 
   html.dark {
-    --tone-a-blend: #081F18;
-    --tone-b-blend: #1A120B;
+    --tone-a-color: #081F18;
+    --tone-b-color: #1A120B;
+    --tone-a-to-b-mid: #111912;
+    --tone-b-to-a-mid: #111912;
     background-color: #081F18;
     color: #F5F1E8;
   }
@@ -35,7 +39,6 @@
     overflow-x: hidden;
     background-color: transparent;
     color: inherit;
-    transition: background-color 300ms ease-out, color 300ms ease-out;
   }
 
   /* Hide default browser cursor on desktop devices to enable stylish custom cursor */
@@ -101,74 +104,68 @@
   }
 
   .card-luxury {
-    @apply bg-cream-100/90 dark:bg-night-800/90 border border-chocolate-700/10 dark:border-bronze-500/20 transition-all duration-300;
+    @apply bg-cream-100/80 dark:bg-night-800/80 border border-chocolate-700/15 dark:border-bronze-500/20 backdrop-blur-sm rounded-sm transition-all duration-300;
   }
 
   .card-luxury-hover {
-    @apply hover:border-bronze-500/50 hover:bg-cream-50 dark:hover:bg-night-750 dark:hover:border-bronze-500/50;
-  }
-
-  /* Slow Ken Burns image effect */
-  .ken-burns {
-    animation: kenBurnsZoom 75s ease-in-out infinite alternate;
+    @apply hover:border-bronze-500/60 hover:shadow-lg hover:-translate-y-0.5;
   }
 }
 
-@keyframes kenBurnsZoom {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.08);
-  }
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-/* Ticker & Continuous Marquee Animations */
-@keyframes continuousMarquee {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-  100% {
-    transform: translate3d(-50%, 0, 0);
-  }
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
-.marquee-smooth-track {
-  display: flex;
-  width: max-content;
-  will-change: transform;
-  animation: continuousMarquee 30s linear infinite;
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
 }
 
-.marquee-smooth-track:hover {
+@keyframes kenBurns {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.ken-burns {
+  animation: kenBurns 24s ease-in-out infinite;
+}
+
+.animate-marquee {
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
   animation-play-state: paused;
-}
-
-/* Ticker Pause on Hover */
-.marquee-container:hover .marquee-content {
-  animation-play-state: paused;
-}
-
-/* Subtle Cloud Pop Float Animation */
-@keyframes subtleFloat {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-4px);
-  }
-}
-
-.animate-cloud-float {
-  animation: subtleFloat 3.5s ease-in-out infinite;
 }
 
 /* =========================================================================
-   SCROLL REVEAL ANIMATIONS (Smooth on-scroll entrance for sections & cards)
+   SCROLL REVEAL ANIMATIONS (GPU Accelerated)
    ========================================================================= */
+
 .scroll-reveal {
   opacity: 0;
-  transform: translate3d(0, 36px, 0);
+  transform: translate3d(0, 32px, 0);
   transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
@@ -223,7 +220,6 @@
   background-color: #FAF8F3;
   color: #12241C;
   border-color: rgba(18, 36, 28, 0.08);
-  transition: background-color 0.4s ease, color 0.4s ease;
 }
 html.dark .section-tone-a {
   background-color: #081F18;
@@ -236,16 +232,9 @@ html.dark .section-tone-a {
   background-color: #EFE8DE;
   color: #2B1A0E;
   border-color: rgba(43, 26, 14, 0.10);
-  transition: background-color 0.4s ease, color 0.4s ease;
 }
 html.dark .section-tone-b {
   background-color: #1A120B;
   color: #FCFAF6;
   border-color: rgba(212, 175, 55, 0.14);
 }
-
-
-
-
-
-

@@ -2,17 +2,17 @@ import React, { useEffect, useRef, useState } from "react";
 
 /**
  * ColorCreepSection Component
- * Renders distinct dual-tone backgrounds with smooth, continuous creeping gradient transitions:
+ * Creates ultra-smooth continuous dual-tone gradient transitions:
  * - Tone A: Deep British Racing Green (#081F18) in Dark / Crisp Alabaster White (#FAF8F3) in Light
  * - Tone B: Rich Espresso Chocolate (#1A120B) in Dark / Warm Biscuit Sandstone (#EFE8DE) in Light
- * - Seamless top gradient seam that smoothly melts the previous tone into the current tone as you scroll.
+ * - Deep 250px progressive easing curve at boundaries eliminates abrupt color cuts.
  */
 export default function ColorCreepSection({
   tone = "a", // "a" | "b"
   children,
   className = "",
   id,
-  showTopGradient = true,
+  showTransition = true,
 }) {
   const sectionRef = useRef(null);
   const [isCrept, setIsCrept] = useState(false);
@@ -49,16 +49,16 @@ export default function ColorCreepSection({
       data-tone={tone}
       className={`relative overflow-hidden ${toneClass} ${className}`}
     >
-      {/* 1. Seamless Upward-Creeping Dual-Tone Gradient Seam at Top */}
-      {showTopGradient && (
+      {/* 1. Deep Easing Transition Ramp at Top (Smooth progressive color morph) */}
+      {showTransition && (
         <div
           aria-hidden="true"
-          className="absolute top-0 left-0 right-0 h-28 sm:h-40 pointer-events-none z-0"
+          className="absolute top-0 left-0 right-0 h-44 sm:h-64 pointer-events-none z-0"
           style={{
             background:
               tone === "b"
-                ? "linear-gradient(to bottom, var(--tone-a-blend, rgba(8,31,24,0.6)) 0%, transparent 100%)"
-                : "linear-gradient(to bottom, var(--tone-b-blend, rgba(26,18,11,0.6)) 0%, transparent 100%)",
+                ? "linear-gradient(to bottom, var(--tone-a-color) 0%, var(--tone-a-to-b-mid) 45%, transparent 100%)"
+                : "linear-gradient(to bottom, var(--tone-b-color) 0%, var(--tone-b-to-a-mid) 45%, transparent 100%)",
           }}
         />
       )}
@@ -66,17 +66,17 @@ export default function ColorCreepSection({
       {/* 2. Hardware-Accelerated Dynamic Liquid Glow Curtain */}
       <div
         aria-hidden="true"
-        className={`absolute inset-0 z-0 pointer-events-none transition-all duration-700 ease-out will-change-transform ${
-          isCrept ? "opacity-100 translate-y-0" : "opacity-30 translate-y-8"
+        className={`absolute inset-0 z-0 pointer-events-none transition-all duration-1000 ease-out will-change-transform ${
+          isCrept ? "opacity-100 translate-y-0" : "opacity-25 translate-y-12"
         }`}
       >
         <div
-          className="absolute inset-0 opacity-40 dark:opacity-30"
+          className="absolute inset-0 opacity-35 dark:opacity-25"
           style={{
             background:
               tone === "b"
-                ? "radial-gradient(ellipse 80% 50% at 50% 100%, rgba(229,169,98,0.08) 0%, transparent 80%)"
-                : "radial-gradient(ellipse 80% 50% at 50% 100%, rgba(104,211,145,0.08) 0%, transparent 80%)",
+                ? "radial-gradient(ellipse 90% 60% at 50% 100%, rgba(229,169,98,0.12) 0%, transparent 75%)"
+                : "radial-gradient(ellipse 90% 60% at 50% 100%, rgba(104,211,145,0.12) 0%, transparent 75%)",
           }}
         />
       </div>
