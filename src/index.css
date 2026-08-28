@@ -219,13 +219,13 @@
 .section-tone-a {
   background-color: #FAF8F3 !important;
   color: #12241C !important;
-  border-color: rgba(18, 36, 28, 0.12) !important;
-  transition: background-color 350ms ease, color 350ms ease, border-color 350ms ease;
+  border-color: rgba(18, 36, 28, 0.08) !important;
+  transition: background-color 0.85s cubic-bezier(0.16, 1, 0.3, 1), color 0.6s ease, border-color 0.6s ease;
 }
 html.dark .section-tone-a {
   background-color: #081F18 !important;
   color: #FCFAF6 !important;
-  border-color: rgba(104, 211, 145, 0.15) !important;
+  border-color: rgba(104, 211, 145, 0.12) !important;
 }
 
 .section-tone-a .editorial-heading,
@@ -233,6 +233,7 @@ html.dark .section-tone-a {
 .section-tone-a h2,
 .section-tone-a h3 {
   color: #12241C !important;
+  transition: color 0.5s ease;
 }
 html.dark .section-tone-a .editorial-heading,
 html.dark .section-tone-a h1,
@@ -243,6 +244,7 @@ html.dark .section-tone-a h3 {
 
 .section-tone-a p {
   color: #2D4036;
+  transition: color 0.5s ease;
 }
 html.dark .section-tone-a p {
   color: #D1E2D9;
@@ -259,13 +261,13 @@ html.dark .section-tone-a .micro-label {
 .section-tone-b {
   background-color: #EFE8DE !important;
   color: #2B1A0E !important;
-  border-color: rgba(43, 26, 14, 0.14) !important;
-  transition: background-color 350ms ease, color 350ms ease, border-color 350ms ease;
+  border-color: rgba(43, 26, 14, 0.10) !important;
+  transition: background-color 0.85s cubic-bezier(0.16, 1, 0.3, 1), color 0.6s ease, border-color 0.6s ease;
 }
 html.dark .section-tone-b {
   background-color: #1A120B !important;
   color: #FCFAF6 !important;
-  border-color: rgba(212, 175, 55, 0.18) !important;
+  border-color: rgba(212, 175, 55, 0.14) !important;
 }
 
 .section-tone-b .editorial-heading,
@@ -273,6 +275,7 @@ html.dark .section-tone-b {
 .section-tone-b h2,
 .section-tone-b h3 {
   color: #2B1A0E !important;
+  transition: color 0.5s ease;
 }
 html.dark .section-tone-b .editorial-heading,
 html.dark .section-tone-b h1,
@@ -283,6 +286,7 @@ html.dark .section-tone-b h3 {
 
 .section-tone-b p {
   color: #4A3525;
+  transition: color 0.5s ease;
 }
 html.dark .section-tone-b p {
   color: #E8DAC8;
@@ -294,5 +298,6 @@ html.dark .section-tone-b p {
 html.dark .section-tone-b .micro-label {
   color: #E5A962 !important;
 }
+
 
 

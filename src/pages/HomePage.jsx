@@ -10,6 +10,7 @@ import TestimonialMarquee from "../components/TestimonialMarquee";
 import ScrollReveal from "../components/ScrollReveal";
 import ContactFormSection from "../components/ContactFormSection";
 import CalculatorModal from "../components/CalculatorModal";
+import ColorCreepSection from "../components/ColorCreepSection";
 import { COMPANY_INFO } from "../data/evaanamData";
 
 export default function HomePage() {
@@ -110,16 +111,16 @@ export default function HomePage() {
       {/* ========================================================================= */}
       {/* 2. EXECUTIVE ENGAGEMENTS CAROUSEL (TONE B: Espresso Brown / Sandstone)     */}
       {/* ========================================================================= */}
-      <section className="section-tone-b border-b border-chocolate-700/15 dark:border-bronze-500/20">
+      <ColorCreepSection tone="b" className="border-b border-chocolate-700/15 dark:border-bronze-500/20">
         <ScrollReveal variant="up" threshold={0.1}>
           <ExecutiveCarousel />
         </ScrollReveal>
-      </section>
+      </ColorCreepSection>
 
       {/* ========================================================================= */}
       {/* 3. STATS STRIP & PHILOSOPHY (TONE A: Racing Green / Alabaster White)       */}
       {/* ========================================================================= */}
-      <section className="section-tone-a border-b border-chocolate-700/15 dark:border-emerald-500/20">
+      <ColorCreepSection tone="a" className="border-b border-chocolate-700/15 dark:border-emerald-500/20">
         <ScrollReveal variant="up" threshold={0.15}>
           <StatCounter light={true} />
         </ScrollReveal>
@@ -149,12 +150,12 @@ export default function HomePage() {
             <GeometricDivider className="max-w-4xl mx-auto mt-16" label="OPERATIONAL DIVISIONS" />
           </div>
         </ScrollReveal>
-      </section>
+      </ColorCreepSection>
 
       {/* ========================================================================= */}
       {/* 4. TWO PRIMARY SERVICE VERTICALS (TONE B: Espresso Brown / Sandstone)      */}
       {/* ========================================================================= */}
-      <section className="section-tone-b py-24 px-6 sm:px-8 lg:px-12 border-b border-chocolate-700/15 dark:border-bronze-500/20">
+      <ColorCreepSection tone="b" className="py-24 px-6 sm:px-8 lg:px-12 border-b border-chocolate-700/15 dark:border-bronze-500/20">
         <div className="max-w-7xl mx-auto">
           <ScrollReveal variant="up">
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
@@ -351,21 +352,21 @@ export default function HomePage() {
             </ScrollReveal>
           </div>
         </div>
-      </section>
+      </ColorCreepSection>
 
       {/* ========================================================================= */}
       {/* 5. CONTACT & REQUISITION FORM SECTION (TONE A: Racing Green / Alabaster White) */}
       {/* ========================================================================= */}
-      <section className="section-tone-a py-24 px-6 sm:px-8 lg:px-12 border-b border-chocolate-700/15 dark:border-emerald-500/20">
+      <ColorCreepSection tone="a" id="contact-form-section" className="py-24 px-6 sm:px-8 lg:px-12 border-b border-chocolate-700/15 dark:border-emerald-500/20">
         <ScrollReveal variant="up" threshold={0.08}>
           <ContactFormSection />
         </ScrollReveal>
-      </section>
+      </ColorCreepSection>
 
       {/* ========================================================================= */}
       {/* 6. OPERATIONAL ASSURANCE BANNER (TONE B: Espresso Brown / Sandstone)       */}
       {/* ========================================================================= */}
-      <section className="section-tone-b border-b border-chocolate-700/15 dark:border-bronze-500/20">
+      <ColorCreepSection tone="b" className="border-b border-chocolate-700/15 dark:border-bronze-500/20">
         <ScrollReveal variant="scale" threshold={0.15}>
           <div className="relative h-[480px] sm:h-[550px] flex items-center justify-center overflow-hidden text-center px-6">
             <div className="absolute inset-0 z-0 overflow-hidden">
@@ -389,12 +390,12 @@ export default function HomePage() {
             </div>
           </div>
         </ScrollReveal>
-      </section>
+      </ColorCreepSection>
 
       {/* ========================================================================= */}
       {/* 7. VENUE FOOTPRINT (TONE A: Racing Green / Alabaster White)                */}
       {/* ========================================================================= */}
-      <section className="section-tone-a py-16 border-b border-chocolate-700/15 dark:border-emerald-500/20">
+      <ColorCreepSection tone="a" className="py-16 border-b border-chocolate-700/15 dark:border-emerald-500/20">
         <ScrollReveal variant="up" threshold={0.12}>
           <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
@@ -414,12 +415,12 @@ export default function HomePage() {
 
           <VenueMarquee />
         </ScrollReveal>
-      </section>
+      </ColorCreepSection>
 
       {/* ========================================================================= */}
       {/* 8. TESTIMONIALS (TONE B: Espresso Brown / Sandstone)                       */}
       {/* ========================================================================= */}
-      <section className="section-tone-b py-20 border-b border-chocolate-700/15 dark:border-bronze-500/20">
+      <ColorCreepSection tone="b" className="py-20 border-b border-chocolate-700/15 dark:border-bronze-500/20">
         <ScrollReveal variant="up" threshold={0.12}>
           <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 mb-8 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
             <div>
@@ -442,21 +443,21 @@ export default function HomePage() {
 
           <TestimonialMarquee />
         </ScrollReveal>
-      </section>
+      </ColorCreepSection>
 
       {/* ========================================================================= */}
       {/* 9. SOCIAL JOURNEY (TONE A: Racing Green / Alabaster White)                 */}
       {/* ========================================================================= */}
-      <section className="section-tone-a border-b border-chocolate-700/15 dark:border-emerald-500/20">
+      <ColorCreepSection tone="a" className="border-b border-chocolate-700/15 dark:border-emerald-500/20">
         <ScrollReveal variant="up" threshold={0.12}>
           <SocialSection showHeader={true} />
         </ScrollReveal>
-      </section>
+      </ColorCreepSection>
 
       {/* ========================================================================= */}
       {/* 10. MEET EVA SPOTLIGHT (TONE B: Espresso Brown / Sandstone)                */}
       {/* ========================================================================= */}
-      <section className="section-tone-b py-20 px-6 sm:px-8 lg:px-12 border-b border-chocolate-700/15 dark:border-bronze-500/20">
+      <ColorCreepSection tone="b" className="py-20 px-6 sm:px-8 lg:px-12 border-b border-chocolate-700/15 dark:border-bronze-500/20">
         <ScrollReveal variant="scale" threshold={0.12}>
           <div className="max-w-7xl mx-auto">
             <div className="relative overflow-hidden rounded-lg bg-gradient-to-br from-brand-green via-night-900 to-night-950 border border-bronze-500/30 p-8 sm:p-12 shadow-2xl text-cream-100">
@@ -560,12 +561,12 @@ export default function HomePage() {
             </div>
           </div>
         </ScrollReveal>
-      </section>
+      </ColorCreepSection>
 
       {/* ========================================================================= */}
       {/* 11. FINAL CALL TO CONVERSATION (TONE A: Racing Green / Alabaster White)    */}
       {/* ========================================================================= */}
-      <section className="section-tone-a py-24 px-6 sm:px-8 lg:px-12">
+      <ColorCreepSection tone="a" className="py-24 px-6 sm:px-8 lg:px-12">
         <ScrollReveal variant="up" threshold={0.15}>
           <div className="max-w-4xl mx-auto text-center space-y-8">
             <span className="micro-label">START A CONVERSATION</span>
@@ -592,7 +593,7 @@ export default function HomePage() {
             </div>
           </div>
         </ScrollReveal>
-      </section>
+      </ColorCreepSection>
 
       {/* ========================================================================= */}
       {/* INTERACTIVE ROSTER CALCULATOR MODAL (Triggered via Hero Button)            */}
