@@ -64,15 +64,14 @@ export default function HomePage() {
                   <ArrowUpRight className="w-4 h-4 ml-2 text-night-950 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </a>
 
-                {/* Hero Button: Roster Calculator opens modal directly */}
-                <button
-                  type="button"
-                  onClick={() => setIsCalculatorOpen(true)}
-                  className="inline-flex items-center justify-center px-7 py-3.5 border border-cream-200/30 text-cream-100 font-sans text-xs font-semibold uppercase tracking-[0.18em] transition-all hover:bg-cream-200 hover:text-chocolate-950 dark:hover:bg-night-800 dark:hover:text-cream-50 space-x-2 rounded-sm cursor-pointer shadow-sm hover:border-amber-400"
+                {/* Hero Button: Roster Calculator redirects to Services calculator section */}
+                <Link
+                  to="/services#calculator-section"
+                  className="btn-secondary group"
                 >
-                  <Calculator className="w-3.5 h-3.5 text-amber-300" />
+                  <Calculator className="w-3.5 h-3.5 mr-2 text-amber-500 dark:text-amber-300 group-hover:rotate-12 transition-transform duration-300" />
                   <span>Roster Calculator</span>
-                </button>
+                </Link>
               </div>
 
               {/* Credibility Line */}
