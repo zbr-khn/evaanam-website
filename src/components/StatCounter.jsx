@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { COMPANY_INFO } from "../data/evaanamData";
 
 function SingleStat({ value, suffix, label, desc, startAnimation }) {
-  const [count, setCount] = useState(0);
+  const numberRef = useRef(null);
   const hasAnimatedRef = useRef(false);
 
   useEffect(() => {
     if (!startAnimation || hasAnimatedRef.current) return;
     hasAnimatedRef.current = true;
 
-    const duration = 1600; // 1.6 seconds smooth count-up
+    const duration = 1500; // 1.5s smooth, fluid count-up
     const startTime = performance.now();
     const targetValue = value;
 
@@ -17,16 +17,18 @@ function SingleStat({ value, suffix, label, desc, startAnimation }) {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
 
-      // Smooth Ease-Out Expo curve
-      const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-      const currentNumber = Math.floor(easeProgress * targetValue);
+      // Smooth Ease-Out Quart curve: 1 - (1 - t)^4
+      const easeProgress = 1 - Math.pow(1 - progress, 4);
+      const currentNumber = Math.round(easeProgress * targetValue);
 
-      setCount(currentNumber);
+      if (numberRef.current) {
+        numberRef.current.textContent = currentNumber;
+      }
 
       if (progress < 1) {
         requestAnimationFrame(animate);
-      } else {
-        setCount(targetValue);
+      } else if (numberRef.current) {
+        numberRef.current.textContent = targetValue;
       }
     };
 
@@ -37,8 +39,11 @@ function SingleStat({ value, suffix, label, desc, startAnimation }) {
     <div className="flex flex-col justify-between py-6 px-4 sm:px-6 transition-colors duration-400">
       <div>
         <div className="flex items-baseline space-x-1 mb-1.5">
-          <span className="font-serif text-4xl sm:text-5xl lg:text-6xl font-light text-chocolate-950 dark:text-cream-50 tracking-tight">
-            {count}
+          <span
+            ref={numberRef}
+            className="font-serif text-4xl sm:text-5xl lg:text-6xl font-light text-chocolate-950 dark:text-cream-50 tracking-tight will-change-contents font-tabular-nums"
+          >
+            0
           </span>
           <span className="font-serif text-2xl sm:text-3xl text-bronze-500 dark:text-bronze-400 font-light">
             {suffix}
@@ -59,22 +64,24 @@ function SingleStat({ value, suffix, label, desc, startAnimation }) {
 
 export default function StatCounter({ className = "" }) {
   const sectionRef = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const isTriggeredRef = useRef(false);
+  const [startAll, setStartAll] = React.useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // Trigger only when user actually scrolls into view
-        if (entry.isIntersecting) {
-          setIsVisible(true);
+        // Trigger only once when user scrolls to reach the section
+        if (entry.isIntersecting && !isTriggeredRef.current) {
+          isTriggeredRef.current = true;
+          setStartAll(true);
           if (sectionRef.current) {
             observer.unobserve(sectionRef.current);
           }
         }
       },
       {
-        threshold: 0.2,
-        rootMargin: "0px 0px -40px 0px",
+        threshold: 0.15,
+        rootMargin: "0px 0px -30px 0px",
       }
     );
 
@@ -101,7 +108,7 @@ export default function StatCounter({ className = "" }) {
               suffix={stat.suffix}
               label={stat.label}
               desc={stat.desc}
-              startAnimation={isVisible}
+              startAnimation={startAll}
             />
           ))}
         </div>
