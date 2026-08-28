@@ -179,14 +179,14 @@ export default function ExecutiveCarousel({ className = "" }) {
                   <div className="absolute inset-0 bg-gradient-to-t from-night-950 via-night-950/50 to-night-950/40" />
                 </div>
 
-                {/* 2. LAYER 2: Foreground Crisp Uncropped Photo (object-contain with natural aspect ratio) */}
-                <div className="relative z-10 w-full h-full flex items-center justify-center p-4 sm:p-8 pb-28 sm:pb-32">
+                {/* 2. LAYER 2: Foreground Crisp Uncropped Photo (Centered in Middle) */}
+                <div className="relative z-10 w-full h-full flex items-center justify-center p-6 sm:p-10 pt-10 sm:pt-12 pb-24 sm:pb-28">
                   <img
                     src={item.src}
                     alt={item.title}
                     loading={idx === 0 ? "eager" : "lazy"}
                     draggable={false}
-                    className="max-h-full max-w-full object-contain rounded-sm shadow-2xl transition-transform duration-700 ease-out group-hover:scale-[1.02] pointer-events-none"
+                    className="max-h-[82%] max-w-[92%] object-contain rounded-sm shadow-2xl transition-transform duration-700 ease-out group-hover:scale-[1.02] pointer-events-none"
                   />
                 </div>
 
@@ -206,7 +206,7 @@ export default function ExecutiveCarousel({ className = "" }) {
                 </div>
 
                 {/* Bottom Caption Overlay */}
-                <div className="absolute bottom-0 left-0 right-0 z-20 p-5 sm:p-8 bg-gradient-to-t from-night-950 via-night-950/90 to-transparent text-cream-100 space-y-1 sm:space-y-2 backdrop-blur-xs">
+                <div className="absolute bottom-0 left-0 right-0 z-20 p-4 sm:p-6 bg-gradient-to-t from-night-950 via-night-950/90 to-transparent text-cream-100 space-y-1 backdrop-blur-xs">
                   <div className="flex items-center space-x-2">
                     <span className="text-[11px] uppercase font-mono text-amber-400 font-bold">
                       {item.client}
@@ -217,11 +217,11 @@ export default function ExecutiveCarousel({ className = "" }) {
                     </span>
                   </div>
 
-                  <h3 className="font-serif text-xl sm:text-2xl md:text-3xl text-cream-50 font-medium leading-snug">
+                  <h3 className="font-serif text-lg sm:text-xl md:text-2xl text-cream-50 font-medium leading-snug">
                     {item.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-cream-300/90 font-light max-w-3xl line-clamp-2 leading-relaxed">
+                  <p className="text-xs text-cream-300/90 font-light max-w-3xl line-clamp-1 sm:line-clamp-2 leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
