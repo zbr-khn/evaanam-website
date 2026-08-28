@@ -14,6 +14,7 @@ import {
   Briefcase
 } from "lucide-react";
 import StatCounter from "../components/StatCounter";
+import ExecutiveCarousel from "../components/ExecutiveCarousel";
 import ScrollReveal from "../components/ScrollReveal";
 import ColorCreepSection from "../components/ColorCreepSection";
 import { COMPANY_INFO } from "../data/evaanamData";
@@ -196,7 +197,16 @@ export default function HomePage() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 2. REAL-TIME STATS STRIP (TONE A)                                          */}
+      {/* 2. EXECUTIVE PHOTO CAROUSEL (HIGHLIGHT MOMENTS)                            */}
+      {/* ========================================================================= */}
+      <ColorCreepSection tone="b" className="py-4">
+        <ScrollReveal variant="up" threshold={0.1}>
+          <ExecutiveCarousel />
+        </ScrollReveal>
+      </ColorCreepSection>
+
+      {/* ========================================================================= */}
+      {/* 3. REAL-TIME STATS STRIP (TONE A)                                          */}
       {/* ========================================================================= */}
       <ColorCreepSection tone="a" className="py-12 border-b border-chocolate-700/10 dark:border-bronze-500/15">
         <ScrollReveal variant="up" threshold={0.15}>
@@ -205,7 +215,7 @@ export default function HomePage() {
       </ColorCreepSection>
 
       {/* ========================================================================= */}
-      {/* 3. EXECUTIVE PORTAL FEED: WHAT TO FIND ON EACH PAGE                        */}
+      {/* 4. EXECUTIVE PORTAL FEED: WHAT TO FIND ON EACH PAGE                        */}
       {/* ========================================================================= */}
       <ColorCreepSection tone="b" className="py-24 px-6 sm:px-8 lg:px-12">
         <div className="max-w-7xl mx-auto space-y-16">
@@ -290,7 +300,7 @@ export default function HomePage() {
       </ColorCreepSection>
 
       {/* ========================================================================= */}
-      {/* 4. MEET EVA AI OPERATIONS ASSISTANT BANNER (TONE A)                        */}
+      {/* 5. MEET EVA AI OPERATIONS ASSISTANT BANNER (TONE A)                        */}
       {/* ========================================================================= */}
       <ColorCreepSection tone="a" className="py-20 px-6 sm:px-8 lg:px-12">
         <ScrollReveal variant="scale" threshold={0.12}>
@@ -362,7 +372,7 @@ export default function HomePage() {
       </ColorCreepSection>
 
       {/* ========================================================================= */}
-      {/* 5. BOTTOM DIRECT CALL TO ACTION (TONE B)                                   */}
+      {/* 6. BOTTOM DIRECT CALL TO ACTION (TONE B)                                   */}
       {/* ========================================================================= */}
       <ColorCreepSection tone="b" className="py-20 px-6 sm:px-8 lg:px-12 text-center border-t border-chocolate-700/10 dark:border-bronze-500/15">
         <ScrollReveal variant="up">
