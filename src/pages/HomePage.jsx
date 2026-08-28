@@ -19,9 +19,9 @@ export default function HomePage() {
   return (
     <div className="animate-fade-in">
       {/* ========================================================================= */}
-      {/* 1. HERO SECTION (TONE A: Deep British Racing Green / Alabaster White)      */}
+      {/* 1. HERO SECTION                                                            */}
       {/* ========================================================================= */}
-      <section data-tone="a" className="section-tone-a relative min-h-[92vh] sm:min-h-screen flex items-center justify-center pt-28 pb-16 px-6 sm:px-8 lg:px-12 overflow-hidden text-cream-100 border-b border-chocolate-700/15 dark:border-emerald-500/20">
+      <section data-tone="a" className="relative min-h-[92vh] sm:min-h-screen flex items-center justify-center pt-28 pb-16 px-6 sm:px-8 lg:px-12 overflow-hidden text-cream-100 border-b border-chocolate-700/15 dark:border-emerald-500/20">
         {/* Background Image with slow Ken Burns effect & luxury dark overlay */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
@@ -29,7 +29,7 @@ export default function HomePage() {
             alt="Luxury Wedding & Banquet Event Floor"
             className="w-full h-full object-cover object-center ken-burns opacity-35 dark:opacity-25"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-night-950 via-night-950/75 to-night-950/85" />
+          <div className="absolute inset-0 bg-gradient-to-t from-night-950 via-night-950/80 to-night-950/90" />
           {/* Fine bronze decorative lines */}
           <div className="absolute top-0 left-12 bottom-0 w-[1px] bg-bronze-500/15 hidden lg:block" />
           <div className="absolute top-0 right-12 bottom-0 w-[1px] bg-bronze-500/15 hidden lg:block" />
@@ -54,7 +54,7 @@ export default function HomePage() {
               </h1>
 
               {/* Supporting Text */}
-              <p className="text-base sm:text-lg text-cream-300/90 font-light max-w-2xl leading-relaxed">
+              <p className="text-base sm:text-lg text-cream-200 font-light max-w-2xl leading-relaxed">
                 Trained, verified and professionally managed event crew for weddings, corporate events, exhibitions and large-scale experiences across Delhi NCR.
               </p>
 
@@ -80,7 +80,7 @@ export default function HomePage() {
               </div>
 
               {/* Credibility Line */}
-              <div className="pt-6 flex items-center space-x-2 text-xs font-sans tracking-wider text-bronze-400/90 font-medium">
+              <div className="pt-6 flex items-center space-x-2 text-xs font-sans tracking-wider text-bronze-400 font-medium">
                 <span>200+ Crew Network</span>
                 <span className="text-chocolate-600 dark:text-night-dim">·</span>
                 <span>300+ Projects</span>
