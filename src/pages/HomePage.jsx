@@ -21,7 +21,7 @@ export default function HomePage() {
       {/* ========================================================================= */}
       {/* 1. HERO SECTION (TONE A: Deep British Racing Green / Alabaster White)      */}
       {/* ========================================================================= */}
-      <section className="section-tone-a relative min-h-[92vh] sm:min-h-screen flex items-center justify-center pt-28 pb-16 px-6 sm:px-8 lg:px-12 overflow-hidden text-cream-100 border-b border-chocolate-700/15 dark:border-emerald-500/20">
+      <section data-tone="a" className="section-tone-a relative min-h-[92vh] sm:min-h-screen flex items-center justify-center pt-28 pb-16 px-6 sm:px-8 lg:px-12 overflow-hidden text-cream-100 border-b border-chocolate-700/15 dark:border-emerald-500/20">
         {/* Background Image with slow Ken Burns effect & luxury dark overlay */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img

@@ -24,7 +24,7 @@ export default function ColorCreepSection({
       },
       {
         threshold: 0.05,
-        rootMargin: "0px 0px -60px 0px", // triggers smoothly as user approaches
+        rootMargin: "0px 0px -40px 0px",
       }
     );
 
@@ -41,6 +41,7 @@ export default function ColorCreepSection({
     <section
       id={id}
       ref={sectionRef}
+      data-tone={tone}
       className={`relative overflow-hidden ${toneClass} ${className}`}
     >
       {/* 1. Creeping Color Backdrop Curtain (Rises up smoothly behind the text) */}
@@ -49,7 +50,7 @@ export default function ColorCreepSection({
         className={`absolute inset-0 z-0 pointer-events-none transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           isCrept
             ? "opacity-100 transform translate-y-0"
-            : "opacity-30 transform translate-y-16"
+            : "opacity-25 transform translate-y-20"
         }`}
       >
         {/* Soft Feathered Blend at Top & Bottom Boundaries */}

@@ -2,45 +2,27 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
 
-// Color keyframes alternating between:
-// Dark Mode: Green -> Brown -> Green -> Brown -> Green -> Brown
-// Light Mode: White -> Soft Light Brown -> White -> Soft Light Brown -> White -> Soft Light Brown
-const PALETTE_STOPS = {
-  dark: [
-    [8, 31, 24],    // 0%: Deep British Racing Green (#081F18)
-    [30, 21, 21],   // 20%: Rich Chocolate Brown (#1E1515)
-    [12, 38, 30],   // 40%: Forest Emerald Green (#0C261E)
-    [34, 24, 24],   // 60%: Deep Espresso Brown (#221818)
-    [9, 33, 25],    // 80%: Deep Emerald Night (#092119)
-    [25, 16, 16],   // 100%: Rich Velvet Chocolate (#191010)
-  ],
-  light: [
-    [252, 250, 246], // 0%: Crisp Warm White (#FCFAF6)
-    [243, 236, 226], // 20%: Soft Light Linen Brown (#F3ECE2)
-    [250, 250, 247], // 40%: Pure Pearl White (#FAFAF7)
-    [237, 226, 212], // 60%: Warm Biscuit Light Brown (#EDE2D4)
-    [249, 247, 243], // 80%: Crisp White Linen (#F9F7F3)
-    [239, 230, 216], // 100%: Soft Antique Light Brown (#EFE6D8)
-  ],
+// Exact Dual-Tone RGB Constants
+const COLORS = {
+  dark: {
+    a: [8, 31, 24],    // Tone A: Deep British Racing Green (#081F18)
+    b: [26, 18, 11],   // Tone B: Warm Espresso Chocolate Brown (#1A120B)
+  },
+  light: {
+    a: [250, 248, 243], // Tone A: Crisp Alabaster White (#FAF8F3)
+    b: [239, 232, 222], // Tone B: Warm Biscuit Sandstone (#EFE8DE)
+  },
 };
 
-// Helper to linearly interpolate between two RGB colors
-function interpolateColor(color1, color2, factor) {
-  const r = Math.round(color1[0] + factor * (color2[0] - color1[0]));
-  const g = Math.round(color1[1] + factor * (color2[1] - color1[1]));
-  const b = Math.round(color1[2] + factor * (color2[2] - color1[2]));
+// Interpolate RGB values
+function interpolateRGB(c1, c2, factor) {
+  const t = Math.max(0, Math.min(1, factor));
+  // Smooth cubic ease for luxury feel
+  const ease = t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+  const r = Math.round(c1[0] + ease * (c2[0] - c1[0]));
+  const g = Math.round(c1[1] + ease * (c2[1] - c1[1]));
+  const b = Math.round(c1[2] + ease * (c2[2] - c1[2]));
   return `rgb(${r}, ${g}, ${b})`;
-}
-
-// Get exact interpolated color from scroll progress (0.0 to 1.0)
-function getScrollColor(progress, isDark) {
-  const stops = isDark ? PALETTE_STOPS.dark : PALETTE_STOPS.light;
-  const numSegments = stops.length - 1;
-  const scaledProgress = Math.max(0, Math.min(1, progress)) * numSegments;
-  const index = Math.min(Math.floor(scaledProgress), numSegments - 1);
-  const factor = scaledProgress - index;
-
-  return interpolateColor(stops[index], stops[index + 1], factor);
 }
 
 export default function useScrollBackground() {
@@ -51,18 +33,71 @@ export default function useScrollBackground() {
     let ticking = false;
 
     const updateBackground = () => {
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = docHeight > 0 ? Math.max(0, Math.min(1, window.scrollY / docHeight)) : 0;
-      
-      const activeColor = getScrollColor(progress, isDark);
-      const lightColor = getScrollColor(progress, false);
-      const darkColor = getScrollColor(progress, true);
+      const scrollY = window.scrollY || window.pageYOffset;
+      const viewportHeight = window.innerHeight;
+      const scrollCenter = scrollY + viewportHeight * 0.45;
 
-      // Set CSS variables and apply directly to html and body
+      // Find all sections marked with data-tone
+      const sections = Array.from(document.querySelectorAll("[data-tone]"));
+
+      let activeColor = isDark ? "rgb(8, 31, 24)" : "rgb(250, 248, 243)";
+      let currentRatio = 0; // 0 = Tone A (Green/White), 1 = Tone B (Brown/Sandstone)
+
+      if (sections.length > 0) {
+        // Find which sections we are between
+        let prevSection = null;
+        let nextSection = null;
+
+        for (let i = 0; i < sections.length; i++) {
+          const rect = sections[i].getBoundingClientRect();
+          const top = rect.top + scrollY;
+          const height = rect.height;
+          const center = top + height * 0.5;
+
+          if (center <= scrollCenter) {
+            prevSection = { el: sections[i], center, tone: sections[i].getAttribute("data-tone") };
+          } else {
+            nextSection = { el: sections[i], center, tone: sections[i].getAttribute("data-tone") };
+            break;
+          }
+        }
+
+        const modeColors = isDark ? COLORS.dark : COLORS.light;
+
+        if (prevSection && nextSection) {
+          const span = Math.max(1, nextSection.center - prevSection.center);
+          const progress = Math.max(0, Math.min(1, (scrollCenter - prevSection.center) / span));
+
+          const prevColor = prevSection.tone === "b" ? modeColors.b : modeColors.a;
+          const nextColor = nextSection.tone === "b" ? modeColors.b : modeColors.a;
+
+          activeColor = interpolateRGB(prevColor, nextColor, progress);
+          const prevVal = prevSection.tone === "b" ? 1 : 0;
+          const nextVal = nextSection.tone === "b" ? 1 : 0;
+          currentRatio = prevVal + progress * (nextVal - prevVal);
+        } else if (prevSection) {
+          const c = prevSection.tone === "b" ? modeColors.b : modeColors.a;
+          activeColor = `rgb(${c[0]}, ${c[1]}, ${c[2]})`;
+          currentRatio = prevSection.tone === "b" ? 1 : 0;
+        } else if (nextSection) {
+          const c = nextSection.tone === "b" ? modeColors.b : modeColors.a;
+          activeColor = `rgb(${c[0]}, ${c[1]}, ${c[2]})`;
+          currentRatio = nextSection.tone === "b" ? 1 : 0;
+        }
+      } else {
+        // Fallback: calculate overall document scroll progress
+        const docHeight = document.documentElement.scrollHeight - viewportHeight;
+        const progress = docHeight > 0 ? Math.max(0, Math.min(1, scrollY / docHeight)) : 0;
+        // Alternating wave: 0 -> 1 -> 0 -> 1 -> 0 ...
+        const wave = (Math.sin(progress * Math.PI * 4 - Math.PI / 2) + 1) / 2;
+        const modeColors = isDark ? COLORS.dark : COLORS.light;
+        activeColor = interpolateRGB(modeColors.a, modeColors.b, wave);
+        currentRatio = wave;
+      }
+
+      // Apply dynamically to html document
       document.documentElement.style.setProperty("--scroll-bg-current", activeColor);
-      document.documentElement.style.setProperty("--scroll-bg-light", lightColor);
-      document.documentElement.style.setProperty("--scroll-bg-dark", darkColor);
-      
+      document.documentElement.style.setProperty("--tone-ratio", currentRatio.toFixed(3));
       document.documentElement.style.backgroundColor = activeColor;
       document.body.style.backgroundColor = "transparent";
 
@@ -77,8 +112,12 @@ export default function useScrollBackground() {
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll, { passive: true });
     updateBackground();
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, [location.pathname, isDark]);
 }
