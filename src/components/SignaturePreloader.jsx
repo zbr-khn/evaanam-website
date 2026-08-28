@@ -7,12 +7,11 @@ import { useTheme } from "../context/ThemeContext";
  * - Light Mode: Crisp Alabaster White (#FAF8F3) canvas with Antique Gold & Forest Emerald accents.
  * - Dark Mode: Deep British Racing Green (#081F18) canvas with Imperial Gold & Alabaster Cream accents.
  * - Big Sacred Concentric Circle Astrolabe layered directly BEHIND the "EVAANAM" typography.
- * - Finale: Big Circle smoothly zooms in dramatically across the entire viewport (GPU accelerated) before the background dissolves into the website.
+ * - Finale: Big Circle zooms in and fades out SIMULTANEOUSLY into the website.
  */
 export default function SignaturePreloader({ onComplete }) {
   const { isDark } = useTheme();
   const [phase, setPhase] = useState(0);
-  const [isZooming, setIsZooming] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
   const [isRemoved, setIsRemoved] = useState(false);
 
@@ -45,26 +44,19 @@ export default function SignaturePreloader({ onComplete }) {
     // Phase 6: Signature Slogan & Precision Lock (2350ms)
     timers.push(setTimeout(() => setPhase(6), 2350));
 
-    // Phase 7: Stage 1 - Big Astrolabe Circle Dramatic Zoom-In (3100ms)
-    timers.push(
-      setTimeout(() => {
-        setIsZooming(true);
-      }, 3100)
-    );
-
-    // Phase 8: Stage 2 - Canvas Graceful Dissolve into Website (4100ms)
+    // Phase 7: Simultaneous Zoom-In & Fade Finale (3000ms)
     timers.push(
       setTimeout(() => {
         setIsExiting(true);
-      }, 4100)
+      }, 3000)
     );
 
-    // Phase 9: Complete Unmount & Handoff (4900ms)
+    // Phase 8: Complete Unmount & Handoff (4200ms)
     timers.push(
       setTimeout(() => {
         setIsRemoved(true);
         if (onComplete) onComplete();
-      }, 4900)
+      }, 4200)
     );
 
     return () => {
@@ -91,13 +83,14 @@ export default function SignaturePreloader({ onComplete }) {
     <div
       role="status"
       aria-label="EVAANAM Experience Loading"
-      className={`fixed inset-0 z-[999999] w-screen h-screen ${bgCanvas} flex items-center justify-center overflow-hidden select-none transition-opacity duration-900 ease-out pointer-events-auto ${
+      className={`fixed inset-0 z-[999999] w-screen h-screen ${bgCanvas} flex items-center justify-center overflow-hidden select-none pointer-events-auto ${
         isExiting ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
       style={{
         transform: "translate3d(0, 0, 0)",
         willChange: "opacity",
         backfaceVisibility: "hidden",
+        transition: "opacity 1200ms cubic-bezier(0.16, 1, 0.3, 1)",
       }}
     >
       {/* Scoped High-Performance CSS Keyframes */}
@@ -161,12 +154,13 @@ export default function SignaturePreloader({ onComplete }) {
         }}
       />
 
-      {/* Center Ambient Light Orb */}
+      {/* Center Ambient Light Orb (Expands during simultaneous exit) */}
       <div
-        className="absolute w-[600px] sm:w-[850px] h-[600px] sm:h-[850px] rounded-full pointer-events-none opacity-90 transition-transform duration-1200 ease-out"
+        className="absolute w-[600px] sm:w-[850px] h-[600px] sm:h-[850px] rounded-full pointer-events-none opacity-90"
         style={{
           background: ambientOrbGradient,
-          transform: isZooming ? "scale(2.5)" : "scale(1)",
+          transform: isExiting ? "scale(3) translate3d(0,0,0)" : "scale(1) translate3d(0,0,0)",
+          transition: "transform 1200ms cubic-bezier(0.16, 1, 0.3, 1)",
         }}
       />
 
@@ -180,10 +174,9 @@ export default function SignaturePreloader({ onComplete }) {
           className="absolute w-[320px] h-[320px] sm:w-[500px] sm:h-[500px] md:w-[620px] md:h-[620px] pointer-events-none flex items-center justify-center"
           style={{
             transformOrigin: "center center",
-            willChange: "transform, opacity",
-            transform: isZooming ? "scale(5.5) translate3d(0, 0, 0)" : "scale(1) translate3d(0, 0, 0)",
-            opacity: isExiting ? 0 : 1,
-            transition: "transform 1.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease-out",
+            willChange: "transform",
+            transform: isExiting ? "scale(5) translate3d(0, 0, 0)" : "scale(1) translate3d(0, 0, 0)",
+            transition: "transform 1200ms cubic-bezier(0.16, 1, 0.3, 1)",
           }}
         >
           <svg
@@ -317,9 +310,9 @@ export default function SignaturePreloader({ onComplete }) {
         <div
           className="relative z-20 flex flex-col items-center justify-center space-y-4 sm:space-y-5"
           style={{
-            opacity: isZooming ? 0 : 1,
-            transform: isZooming ? "scale(0.96) translate3d(0, -10px, 0)" : "scale(1) translate3d(0, 0, 0)",
-            transition: "opacity 0.6s ease-out, transform 0.6s ease-out",
+            opacity: isExiting ? 0 : 1,
+            transform: isExiting ? "scale(0.95) translate3d(0, -10px, 0)" : "scale(1) translate3d(0, 0, 0)",
+            transition: "opacity 800ms ease-out, transform 800ms ease-out",
           }}
         >
           {/* Staggered Letter-by-Letter EVAANAM Title Reveal */}
