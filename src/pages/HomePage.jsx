@@ -14,8 +14,10 @@ import { COMPANY_INFO } from "../data/evaanamData";
 export default function HomePage() {
   return (
     <div className="animate-fade-in">
-      {/* 1. HERO SECTION (Instantly Visible) */}
-      <section className="relative min-h-[92vh] sm:min-h-screen flex items-center justify-center pt-28 pb-16 px-6 sm:px-8 lg:px-12 overflow-hidden bg-night-950 text-cream-100">
+      {/* ========================================================================= */}
+      {/* 1. HERO SECTION (TONE A: Deep British Racing Green / Alabaster White)      */}
+      {/* ========================================================================= */}
+      <section className="section-tone-a relative min-h-[92vh] sm:min-h-screen flex items-center justify-center pt-28 pb-16 px-6 sm:px-8 lg:px-12 overflow-hidden text-cream-100 border-b border-chocolate-700/15 dark:border-emerald-500/20">
         {/* Background Image with slow Ken Burns effect & luxury dark overlay */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
@@ -36,7 +38,7 @@ export default function HomePage() {
               {/* Micro Eyebrow */}
               <div className="inline-flex items-center space-x-2.5 px-3 py-1.5 bg-night-900/90 border border-bronze-500/30 rounded-sm">
                 <span className="w-1.5 h-1.5 rounded-full bg-bronze-400"></span>
-                <span className="micro-label text-bronze-300">
+                <span className="micro-label text-bronze-300 font-bold">
                   Event Manpower &amp; Execution
                 </span>
               </div>
@@ -83,7 +85,7 @@ export default function HomePage() {
             {/* Hero Quick Badge Column */}
             <div className="lg:col-span-4 hidden lg:block">
               <div className="p-6 bg-night-900/80 backdrop-blur-md border border-bronze-500/30 text-cream-200 space-y-4 shadow-xl">
-                <span className="micro-label text-bronze-300">
+                <span className="micro-label text-bronze-300 font-bold">
                   OPERATIONAL COMMITMENT
                 </span>
                 <p className="font-serif text-xl italic text-cream-100 leading-snug">
@@ -99,51 +101,60 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. EXECUTIVE ENGAGEMENTS & BRAND ACTIVATIONS CAROUSEL BELOW HERO (SCROLL REVEAL) */}
-      <ScrollReveal variant="up" threshold={0.1}>
-        <ExecutiveCarousel />
-      </ScrollReveal>
+      {/* ========================================================================= */}
+      {/* 2. EXECUTIVE ENGAGEMENTS CAROUSEL (TONE B: Espresso Brown / Sandstone)     */}
+      {/* ========================================================================= */}
+      <section className="section-tone-b border-b border-chocolate-700/15 dark:border-bronze-500/20">
+        <ScrollReveal variant="up" threshold={0.1}>
+          <ExecutiveCarousel />
+        </ScrollReveal>
+      </section>
 
-      {/* 3. STATS STRIP (SCROLL REVEAL) */}
-      <ScrollReveal variant="up" threshold={0.15}>
-        <StatCounter light={true} />
-      </ScrollReveal>
+      {/* ========================================================================= */}
+      {/* 3. STATS STRIP & PHILOSOPHY (TONE A: Racing Green / Alabaster White)       */}
+      {/* ========================================================================= */}
+      <section className="section-tone-a border-b border-chocolate-700/15 dark:border-emerald-500/20">
+        <ScrollReveal variant="up" threshold={0.15}>
+          <StatCounter light={true} />
+        </ScrollReveal>
 
-      {/* 3. CORE VALUE PROPOSITION STATEMENT (SCROLL REVEAL) */}
-      <ScrollReveal variant="up" threshold={0.15}>
-        <section className="py-28 px-6 sm:px-8 lg:px-12 bg-transparent">
-          <div className="max-w-4xl mx-auto text-center space-y-8">
-            <span className="micro-label">THE EVAANAM PHILOSOPHY</span>
-            <h2 className="editorial-heading text-4xl sm:text-5xl md:text-6xl text-chocolate-950 dark:text-cream-50">
-              Manpower is easy to arrange. <br />
-              <span className="italic text-bronze-600 dark:text-bronze-400">Reliable manpower is not.</span>
-            </h2>
-            <p className="text-base sm:text-lg text-chocolate-600 dark:text-night-muted font-light leading-relaxed max-w-2xl mx-auto">
-              In luxury hospitality, there is no second take. EVAANAM was founded to replace unvetted freelance chaos with structured, disciplined, and professionally supervised workforce operations.
-            </p>
-            <div className="pt-2">
-              <Link
-                to="/why-us"
-                className="inline-flex items-center space-x-2 text-xs uppercase tracking-[0.2em] font-semibold text-bronze-600 dark:text-bronze-400 hover:text-chocolate-950 dark:hover:text-cream-50 transition-colors border-b border-bronze-500/40 pb-1"
-              >
-                <span>Explore The Workforce Operations System™</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </Link>
+        <ScrollReveal variant="up" threshold={0.15}>
+          <div className="py-24 px-6 sm:px-8 lg:px-12">
+            <div className="max-w-4xl mx-auto text-center space-y-8">
+              <span className="micro-label">THE EVAANAM PHILOSOPHY</span>
+              <h2 className="editorial-heading text-4xl sm:text-5xl md:text-6xl">
+                Manpower is easy to arrange. <br />
+                <span className="italic text-emerald-700 dark:text-emerald-400">Reliable manpower is not.</span>
+              </h2>
+              <p className="text-base sm:text-lg font-light leading-relaxed max-w-2xl mx-auto">
+                In luxury hospitality, there is no second take. EVAANAM was founded to replace unvetted freelance chaos with structured, disciplined, and professionally supervised workforce operations.
+              </p>
+              <div className="pt-2">
+                <Link
+                  to="/why-us"
+                  className="inline-flex items-center space-x-2 text-xs uppercase tracking-[0.2em] font-semibold text-emerald-800 dark:text-emerald-400 hover:opacity-80 transition-opacity border-b border-emerald-500/40 pb-1"
+                >
+                  <span>Explore The Workforce Operations System™</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
             </div>
+
+            <GeometricDivider className="max-w-4xl mx-auto mt-16" label="OPERATIONAL DIVISIONS" />
           </div>
+        </ScrollReveal>
+      </section>
 
-          <GeometricDivider className="max-w-4xl mx-auto mt-16" label="OPERATIONAL DIVISIONS" />
-        </section>
-      </ScrollReveal>
-
-      {/* 4. TWO PRIMARY SERVICE VERTICALS (SCROLL REVEAL CARDS) */}
-      <section className="py-24 px-6 sm:px-8 lg:px-12 bg-transparent border-t border-chocolate-700/10 dark:border-bronze-500/15">
+      {/* ========================================================================= */}
+      {/* 4. TWO PRIMARY SERVICE VERTICALS (TONE B: Espresso Brown / Sandstone)      */}
+      {/* ========================================================================= */}
+      <section className="section-tone-b py-24 px-6 sm:px-8 lg:px-12 border-b border-chocolate-700/15 dark:border-bronze-500/20">
         <div className="max-w-7xl mx-auto">
           <ScrollReveal variant="up">
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
               <div>
                 <span className="micro-label">SPECIALIZED DIVISIONS</span>
-                <h2 className="editorial-heading text-4xl sm:text-5xl text-chocolate-950 dark:text-cream-50 mt-2">
+                <h2 className="editorial-heading text-4xl sm:text-5xl mt-2">
                   Engineered for High-Pressure Floors
                 </h2>
               </div>
@@ -160,7 +171,6 @@ export default function HomePage() {
             {/* SERVICE CARD 1: WEDDING HOSPITALITY */}
             <ScrollReveal variant="left" delay={100}>
               <div className="group relative rounded-sm p-6 sm:p-10 flex flex-col justify-between overflow-hidden bg-cream-100/90 dark:bg-night-800/90 border border-chocolate-700/15 dark:border-bronze-500/20 shadow-md hover:shadow-2xl hover:-translate-y-2.5 transition-all duration-500 ease-out hover:border-amber-500/60 dark:hover:border-bronze-400/80 h-full">
-                {/* Background Atmospheric Photo */}
                 <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-0 group-hover:opacity-20 dark:group-hover:opacity-15 transition-opacity duration-700">
                   <img
                     src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80"
@@ -170,18 +180,14 @@ export default function HomePage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-cream-100 via-cream-100/80 to-transparent dark:from-night-800 dark:via-night-800/80" />
                 </div>
 
-                {/* Shimmer Light Beam */}
                 <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-amber-400/20 dark:via-bronze-400/20 to-transparent pointer-events-none" />
-
-                {/* Top Golden Hairline Glow */}
                 <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-transparent group-hover:bg-gradient-to-r group-hover:from-amber-400 group-hover:via-bronze-500 group-hover:to-amber-400 transition-all duration-500" />
 
-                {/* Content Container */}
                 <div className="space-y-6 relative z-10">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-2">
                       <span className="w-2 h-2 rounded-full bg-amber-500 inline-block group-hover:animate-ping" />
-                      <span className="font-mono text-xs font-semibold text-bronze-600 dark:text-bronze-400">
+                      <span className="font-mono text-xs font-semibold text-amber-700 dark:text-amber-400">
                         01 / WEDDING HOSPITALITY
                       </span>
                     </div>
@@ -253,7 +259,6 @@ export default function HomePage() {
             {/* SERVICE CARD 2: CORPORATE & EXPOS */}
             <ScrollReveal variant="right" delay={200}>
               <div className="group relative rounded-sm p-8 sm:p-10 flex flex-col justify-between overflow-hidden bg-cream-100/90 dark:bg-night-800/90 border border-chocolate-700/15 dark:border-bronze-500/20 shadow-md hover:shadow-2xl hover:-translate-y-2.5 transition-all duration-500 ease-out hover:border-emerald-500/60 dark:hover:border-emerald-400/80 h-full">
-                {/* Background Atmospheric Photo */}
                 <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-0 group-hover:opacity-20 dark:group-hover:opacity-15 transition-opacity duration-700">
                   <img
                     src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80"
@@ -263,18 +268,14 @@ export default function HomePage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-cream-100 via-cream-100/80 to-transparent dark:from-night-800 dark:via-night-800/80" />
                 </div>
 
-                {/* Shimmer Light Beam */}
                 <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-emerald-400/20 dark:via-emerald-400/20 to-transparent pointer-events-none" />
-
-                {/* Top Green Hairline Glow */}
                 <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-transparent group-hover:bg-gradient-to-r group-hover:from-emerald-400 group-hover:via-teal-500 group-hover:to-emerald-400 transition-all duration-500" />
 
-                {/* Content Container */}
                 <div className="space-y-6 relative z-10">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-2">
                       <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block group-hover:animate-ping" />
-                      <span className="font-mono text-xs font-semibold text-bronze-600 dark:text-bronze-400">
+                      <span className="font-mono text-xs font-semibold text-emerald-700 dark:text-emerald-400">
                         02 / CORPORATE &amp; EXPOS
                       </span>
                     </div>
@@ -346,51 +347,59 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. INTERACTIVE MANPOWER CALCULATOR SECTION (SCROLL REVEAL) */}
-      <ScrollReveal variant="up" threshold={0.08}>
-        <section id="calculator-section" className="py-24 px-6 sm:px-8 lg:px-12 bg-transparent border-t border-chocolate-700/10 dark:border-bronze-500/15">
+      {/* ========================================================================= */}
+      {/* 5. MANPOWER CALCULATOR SECTION (TONE A: Racing Green / Alabaster White)    */}
+      {/* ========================================================================= */}
+      <section id="calculator-section" className="section-tone-a py-24 px-6 sm:px-8 lg:px-12 border-b border-chocolate-700/15 dark:border-emerald-500/20">
+        <ScrollReveal variant="up" threshold={0.08}>
           <ManpowerCalculator />
-        </section>
-      </ScrollReveal>
+        </ScrollReveal>
+      </section>
 
-      {/* 6. LARGE VISUAL BREAK (KEN BURNS SCROLL REVEAL) */}
-      <ScrollReveal variant="scale" threshold={0.15}>
-        <section className="relative h-[480px] sm:h-[550px] flex items-center justify-center overflow-hidden bg-night-950 text-cream-100 text-center px-6">
-          <div className="absolute inset-0 z-0 overflow-hidden">
-            <img
-              src="./images/gallery-corporate/IMG-20250419-WA0011-jpg.jpg"
-              alt="Event Floor in Motion"
-              className="w-full h-full object-cover object-center ken-burns opacity-30 dark:opacity-20"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-night-950/90 via-night-950/60 to-night-950/90" />
+      {/* ========================================================================= */}
+      {/* 6. OPERATIONAL ASSURANCE BANNER (TONE B: Espresso Brown / Sandstone)       */}
+      {/* ========================================================================= */}
+      <section className="section-tone-b border-b border-chocolate-700/15 dark:border-bronze-500/20">
+        <ScrollReveal variant="scale" threshold={0.15}>
+          <div className="relative h-[480px] sm:h-[550px] flex items-center justify-center overflow-hidden text-center px-6">
+            <div className="absolute inset-0 z-0 overflow-hidden">
+              <img
+                src="./images/gallery-corporate/IMG-20250419-WA0011-jpg.jpg"
+                alt="Event Floor in Motion"
+                className="w-full h-full object-cover object-center ken-burns opacity-30 dark:opacity-20"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-night-950/90 via-night-950/60 to-night-950/90" />
+            </div>
+
+            <div className="relative z-10 max-w-3xl mx-auto space-y-6 text-cream-100">
+              <span className="micro-label text-amber-400 font-bold">OPERATIONAL ASSURANCE</span>
+              <h3 className="font-serif text-3xl sm:text-4xl md:text-5xl font-light leading-snug">
+                From first arrival to final departure, <br />
+                <span className="italic text-amber-300">the floor stays covered.</span>
+              </h3>
+              <p className="text-xs sm:text-sm text-cream-300/90 font-light tracking-wide max-w-xl mx-auto">
+                Zero last-minute dropouts. Verified replacements on standby. A single point of coordination for your entire production team.
+              </p>
+            </div>
           </div>
+        </ScrollReveal>
+      </section>
 
-          <div className="relative z-10 max-w-3xl mx-auto space-y-6">
-            <span className="micro-label text-bronze-400">OPERATIONAL ASSURANCE</span>
-            <h3 className="font-serif text-3xl sm:text-4xl md:text-5xl font-light text-cream-50 leading-snug">
-              From first arrival to final departure, <br />
-              <span className="italic text-bronze-300">the floor stays covered.</span>
-            </h3>
-            <p className="text-xs sm:text-sm text-cream-300/80 font-light tracking-wide max-w-xl mx-auto">
-              Zero last-minute dropouts. Verified replacements on standby. A single point of coordination for your entire production team.
-            </p>
-          </div>
-        </section>
-      </ScrollReveal>
-
-      {/* 7. VENUE TICKER PREVIEW (SCROLL REVEAL) */}
-      <ScrollReveal variant="up" threshold={0.12}>
-        <section className="py-16 bg-transparent">
+      {/* ========================================================================= */}
+      {/* 7. VENUE FOOTPRINT (TONE A: Racing Green / Alabaster White)                */}
+      {/* ========================================================================= */}
+      <section className="section-tone-a py-16 border-b border-chocolate-700/15 dark:border-emerald-500/20">
+        <ScrollReveal variant="up" threshold={0.12}>
           <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
               <span className="micro-label">DEPLOYMENT FOOTPRINT</span>
-              <h3 className="font-serif text-2xl sm:text-3xl text-chocolate-950 dark:text-cream-50 font-medium mt-1">
+              <h3 className="editorial-heading text-2xl sm:text-3xl font-medium mt-1">
                 Experienced where the standard is already high.
               </h3>
             </div>
             <Link
               to="/venues"
-              className="inline-flex items-center space-x-2 px-4 py-2 bg-cream-200/90 dark:bg-night-800 border-2 border-chocolate-700/30 dark:border-bronze-500/40 rounded-sm text-xs uppercase tracking-[0.2em] font-bold text-chocolate-950 dark:text-cream-50 hover:bg-brand-green dark:hover:bg-bronze-500 hover:text-cream-50 dark:hover:text-night-950 hover:border-transparent transition-all shadow-sm"
+              className="inline-flex items-center space-x-2 px-4 py-2 bg-cream-200/90 dark:bg-night-800 border-2 border-chocolate-700/30 dark:border-emerald-500/40 rounded-sm text-xs uppercase tracking-[0.2em] font-bold text-chocolate-950 dark:text-cream-50 hover:bg-brand-green dark:hover:bg-bronze-500 hover:text-cream-50 dark:hover:text-night-950 hover:border-transparent transition-all shadow-sm"
             >
               <span>Explore 40+ Venues</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
@@ -398,24 +407,26 @@ export default function HomePage() {
           </div>
 
           <VenueMarquee />
-        </section>
-      </ScrollReveal>
+        </ScrollReveal>
+      </section>
 
-      {/* 8. TESTIMONIALS & CLIENT ENDORSEMENTS RIBBON (SCROLL REVEAL) */}
-      <ScrollReveal variant="up" threshold={0.12}>
-        <section className="py-20 bg-transparent border-t border-chocolate-700/10 dark:border-bronze-500/15">
+      {/* ========================================================================= */}
+      {/* 8. TESTIMONIALS (TONE B: Espresso Brown / Sandstone)                       */}
+      {/* ========================================================================= */}
+      <section className="section-tone-b py-20 border-b border-chocolate-700/15 dark:border-bronze-500/20">
+        <ScrollReveal variant="up" threshold={0.12}>
           <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 mb-8 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
             <div>
-              <span className="micro-label text-bronze-600 dark:text-bronze-400">CLIENT ENDORSEMENTS &amp; REVIEWS</span>
-              <h2 className="editorial-heading text-3xl sm:text-4xl md:text-5xl text-chocolate-950 dark:text-cream-50 mt-1">
-                500+ Events Delivered – <span className="italic text-bronze-600 dark:text-bronze-400">100+ Happy Clients</span>
+              <span className="micro-label text-amber-700 dark:text-amber-400 font-bold">CLIENT ENDORSEMENTS &amp; REVIEWS</span>
+              <h2 className="editorial-heading text-3xl sm:text-4xl md:text-5xl mt-1">
+                500+ Events Delivered – <span className="italic text-amber-700 dark:text-amber-400">100+ Happy Clients</span>
               </h2>
-              <p className="text-xs sm:text-sm text-chocolate-600 dark:text-night-muted font-light mt-1 max-w-xl">
+              <p className="text-xs sm:text-sm font-light mt-1 max-w-xl">
                 Authentic feedback from corporate organizers, luxury wedding planners, and exhibition managers.
               </p>
             </div>
             
-            <div className="flex items-center space-x-2 px-3.5 py-2 bg-cream-100 dark:bg-night-800 border border-chocolate-700/10 dark:border-bronze-500/20 rounded-sm">
+            <div className="flex items-center space-x-2 px-3.5 py-2 bg-cream-100/80 dark:bg-night-800/80 border border-chocolate-700/10 dark:border-bronze-500/20 rounded-sm">
               <span className="text-xs font-mono font-bold text-amber-600 dark:text-amber-400">★★★★★</span>
               <span className="text-xs font-mono font-semibold text-chocolate-900 dark:text-cream-100">
                 5.0 / 5.0 Rating
@@ -423,24 +434,26 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Looping Cards Ribbon Running Right to Left */}
           <TestimonialMarquee />
-        </section>
-      </ScrollReveal>
+        </ScrollReveal>
+      </section>
 
+      {/* ========================================================================= */}
+      {/* 9. SOCIAL JOURNEY (TONE A: Racing Green / Alabaster White)                 */}
+      {/* ========================================================================= */}
+      <section className="section-tone-a border-b border-chocolate-700/15 dark:border-emerald-500/20">
+        <ScrollReveal variant="up" threshold={0.12}>
+          <SocialSection showHeader={true} />
+        </ScrollReveal>
+      </section>
 
-
-      {/* 10. ANIMATED SOCIAL SECTION (SCROLL REVEAL) */}
-      <ScrollReveal variant="up" threshold={0.12}>
-        <SocialSection showHeader={true} />
-      </ScrollReveal>
-
-      {/* 11. MEET EVA · 24/7 AI OPERATIONS ASSISTANT SPOTLIGHT (SCROLL REVEAL) */}
-      <ScrollReveal variant="scale" threshold={0.12}>
-        <section className="py-20 px-6 sm:px-8 lg:px-12 bg-transparent border-t border-chocolate-700/10 dark:border-bronze-500/15">
+      {/* ========================================================================= */}
+      {/* 10. MEET EVA SPOTLIGHT (TONE B: Espresso Brown / Sandstone)                */}
+      {/* ========================================================================= */}
+      <section className="section-tone-b py-20 px-6 sm:px-8 lg:px-12 border-b border-chocolate-700/15 dark:border-bronze-500/20">
+        <ScrollReveal variant="scale" threshold={0.12}>
           <div className="max-w-7xl mx-auto">
             <div className="relative overflow-hidden rounded-lg bg-gradient-to-br from-brand-green via-night-900 to-night-950 border border-bronze-500/30 p-8 sm:p-12 shadow-2xl text-cream-100">
-              {/* Background Aesthetic Elements */}
               <div className="absolute top-0 right-0 w-96 h-96 bg-bronze-500/10 rounded-full blur-3xl pointer-events-none" />
               <div className="absolute bottom-0 left-0 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
@@ -462,7 +475,6 @@ export default function HomePage() {
                     Planning an event in Delhi NCR or pan-India? Eva estimates your exact crew headcounts, verifies venue logistics across 40+ five-star hotels, and transfers structured briefing requisitions directly to our on-duty WhatsApp dispatch coordinators.
                   </p>
 
-                  {/* 3 Value Pillars */}
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
                     <div className="p-3 bg-night-850/80 border border-bronze-500/20 rounded-sm">
                       <p className="text-[11px] font-bold text-cream-50">⚡ Instant Headcounts</p>
@@ -478,11 +490,10 @@ export default function HomePage() {
                     </div>
                   </div>
 
-                  {/* Interactive Action Buttons */}
                   <div className="pt-3 flex flex-wrap items-center gap-4">
                     <button
                       onClick={() => window.dispatchEvent(new CustomEvent("open-eva-chat"))}
-                      className="px-6 py-3.5 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-night-950 rounded-sm font-semibold text-xs uppercase tracking-wider shadow-lg flex items-center space-x-2 transition-all duration-300 hover:scale-105"
+                      className="px-6 py-3.5 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-night-950 rounded-sm font-bold text-xs uppercase tracking-wider shadow-lg flex items-center space-x-2 transition-all duration-300 hover:scale-105"
                     >
                       <MessageSquare className="w-4 h-4" />
                       <span>Chat with Eva Now</span>
@@ -500,7 +511,7 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                {/* Right Column: Visual Mockup Card of Eva in action */}
+                {/* Right Column: Visual Mockup Card */}
                 <div className="lg:col-span-5 flex justify-center">
                   <div
                     onClick={() => window.dispatchEvent(new CustomEvent("open-eva-chat"))}
@@ -514,7 +525,7 @@ export default function HomePage() {
                         <div>
                           <h4 className="text-xs font-bold text-cream-50 flex items-center space-x-1">
                             <span>Eva</span>
-                            <span className="text-[8px] font-mono px-1 py-0.2 bg-amber-400/20 text-amber-300 rounded">AI</span>
+                            <span className="text-[8px] font-mono px-1 py-0.2 bg-amber-400/20 text-amber-300 rounded font-bold">AI</span>
                           </h4>
                           <p className="text-[9px] font-mono text-emerald-400">● Active Dispatch Concierge</p>
                         </div>
@@ -542,38 +553,40 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-        </section>
-      </ScrollReveal>
+        </ScrollReveal>
+      </section>
 
-      {/* 12. FINAL CALL TO CONVERSATION (SCROLL REVEAL) */}
-      <ScrollReveal variant="up" threshold={0.15}>
-        <section className="py-24 px-6 sm:px-8 lg:px-12 bg-transparent border-t border-chocolate-700/10 dark:border-bronze-500/15">
+      {/* ========================================================================= */}
+      {/* 11. FINAL CALL TO CONVERSATION (TONE A: Racing Green / Alabaster White)    */}
+      {/* ========================================================================= */}
+      <section className="section-tone-a py-24 px-6 sm:px-8 lg:px-12">
+        <ScrollReveal variant="up" threshold={0.15}>
           <div className="max-w-4xl mx-auto text-center space-y-8">
             <span className="micro-label">START A CONVERSATION</span>
-            <h2 className="editorial-heading text-4xl sm:text-5xl lg:text-6xl text-chocolate-950 dark:text-cream-50">
+            <h2 className="editorial-heading text-4xl sm:text-5xl lg:text-6xl">
               Planning an event? <br />
-              <span className="italic text-bronze-600 dark:text-bronze-400">Let's build your team.</span>
+              <span className="italic text-emerald-700 dark:text-emerald-400">Let's build your team.</span>
             </h2>
-            <p className="text-base text-chocolate-600 dark:text-night-muted font-light max-w-xl mx-auto leading-relaxed">
+            <p className="text-base font-light max-w-xl mx-auto leading-relaxed">
               Tell us your venue, event dates, and crew requirements. Our operations desk will prepare customized crew profiles for your event.
             </p>
             <div className="pt-4 flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
               <Link
                 to="/contact"
-                className="btn-primary px-10 py-4 text-xs font-semibold"
+                className="btn-primary px-10 py-4 text-xs font-bold"
               >
                 Request Manpower
               </Link>
               <a
                 href={`tel:${COMPANY_INFO.phones[0].number}`}
-                className="text-xs uppercase tracking-[0.2em] font-semibold text-chocolate-800 dark:text-cream-200 hover:text-bronze-600 dark:hover:text-bronze-400 transition-colors"
+                className="text-xs uppercase tracking-[0.2em] font-semibold text-emerald-900 dark:text-emerald-300 hover:opacity-80 transition-opacity"
               >
                 Or Call Operations: {COMPANY_INFO.phones[0].display}
               </a>
             </div>
           </div>
-        </section>
-      </ScrollReveal>
+        </ScrollReveal>
+      </section>
     </div>
   );
 }

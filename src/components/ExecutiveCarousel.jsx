@@ -10,6 +10,11 @@ export default function ExecutiveCarousel({ className = "" }) {
   const [isPaused, setIsPaused] = useState(false);
   const autoPlayRef = useRef(null);
 
+  // Touch and mouse drag swipe coordinates
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+  const isDragging = useRef(false);
+
   const total = FEATURED_HIGHLIGHTS.length;
 
   // Auto-play interval (every 4.5s)
@@ -30,21 +35,71 @@ export default function ExecutiveCarousel({ className = "" }) {
     setCurrentIndex((prev) => (prev === total - 1 ? 0 : prev + 1));
   };
 
+  // Touch Swipe Handlers
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchEndX.current = e.touches[0].clientX;
+    setIsPaused(true);
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const diff = touchStartX.current - touchEndX.current;
+    const threshold = 40; // minimum 40px delta
+    if (diff > threshold) {
+      handleNext();
+    } else if (diff < -threshold) {
+      handlePrev();
+    }
+    setIsPaused(false);
+  };
+
+  // Mouse Drag Handlers
+  const handleMouseDown = (e) => {
+    isDragging.current = true;
+    touchStartX.current = e.clientX;
+    touchEndX.current = e.clientX;
+    setIsPaused(true);
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDragging.current) return;
+    touchEndX.current = e.clientX;
+  };
+
+  const handleMouseUp = (e) => {
+    if (!isDragging.current) return;
+    isDragging.current = false;
+    const diff = touchStartX.current - touchEndX.current;
+    const threshold = 40;
+    if (diff > threshold) {
+      handleNext();
+    } else if (diff < -threshold) {
+      handlePrev();
+    } else if (Math.abs(diff) < 5) {
+      // It's a genuine click, open lightbox if clicking on slide
+    }
+    setIsPaused(false);
+  };
+
   return (
-    <section className={`py-16 sm:py-20 px-6 sm:px-8 lg:px-12 bg-transparent select-none overflow-hidden ${className}`}>
+    <section className={`py-16 sm:py-20 px-6 sm:px-8 lg:px-12 select-none overflow-hidden ${className}`}>
       <div className="max-w-7xl mx-auto">
         
         {/* Section Header with Title & Arrow Controls */}
         <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between mb-8 sm:mb-10 gap-6">
           <div>
-            <span className="micro-label text-bronze-600 dark:text-bronze-400 flex items-center space-x-1.5">
+            <span className="micro-label text-amber-700 dark:text-amber-400 flex items-center space-x-1.5 font-bold">
               <Sparkles className="w-3.5 h-3.5" />
               <span>FEATURED HIGHLIGHTS</span>
             </span>
             <h2 className="editorial-heading text-3xl sm:text-4xl md:text-5xl text-chocolate-950 dark:text-cream-50 mt-1">
               Executive Engagements &amp; Brand Activations
             </h2>
-            <p className="text-xs sm:text-sm text-chocolate-600 dark:text-night-muted font-light mt-1 max-w-2xl">
+            <p className="text-xs sm:text-sm text-chocolate-700 dark:text-night-muted font-light mt-1 max-w-2xl">
               On-ground manpower coordination for premier consumer brands, aviation conclaves, and high-profile celebrity keynotes.
             </p>
           </div>
@@ -84,11 +139,20 @@ export default function ExecutiveCarousel({ className = "" }) {
           </div>
         </div>
 
-        {/* Cinematic Dual-Layer Uncropped Viewport */}
+        {/* Cinematic Dual-Layer Uncropped Viewport with Touch/Drag Swipe */}
         <div
-          className="relative overflow-hidden rounded-sm border-2 border-chocolate-700/20 dark:border-bronze-500/30 shadow-2xl bg-night-950"
+          className="relative overflow-hidden rounded-sm border-2 border-chocolate-700/20 dark:border-bronze-500/30 shadow-2xl bg-night-950 cursor-grab active:cursor-grabbing touch-pan-y"
           onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
+          onMouseLeave={() => {
+            setIsPaused(false);
+            isDragging.current = false;
+          }}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
         >
           {/* Slide Track */}
           <div
@@ -99,7 +163,10 @@ export default function ExecutiveCarousel({ className = "" }) {
               <div
                 key={item.id}
                 className="w-full flex-shrink-0 relative h-[420px] sm:h-[520px] md:h-[580px] bg-night-950 cursor-pointer group flex items-center justify-center overflow-hidden"
-                onClick={() => setLightboxIndex(idx)}
+                onClick={() => {
+                  const diff = Math.abs(touchStartX.current - touchEndX.current);
+                  if (diff < 10) setLightboxIndex(idx);
+                }}
               >
                 {/* 1. LAYER 1: Ambient Background Aura (Blurred & darkened so no empty black borders) */}
                 <div className="absolute inset-0 z-0 overflow-hidden">
@@ -118,7 +185,8 @@ export default function ExecutiveCarousel({ className = "" }) {
                     src={item.src}
                     alt={item.title}
                     loading={idx === 0 ? "eager" : "lazy"}
-                    className="max-h-full max-w-full object-contain rounded-sm shadow-2xl transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+                    draggable={false}
+                    className="max-h-full max-w-full object-contain rounded-sm shadow-2xl transition-transform duration-700 ease-out group-hover:scale-[1.02] pointer-events-none"
                   />
                 </div>
 
@@ -140,7 +208,7 @@ export default function ExecutiveCarousel({ className = "" }) {
                 {/* Bottom Caption Overlay */}
                 <div className="absolute bottom-0 left-0 right-0 z-20 p-5 sm:p-8 bg-gradient-to-t from-night-950 via-night-950/90 to-transparent text-cream-100 space-y-1 sm:space-y-2 backdrop-blur-xs">
                   <div className="flex items-center space-x-2">
-                    <span className="text-[11px] uppercase font-mono text-bronze-400 font-bold">
+                    <span className="text-[11px] uppercase font-mono text-amber-400 font-bold">
                       {item.client}
                     </span>
                     <span className="text-cream-400 text-xs hidden sm:inline">•</span>
@@ -159,6 +227,11 @@ export default function ExecutiveCarousel({ className = "" }) {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Swipe Gesture Micro Indicator (Mobile & Desktop) */}
+          <div className="absolute bottom-4 left-6 z-30 hidden sm:flex items-center space-x-1.5 text-[10px] font-mono text-cream-300/60 pointer-events-none">
+            <span>← Swipe / Drag to navigate →</span>
           </div>
 
           {/* Bottom Progress Bar & Dot Indicators */}

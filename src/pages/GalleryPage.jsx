@@ -40,25 +40,25 @@ export default function GalleryPage() {
 
   return (
     <div className="animate-fade-in pt-28">
-      {/* 1. DEDICATED PAGE INTRODUCTION HERO */}
-      <section className="py-20 px-6 sm:px-8 lg:px-12 bg-transparent border-b border-chocolate-700/10 dark:border-bronze-500/15">
+      {/* 1. DEDICATED PAGE INTRODUCTION HERO (TONE A: Green / Alabaster White) */}
+      <section className="section-tone-a py-20 px-6 sm:px-8 lg:px-12 border-b border-chocolate-700/15 dark:border-emerald-500/20">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl space-y-6">
-            <span className="micro-label flex items-center space-x-1.5 text-bronze-600 dark:text-bronze-400">
+            <span className="micro-label flex items-center space-x-1.5 font-bold">
               <Camera className="w-3.5 h-3.5" />
               <span>ON THE FLOOR PORTFOLIO</span>
             </span>
-            <h1 className="editorial-heading text-5xl sm:text-6xl md:text-7xl text-chocolate-950 dark:text-cream-50">
+            <h1 className="editorial-heading text-5xl sm:text-6xl md:text-7xl">
               The work, <br />
-              <span className="italic text-bronze-600 dark:text-bronze-400">in motion.</span>
+              <span className="italic text-emerald-700 dark:text-emerald-400">in motion.</span>
             </h1>
-            <p className="text-base sm:text-lg text-chocolate-600 dark:text-night-muted font-light leading-relaxed">
+            <p className="text-base sm:text-lg font-light leading-relaxed">
               Curated glimpses of our deployment crews across celebrity VIP keynotes, brand experience pavilions, five-star hotel ballrooms, diplomatic conclaves, trade expos, and behind-the-scenes muster briefings.
             </p>
 
             {/* Quick Stats Strip */}
-            <div className="pt-2 flex flex-wrap items-center gap-3 text-xs font-mono text-chocolate-600 dark:text-night-muted">
-              <span className="px-3 py-1 bg-cream-100 dark:bg-night-800 border border-chocolate-700/10 dark:border-bronze-500/20 rounded font-bold">
+            <div className="pt-2 flex flex-wrap items-center gap-3 text-xs font-mono">
+              <span className="px-3 py-1 bg-cream-200/90 dark:bg-night-800 border border-chocolate-700/15 dark:border-emerald-500/30 rounded font-bold">
                 <strong>{GALLERY_IMAGES.length}</strong> Total Photographs
               </span>
               <span>•</span>
@@ -74,8 +74,8 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      {/* 2. CATEGORY TABS & FILTER (STICKY CONTROLS) */}
-      <section className="py-6 px-6 sm:px-8 lg:px-12 bg-cream-100/90 dark:bg-night-850/90 border-b border-chocolate-700/10 dark:border-bronze-500/15 sticky top-[72px] z-20 backdrop-blur-md">
+      {/* 2. CATEGORY TABS & FILTER (STICKY CONTROLS) (TONE B: Espresso Brown / Sandstone) */}
+      <section className="section-tone-b py-6 px-6 sm:px-8 lg:px-12 border-b border-chocolate-700/15 dark:border-bronze-500/20 sticky top-[72px] z-20 backdrop-blur-md">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center space-x-2 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0">
             {/* 1. All Photos Tab */}
@@ -83,8 +83,8 @@ export default function GalleryPage() {
               onClick={() => setActiveCategory("all")}
               className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.16em] transition-all whitespace-nowrap flex items-center space-x-1.5 rounded-sm ${
                 activeCategory === "all"
-                  ? "bg-brand-green dark:bg-bronze-500 text-cream-50 dark:text-night-950 shadow-sm"
-                  : "bg-cream-200 dark:bg-night-800 text-chocolate-600 dark:text-night-muted hover:text-chocolate-900 dark:hover:text-cream-50 border border-chocolate-700/10 dark:border-bronze-500/15"
+                  ? "bg-brand-green dark:bg-bronze-500 text-cream-50 dark:text-night-950 shadow-sm font-bold"
+                  : "bg-cream-100 dark:bg-night-800 text-chocolate-700 dark:text-night-muted hover:text-chocolate-950 dark:hover:text-cream-50 border border-chocolate-700/15 dark:border-bronze-500/20"
               }`}
             >
               <Sparkles className="w-3.5 h-3.5" />
@@ -97,7 +97,7 @@ export default function GalleryPage() {
               className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.16em] transition-all whitespace-nowrap flex items-center space-x-1.5 rounded-sm ${
                 activeCategory === "activations"
                   ? "bg-amber-600 dark:bg-amber-500 text-cream-50 dark:text-night-950 shadow-sm font-bold"
-                  : "bg-cream-200 dark:bg-night-800 text-chocolate-600 dark:text-night-muted hover:text-chocolate-900 dark:hover:text-cream-50 border border-chocolate-700/10 dark:border-bronze-500/15"
+                  : "bg-cream-100 dark:bg-night-800 text-chocolate-700 dark:text-night-muted hover:text-chocolate-950 dark:hover:text-cream-50 border border-chocolate-700/15 dark:border-bronze-500/20"
               }`}
             >
               <Award className="w-3.5 h-3.5" />
@@ -109,8 +109,8 @@ export default function GalleryPage() {
               onClick={() => setActiveCategory("wedding")}
               className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.16em] transition-all whitespace-nowrap flex items-center space-x-1.5 rounded-sm ${
                 activeCategory === "wedding"
-                  ? "bg-brand-green dark:bg-bronze-500 text-cream-50 dark:text-night-950 shadow-sm"
-                  : "bg-cream-200 dark:bg-night-800 text-chocolate-600 dark:text-night-muted hover:text-chocolate-900 dark:hover:text-cream-50 border border-chocolate-700/10 dark:border-bronze-500/15"
+                  ? "bg-brand-green dark:bg-bronze-500 text-cream-50 dark:text-night-950 shadow-sm font-bold"
+                  : "bg-cream-100 dark:bg-night-800 text-chocolate-700 dark:text-night-muted hover:text-chocolate-950 dark:hover:text-cream-50 border border-chocolate-700/15 dark:border-bronze-500/20"
               }`}
             >
               <Crown className="w-3.5 h-3.5" />
@@ -122,8 +122,8 @@ export default function GalleryPage() {
               onClick={() => setActiveCategory("corporate")}
               className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.16em] transition-all whitespace-nowrap flex items-center space-x-1.5 rounded-sm ${
                 activeCategory === "corporate"
-                  ? "bg-brand-green dark:bg-bronze-500 text-cream-50 dark:text-night-950 shadow-sm"
-                  : "bg-cream-200 dark:bg-night-800 text-chocolate-600 dark:text-night-muted hover:text-chocolate-900 dark:hover:text-cream-50 border border-chocolate-700/10 dark:border-bronze-500/15"
+                  ? "bg-brand-green dark:bg-bronze-500 text-cream-50 dark:text-night-950 shadow-sm font-bold"
+                  : "bg-cream-100 dark:bg-night-800 text-chocolate-700 dark:text-night-muted hover:text-chocolate-950 dark:hover:text-cream-50 border border-chocolate-700/15 dark:border-bronze-500/20"
               }`}
             >
               <Briefcase className="w-3.5 h-3.5" />
@@ -135,8 +135,8 @@ export default function GalleryPage() {
               onClick={() => setActiveCategory("bts")}
               className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.16em] transition-all whitespace-nowrap flex items-center space-x-1.5 rounded-sm ${
                 activeCategory === "bts"
-                  ? "bg-brand-green dark:bg-bronze-500 text-cream-50 dark:text-night-950 shadow-sm"
-                  : "bg-cream-200 dark:bg-night-800 text-chocolate-600 dark:text-night-muted hover:text-chocolate-900 dark:hover:text-cream-50 border border-chocolate-700/10 dark:border-bronze-500/15"
+                  ? "bg-brand-green dark:bg-bronze-500 text-cream-50 dark:text-night-950 shadow-sm font-bold"
+                  : "bg-cream-100 dark:bg-night-800 text-chocolate-700 dark:text-night-muted hover:text-chocolate-950 dark:hover:text-cream-50 border border-chocolate-700/15 dark:border-bronze-500/20"
               }`}
             >
               <Camera className="w-3.5 h-3.5" />
@@ -144,14 +144,14 @@ export default function GalleryPage() {
             </button>
           </div>
 
-          <p className="text-xs text-chocolate-500 dark:text-night-dim font-mono hidden sm:block">
+          <p className="text-xs font-mono hidden sm:block font-semibold">
             Showing {filteredImages.length} Photographs
           </p>
         </div>
       </section>
 
       {/* 3. GALLERY CONTENT (ALL PORTFOLIO GRID OR CATEGORY FOCUS) */}
-      <section className="py-16 px-6 sm:px-8 lg:px-12 bg-transparent">
+      <section className="section-tone-a py-16 px-6 sm:px-8 lg:px-12 border-b border-chocolate-700/15 dark:border-emerald-500/20">
         <div className="max-w-7xl mx-auto space-y-16">
           
           {/* A. If viewing All Portfolio, show curated sections with dividers */}
@@ -162,18 +162,18 @@ export default function GalleryPage() {
               <div>
                 <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
                   <div>
-                    <span className="micro-label text-amber-700 dark:text-amber-400">SECTION 01 / CELEBRITIES &amp; BRAND PAVILIONS</span>
-                    <h2 className="editorial-heading text-3xl sm:text-4xl text-chocolate-950 dark:text-cream-50 mt-1">
+                    <span className="micro-label text-amber-700 dark:text-amber-400 font-bold">SECTION 01 / CELEBRITIES &amp; BRAND PAVILIONS</span>
+                    <h2 className="editorial-heading text-3xl sm:text-4xl mt-1">
                       Executive Engagements &amp; Brand Activations
                     </h2>
-                    <p className="text-xs text-chocolate-600 dark:text-night-muted mt-1 font-light">
+                    <p className="text-xs font-light mt-1 max-w-2xl">
                       High-profile celebrity VIP escorts (Boman Irani, Rajpal Yadav), tech pavilions (Vivo), and aviation summits (IndiGo, Pronto).
                     </p>
                   </div>
                   <button
                     type="button"
                     onClick={() => setActiveCategory("activations")}
-                    className="text-xs uppercase font-mono tracking-wider font-semibold text-bronze-600 dark:text-bronze-400 hover:text-chocolate-950 dark:hover:text-cream-50 flex items-center space-x-1"
+                    className="text-xs uppercase font-mono tracking-wider font-semibold text-emerald-800 dark:text-emerald-400 hover:opacity-80 flex items-center space-x-1"
                   >
                     <span>View All {activationImages.length} Activation Photos</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
@@ -197,18 +197,18 @@ export default function GalleryPage() {
               <div>
                 <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
                   <div>
-                    <span className="micro-label text-amber-700 dark:text-amber-400">SECTION 02 / FIVE-STAR FLOORS</span>
-                    <h2 className="editorial-heading text-3xl sm:text-4xl text-chocolate-950 dark:text-cream-50 mt-1">
+                    <span className="micro-label text-amber-700 dark:text-amber-400 font-bold">SECTION 02 / FIVE-STAR FLOORS</span>
+                    <h2 className="editorial-heading text-3xl sm:text-4xl mt-1">
                       Wedding Hospitality Portfolio
                     </h2>
-                    <p className="text-xs text-chocolate-600 dark:text-night-muted mt-1 font-light">
+                    <p className="text-xs font-light mt-1">
                       Bridal shadows, palace courtyard mandap coordination, and silver service banquets.
                     </p>
                   </div>
                   <button
                     type="button"
                     onClick={() => setActiveCategory("wedding")}
-                    className="text-xs uppercase font-mono tracking-wider font-semibold text-bronze-600 dark:text-bronze-400 hover:text-chocolate-950 dark:hover:text-cream-50 flex items-center space-x-1"
+                    className="text-xs uppercase font-mono tracking-wider font-semibold text-emerald-800 dark:text-emerald-400 hover:opacity-80 flex items-center space-x-1"
                   >
                     <span>View All {weddingImages.length} Wedding Photos</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
@@ -232,18 +232,18 @@ export default function GalleryPage() {
               <div>
                 <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
                   <div>
-                    <span className="micro-label text-emerald-700 dark:text-emerald-400">SECTION 03 / PLENARIES &amp; SUMMITS</span>
-                    <h2 className="editorial-heading text-3xl sm:text-4xl text-chocolate-950 dark:text-cream-50 mt-1">
+                    <span className="micro-label text-emerald-700 dark:text-emerald-400 font-bold">SECTION 03 / PLENARIES &amp; SUMMITS</span>
+                    <h2 className="editorial-heading text-3xl sm:text-4xl mt-1">
                       Corporate Summits &amp; Expos Portfolio
                     </h2>
-                    <p className="text-xs text-chocolate-600 dark:text-night-muted mt-1 font-light">
+                    <p className="text-xs font-light mt-1">
                       Plenary hall stage management, registration check-in desks, and VIP executive lounges.
                     </p>
                   </div>
                   <button
                     type="button"
                     onClick={() => setActiveCategory("corporate")}
-                    className="text-xs uppercase font-mono tracking-wider font-semibold text-bronze-600 dark:text-bronze-400 hover:text-chocolate-950 dark:hover:text-cream-50 flex items-center space-x-1"
+                    className="text-xs uppercase font-mono tracking-wider font-semibold text-emerald-800 dark:text-emerald-400 hover:opacity-80 flex items-center space-x-1"
                   >
                     <span>View All {corporateImages.length} Corporate Photos</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
@@ -267,18 +267,18 @@ export default function GalleryPage() {
               <div>
                 <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
                   <div>
-                    <span className="micro-label text-bronze-600 dark:text-bronze-400">SECTION 04 / OPERATIONAL MOMENTS</span>
-                    <h2 className="editorial-heading text-3xl sm:text-4xl text-chocolate-950 dark:text-cream-50 mt-1">
+                    <span className="micro-label font-bold">SECTION 04 / OPERATIONAL MOMENTS</span>
+                    <h2 className="editorial-heading text-3xl sm:text-4xl mt-1">
                       Behind The Scenes &amp; Field Coordination
                     </h2>
-                    <p className="text-xs text-chocolate-600 dark:text-night-muted mt-1 font-light">
+                    <p className="text-xs font-light mt-1">
                       Pre-shift muster inspections, two-way radio sync, and ballroom overnight transitions.
                     </p>
                   </div>
                   <button
                     type="button"
                     onClick={() => setActiveCategory("bts")}
-                    className="text-xs uppercase font-mono tracking-wider font-semibold text-bronze-600 dark:text-bronze-400 hover:text-chocolate-950 dark:hover:text-cream-50 flex items-center space-x-1"
+                    className="text-xs uppercase font-mono tracking-wider font-semibold text-emerald-800 dark:text-emerald-400 hover:opacity-80 flex items-center space-x-1"
                   >
                     <span>View All {btsImages.length} Behind The Scenes Photos</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
@@ -300,7 +300,7 @@ export default function GalleryPage() {
             /* B. Filtered Category Dedicated Grid */
             <div>
               <div className="mb-10">
-                <span className="micro-label text-bronze-600 dark:text-bronze-400">
+                <span className="micro-label font-bold">
                   {activeCategory === "activations"
                     ? "EXECUTIVE & BRAND ACTIVATIONS DIVISION"
                     : activeCategory === "wedding"
@@ -309,7 +309,7 @@ export default function GalleryPage() {
                     ? "CORPORATE & EXPOS DIVISION"
                     : "OPERATIONS & BEHIND THE SCENES"}
                 </span>
-                <h2 className="editorial-heading text-4xl sm:text-5xl text-chocolate-950 dark:text-cream-50 mt-2">
+                <h2 className="editorial-heading text-4xl sm:text-5xl mt-2">
                   {activeCategory === "activations"
                     ? "Executive Engagements & Brand Activations"
                     : activeCategory === "wedding"
@@ -318,7 +318,7 @@ export default function GalleryPage() {
                     ? "Corporate Summits & Expos Gallery"
                     : "Behind The Scenes & Operations Gallery"}
                 </h2>
-                <p className="text-sm text-chocolate-600 dark:text-night-muted font-light mt-2 max-w-2xl">
+                <p className="text-sm font-light mt-2 max-w-2xl">
                   {activeCategory === "activations"
                     ? "On-ground manpower coordination for celebrity keynotes, actor escorts, product launch pavilions, and aviation assemblies."
                     : activeCategory === "wedding"
@@ -337,7 +337,7 @@ export default function GalleryPage() {
                     <div
                       key={image.id}
                       onClick={() => handleOpenLightbox(idx)}
-                      className={`group relative overflow-hidden bg-night-950 border border-chocolate-700/15 dark:border-bronze-500/20 cursor-pointer shadow-sm ${
+                      className={`group relative overflow-hidden bg-night-950 border border-chocolate-700/15 dark:border-bronze-500/20 cursor-pointer shadow-sm rounded-sm ${
                         isLarge ? "md:col-span-2 aspect-[16/10]" : "aspect-[4/3]"
                       }`}
                     >
@@ -365,11 +365,11 @@ export default function GalleryPage() {
                         <Maximize2 className="w-4 h-4 text-amber-300" />
                       </div>
 
-                      {/* Captions (Hidden for BTS images) */}
+                      {/* Captions */}
                       {image.title && (
                         <div className="absolute bottom-0 left-0 right-0 z-20 p-6 sm:p-8 text-cream-100 transform translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
                           <div className="flex items-center space-x-2 mb-1.5">
-                            <span className="text-[10px] font-mono text-amber-300 uppercase tracking-widest px-2 py-0.5 bg-night-950/90 border border-amber-500/30 rounded-sm">
+                            <span className="text-[10px] font-mono text-amber-300 uppercase tracking-widest px-2 py-0.5 bg-night-950/90 border border-amber-500/30 rounded-sm font-bold">
                               {image.categoryLabel}
                             </span>
                           </div>
@@ -411,14 +411,14 @@ export default function GalleryPage() {
         />
       )}
 
-      {/* 5. BOTTOM CONVERSION CTA */}
-      <section className="py-20 px-6 sm:px-8 lg:px-12 bg-transparent text-center border-t border-chocolate-700/10 dark:border-bronze-500/15">
+      {/* 5. BOTTOM CONVERSION CTA (TONE B: Espresso Brown / Sandstone) */}
+      <section className="section-tone-b py-20 px-6 sm:px-8 lg:px-12 text-center">
         <div className="max-w-3xl mx-auto space-y-6">
-          <span className="micro-label">ON-GROUND EXCELLENCE</span>
-          <h3 className="font-serif text-3xl sm:text-4xl text-chocolate-950 dark:text-cream-50">
+          <span className="micro-label text-amber-700 dark:text-amber-400 font-bold">ON-GROUND EXCELLENCE</span>
+          <h3 className="editorial-heading text-3xl sm:text-4xl">
             Want to see your event floor run with this precision?
           </h3>
-          <p className="text-sm text-chocolate-600 dark:text-night-muted font-light">
+          <p className="text-sm font-light">
             Contact our operations coordinators to reserve trained personnel and supervisors for your dates.
           </p>
           <div className="pt-2">
@@ -466,7 +466,7 @@ function GalleryCard({ image, onOpen }) {
       {/* Captions */}
       {image.title && (
         <div className="absolute bottom-0 left-0 right-0 z-20 p-5 text-cream-100">
-          <span className="text-[9px] font-mono text-amber-300 uppercase tracking-widest px-2 py-0.5 bg-night-950/90 border border-amber-500/30 rounded-sm inline-block mb-1">
+          <span className="text-[9px] font-mono text-amber-300 uppercase tracking-widest px-2 py-0.5 bg-night-950/90 border border-amber-500/30 rounded-sm inline-block mb-1 font-bold">
             {image.categoryLabel}
           </span>
           <h4 className="font-serif text-lg font-medium text-cream-50 leading-snug line-clamp-1">

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { X, ChevronLeft, ChevronRight, MapPin, Tag } from "lucide-react";
 
 export default function LightboxModal({
@@ -9,6 +9,8 @@ export default function LightboxModal({
   onNext,
 }) {
   const currentImage = images[currentIndex];
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -30,6 +32,26 @@ export default function LightboxModal({
     };
   }, [onClose, onPrev, onNext]);
 
+  // Touch Swipe Handlers for mobile/tablet lightbox browsing
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const diff = touchStartX.current - touchEndX.current;
+    const threshold = 40;
+    if (diff > threshold) {
+      onNext();
+    } else if (diff < -threshold) {
+      onPrev();
+    }
+  };
+
   if (!currentImage) return null;
 
   return (
@@ -38,23 +60,26 @@ export default function LightboxModal({
       aria-modal="true"
       aria-label="Image Lightbox"
       onClick={onClose}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-chocolate-950/95 backdrop-blur-md animate-fade-in text-cream-100 cursor-pointer"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-night-950/95 backdrop-blur-md animate-fade-in text-cream-100 cursor-pointer select-none touch-pan-y"
     >
       {/* Top Bar Controls */}
       <div className="absolute top-0 left-0 right-0 p-6 flex items-center justify-between z-20">
         <div className="flex items-center space-x-3">
-          <span className="micro-label text-bronze-400">
+          <span className="micro-label text-amber-400 font-bold">
             {currentImage.categoryLabel}
           </span>
           <span className="text-cream-400/50">|</span>
-          <span className="text-xs font-mono text-cream-300">
+          <span className="text-xs font-mono text-cream-300 font-bold">
             {currentIndex + 1} / {images.length}
           </span>
         </div>
 
         <button
           onClick={onClose}
-          className="p-2.5 rounded-full bg-chocolate-850/80 hover:bg-bronze-600 hover:text-chocolate-950 text-cream-200 transition-all focus:outline-none focus:ring-2 focus:ring-bronze-500"
+          className="p-2.5 rounded-full bg-night-850/80 hover:bg-bronze-600 hover:text-night-950 text-cream-200 transition-all focus:outline-none focus:ring-2 focus:ring-bronze-500"
           aria-label="Close Lightbox (Esc)"
         >
           <X className="w-5 h-5" />
@@ -67,7 +92,7 @@ export default function LightboxModal({
           e.stopPropagation();
           onPrev();
         }}
-        className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 p-3 rounded-full bg-chocolate-850/80 hover:bg-bronze-600 hover:text-chocolate-950 text-cream-200 transition-all z-20 focus:outline-none focus:ring-2 focus:ring-bronze-500"
+        className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 p-3 rounded-full bg-night-850/80 hover:bg-bronze-600 hover:text-night-950 text-cream-200 transition-all z-20 focus:outline-none focus:ring-2 focus:ring-bronze-500 shadow-xl"
         aria-label="Previous Image"
       >
         <ChevronLeft className="w-6 h-6" />
@@ -78,7 +103,7 @@ export default function LightboxModal({
           e.stopPropagation();
           onNext();
         }}
-        className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 p-3 rounded-full bg-chocolate-850/80 hover:bg-bronze-600 hover:text-chocolate-950 text-cream-200 transition-all z-20 focus:outline-none focus:ring-2 focus:ring-bronze-500"
+        className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 p-3 rounded-full bg-night-850/80 hover:bg-bronze-600 hover:text-night-950 text-cream-200 transition-all z-20 focus:outline-none focus:ring-2 focus:ring-bronze-500 shadow-xl"
         aria-label="Next Image"
       >
         <ChevronRight className="w-6 h-6" />
@@ -89,7 +114,7 @@ export default function LightboxModal({
         className="relative max-w-5xl w-full max-h-[85vh] p-4 sm:p-8 flex flex-col items-center justify-center cursor-default"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="relative overflow-hidden max-h-[68vh] shadow-2xl border border-chocolate-800 rounded-sm">
+        <div className="relative overflow-hidden max-h-[68vh] shadow-2xl border border-bronze-500/30 rounded-sm bg-night-900">
           <img
             key={currentImage.src}
             src={currentImage.src}
@@ -98,7 +123,7 @@ export default function LightboxModal({
           />
         </div>
 
-        {/* Captions & Operational Details (Hidden if no title/caption provided) */}
+        {/* Captions & Operational Details */}
         {(currentImage.title || currentImage.desc) && (
           <div className="mt-4 text-center max-w-2xl px-4 animate-fade-in">
             {currentImage.title && (
@@ -107,7 +132,7 @@ export default function LightboxModal({
               </h4>
             )}
             {currentImage.subtitle && (
-              <p className="text-xs font-sans text-bronze-400 uppercase tracking-widest mt-1">
+              <p className="text-xs font-sans text-amber-400 uppercase tracking-widest mt-1 font-semibold">
                 {currentImage.subtitle}
               </p>
             )}

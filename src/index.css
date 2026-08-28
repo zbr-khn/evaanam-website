@@ -211,3 +211,88 @@
   transform: scale3d(1, 1, 1);
 }
 
+/* =========================================================================
+   DUAL-TONE ALTERNATING PAGE BACKGROUNDS & ADAPTIVE TYPOGRAPHY
+   ========================================================================= */
+
+/* TONE A: Deep British Racing Green (Dark Mode) <-> Crisp Alabaster White (Light Mode) */
+.section-tone-a {
+  background-color: #FAF8F3 !important;
+  color: #12241C !important;
+  border-color: rgba(18, 36, 28, 0.12) !important;
+  transition: background-color 350ms ease, color 350ms ease, border-color 350ms ease;
+}
+html.dark .section-tone-a {
+  background-color: #081F18 !important;
+  color: #FCFAF6 !important;
+  border-color: rgba(104, 211, 145, 0.15) !important;
+}
+
+.section-tone-a .editorial-heading,
+.section-tone-a h1,
+.section-tone-a h2,
+.section-tone-a h3 {
+  color: #12241C !important;
+}
+html.dark .section-tone-a .editorial-heading,
+html.dark .section-tone-a h1,
+html.dark .section-tone-a h2,
+html.dark .section-tone-a h3 {
+  color: #FCFAF6 !important;
+}
+
+.section-tone-a p {
+  color: #2D4036;
+}
+html.dark .section-tone-a p {
+  color: #D1E2D9;
+}
+
+.section-tone-a .micro-label {
+  color: #155E44 !important;
+}
+html.dark .section-tone-a .micro-label {
+  color: #68D391 !important;
+}
+
+/* TONE B: Rich Espresso Chocolate Brown (Dark Mode) <-> Warm Light Biscuit Sandstone (Light Mode) */
+.section-tone-b {
+  background-color: #EFE8DE !important;
+  color: #2B1A0E !important;
+  border-color: rgba(43, 26, 14, 0.14) !important;
+  transition: background-color 350ms ease, color 350ms ease, border-color 350ms ease;
+}
+html.dark .section-tone-b {
+  background-color: #1A120B !important;
+  color: #FCFAF6 !important;
+  border-color: rgba(212, 175, 55, 0.18) !important;
+}
+
+.section-tone-b .editorial-heading,
+.section-tone-b h1,
+.section-tone-b h2,
+.section-tone-b h3 {
+  color: #2B1A0E !important;
+}
+html.dark .section-tone-b .editorial-heading,
+html.dark .section-tone-b h1,
+html.dark .section-tone-b h2,
+html.dark .section-tone-b h3 {
+  color: #FCFAF6 !important;
+}
+
+.section-tone-b p {
+  color: #4A3525;
+}
+html.dark .section-tone-b p {
+  color: #E8DAC8;
+}
+
+.section-tone-b .micro-label {
+  color: #8C4A15 !important;
+}
+html.dark .section-tone-b .micro-label {
+  color: #E5A962 !important;
+}
+
+
