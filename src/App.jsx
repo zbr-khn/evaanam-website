@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, lazy, Suspense } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -12,19 +12,33 @@ import DynamicScrollGradient from "./components/DynamicScrollGradient";
 import EVAANAMChatbot from "./components/EVAANAMChatbot";
 import useScrollBackground from "./hooks/useScrollBackground";
 
-import HomePage from "./pages/HomePage";
-import ServicesPage from "./pages/ServicesPage";
-import VenuesPage from "./pages/VenuesPage";
-import WhyUsPage from "./pages/WhyUsPage";
-import GalleryPage from "./pages/GalleryPage";
-import ContactPage from "./pages/ContactPage";
-import LocationPage from "./pages/LocationPage";
+// Code-split pages for instant client performance and lightweight bundle execution
+const HomePage = lazy(() => import("./pages/HomePage"));
+const ServicesPage = lazy(() => import("./pages/ServicesPage"));
+const VenuesPage = lazy(() => import("./pages/VenuesPage"));
+const WhyUsPage = lazy(() => import("./pages/WhyUsPage"));
+const GalleryPage = lazy(() => import("./pages/GalleryPage"));
+const ContactPage = lazy(() => import("./pages/ContactPage"));
+const LocationPage = lazy(() => import("./pages/LocationPage"));
+
+function PageLoadingSkeleton() {
+  return (
+    <div className="min-h-screen flex items-center justify-center pt-28 bg-transparent">
+      <div className="flex flex-col items-center space-y-4">
+        <div className="w-10 h-10 rounded-full border-2 border-amber-500/30 border-t-amber-500 animate-spin" />
+        <span className="text-[11px] font-mono tracking-widest text-amber-700 dark:text-amber-400 uppercase font-bold">
+          Aligning Floor...
+        </span>
+      </div>
+    </div>
+  );
+}
 
 function NotFoundPage() {
   return (
     <div className="min-h-[70vh] flex items-center justify-center pt-32 pb-20 px-6 text-center bg-transparent">
       <div className="max-w-md space-y-6">
-        <span className="micro-label text-bronze-600 dark:text-bronze-400">PAGE NOT FOUND</span>
+        <span className="micro-label text-amber-700 dark:text-amber-400 font-bold">PAGE NOT FOUND</span>
         <h1 className="editorial-heading text-5xl text-chocolate-950 dark:text-cream-50">
           The requested floor does not exist.
         </h1>
@@ -71,16 +85,18 @@ export default function App() {
       <Navbar />
 
       <main className="flex-grow">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/venues" element={<VenuesPage />} />
-          <Route path="/why-us" element={<WhyUsPage />} />
-          <Route path="/gallery" element={<GalleryPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/location" element={<LocationPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
+        <Suspense fallback={<PageLoadingSkeleton />}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/venues" element={<VenuesPage />} />
+            <Route path="/why-us" element={<WhyUsPage />} />
+            <Route path="/gallery" element={<GalleryPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/location" element={<LocationPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </Suspense>
       </main>
 
       {/* Floating Actions: Live Progress Back-To-Top + Dedicated WhatsApp Button */}
