@@ -173,10 +173,10 @@ export default function GalleryPage() {
                   <button
                     type="button"
                     onClick={() => setActiveCategory("activations")}
-                    className="text-xs uppercase font-mono tracking-wider font-semibold text-emerald-800 dark:text-emerald-400 hover:opacity-80 flex items-center space-x-1"
+                    className="btn-secondary group text-[11px] py-2.5 px-4 font-bold"
                   >
                     <span>View All {activationImages.length} Activation Photos</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
+                    <ArrowUpRight className="w-3.5 h-3.5 ml-1.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   </button>
                 </div>
 
@@ -208,10 +208,10 @@ export default function GalleryPage() {
                   <button
                     type="button"
                     onClick={() => setActiveCategory("wedding")}
-                    className="text-xs uppercase font-mono tracking-wider font-semibold text-emerald-800 dark:text-emerald-400 hover:opacity-80 flex items-center space-x-1"
+                    className="btn-secondary group text-[11px] py-2.5 px-4 font-bold"
                   >
                     <span>View All {weddingImages.length} Wedding Photos</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
+                    <ArrowUpRight className="w-3.5 h-3.5 ml-1.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   </button>
                 </div>
 
@@ -243,10 +243,10 @@ export default function GalleryPage() {
                   <button
                     type="button"
                     onClick={() => setActiveCategory("corporate")}
-                    className="text-xs uppercase font-mono tracking-wider font-semibold text-emerald-800 dark:text-emerald-400 hover:opacity-80 flex items-center space-x-1"
+                    className="btn-secondary group text-[11px] py-2.5 px-4 font-bold"
                   >
                     <span>View All {corporateImages.length} Corporate Photos</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
+                    <ArrowUpRight className="w-3.5 h-3.5 ml-1.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   </button>
                 </div>
 
@@ -278,10 +278,10 @@ export default function GalleryPage() {
                   <button
                     type="button"
                     onClick={() => setActiveCategory("bts")}
-                    className="text-xs uppercase font-mono tracking-wider font-semibold text-emerald-800 dark:text-emerald-400 hover:opacity-80 flex items-center space-x-1"
+                    className="btn-secondary group text-[11px] py-2.5 px-4 font-bold"
                   >
                     <span>View All {btsImages.length} Behind The Scenes Photos</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
+                    <ArrowUpRight className="w-3.5 h-3.5 ml-1.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   </button>
                 </div>
 
