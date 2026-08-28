@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, ChevronRight, Sparkles, Check, Crown, Briefcase, MessageSquare } from "lucide-react";
+import { ArrowUpRight, ChevronRight, Sparkles, Check, Crown, Briefcase, MessageSquare, Calculator } from "lucide-react";
 import StatCounter from "../components/StatCounter";
 import VenueMarquee from "../components/VenueMarquee";
 import SocialSection from "../components/SocialSection";
-import ManpowerCalculator from "../components/ManpowerCalculator";
 import GeometricDivider from "../components/GeometricDivider";
 import ExecutiveCarousel from "../components/ExecutiveCarousel";
 import TestimonialMarquee from "../components/TestimonialMarquee";
 import ScrollReveal from "../components/ScrollReveal";
+import ContactFormSection from "../components/ContactFormSection";
+import CalculatorModal from "../components/CalculatorModal";
 import { COMPANY_INFO } from "../data/evaanamData";
 
 export default function HomePage() {
+  const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
+
   return (
     <div className="animate-fade-in">
       {/* ========================================================================= */}
@@ -56,20 +59,23 @@ export default function HomePage() {
 
               {/* CTAs */}
               <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center space-y-3.5 sm:space-y-0 sm:space-x-4">
-                <Link
-                  to="/contact"
+                <a
+                  href="#contact-form-section"
                   className="btn-bronze group"
                 >
                   <span>Request Manpower</span>
                   <ArrowUpRight className="w-4 h-4 ml-2 text-night-950 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </Link>
-
-                <a
-                  href="#calculator-section"
-                  className="inline-flex items-center justify-center px-7 py-3.5 border border-cream-200/30 text-cream-100 font-sans text-xs font-semibold uppercase tracking-[0.18em] transition-all hover:bg-cream-200 hover:text-chocolate-950 dark:hover:bg-night-800 dark:hover:text-cream-50"
-                >
-                  <span>Roster Calculator</span>
                 </a>
+
+                {/* Hero Button: Roster Calculator opens modal directly */}
+                <button
+                  type="button"
+                  onClick={() => setIsCalculatorOpen(true)}
+                  className="inline-flex items-center justify-center px-7 py-3.5 border border-cream-200/30 text-cream-100 font-sans text-xs font-semibold uppercase tracking-[0.18em] transition-all hover:bg-cream-200 hover:text-chocolate-950 dark:hover:bg-night-800 dark:hover:text-cream-50 space-x-2 rounded-sm cursor-pointer shadow-sm hover:border-amber-400"
+                >
+                  <Calculator className="w-3.5 h-3.5 text-amber-300" />
+                  <span>Roster Calculator</span>
+                </button>
               </div>
 
               {/* Credibility Line */}
@@ -348,11 +354,11 @@ export default function HomePage() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 5. MANPOWER CALCULATOR SECTION (TONE A: Racing Green / Alabaster White)    */}
+      {/* 5. CONTACT & REQUISITION FORM SECTION (TONE A: Racing Green / Alabaster White) */}
       {/* ========================================================================= */}
-      <section id="calculator-section" className="section-tone-a py-24 px-6 sm:px-8 lg:px-12 border-b border-chocolate-700/15 dark:border-emerald-500/20">
+      <section className="section-tone-a py-24 px-6 sm:px-8 lg:px-12 border-b border-chocolate-700/15 dark:border-emerald-500/20">
         <ScrollReveal variant="up" threshold={0.08}>
-          <ManpowerCalculator />
+          <ContactFormSection />
         </ScrollReveal>
       </section>
 
@@ -571,12 +577,12 @@ export default function HomePage() {
               Tell us your venue, event dates, and crew requirements. Our operations desk will prepare customized crew profiles for your event.
             </p>
             <div className="pt-4 flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-              <Link
-                to="/contact"
+              <a
+                href="#contact-form-section"
                 className="btn-primary px-10 py-4 text-xs font-bold"
               >
                 Request Manpower
-              </Link>
+              </a>
               <a
                 href={`tel:${COMPANY_INFO.phones[0].number}`}
                 className="text-xs uppercase tracking-[0.2em] font-semibold text-emerald-900 dark:text-emerald-300 hover:opacity-80 transition-opacity"
@@ -587,6 +593,14 @@ export default function HomePage() {
           </div>
         </ScrollReveal>
       </section>
+
+      {/* ========================================================================= */}
+      {/* INTERACTIVE ROSTER CALCULATOR MODAL (Triggered via Hero Button)            */}
+      {/* ========================================================================= */}
+      <CalculatorModal
+        isOpen={isCalculatorOpen}
+        onClose={() => setIsCalculatorOpen(false)}
+      />
     </div>
   );
 }
