@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Plus, Minus, Check, ArrowUpRight } from "lucide-react";
 import { WEDDING_ROLES, CORPORATE_ROLES, EVENT_TYPES } from "../data/evaanamData";
 import ManpowerCalculator from "../components/ManpowerCalculator";
+import ScrollReveal from "../components/ScrollReveal";
 
 export default function ServicesPage() {
   const [openWeddingRole, setOpenWeddingRole] = useState(null);
@@ -10,11 +11,20 @@ export default function ServicesPage() {
   const [hoveredEventType, setHoveredEventType] = useState(0);
 
   const toggleWeddingRole = (id) => {
-    setOpenWeddingRole(openWeddingRole === id ? null : id);
+    setOpenWeddingRole((prev) => (prev === id ? null : id));
   };
 
   const toggleCorporateRole = (id) => {
-    setOpenCorporateRole(openCorporateRole === id ? null : id);
+    setOpenCorporateRole((prev) => (prev === id ? null : id));
+  };
+
+  const safeEventTypes = EVENT_TYPES && EVENT_TYPES.length > 0 ? EVENT_TYPES : [];
+  const currentEventType = safeEventTypes[hoveredEventType] || safeEventTypes[0] || {
+    title: "Weddings & Celebrations",
+    subtitle: "Five-Star Floors & Multi-Day Functions",
+    desc: "From sangeet choreography runners to VIP personal shadows and overnight hospitality desks.",
+    image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80",
+    tags: ["VIP Shadows", "Welcome Hostesses", "Helpdesk", "Runners"]
   };
 
   return (
@@ -22,16 +32,18 @@ export default function ServicesPage() {
       {/* 1. DEDICATED PAGE INTRODUCTION HERO (BLEED B -> A) */}
       <section className="bleed-b-to-a section-tone-a py-20 px-6 sm:px-8 lg:px-12">
         <div className="max-w-7xl mx-auto">
-          <div className="max-w-3xl space-y-6">
-            <span className="micro-label font-bold">OUR SERVICES</span>
-            <h1 className="editorial-heading text-5xl sm:text-6xl md:text-7xl">
-              People who know <br />
-              <span className="italic text-emerald-700 dark:text-emerald-400">how the floor moves.</span>
-            </h1>
-            <p className="text-base sm:text-lg font-light leading-relaxed">
-              EVAANAM deploys specialized, verified event crews engineered for five-star wedding banquets, high-pressure corporate summits, and large-scale industrial exhibitions across Delhi NCR.
-            </p>
-          </div>
+          <ScrollReveal variant="up">
+            <div className="max-w-3xl space-y-6">
+              <span className="micro-label font-bold">OUR SERVICES</span>
+              <h1 className="editorial-heading text-5xl sm:text-6xl md:text-7xl">
+                People who know <br />
+                <span className="italic text-emerald-700 dark:text-emerald-400">how the floor moves.</span>
+              </h1>
+              <p className="text-base sm:text-lg font-light leading-relaxed">
+                EVAANAM deploys specialized, verified event crews engineered for five-star wedding banquets, high-pressure corporate summits, and large-scale industrial exhibitions across Delhi NCR.
+              </p>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -71,7 +83,7 @@ export default function ServicesPage() {
                 <span>Scope &amp; Deployment</span>
               </div>
 
-              {WEDDING_ROLES.map((role, idx) => {
+              {WEDDING_ROLES && WEDDING_ROLES.map((role, idx) => {
                 const isOpen = openWeddingRole === role.id;
                 return (
                   <div
@@ -109,7 +121,7 @@ export default function ServicesPage() {
 
                     {isOpen && (
                       <div className="px-6 pb-6 pt-1 text-xs sm:text-sm font-light leading-relaxed border-t border-chocolate-700/10 dark:border-night-700 animate-fade-in space-y-3">
-                        <p className="text-chocolate-700 dark:text-night-muted">{role.desc}</p>
+                        <p className="text-chocolate-700 dark:text-night-muted">{role.description || role.desc}</p>
                         <div className="mt-4 pt-3 flex flex-wrap items-center gap-4 text-[11px] font-mono border-t border-chocolate-700/10 dark:border-night-750">
                           <span className="flex items-center space-x-1 text-amber-700 dark:text-amber-400 font-semibold">
                             <Check className="w-3.5 h-3.5" />
@@ -170,7 +182,7 @@ export default function ServicesPage() {
                 <span>Scope &amp; Deployment</span>
               </div>
 
-              {CORPORATE_ROLES.map((role, idx) => {
+              {CORPORATE_ROLES && CORPORATE_ROLES.map((role, idx) => {
                 const isOpen = openCorporateRole === role.id;
                 return (
                   <div
@@ -208,7 +220,7 @@ export default function ServicesPage() {
 
                     {isOpen && (
                       <div className="px-6 pb-6 pt-1 text-xs sm:text-sm font-light leading-relaxed border-t border-chocolate-700/10 dark:border-night-700 animate-fade-in space-y-3">
-                        <p className="text-chocolate-700 dark:text-night-muted">{role.desc}</p>
+                        <p className="text-chocolate-700 dark:text-night-muted">{role.description || role.desc}</p>
                         <div className="mt-4 pt-3 flex flex-wrap items-center gap-4 text-[11px] font-mono border-t border-chocolate-700/10 dark:border-night-750">
                           <span className="flex items-center space-x-1 text-emerald-700 dark:text-emerald-400 font-semibold">
                             <Check className="w-3.5 h-3.5" />
@@ -256,11 +268,11 @@ export default function ServicesPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left: Interactive List with Hover Expansion and Color Change */}
             <div className="lg:col-span-7 space-y-3">
-              {EVENT_TYPES.map((type, idx) => {
+              {safeEventTypes.map((type, idx) => {
                 const isHovered = hoveredEventType === idx;
                 return (
                   <div
-                    key={type.title}
+                    key={type.title || idx}
                     onMouseEnter={() => setHoveredEventType(idx)}
                     className={`p-6 border-2 transition-all duration-400 cursor-pointer rounded-sm ${
                       isHovered
@@ -291,7 +303,7 @@ export default function ServicesPage() {
                           {type.desc}
                         </p>
                         <div className="flex flex-wrap gap-1.5 pt-1">
-                          {type.tags.map((tag) => (
+                          {type.tags && type.tags.map((tag) => (
                             <span
                               key={tag}
                               className="text-[10px] uppercase font-sans font-semibold tracking-wider px-2.5 py-1 bg-amber-500/15 dark:bg-amber-500/20 text-amber-900 dark:text-amber-200 border border-amber-500/30 rounded-sm"
@@ -311,19 +323,19 @@ export default function ServicesPage() {
             <div className="lg:col-span-5 hidden lg:block">
               <div className="relative overflow-hidden border-2 border-amber-500/40 dark:border-bronze-400/50 aspect-[4/5] shadow-2xl bg-night-950 rounded-sm">
                 <img
-                  key={EVENT_TYPES[hoveredEventType]?.image}
-                  src={EVENT_TYPES[hoveredEventType]?.image}
-                  alt={EVENT_TYPES[hoveredEventType]?.title}
+                  key={currentEventType.image}
+                  src={currentEventType.image}
+                  alt={currentEventType.title}
                   className="w-full h-full object-cover animate-fade-in transition-all duration-700 opacity-90 dark:opacity-80 scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-night-950/90 via-night-950/30 to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6 text-cream-100 space-y-1">
                   <span className="micro-label text-amber-400 font-bold">Sector Blueprint</span>
                   <h4 className="font-serif text-2xl font-normal text-cream-50">
-                    {EVENT_TYPES[hoveredEventType]?.title}
+                    {currentEventType.title}
                   </h4>
                   <p className="text-xs text-cream-300/80 font-light">
-                    {EVENT_TYPES[hoveredEventType]?.subtitle}
+                    {currentEventType.subtitle}
                   </p>
                 </div>
               </div>
