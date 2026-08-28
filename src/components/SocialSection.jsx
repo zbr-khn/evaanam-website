@@ -25,7 +25,7 @@ const HOSPITALITY_INSTA_FEED = [
   },
   {
     id: "feed-w3",
-    src: "./images/gallery-weddings/IMG-6677-JPG.jpg",
+    src: "./images/gallery-weddings/IMG-2923-JPG.jpg",
     caption: "Royal courtyard mandap supervision & guest escort crew at ITC Grand Bharat. Flawless sunset transition. 🏰",
     likes: 512,
     comments: 36,
@@ -35,7 +35,7 @@ const HOSPITALITY_INSTA_FEED = [
   },
   {
     id: "feed-w4",
-    src: "./images/gallery-weddings/IMG-6685-JPG.jpg",
+    src: "./images/gallery-weddings/IMG-20260301-WA0010-jpg.jpg",
     caption: "Behind the scenes: Pre-shift grooming check & VIP shadow channel alignment before the baraat arrival. 🎙️",
     likes: 275,
     comments: 19,
