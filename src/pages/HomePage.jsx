@@ -24,9 +24,9 @@ export default function HomePage() {
         {/* Background Image with slow Ken Burns effect & luxury dark overlay */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
-            src="./images/gallery-weddings/IMG-6449-JPG.jpg"
-            alt="Luxury Wedding & Banquet Event Floor"
-            className="w-full h-full object-cover object-center ken-burns opacity-35 dark:opacity-25"
+            src="./gallery/hero-updated.png"
+            alt="EVAANAM Luxury Event Floor Manpower & Execution"
+            className="w-full h-full object-cover object-center ken-burns opacity-40 dark:opacity-30"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-night-950 via-night-950/80 to-night-950/90" />
         </div>
