@@ -8,8 +8,8 @@ export default function BackToTopButton() {
   const circleProgressRef = useRef(null);
   const location = useLocation();
 
-  const radius = 20;
-  const circumference = 2 * Math.PI * radius; // ~125.66
+  const radius = 18;
+  const circumference = 2 * Math.PI * radius; // ~113.1
 
   useEffect(() => {
     let ticking = false;
@@ -25,7 +25,7 @@ export default function BackToTopButton() {
       }
 
       // Display when scrolled past 1 viewport
-      const shouldShow = scrollTop > window.innerHeight * 0.9;
+      const shouldShow = scrollTop > window.innerHeight * 0.7;
       setVisible((prev) => (prev !== shouldShow ? shouldShow : prev));
 
       ticking = false;
@@ -58,23 +58,32 @@ export default function BackToTopButton() {
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-40 animate-fade-in">
+    <div className="relative group animate-fade-in flex items-center justify-end mb-1">
+      {/* Expanded Hover Pill Label */}
+      <div
+        className={`absolute right-full mr-3 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-chocolate-950 dark:bg-night-950 text-cream-100 text-xs font-sans font-medium rounded-full border border-bronze-500/40 shadow-xl whitespace-nowrap transition-all duration-300 pointer-events-none flex items-center space-x-2 ${
+          hovered ? "opacity-100 translate-x-0" : "opacity-0 translate-x-2"
+        }`}
+      >
+        <span>Back to Top</span>
+      </div>
+
       <button
         onClick={scrollToTop}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        className="relative flex items-center justify-center w-12 h-12 rounded-full bg-cream-50/95 dark:bg-night-900/95 backdrop-blur-md text-chocolate-900 dark:text-cream-100 hover:text-amber-600 dark:hover:text-amber-400 transition-all duration-300 shadow-xl border border-chocolate-700/20 dark:border-bronze-500/30 group focus:outline-none"
+        className="relative flex items-center justify-center w-11 h-11 rounded-full bg-cream-50/95 dark:bg-night-900/95 backdrop-blur-md text-chocolate-900 dark:text-cream-100 hover:text-amber-500 dark:hover:text-amber-300 transition-all duration-300 shadow-xl border-2 border-chocolate-700/20 dark:border-bronze-500/40 group focus:outline-none hover:scale-105 active:scale-95 cursor-pointer"
         aria-label="Back to top of page"
       >
         {/* SVG Circular Live Scroll Progress Indicator */}
         <svg
-          className="absolute inset-0 w-full h-full -rotate-90 pointer-events-none"
-          viewBox="0 0 48 48"
+          className="absolute inset-0 w-full h-full -rotate-90 pointer-events-none p-0.5"
+          viewBox="0 0 44 44"
         >
           {/* Background track circle */}
           <circle
-            cx="24"
-            cy="24"
+            cx="22"
+            cy="22"
             r={radius}
             className="stroke-chocolate-700/15 dark:stroke-bronze-500/20 fill-none"
             strokeWidth="2.5"
@@ -83,8 +92,8 @@ export default function BackToTopButton() {
           {/* Active Progress circle */}
           <circle
             ref={circleProgressRef}
-            cx="24"
-            cy="24"
+            cx="22"
+            cy="22"
             r={radius}
             className="stroke-amber-500 dark:stroke-bronze-400 fill-none transition-all duration-75"
             strokeWidth="2.5"

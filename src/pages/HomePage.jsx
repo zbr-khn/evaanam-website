@@ -160,9 +160,10 @@ export default function HomePage() {
               </div>
               <Link
                 to="/services"
-                className="btn-secondary"
+                className="btn-primary group"
               >
                 <span>View All 27 Roles</span>
+                <ArrowUpRight className="w-4 h-4 ml-2 text-bronze-300 dark:text-night-950 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </Link>
             </div>
           </ScrollReveal>
@@ -247,7 +248,7 @@ export default function HomePage() {
                 <div className="mt-8 pt-6 border-t border-chocolate-700/10 dark:border-night-700 relative z-10">
                   <Link
                     to="/services"
-                    className="w-full py-3.5 px-5 bg-cream-200 dark:bg-night-750 border-2 border-chocolate-700/30 dark:border-bronze-500/40 rounded-sm flex items-center justify-between text-xs uppercase tracking-[0.2em] font-bold text-chocolate-950 dark:text-cream-50 group-hover:bg-brand-green dark:group-hover:bg-bronze-500 group-hover:text-cream-50 dark:group-hover:text-night-950 group-hover:border-transparent transition-all duration-300 shadow-sm"
+                    className="btn-primary w-full py-4 px-6 text-xs uppercase tracking-[0.2em] font-extrabold flex items-center justify-between group"
                   >
                     <span>Explore 14 Wedding Roles</span>
                     <ChevronRight className="w-4 h-4 transform group-hover:translate-x-1.5 transition-transform duration-300" />
@@ -335,7 +336,7 @@ export default function HomePage() {
                 <div className="mt-8 pt-6 border-t border-chocolate-700/10 dark:border-night-700 relative z-10">
                   <Link
                     to="/services"
-                    className="w-full py-3.5 px-5 bg-cream-200 dark:bg-night-750 border-2 border-chocolate-700/30 dark:border-bronze-500/40 rounded-sm flex items-center justify-between text-xs uppercase tracking-[0.2em] font-bold text-chocolate-950 dark:text-cream-50 group-hover:bg-brand-green dark:group-hover:bg-bronze-500 group-hover:text-cream-50 dark:group-hover:text-night-950 group-hover:border-transparent transition-all duration-300 shadow-sm"
+                    className="btn-primary w-full py-4 px-6 text-xs uppercase tracking-[0.2em] font-extrabold flex items-center justify-between group"
                   >
                     <span>Explore 13 Corporate Roles</span>
                     <ChevronRight className="w-4 h-4 transform group-hover:translate-x-1.5 transition-transform duration-300" />
@@ -390,10 +391,10 @@ export default function HomePage() {
             </div>
             <Link
               to="/venues"
-              className="inline-flex items-center space-x-2 px-4 py-2 bg-cream-200/90 dark:bg-night-800 border-2 border-chocolate-700/30 dark:border-bronze-500/40 rounded-sm text-xs uppercase tracking-[0.2em] font-bold text-chocolate-950 dark:text-cream-50 hover:bg-brand-green dark:hover:bg-bronze-500 hover:text-cream-50 dark:hover:text-night-950 hover:border-transparent transition-all shadow-sm"
+              className="btn-primary group"
             >
               <span>Explore 40+ Venues</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
+              <ArrowUpRight className="w-4 h-4 ml-2 text-bronze-300 dark:text-night-950 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </Link>
           </div>
 
@@ -496,7 +497,7 @@ export default function HomePage() {
                       rel="noopener noreferrer"
                       className="btn-secondary group"
                     >
-                      <span>Open Direct WhatsApp</span>
+                      <span>Consult On-Duty Coordinator</span>
                       <ArrowUpRight className="w-4 h-4 ml-2 text-amber-500 dark:text-bronze-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                     </a>
                   </div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Calculator, FileText } from "lucide-react";
+import { Calculator, FileText, ArrowUpRight } from "lucide-react";
 import FollowTheFloor from "../components/FollowTheFloor";
 import ManpowerCalculator from "../components/ManpowerCalculator";
 import ContactFormSection from "../components/ContactFormSection";
@@ -23,31 +23,31 @@ export default function ContactPage() {
               Tell us what the floor needs. Share your event dates, venue location, and staffing expectations. Our senior operations desk will structure an optimized deployment roster.
             </p>
 
-            {/* Mode Switcher Tabs */}
-            <div className="pt-2 flex items-center space-x-3">
+            {/* Mode Switcher Tabs with Rich Hover Animations & Bold Enclosed Design */}
+            <div className="pt-2 flex flex-wrap items-center gap-3">
               <button
                 type="button"
                 onClick={() => setActiveMode("form")}
-                className={`px-5 py-2.5 text-xs font-semibold uppercase tracking-wider transition-all flex items-center space-x-2 rounded-sm ${
+                className={`px-6 py-3.5 text-xs font-bold uppercase tracking-[0.18em] transition-all flex items-center space-x-2.5 rounded-sm border-2 cursor-pointer shadow-sm hover:scale-105 active:scale-95 duration-300 ${
                   activeMode === "form"
-                    ? "bg-brand-green dark:bg-bronze-500 text-cream-50 dark:text-night-950 shadow-sm font-bold"
-                    : "bg-cream-100 dark:bg-night-800 text-chocolate-700 dark:text-cream-200 border border-chocolate-700/15 dark:border-bronze-500/20 hover:border-bronze-500/40"
+                    ? "bg-brand-green dark:bg-bronze-500 text-cream-50 dark:text-night-950 border-amber-400 shadow-lg ring-2 ring-amber-400/30"
+                    : "bg-cream-100 dark:bg-night-800 text-chocolate-800 dark:text-cream-100 border-chocolate-700/20 dark:border-bronze-500/30 hover:border-amber-400 hover:bg-cream-50 dark:hover:bg-night-750"
                 }`}
               >
-                <FileText className="w-3.5 h-3.5" />
+                <FileText className="w-4 h-4" />
                 <span>Contact &amp; Requisition Form</span>
               </button>
 
               <button
                 type="button"
                 onClick={() => setActiveMode("calculator")}
-                className={`px-5 py-2.5 text-xs font-semibold uppercase tracking-wider transition-all flex items-center space-x-2 rounded-sm ${
+                className={`px-6 py-3.5 text-xs font-bold uppercase tracking-[0.18em] transition-all flex items-center space-x-2.5 rounded-sm border-2 cursor-pointer shadow-sm hover:scale-105 active:scale-95 duration-300 ${
                   activeMode === "calculator"
-                    ? "bg-brand-green dark:bg-bronze-500 text-cream-50 dark:text-night-950 shadow-sm font-bold"
-                    : "bg-cream-100 dark:bg-night-800 text-chocolate-700 dark:text-cream-200 border border-chocolate-700/15 dark:border-bronze-500/20 hover:border-bronze-500/40"
+                    ? "bg-brand-green dark:bg-bronze-500 text-cream-50 dark:text-night-950 border-amber-400 shadow-lg ring-2 ring-amber-400/30"
+                    : "bg-cream-100 dark:bg-night-800 text-chocolate-800 dark:text-cream-100 border-chocolate-700/20 dark:border-bronze-500/30 hover:border-amber-400 hover:bg-cream-50 dark:hover:bg-night-750"
                 }`}
               >
-                <Calculator className="w-3.5 h-3.5 text-amber-400" />
+                <Calculator className="w-4 h-4 text-amber-500 dark:text-amber-300" />
                 <span>Roster Calculator + WhatsApp</span>
               </button>
             </div>

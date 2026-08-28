@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Plus, Minus, Check } from "lucide-react";
+import { Plus, Minus, Check, ArrowUpRight } from "lucide-react";
 import { WEDDING_ROLES, CORPORATE_ROLES, EVENT_TYPES } from "../data/evaanamData";
 import ManpowerCalculator from "../components/ManpowerCalculator";
 
 export default function ServicesPage() {
-  const [openWeddingRole, setOpenWeddingRole] = useState(WEDDING_ROLES[0].id);
-  const [openCorporateRole, setOpenCorporateRole] = useState(CORPORATE_ROLES[0].id);
+  const [openWeddingRole, setOpenWeddingRole] = useState(null);
+  const [openCorporateRole, setOpenCorporateRole] = useState(null);
   const [hoveredEventType, setHoveredEventType] = useState(0);
 
   const toggleWeddingRole = (id) => {
@@ -23,7 +23,7 @@ export default function ServicesPage() {
       <section className="bleed-b-to-a section-tone-a py-20 px-6 sm:px-8 lg:px-12">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl space-y-6">
-            <span className="micro-label">OUR SERVICES</span>
+            <span className="micro-label font-bold">OUR SERVICES</span>
             <h1 className="editorial-heading text-5xl sm:text-6xl md:text-7xl">
               People who know <br />
               <span className="italic text-emerald-700 dark:text-emerald-400">how the floor moves.</span>
@@ -55,15 +55,16 @@ export default function ServicesPage() {
                 <div className="pt-4">
                   <a
                     href="#calculator-section"
-                    className="btn-primary w-full sm:w-auto text-center font-bold"
+                    className="btn-primary w-full sm:w-auto text-center font-bold group inline-flex items-center justify-center space-x-2"
                   >
                     <span>Configure Wedding Roster</span>
+                    <ArrowUpRight className="w-4 h-4 ml-1 text-bronze-300 dark:text-night-950 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   </a>
                 </div>
               </div>
             </div>
 
-            {/* Right Expandable Accordion of 14 Roles */}
+            {/* Right Expandable Accordion of 14 Roles with Hover Expansion & Color Transitions */}
             <div className="lg:col-span-8 space-y-3">
               <div className="flex items-center justify-between pb-3 border-b border-chocolate-700/15 dark:border-bronze-500/20 text-xs uppercase tracking-wider font-semibold">
                 <span>Operational Role</span>
@@ -75,34 +76,41 @@ export default function ServicesPage() {
                 return (
                   <div
                     key={role.id}
-                    className={`border transition-all duration-300 rounded-sm ${
+                    onMouseEnter={() => setOpenWeddingRole(role.id)}
+                    onMouseLeave={() => setOpenWeddingRole(null)}
+                    className={`border-2 transition-all duration-300 rounded-sm cursor-pointer ${
                       isOpen
-                        ? "bg-cream-50 dark:bg-night-800 border-amber-500/60 shadow-md"
-                        : "bg-cream-100/80 dark:bg-night-850/80 border-chocolate-700/10 dark:border-bronze-500/20 hover:border-amber-500/40"
+                        ? "bg-cream-50 dark:bg-night-800 border-amber-500/80 shadow-lg scale-[1.01]"
+                        : "bg-cream-100/80 dark:bg-night-850/80 border-chocolate-700/15 dark:border-bronze-500/20 hover:border-amber-500/60 hover:bg-cream-50/90 dark:hover:bg-night-800/90"
                     }`}
                   >
                     <button
+                      type="button"
                       onClick={() => toggleWeddingRole(role.id)}
                       className="w-full py-5 px-6 flex items-center justify-between text-left focus:outline-none"
                       aria-expanded={isOpen}
                     >
                       <div className="flex items-center space-x-4">
-                        <span className="font-mono text-xs font-bold text-amber-700 dark:text-amber-400">
+                        <span className={`font-mono text-xs font-bold transition-colors ${isOpen ? "text-amber-600 dark:text-amber-400 scale-110" : "text-chocolate-600 dark:text-night-dim"}`}>
                           {String(idx + 1).padStart(2, "0")}
                         </span>
-                        <span className="font-serif text-lg sm:text-xl font-medium text-chocolate-950 dark:text-cream-50">
+                        <span className={`font-serif text-lg sm:text-xl font-medium transition-colors ${isOpen ? "text-amber-800 dark:text-amber-300 font-semibold" : "text-chocolate-950 dark:text-cream-50"}`}>
                           {role.title}
                         </span>
                       </div>
-                      <div className="w-8 h-8 rounded-full flex items-center justify-center bg-cream-200 dark:bg-night-750 border border-chocolate-700/15 dark:border-bronze-500/20 text-chocolate-700 dark:text-cream-200">
-                        {isOpen ? <Minus className="w-4 h-4 text-amber-600 dark:text-amber-400" /> : <Plus className="w-4 h-4" />}
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center border transition-all duration-300 ${
+                        isOpen 
+                          ? "bg-amber-500 text-night-950 border-amber-400 rotate-180 shadow-sm" 
+                          : "bg-cream-200 dark:bg-night-750 border-chocolate-700/15 dark:border-bronze-500/20 text-chocolate-700 dark:text-cream-200"
+                      }`}>
+                        {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                       </div>
                     </button>
 
                     {isOpen && (
-                      <div className="px-6 pb-6 pt-1 text-xs sm:text-sm font-light leading-relaxed border-t border-chocolate-700/10 dark:border-night-700 animate-fade-in">
-                        <p>{role.desc}</p>
-                        <div className="mt-4 pt-3 flex flex-wrap items-center gap-4 text-[11px] font-mono">
+                      <div className="px-6 pb-6 pt-1 text-xs sm:text-sm font-light leading-relaxed border-t border-chocolate-700/10 dark:border-night-700 animate-fade-in space-y-3">
+                        <p className="text-chocolate-700 dark:text-night-muted">{role.desc}</p>
+                        <div className="mt-4 pt-3 flex flex-wrap items-center gap-4 text-[11px] font-mono border-t border-chocolate-700/10 dark:border-night-750">
                           <span className="flex items-center space-x-1 text-amber-700 dark:text-amber-400 font-semibold">
                             <Check className="w-3.5 h-3.5" />
                             <span>Groomed &amp; Uniformed</span>
@@ -146,15 +154,16 @@ export default function ServicesPage() {
                 <div className="pt-4">
                   <a
                     href="#calculator-section"
-                    className="btn-primary w-full sm:w-auto text-center font-bold"
+                    className="btn-primary w-full sm:w-auto text-center font-bold group inline-flex items-center justify-center space-x-2"
                   >
                     <span>Configure Corporate Crew</span>
+                    <ArrowUpRight className="w-4 h-4 ml-1 text-bronze-300 dark:text-night-950 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   </a>
                 </div>
               </div>
             </div>
 
-            {/* Right Expandable Accordion of 13 Roles */}
+            {/* Right Expandable Accordion of 13 Roles with Hover Expansion & Color Transitions */}
             <div className="lg:col-span-8 space-y-3">
               <div className="flex items-center justify-between pb-3 border-b border-chocolate-700/15 dark:border-emerald-500/20 text-xs uppercase tracking-wider font-semibold">
                 <span>Operational Role</span>
@@ -166,34 +175,41 @@ export default function ServicesPage() {
                 return (
                   <div
                     key={role.id}
-                    className={`border transition-all duration-300 rounded-sm ${
+                    onMouseEnter={() => setOpenCorporateRole(role.id)}
+                    onMouseLeave={() => setOpenCorporateRole(null)}
+                    className={`border-2 transition-all duration-300 rounded-sm cursor-pointer ${
                       isOpen
-                        ? "bg-cream-50 dark:bg-night-800 border-emerald-500/60 shadow-md"
-                        : "bg-cream-100/80 dark:bg-night-850/80 border-chocolate-700/10 dark:border-emerald-500/20 hover:border-emerald-500/40"
+                        ? "bg-cream-50 dark:bg-night-800 border-emerald-500/80 shadow-lg scale-[1.01]"
+                        : "bg-cream-100/80 dark:bg-night-850/80 border-chocolate-700/15 dark:border-emerald-500/20 hover:border-emerald-500/60 hover:bg-cream-50/90 dark:hover:bg-night-800/90"
                     }`}
                   >
                     <button
+                      type="button"
                       onClick={() => toggleCorporateRole(role.id)}
                       className="w-full py-5 px-6 flex items-center justify-between text-left focus:outline-none"
                       aria-expanded={isOpen}
                     >
                       <div className="flex items-center space-x-4">
-                        <span className="font-mono text-xs font-bold text-emerald-700 dark:text-emerald-400">
+                        <span className={`font-mono text-xs font-bold transition-colors ${isOpen ? "text-emerald-700 dark:text-emerald-400 scale-110" : "text-chocolate-600 dark:text-night-dim"}`}>
                           {String(idx + 1).padStart(2, "0")}
                         </span>
-                        <span className="font-serif text-lg sm:text-xl font-medium text-chocolate-950 dark:text-cream-50">
+                        <span className={`font-serif text-lg sm:text-xl font-medium transition-colors ${isOpen ? "text-emerald-800 dark:text-emerald-300 font-semibold" : "text-chocolate-950 dark:text-cream-50"}`}>
                           {role.title}
                         </span>
                       </div>
-                      <div className="w-8 h-8 rounded-full flex items-center justify-center bg-cream-200 dark:bg-night-750 border border-chocolate-700/15 dark:border-emerald-500/20 text-chocolate-700 dark:text-cream-200">
-                        {isOpen ? <Minus className="w-4 h-4 text-emerald-600 dark:text-emerald-400" /> : <Plus className="w-4 h-4" />}
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center border transition-all duration-300 ${
+                        isOpen 
+                          ? "bg-emerald-600 text-cream-50 border-emerald-400 rotate-180 shadow-sm" 
+                          : "bg-cream-200 dark:bg-night-750 border-chocolate-700/15 dark:border-emerald-500/20 text-chocolate-700 dark:text-cream-200"
+                      }`}>
+                        {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                       </div>
                     </button>
 
                     {isOpen && (
-                      <div className="px-6 pb-6 pt-1 text-xs sm:text-sm font-light leading-relaxed border-t border-chocolate-700/10 dark:border-night-700 animate-fade-in">
-                        <p>{role.desc}</p>
-                        <div className="mt-4 pt-3 flex flex-wrap items-center gap-4 text-[11px] font-mono">
+                      <div className="px-6 pb-6 pt-1 text-xs sm:text-sm font-light leading-relaxed border-t border-chocolate-700/10 dark:border-night-700 animate-fade-in space-y-3">
+                        <p className="text-chocolate-700 dark:text-night-muted">{role.desc}</p>
+                        <div className="mt-4 pt-3 flex flex-wrap items-center gap-4 text-[11px] font-mono border-t border-chocolate-700/10 dark:border-night-750">
                           <span className="flex items-center space-x-1 text-emerald-700 dark:text-emerald-400 font-semibold">
                             <Check className="w-3.5 h-3.5" />
                             <span>Tech-App Savvy</span>
@@ -219,64 +235,66 @@ export default function ServicesPage() {
 
       {/* 4. MANPOWER ROSTER CALCULATOR SECTION (BLEED A -> B) */}
       <section id="calculator-section" className="bleed-a-to-b section-tone-b py-24 px-6 sm:px-8 lg:px-12">
-        <ManpowerCalculator />
+        <div className="max-w-7xl mx-auto">
+          <ManpowerCalculator />
+        </div>
       </section>
 
-      {/* 5. EVENT TYPES (BLEED B -> A) */}
+      {/* 5. SECTOR SPECIALIZATION (BLEED B -> A) WITH HOVER COLOR ANIMATION */}
       <section className="bleed-b-to-a section-tone-a py-24 px-6 sm:px-8 lg:px-12">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-16">
-            <span className="micro-label">SECTOR SPECIALIZATION</span>
+          <div className="max-w-3xl mb-16">
+            <span className="micro-label font-bold">SECTOR SPECIALIZATION</span>
             <h2 className="editorial-heading text-4xl sm:text-5xl mt-2">
-              Event Types We Power
+              Tailored for Delhi NCR's Diverse Event Ecosystem
             </h2>
-            <p className="text-sm font-light mt-2 max-w-xl">
-              Hover through our primary operating categories across weddings, state summits, stadiums, and conventions.
+            <p className="text-base font-light mt-3">
+              Different event categories demand distinct staffing mentalities. Hover over each sector to inspect our tailored operational blueprints.
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left: Typography List */}
-            <div className="lg:col-span-7 space-y-4">
+            {/* Left: Interactive List with Hover Expansion and Color Change */}
+            <div className="lg:col-span-7 space-y-3">
               {EVENT_TYPES.map((type, idx) => {
                 const isHovered = hoveredEventType === idx;
                 return (
                   <div
                     key={type.title}
                     onMouseEnter={() => setHoveredEventType(idx)}
-                    className={`p-6 border-b transition-all duration-300 cursor-pointer rounded-sm ${
+                    className={`p-6 border-2 transition-all duration-400 cursor-pointer rounded-sm ${
                       isHovered
-                        ? "border-emerald-500 bg-cream-100/90 dark:bg-night-800 pl-8 shadow-sm"
-                        : "border-chocolate-700/10 dark:border-night-700 hover:border-emerald-500/40"
+                        ? "border-amber-500 bg-gradient-to-r from-cream-100 via-amber-500/10 to-cream-100 dark:from-night-800 dark:via-amber-500/15 dark:to-night-800 pl-8 shadow-xl scale-[1.01]"
+                        : "border-chocolate-700/15 dark:border-bronze-500/20 bg-cream-100/60 dark:bg-night-850/60 hover:border-amber-500/60 hover:bg-cream-100/90 dark:hover:bg-night-800"
                     }`}
                   >
                     <div className="flex items-center justify-between">
                       <h3
                         className={`font-serif text-2xl sm:text-3xl transition-colors ${
-                          isHovered ? "text-chocolate-950 dark:text-cream-50 font-medium" : "opacity-80"
+                          isHovered ? "text-amber-800 dark:text-amber-300 font-bold" : "text-chocolate-950 dark:text-cream-50 opacity-90"
                         }`}
                       >
                         {type.title}
                       </h3>
-                      <span className="font-mono text-xs text-emerald-700 dark:text-emerald-400 font-bold">
+                      <span className={`font-mono text-xs font-extrabold transition-colors ${isHovered ? "text-amber-600 dark:text-amber-400 scale-110" : "text-chocolate-500 dark:text-night-dim"}`}>
                         0{idx + 1}
                       </span>
                     </div>
 
-                    <p className="text-xs font-serif italic text-emerald-700 dark:text-emerald-400 mt-1">
+                    <p className={`text-xs font-serif italic mt-1 transition-colors ${isHovered ? "text-amber-700 dark:text-amber-300 font-medium" : "text-chocolate-600 dark:text-night-muted"}`}>
                       {type.subtitle}
                     </p>
 
                     {isHovered && (
-                      <div className="mt-3 animate-fade-in space-y-2">
-                        <p className="text-xs font-light leading-relaxed">
+                      <div className="mt-3 animate-fade-in space-y-2.5 pt-2 border-t border-amber-500/20">
+                        <p className="text-xs font-light leading-relaxed text-chocolate-700 dark:text-cream-200">
                           {type.desc}
                         </p>
                         <div className="flex flex-wrap gap-1.5 pt-1">
                           {type.tags.map((tag) => (
                             <span
                               key={tag}
-                              className="text-[10px] uppercase font-sans tracking-wider px-2 py-0.5 bg-cream-200 dark:bg-night-900 text-chocolate-700 dark:text-cream-200 border border-chocolate-700/10 dark:border-emerald-500/20"
+                              className="text-[10px] uppercase font-sans font-semibold tracking-wider px-2.5 py-1 bg-amber-500/15 dark:bg-amber-500/20 text-amber-900 dark:text-amber-200 border border-amber-500/30 rounded-sm"
                             >
                               {tag}
                             </span>
@@ -291,21 +309,21 @@ export default function ServicesPage() {
 
             {/* Right: Dynamic Interactive Preview Image */}
             <div className="lg:col-span-5 hidden lg:block">
-              <div className="relative overflow-hidden border border-chocolate-700/15 dark:border-bronze-500/20 aspect-[4/5] shadow-2xl bg-night-950 rounded-sm">
+              <div className="relative overflow-hidden border-2 border-amber-500/40 dark:border-bronze-400/50 aspect-[4/5] shadow-2xl bg-night-950 rounded-sm">
                 <img
-                  key={EVENT_TYPES[hoveredEventType].image}
-                  src={EVENT_TYPES[hoveredEventType].image}
-                  alt={EVENT_TYPES[hoveredEventType].title}
-                  className="w-full h-full object-cover animate-fade-in transition-all duration-700 opacity-90 dark:opacity-80"
+                  key={EVENT_TYPES[hoveredEventType]?.image}
+                  src={EVENT_TYPES[hoveredEventType]?.image}
+                  alt={EVENT_TYPES[hoveredEventType]?.title}
+                  className="w-full h-full object-cover animate-fade-in transition-all duration-700 opacity-90 dark:opacity-80 scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-night-950/80 via-transparent to-transparent" />
-                <div className="absolute bottom-6 left-6 right-6 text-cream-100">
-                  <span className="micro-label text-amber-400 font-bold">Sector Spotlight</span>
-                  <h4 className="font-serif text-2xl font-normal text-cream-50 mt-1">
-                    {EVENT_TYPES[hoveredEventType].title}
+                <div className="absolute inset-0 bg-gradient-to-t from-night-950/90 via-night-950/30 to-transparent" />
+                <div className="absolute bottom-6 left-6 right-6 text-cream-100 space-y-1">
+                  <span className="micro-label text-amber-400 font-bold">Sector Blueprint</span>
+                  <h4 className="font-serif text-2xl font-normal text-cream-50">
+                    {EVENT_TYPES[hoveredEventType]?.title}
                   </h4>
-                  <p className="text-xs text-cream-300/80 font-light mt-1">
-                    {EVENT_TYPES[hoveredEventType].subtitle}
+                  <p className="text-xs text-cream-300/80 font-light">
+                    {EVENT_TYPES[hoveredEventType]?.subtitle}
                   </p>
                 </div>
               </div>
@@ -325,8 +343,9 @@ export default function ServicesPage() {
             Share your schedule, headcount requirements, and shift timings. We provide fully briefed personnel matching your exact venue standards.
           </p>
           <div className="pt-2">
-            <Link to="/contact" className="btn-primary px-8 py-4 font-bold">
-              Request Manpower Consultation
+            <Link to="/contact" className="btn-primary px-8 py-4 font-bold group inline-flex items-center justify-center space-x-2">
+              <span>Request Manpower Consultation</span>
+              <ArrowUpRight className="w-4 h-4 ml-1 text-bronze-300 dark:text-night-950 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </Link>
           </div>
         </div>

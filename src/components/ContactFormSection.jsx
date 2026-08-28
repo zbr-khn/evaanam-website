@@ -153,7 +153,7 @@ _Submitted via EVAANAM Website Contact Form_`;
           </div>
 
           {/* Direct Phone Lines */}
-          <div className="p-6 sm:p-8 space-y-6 bg-cream-100/90 dark:bg-night-800/90 border border-chocolate-700/15 dark:border-bronze-500/20 rounded-sm shadow-md">
+          <div className="p-6 sm:p-8 space-y-6 bg-cream-100/90 dark:bg-night-800/90 border-2 border-chocolate-700/15 dark:border-bronze-500/25 rounded-sm shadow-md">
             <div>
               <span className="micro-label text-amber-700 dark:text-amber-400 font-bold">Operations Phone Lines</span>
               <div className="mt-3 space-y-3">
@@ -161,12 +161,14 @@ _Submitted via EVAANAM Website Contact Form_`;
                   <a
                     key={phone.number}
                     href={`tel:${phone.number}`}
-                    className="flex items-center justify-between p-3.5 bg-cream-200 dark:bg-night-750 border border-chocolate-700/10 dark:border-bronze-500/15 hover:border-amber-500/40 transition-all group rounded-sm"
+                    className="flex items-center justify-between p-3.5 bg-cream-200 dark:bg-night-750 border-2 border-chocolate-700/10 dark:border-bronze-500/15 hover:border-amber-400 dark:hover:border-amber-300 hover:bg-cream-50 dark:hover:bg-night-700 hover:-translate-y-0.5 hover:shadow-md transition-all duration-300 group rounded-sm"
                   >
                     <div className="flex items-center space-x-3">
-                      <Phone className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+                      <div className="w-8 h-8 rounded-full bg-amber-500/15 flex items-center justify-center text-amber-700 dark:text-amber-300 group-hover:scale-110 transition-transform">
+                        <Phone className="w-4 h-4" />
+                      </div>
                       <div>
-                        <p className="text-xs font-mono font-bold text-chocolate-900 dark:text-cream-50">
+                        <p className="text-xs font-mono font-bold text-chocolate-900 dark:text-cream-50 group-hover:text-amber-700 dark:group-hover:text-amber-300 transition-colors">
                           {phone.display}
                         </p>
                         <p className="text-[10px] text-chocolate-500 dark:text-night-dim">
@@ -185,12 +187,14 @@ _Submitted via EVAANAM Website Contact Form_`;
               <span className="micro-label text-amber-700 dark:text-amber-400 font-bold">Official Email</span>
               <a
                 href={`mailto:${COMPANY_INFO.email}`}
-                className="mt-3 flex items-center justify-between p-3.5 bg-cream-200 dark:bg-night-750 border border-chocolate-700/10 dark:border-bronze-500/15 hover:border-amber-500/40 transition-all group rounded-sm"
+                className="mt-3 flex items-center justify-between p-3.5 bg-cream-200 dark:bg-night-750 border-2 border-chocolate-700/10 dark:border-bronze-500/15 hover:border-amber-400 dark:hover:border-amber-300 hover:bg-cream-50 dark:hover:bg-night-700 hover:-translate-y-0.5 hover:shadow-md transition-all duration-300 group rounded-sm"
               >
                 <div className="flex items-center space-x-3">
-                  <Mail className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+                  <div className="w-8 h-8 rounded-full bg-amber-500/15 flex items-center justify-center text-amber-700 dark:text-amber-300 group-hover:scale-110 transition-transform">
+                    <Mail className="w-4 h-4" />
+                  </div>
                   <div>
-                    <p className="text-xs font-mono font-bold text-chocolate-900 dark:text-cream-50">
+                    <p className="text-xs font-mono font-bold text-chocolate-900 dark:text-cream-50 group-hover:text-amber-700 dark:group-hover:text-amber-300 transition-colors">
                       {COMPANY_INFO.email}
                     </p>
                     <p className="text-[10px] text-chocolate-500 dark:text-night-dim">
@@ -270,7 +274,7 @@ _Submitted via EVAANAM Website Contact Form_`;
                   <button
                     type="button"
                     onClick={handleSendViaWhatsApp}
-                    className="w-full sm:w-auto px-6 py-3 bg-[#25D366] hover:bg-[#20bd5a] text-white rounded-sm font-semibold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 shadow-sm transition-all"
+                    className="btn-primary group py-3 px-6 text-xs font-bold uppercase tracking-wider flex items-center justify-center space-x-2 cursor-pointer"
                   >
                     <MessageSquare className="w-4 h-4" />
                     <span>Confirm via WhatsApp Desk</span>
@@ -279,7 +283,7 @@ _Submitted via EVAANAM Website Contact Form_`;
                   <button
                     type="button"
                     onClick={handleReset}
-                    className="w-full sm:w-auto px-6 py-3 bg-cream-100 dark:bg-night-800 text-chocolate-700 dark:text-cream-200 border border-chocolate-700/20 dark:border-bronze-500/30 rounded-sm text-xs font-semibold uppercase tracking-wider hover:border-bronze-500 transition-all"
+                    className="btn-secondary group py-3 px-6 text-xs font-bold uppercase tracking-wider cursor-pointer"
                   >
                     <span>Submit Another Request</span>
                   </button>

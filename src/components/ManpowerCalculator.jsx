@@ -540,26 +540,27 @@ _Requisition configured via EVAANAM Operational Manpower Calculator_`;
                 {/* PRIMARY WHATSAPP SUBMIT BUTTON */}
                 <button
                   type="submit"
-                  className="w-full py-4 px-6 bg-emerald-700 hover:bg-emerald-800 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-cream-50 font-sans text-xs font-semibold uppercase tracking-[0.18em] transition-all flex items-center justify-center space-x-2.5 shadow-md active:scale-[0.99]"
+                  className="btn-primary group w-full py-4 px-6 text-xs font-extrabold uppercase tracking-[0.2em] flex items-center justify-center space-x-2.5 cursor-pointer shadow-lg"
                 >
-                  <WhatsappIcon className="w-4 h-4 text-emerald-200" />
+                  <WhatsappIcon className="w-4 h-4 text-amber-300 dark:text-night-950" />
                   <span>Submit Requisition via WhatsApp</span>
+                  <ArrowUpRight className="w-4 h-4 text-amber-300 dark:text-night-950 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </button>
 
                 <div className="flex items-center space-x-2">
                   <button
                     type="button"
                     onClick={handleCopySummary}
-                    className="flex-1 py-2.5 px-3 bg-cream-200 dark:bg-night-750 hover:bg-cream-300 dark:hover:bg-night-700 text-chocolate-800 dark:text-cream-100 text-[11px] font-semibold uppercase tracking-wider border border-chocolate-700/10 dark:border-bronze-500/20 transition-colors flex items-center justify-center space-x-1.5"
+                    className="btn-secondary group flex-1 py-3 px-3 text-[11px] font-bold uppercase tracking-wider flex items-center justify-center space-x-1.5 cursor-pointer"
                   >
                     {copied ? (
                       <>
-                        <CheckCheck className="w-3.5 h-3.5 text-emerald-600" />
+                        <CheckCheck className="w-3.5 h-3.5 text-emerald-500" />
                         <span>Roster Copied!</span>
                       </>
                     ) : (
                       <>
-                        <Copy className="w-3.5 h-3.5 text-bronze-600" />
+                        <Copy className="w-3.5 h-3.5 text-amber-500" />
                         <span>Copy Summary</span>
                       </>
                     )}
@@ -568,7 +569,7 @@ _Requisition configured via EVAANAM Operational Manpower Calculator_`;
                   <button
                     type="button"
                     onClick={handleReset}
-                    className="py-2.5 px-3 bg-cream-200 dark:bg-night-750 hover:bg-cream-300 dark:hover:bg-night-700 text-chocolate-600 dark:text-night-muted text-[11px] font-semibold uppercase tracking-wider border border-chocolate-700/10 dark:border-bronze-500/20 transition-colors flex items-center justify-center space-x-1"
+                    className="btn-secondary group py-3 px-4 text-[11px] font-bold uppercase tracking-wider flex items-center justify-center space-x-1 cursor-pointer"
                     title="Clear Roster"
                   >
                     <RefreshCw className="w-3.5 h-3.5" />

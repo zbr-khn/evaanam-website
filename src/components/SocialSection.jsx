@@ -210,7 +210,7 @@ export default function SocialSection({ showHeader = true, className = "" }) {
               <button
                 type="button"
                 onClick={handleExpandAll}
-                className="btn-secondary group text-[11px] py-2 px-5 font-bold"
+                className="btn-primary group text-xs py-3 px-6 font-extrabold tracking-[0.2em] uppercase cursor-pointer"
               >
                 <span>
                   {expandedIds.length === SOCIAL_ACCOUNTS.length
