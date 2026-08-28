@@ -4,75 +4,48 @@
 
 @layer base {
   :root {
-    --bg-cream: #F5F1E8;
-    --text-chocolate: #3B2F2F;
-    --accent-bronze: #B08D57;
-    --scroll-bg-current: #081F18;
-    --scroll-bg-light: #FCFAF6;
-    --scroll-bg-dark: #081F18;
-  }
-
-  html {
-    background-color: #FAF8F3;
-    color: #3B2F2F;
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    scroll-behavior: smooth;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  html.dark {
-    background-color: #081F18;
-    color: #F5F1E8;
+    --color-cream-50: #FAF8F3;
+    --color-cream-100: #F5F0E6;
+    --color-cream-200: #EFE8DE;
+    --color-cream-300: #E2D7C8;
+    --color-chocolate-950: #12241C;
+    --color-chocolate-900: #1A120B;
+    --color-chocolate-800: #231810;
+    --color-chocolate-700: #36281D;
+    --color-bronze-400: #D4BA8C;
+    --color-bronze-500: #B08D57;
+    --color-bronze-600: #846231;
+    --color-brand-green: #081F18;
+    --color-brand-emerald: #0D3025;
   }
 
   body {
+    @apply bg-cream-50 text-chocolate-950 antialiased font-sans selection:bg-bronze-500 selection:text-cream-50;
     overflow-x: hidden;
-    background-color: transparent;
-    color: inherit;
   }
 
-  /* Hide default browser cursor on desktop devices to enable stylish custom cursor */
-  @media (hover: hover) and (pointer: fine) {
-    *, *::before, *::after {
-      cursor: none !important;
-    }
+  html.dark body {
+    @apply bg-night-950 text-cream-100 selection:bg-bronze-500 selection:text-night-950;
   }
 
-  /* Editorial Serif Headings */
-  h1, h2, h3, .font-serif-luxury {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-  }
-
-  /* Custom subtle scrollbar */
-  ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #ECE6D8;
-  }
-  html.dark ::-webkit-scrollbar-track {
-    background: #17221C;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #C5A46D;
-    border-radius: 3px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #967442;
+  /* Refined Typography Defaults */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif tracking-tight font-light;
   }
 }
 
-/* Custom Components & Utilities */
 @layer components {
+  /* Editorial Luxury Classes */
+  .editorial-title {
+    @apply font-serif font-light tracking-tight text-chocolate-950 dark:text-cream-50 leading-[1.05] transition-colors duration-300;
+  }
+
   .editorial-heading {
     @apply font-serif font-light tracking-tight text-chocolate-950 dark:text-cream-50 leading-[1.08] transition-colors duration-300;
   }
 
   .micro-label {
-    @apply text-[11px] uppercase tracking-[0.25em] font-semibold text-bronze-600 dark:text-bronze-400 font-sans;
+    @apply text-[11px] uppercase tracking-[0.25em] font-bold text-bronze-600 dark:text-bronze-400 font-sans;
   }
 
   .bronze-divider {
@@ -80,85 +53,19 @@
   }
 
   .bronze-border {
-    @apply border border-bronze-500/25;
+    @apply border border-bronze-500/30;
   }
 
+  /* =========================================================================
+     BOLD, ENCLOSED, THEMED-FILLED GLOWING BUTTONS
+     ========================================================================= */
+
   .btn-primary {
-    @apply relative overflow-hidden inline-flex items-center justify-center px-7 py-3.5 bg-brand-green dark:bg-bronze-500 text-cream-50 dark:text-night-950 font-sans text-xs font-bold uppercase tracking-[0.2em] border border-bronze-400/40 dark:border-bronze-400/60 rounded-sm focus:outline-none focus:ring-2 focus:ring-bronze-500 focus:ring-offset-2 shadow-md cursor-pointer;
+    @apply relative overflow-hidden inline-flex items-center justify-center px-8 py-4 bg-brand-green dark:bg-bronze-500 text-cream-50 dark:text-night-950 font-sans text-xs font-extrabold uppercase tracking-[0.22em] border-2 border-bronze-400/70 dark:border-amber-300/80 rounded-sm focus:outline-none focus:ring-2 focus:ring-bronze-500 focus:ring-offset-2 cursor-pointer;
+    animation: buttonAmbientGlow 3.5s ease-in-out infinite;
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease;
   }
   .btn-primary::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -120%;
-    width: 60%;
-    height: 100%;
-    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.25), transparent);
-    transform: skewX(-20deg);
-    transition: left 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-    pointer-events: none;
-  }
-  .btn-primary:hover {
-    @apply bg-bronze-500 text-chocolate-950 dark:bg-amber-400;
-    transform: translate3d(0, -2px, 0) scale(1.02);
-    box-shadow: 0 10px 25px -4px rgba(176, 141, 87, 0.4);
-  }
-  .btn-primary:hover::after {
-    left: 160%;
-  }
-  .btn-primary svg {
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .btn-primary:hover svg {
-    transform: translate3d(2.5px, -2.5px, 0);
-  }
-  .btn-primary:active {
-    transform: translate3d(0, 0, 0) scale(0.98);
-  }
-
-  .btn-secondary {
-    @apply relative overflow-hidden inline-flex items-center justify-center px-7 py-3.5 border-2 border-chocolate-800/50 dark:border-bronze-400/70 text-chocolate-950 dark:text-cream-50 bg-cream-100/60 dark:bg-night-800/60 font-sans text-xs font-bold uppercase tracking-[0.2em] rounded-sm focus:outline-none focus:ring-2 focus:ring-bronze-500 focus:ring-offset-2 shadow-sm cursor-pointer;
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease;
-  }
-  .btn-secondary::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -120%;
-    width: 60%;
-    height: 100%;
-    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transform: skewX(-20deg);
-    transition: left 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-    pointer-events: none;
-  }
-  .btn-secondary:hover {
-    @apply border-bronze-500 bg-brand-green text-cream-50 dark:bg-bronze-500 dark:text-night-950;
-    transform: translate3d(0, -2px, 0) scale(1.02);
-    box-shadow: 0 10px 25px -4px rgba(8, 31, 24, 0.25);
-  }
-  html.dark .btn-secondary:hover {
-    box-shadow: 0 10px 25px -4px rgba(212, 175, 55, 0.3);
-  }
-  .btn-secondary:hover::after {
-    left: 160%;
-  }
-  .btn-secondary svg {
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .btn-secondary:hover svg {
-    transform: translate3d(3px, 0, 0);
-  }
-  .btn-secondary:active {
-    transform: translate3d(0, 0, 0) scale(0.98);
-  }
-
-  .btn-bronze {
-    @apply relative overflow-hidden inline-flex items-center justify-center px-7 py-3.5 bg-bronze-500 text-cream-50 dark:text-night-950 font-sans text-xs font-bold uppercase tracking-[0.2em] border border-bronze-400/50 rounded-sm focus:outline-none focus:ring-2 focus:ring-bronze-500 focus:ring-offset-2 shadow-md cursor-pointer;
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease;
-  }
-  .btn-bronze::after {
     content: '';
     position: absolute;
     top: 0;
@@ -170,10 +77,80 @@
     transition: left 0.75s cubic-bezier(0.16, 1, 0.3, 1);
     pointer-events: none;
   }
+  .btn-primary:hover {
+    @apply bg-bronze-500 text-chocolate-950 dark:bg-amber-400;
+    transform: translate3d(0, -2px, 0) scale(1.025);
+    box-shadow: 0 0 30px rgba(212, 186, 140, 0.8), 0 8px 24px rgba(0, 0, 0, 0.35) !important;
+  }
+  .btn-primary:hover::after {
+    left: 160%;
+  }
+  .btn-primary svg {
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .btn-primary:hover svg {
+    transform: translate3d(2.5px, -2.5px, 0);
+  }
+  .btn-primary:active {
+    transform: translate3d(0, 0, 0) scale(0.97);
+  }
+
+  .btn-secondary {
+    @apply relative overflow-hidden inline-flex items-center justify-center px-8 py-4 bg-chocolate-900 dark:bg-night-850 text-cream-50 dark:text-cream-100 font-sans text-xs font-extrabold uppercase tracking-[0.22em] border-2 border-bronze-500/60 dark:border-bronze-400/70 rounded-sm focus:outline-none focus:ring-2 focus:ring-bronze-500 focus:ring-offset-2 cursor-pointer;
+    animation: buttonAmbientGlowSecondary 4s ease-in-out infinite;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease;
+  }
+  .btn-secondary::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+  }
+  .btn-secondary:hover {
+    @apply border-amber-400 bg-brand-green text-cream-50 dark:bg-bronze-500 dark:text-night-950;
+    transform: translate3d(0, -2px, 0) scale(1.025);
+    box-shadow: 0 0 28px rgba(176, 141, 87, 0.75), 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+  }
+  .btn-secondary:hover::after {
+    left: 160%;
+  }
+  .btn-secondary svg {
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .btn-secondary:hover svg {
+    transform: translate3d(3px, 0, 0);
+  }
+  .btn-secondary:active {
+    transform: translate3d(0, 0, 0) scale(0.97);
+  }
+
+  .btn-bronze {
+    @apply relative overflow-hidden inline-flex items-center justify-center px-8 py-4 bg-bronze-500 text-night-950 font-sans text-xs font-extrabold uppercase tracking-[0.22em] border-2 border-bronze-400/90 rounded-sm focus:outline-none focus:ring-2 focus:ring-bronze-500 focus:ring-offset-2 cursor-pointer;
+    animation: buttonAmbientGlow 3.5s ease-in-out infinite;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease;
+  }
+  .btn-bronze::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+  }
   .btn-bronze:hover {
     @apply bg-amber-400 text-chocolate-950 dark:bg-amber-300;
-    transform: translate3d(0, -2px, 0) scale(1.02);
-    box-shadow: 0 10px 25px -4px rgba(212, 175, 55, 0.45);
+    transform: translate3d(0, -2px, 0) scale(1.025);
+    box-shadow: 0 0 32px rgba(212, 175, 55, 0.85), 0 8px 25px rgba(0, 0, 0, 0.35) !important;
   }
   .btn-bronze:hover::after {
     left: 160%;
@@ -185,19 +162,37 @@
     transform: translate3d(2.5px, -2.5px, 0);
   }
   .btn-bronze:active {
-    transform: translate3d(0, 0, 0) scale(0.98);
+    transform: translate3d(0, 0, 0) scale(0.97);
   }
 
   .card-luxury {
-    @apply bg-cream-100/80 dark:bg-night-800/80 border border-chocolate-700/15 dark:border-bronze-500/20 backdrop-blur-sm rounded-sm transition-all duration-300;
+    @apply bg-cream-100/85 dark:bg-night-850/90 border-2 border-chocolate-700/20 dark:border-bronze-500/30 backdrop-blur-sm rounded-sm transition-all duration-300 shadow-md;
   }
 
   .card-luxury-hover {
-    @apply hover:border-bronze-500/60 hover:shadow-lg hover:-translate-y-0.5;
+    @apply hover:border-bronze-500/70 hover:shadow-2xl hover:-translate-y-1;
   }
 }
 
 /* Animations */
+@keyframes buttonAmbientGlow {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(176, 141, 87, 0.35), 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 22px rgba(212, 186, 140, 0.6), 0 6px 16px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@keyframes buttonAmbientGlowSecondary {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(176, 141, 87, 0.2), 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 18px rgba(212, 186, 140, 0.45), 0 5px 14px rgba(0, 0, 0, 0.2);
+  }
+}
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -251,7 +246,7 @@
 .scroll-reveal {
   opacity: 0;
   transform: translate3d(0, 32px, 0);
-  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
@@ -262,8 +257,8 @@
 
 .scroll-reveal-left {
   opacity: 0;
-  transform: translate3d(-40px, 0, 0);
-  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translate3d(-36px, 0, 0);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
@@ -274,8 +269,8 @@
 
 .scroll-reveal-right {
   opacity: 0;
-  transform: translate3d(40px, 0, 0);
-  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translate3d(36px, 0, 0);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
@@ -286,48 +281,66 @@
 
 .scroll-reveal-scale {
   opacity: 0;
-  transform: scale3d(0.92, 0.92, 1);
-  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: scale(0.94);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
 .scroll-reveal-scale.is-revealed {
   opacity: 1;
-  transform: scale3d(1, 1, 1);
+  transform: scale(1);
 }
 
 /* =========================================================================
-   PURE CONTINUOUS GRADIENT BLEEDS (NO HARD BORDERS, NO FAINTED LINES)
+   PURE CONTINUOUS GRADIENT BLEEDS (No Dividing Lines)
    ========================================================================= */
 
-/* Tone A: Deep Racing Green (Dark) / Crisp Alabaster White (Light) */
-.section-tone-a {
-  color: #12241C;
-}
-html.dark .section-tone-a {
-  color: #FCFAF6;
-}
-
-/* Tone B: Rich Espresso Chocolate (Dark) / Warm Biscuit Sandstone (Light) */
-.section-tone-b {
-  color: #2B1A0E;
-}
-html.dark .section-tone-b {
-  color: #FCFAF6;
-}
-
-/* Gradient Bleed: From Tone A (Green/White) into Tone B (Espresso/Biscuit) */
 .bleed-a-to-b {
-  background: linear-gradient(180deg, #FAF8F3 0%, #F5EFE7 35%, #F0E8DD 70%, #EFE8DE 100%);
-}
-html.dark .bleed-a-to-b {
-  background: linear-gradient(180deg, #081F18 0%, #0E1D16 35%, #151610 70%, #1A120B 100%);
+  background: linear-gradient(
+    to bottom,
+    var(--color-brand-green, #081F18) 0%,
+    var(--color-brand-emerald, #0D3025) 25%,
+    var(--color-chocolate-950, #1A120B) 75%,
+    var(--color-chocolate-900, #1A120B) 100%
+  );
 }
 
-/* Gradient Bleed: From Tone B (Espresso/Biscuit) into Tone A (Green/White) */
-.bleed-b-to-a {
-  background: linear-gradient(180deg, #EFE8DE 0%, #F0E8DD 35%, #F5EFE7 70%, #FAF8F3 100%);
+html:not(.dark) .bleed-a-to-b {
+  background: linear-gradient(
+    to bottom,
+    #FAF8F3 0%,
+    #F6F2EA 30%,
+    #EFE8DE 70%,
+    #E8DFD3 100%
+  );
 }
-html.dark .bleed-b-to-a {
-  background: linear-gradient(180deg, #1A120B 0%, #151610 35%, #0E1D16 70%, #081F18 100%);
+
+.bleed-b-to-a {
+  background: linear-gradient(
+    to bottom,
+    var(--color-chocolate-900, #1A120B) 0%,
+    var(--color-chocolate-950, #1A120B) 25%,
+    var(--color-brand-emerald, #0D3025) 75%,
+    var(--color-brand-green, #081F18) 100%
+  );
+}
+
+html:not(.dark) .bleed-b-to-a {
+  background: linear-gradient(
+    to bottom,
+    #E8DFD3 0%,
+    #EFE8DE 30%,
+    #F6F2EA 70%,
+    #FAF8F3 100%
+  );
+}
+
+.section-tone-a {
+  background-color: transparent;
+  color: inherit;
+}
+
+.section-tone-b {
+  background-color: transparent;
+  color: inherit;
 }

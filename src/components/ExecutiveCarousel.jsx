@@ -1,30 +1,73 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
-import { ChevronLeft, ChevronRight, Sparkles, ArrowUpRight, Maximize2 } from "lucide-react";
-import { FEATURED_HIGHLIGHTS } from "../data/evaanamData";
+import { ChevronLeft, ChevronRight, Maximize2, ShieldCheck, Sparkles } from "lucide-react";
 import LightboxModal from "./LightboxModal";
 
-export default function ExecutiveCarousel({ className = "" }) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [lightboxIndex, setLightboxIndex] = useState(null);
-  const [isPaused, setIsPaused] = useState(false);
-  const autoPlayRef = useRef(null);
+// Verified Authentic Deployment Highlights from evaanamData
+const FEATURED_HIGHLIGHTS = [
+  {
+    id: "ex-1",
+    client: "Vivo",
+    tag: "Brand Activation",
+    title: "Experience Pavilion: Vivo",
+    desc: "Interactive product demo crew and attendee walkthroughs at premier technology launch pavillion.",
+    src: "./gallery/vivo.png",
+    aspect: "landscape",
+  },
+  {
+    id: "ex-2",
+    client: "IndiGo",
+    tag: "Aviation Summit",
+    title: "Leadership Plenary: IndiGo",
+    desc: "High-throughput delegate registration, executive seating coordination, and VIP protocol management.",
+    src: "./gallery/indigo.png",
+    aspect: "landscape",
+  },
+  {
+    id: "ex-3",
+    client: "Pronto",
+    tag: "Product Launch",
+    title: "Brand Showcase: Pronto",
+    desc: "Bilingual stall hosts, product demonstration assistance, and visitor engagement coordination.",
+    src: "./gallery/pronto.png",
+    aspect: "landscape",
+  },
+  {
+    id: "ex-4",
+    client: "Boman Irani",
+    tag: "Celebrity VIP Escort",
+    title: "VIP Escort: Boman Irani",
+    desc: "Discreet close-protection coordination, stage transit escort, and green room access management.",
+    src: "./gallery/boman-irani.png",
+    aspect: "portrait",
+  },
+  {
+    id: "ex-5",
+    client: "Rajpal Yadav",
+    tag: "Celebrity VIP Escort",
+    title: "Celebrity Handling: Rajpal Yadav",
+    desc: "Red carpet arrival security, holding area hospitality, and stage transit support.",
+    src: "./gallery/rajpal-yadav.png",
+    aspect: "portrait",
+  },
+];
 
-  // Touch and mouse drag swipe coordinates
+export default function ExecutiveCarousel() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(null);
+  const total = FEATURED_HIGHLIGHTS.length;
+
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
   const isDragging = useRef(false);
 
-  const total = FEATURED_HIGHLIGHTS.length;
-
-  // Auto-play interval (every 4.5s)
+  // Auto-slide every 6 seconds unless hovered or dragging
   useEffect(() => {
-    if (!isPaused && lightboxIndex === null) {
-      autoPlayRef.current = setInterval(() => {
-        setCurrentIndex((prev) => (prev === total - 1 ? 0 : prev + 1));
-      }, 4500);
-    }
-    return () => clearInterval(autoPlayRef.current);
+    if (isPaused || lightboxIndex !== null) return;
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % total);
+    }, 6000);
+    return () => clearInterval(interval);
   }, [isPaused, lightboxIndex, total]);
 
   const handlePrev = () => {
@@ -32,14 +75,12 @@ export default function ExecutiveCarousel({ className = "" }) {
   };
 
   const handleNext = () => {
-    setCurrentIndex((prev) => (prev === total - 1 ? 0 : prev + 1));
+    setCurrentIndex((prev) => (prev + 1) % total);
   };
 
-  // Touch Swipe Handlers
   const handleTouchStart = (e) => {
     touchStartX.current = e.touches[0].clientX;
     touchEndX.current = e.touches[0].clientX;
-    setIsPaused(true);
   };
 
   const handleTouchMove = (e) => {
@@ -48,21 +89,15 @@ export default function ExecutiveCarousel({ className = "" }) {
 
   const handleTouchEnd = () => {
     const diff = touchStartX.current - touchEndX.current;
-    const threshold = 40; // minimum 40px delta
-    if (diff > threshold) {
-      handleNext();
-    } else if (diff < -threshold) {
-      handlePrev();
-    }
-    setIsPaused(false);
+    const threshold = 40;
+    if (diff > threshold) handleNext();
+    else if (diff < -threshold) handlePrev();
   };
 
-  // Mouse Drag Handlers
   const handleMouseDown = (e) => {
     isDragging.current = true;
     touchStartX.current = e.clientX;
     touchEndX.current = e.clientX;
-    setIsPaused(true);
   };
 
   const handleMouseMove = (e) => {
@@ -70,78 +105,64 @@ export default function ExecutiveCarousel({ className = "" }) {
     touchEndX.current = e.clientX;
   };
 
-  const handleMouseUp = (e) => {
+  const handleMouseUp = () => {
     if (!isDragging.current) return;
     isDragging.current = false;
     const diff = touchStartX.current - touchEndX.current;
-    const threshold = 40;
-    if (diff > threshold) {
-      handleNext();
-    } else if (diff < -threshold) {
-      handlePrev();
-    } else if (Math.abs(diff) < 5) {
-      // It's a genuine click, open lightbox if clicking on slide
-    }
-    setIsPaused(false);
+    const threshold = 50;
+    if (diff > threshold) handleNext();
+    else if (diff < -threshold) handlePrev();
   };
 
+  const current = FEATURED_HIGHLIGHTS[currentIndex];
+
   return (
-    <section className={`py-16 sm:py-20 px-6 sm:px-8 lg:px-12 select-none overflow-hidden ${className}`}>
+    <section className="py-16 sm:py-20 px-6 sm:px-8 lg:px-12 bg-transparent">
       <div className="max-w-7xl mx-auto">
-        
-        {/* Section Header with Title & Arrow Controls */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between mb-8 sm:mb-10 gap-6">
+        {/* Section Header */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
           <div>
-            <span className="micro-label text-amber-700 dark:text-amber-400 flex items-center space-x-1.5 font-bold">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>FEATURED HIGHLIGHTS</span>
+            <span className="micro-label flex items-center space-x-1.5 font-bold">
+              <ShieldCheck className="w-3.5 h-3.5" />
+              <span>VERIFIED OPERATIONS PORTFOLIO</span>
             </span>
-            <h2 className="editorial-heading text-3xl sm:text-4xl md:text-5xl text-chocolate-950 dark:text-cream-50 mt-1">
+            <h2 className="editorial-heading text-3xl sm:text-4xl md:text-5xl mt-1">
               Executive Engagements &amp; Brand Activations
             </h2>
-            <p className="text-xs sm:text-sm text-chocolate-700 dark:text-night-muted font-light mt-1 max-w-2xl">
-              On-ground manpower coordination for premier consumer brands, aviation conclaves, and high-profile celebrity keynotes.
+            <p className="text-xs sm:text-sm font-light mt-1 max-w-2xl">
+              Authentic on-ground photography from landmark deployments across Delhi NCR.
             </p>
           </div>
 
-          <div className="flex items-center space-x-3 self-stretch sm:self-auto justify-between sm:justify-end">
-            <Link
-              to="/gallery"
-              className="btn-secondary text-xs font-bold whitespace-nowrap py-2.5 px-4"
-            >
-              <span>Explore Portfolio</span>
-            </Link>
-
-            {/* Slide Navigation Buttons */}
-            <div className="flex items-center space-x-1.5">
+          {/* Navigation Controls */}
+          <div className="flex items-center space-x-3 shrink-0">
+            <span className="text-xs font-mono font-semibold hidden sm:inline-block">
+              <strong>0{currentIndex + 1}</strong> / 0{total}
+            </span>
+            <div className="flex items-center space-x-2">
               <button
                 type="button"
                 onClick={handlePrev}
                 aria-label="Previous Highlight"
-                className="w-10 h-10 rounded-sm bg-cream-200 dark:bg-night-800 border-2 border-chocolate-700/20 dark:border-bronze-500/30 text-chocolate-900 dark:text-cream-50 flex items-center justify-center hover:bg-brand-green dark:hover:bg-bronze-500 hover:text-cream-50 dark:hover:text-night-950 transition-all focus:outline-none shadow-sm active:scale-95"
+                className="w-10 h-10 rounded-sm bg-brand-green dark:bg-bronze-500 text-cream-50 dark:text-night-950 border-2 border-bronze-400/80 flex items-center justify-center hover:bg-amber-400 hover:text-chocolate-950 dark:hover:bg-amber-300 transition-all focus:outline-none shadow-md hover:shadow-lg active:scale-95 cursor-pointer"
               >
-                <ChevronLeft className="w-4 h-4" />
+                <ChevronLeft className="w-4 h-4 font-bold" />
               </button>
-
-              <span className="text-xs font-mono font-bold text-chocolate-700 dark:text-cream-200 px-2 min-w-[55px] text-center">
-                0{currentIndex + 1} / 0{total}
-              </span>
-
               <button
                 type="button"
                 onClick={handleNext}
                 aria-label="Next Highlight"
-                className="w-10 h-10 rounded-sm bg-cream-200 dark:bg-night-800 border-2 border-chocolate-700/20 dark:border-bronze-500/30 text-chocolate-900 dark:text-cream-50 flex items-center justify-center hover:bg-brand-green dark:hover:bg-bronze-500 hover:text-cream-50 dark:hover:text-night-950 transition-all focus:outline-none shadow-sm active:scale-95"
+                className="w-10 h-10 rounded-sm bg-brand-green dark:bg-bronze-500 text-cream-50 dark:text-night-950 border-2 border-bronze-400/80 flex items-center justify-center hover:bg-amber-400 hover:text-chocolate-950 dark:hover:bg-amber-300 transition-all focus:outline-none shadow-md hover:shadow-lg active:scale-95 cursor-pointer"
               >
-                <ChevronRight className="w-4 h-4" />
+                <ChevronRight className="w-4 h-4 font-bold" />
               </button>
             </div>
           </div>
         </div>
 
-        {/* Cinematic Dual-Layer Uncropped Viewport with Touch/Drag Swipe */}
+        {/* Cinematic Architectural Framed Viewport with Borders & Corner Brackets */}
         <div
-          className="relative overflow-hidden rounded-sm border-2 border-chocolate-700/20 dark:border-bronze-500/30 shadow-2xl bg-night-950 cursor-grab active:cursor-grabbing touch-pan-y"
+          className="relative overflow-hidden rounded-md border-2 border-bronze-500/70 dark:border-bronze-400/80 shadow-[0_20px_50px_rgba(0,0,0,0.5)] bg-night-950 cursor-grab active:cursor-grabbing touch-pan-y"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => {
             setIsPaused(false);
@@ -154,6 +175,15 @@ export default function ExecutiveCarousel({ className = "" }) {
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
         >
+          {/* Architectural Inset Museum Hairline */}
+          <div className="absolute inset-2 border border-bronze-400/25 rounded-xs pointer-events-none z-30" />
+
+          {/* 4 Gold Corner Accent Notches */}
+          <div className="absolute top-1 left-1 w-3 h-3 border-t-2 border-l-2 border-amber-400 pointer-events-none z-30" />
+          <div className="absolute top-1 right-1 w-3 h-3 border-t-2 border-r-2 border-amber-400 pointer-events-none z-30" />
+          <div className="absolute bottom-1 left-1 w-3 h-3 border-b-2 border-l-2 border-amber-400 pointer-events-none z-30" />
+          <div className="absolute bottom-1 right-1 w-3 h-3 border-b-2 border-r-2 border-amber-400 pointer-events-none z-30" />
+
           {/* Slide Track */}
           <div
             className="flex transition-transform duration-700 ease-out"
@@ -168,7 +198,7 @@ export default function ExecutiveCarousel({ className = "" }) {
                   if (diff < 10) setLightboxIndex(idx);
                 }}
               >
-                {/* 1. LAYER 1: Ambient Background Aura (Blurred & darkened so no empty black borders) */}
+                {/* 1. LAYER 1: Ambient Background Aura */}
                 <div className="absolute inset-0 z-0 overflow-hidden">
                   <img
                     src={item.src}
@@ -192,23 +222,23 @@ export default function ExecutiveCarousel({ className = "" }) {
 
                 {/* Top Badges */}
                 <div className="absolute top-4 sm:top-6 left-4 sm:left-6 z-20 flex items-center space-x-2">
-                  <span className="text-[10px] uppercase font-mono tracking-widest font-bold px-3 py-1 bg-night-950/90 text-amber-300 border border-amber-500/40 rounded-sm shadow">
+                  <span className="text-[10px] uppercase font-mono tracking-widest font-extrabold px-3 py-1 bg-night-950/90 text-amber-300 border-2 border-amber-500/60 rounded-sm shadow">
                     {item.tag}
                   </span>
-                  <span className="text-[10px] uppercase font-mono tracking-widest font-semibold px-2.5 py-1 bg-night-900/85 text-bronze-300 border border-bronze-500/30 rounded-sm hidden sm:inline-block shadow">
+                  <span className="text-[10px] uppercase font-mono tracking-widest font-bold px-2.5 py-1 bg-night-900/85 text-bronze-300 border border-bronze-500/40 rounded-sm hidden sm:inline-block shadow">
                     {item.client}
                   </span>
                 </div>
 
                 {/* Zoom Icon */}
-                <div className="absolute top-4 sm:top-6 right-4 sm:right-6 z-20 w-10 h-10 rounded-full bg-night-900/80 border border-bronze-500/40 text-cream-100 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-105 shadow-lg">
+                <div className="absolute top-4 sm:top-6 right-4 sm:right-6 z-20 w-10 h-10 rounded-full bg-night-900/90 border-2 border-bronze-500/60 text-cream-100 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-105 shadow-lg">
                   <Maximize2 className="w-4 h-4 text-amber-300" />
                 </div>
 
                 {/* Bottom Caption Overlay */}
                 <div className="absolute bottom-0 left-0 right-0 z-20 p-4 sm:p-6 bg-gradient-to-t from-night-950 via-night-950/90 to-transparent text-cream-100 space-y-1 backdrop-blur-xs">
                   <div className="flex items-center space-x-2">
-                    <span className="text-[11px] uppercase font-mono text-amber-400 font-bold">
+                    <span className="text-[11px] uppercase font-mono text-amber-400 font-extrabold">
                       {item.client}
                     </span>
                     <span className="text-cream-400 text-xs hidden sm:inline">•</span>
@@ -244,7 +274,7 @@ export default function ExecutiveCarousel({ className = "" }) {
                 aria-label={`Go to slide ${dotIdx + 1}`}
                 className={`h-1.5 rounded-full transition-all duration-300 ${
                   currentIndex === dotIdx
-                    ? "w-8 bg-amber-400"
+                    ? "w-8 bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.8)]"
                     : "w-2 bg-cream-100/40 hover:bg-cream-100/70"
                 }`}
               />
@@ -252,7 +282,7 @@ export default function ExecutiveCarousel({ className = "" }) {
           </div>
         </div>
 
-        {/* Thumbnail Preview Strip */}
+        {/* Thumbnail Preview Strip with Structured Borders */}
         <div className="mt-4 grid grid-cols-5 gap-2 sm:gap-3">
           {FEATURED_HIGHLIGHTS.map((item, idx) => (
             <button
@@ -260,8 +290,8 @@ export default function ExecutiveCarousel({ className = "" }) {
               onClick={() => setCurrentIndex(idx)}
               className={`relative rounded-sm overflow-hidden aspect-[16/9] border-2 transition-all duration-300 text-left group bg-night-950 ${
                 currentIndex === idx
-                  ? "border-amber-400 ring-2 ring-amber-400/30 scale-100 opacity-100"
-                  : "border-chocolate-700/20 dark:border-bronze-500/20 opacity-60 hover:opacity-100"
+                  ? "border-amber-400 ring-2 ring-amber-400/50 scale-100 opacity-100 shadow-md"
+                  : "border-chocolate-700/20 dark:border-bronze-500/20 opacity-60 hover:opacity-100 hover:border-bronze-400/50"
               }`}
             >
               <img src={item.src} alt={item.title} className="w-full h-full object-contain p-1" />
