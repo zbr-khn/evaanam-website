@@ -4,10 +4,9 @@ import { useTheme } from "../context/ThemeContext";
 
 /**
  * DynamicScrollGradient
- * Rich, vivid dual-tone gradient scroll transition engine:
- * - Alternates seamlessly between Deep British Racing Green and Rich Espresso Chocolate in Dark Mode
- * - Alternates seamlessly between Crisp Alabaster White and Warm Biscuit Sandstone in Light Mode
- * - Hardware accelerated for buttery-smooth 60-120fps scrolling
+ * Hardware-accelerated 60-120fps background transition canvas:
+ * - Desktop: Rich dynamic gradient with floating ambient light blooms
+ * - Mobile: Lightweight GPU fill layer for maximum 60-120fps mobile performance
  */
 export default function DynamicScrollGradient() {
   const { isDark } = useTheme();
@@ -17,6 +16,10 @@ export default function DynamicScrollGradient() {
   const orb2Ref = useRef(null);
 
   useEffect(() => {
+    // On mobile screens, avoid heavy multi-orb scroll transforms
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) return;
+
     let ticking = false;
 
     const updateScrollGradients = () => {
@@ -24,24 +27,21 @@ export default function DynamicScrollGradient() {
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const progress = docHeight > 0 ? Math.min(1, Math.max(0, scrollY / docHeight)) : 0;
 
-      // 1. Dynamic angle rotation and shift on scroll
-      const angle = 135 + progress * 180;
-      const shiftY = Math.sin(progress * Math.PI * 4) * 20;
+      const shiftY = Math.sin(progress * Math.PI * 4) * 15;
 
       if (gradientRef.current) {
-        gradientRef.current.style.transform = `translate3d(0, ${shiftY * 0.5}%, 0)`;
+        gradientRef.current.style.transform = `translate3d(0, ${shiftY * 0.4}%, 0)`;
       }
 
-      // 2. Ambient Floating Orbs GPU translate
       if (orb1Ref.current) {
-        const orb1Y = (progress * 70) % 100;
-        const orb1X = Math.sin(progress * Math.PI * 2) * 20;
+        const orb1Y = (progress * 60) % 100;
+        const orb1X = Math.sin(progress * Math.PI * 2) * 15;
         orb1Ref.current.style.transform = `translate3d(${orb1X}vw, ${orb1Y}vh, 0)`;
       }
 
       if (orb2Ref.current) {
-        const orb2Y = 80 - ((progress * 65) % 100);
-        const orb2X = -Math.cos(progress * Math.PI * 2) * 20;
+        const orb2Y = 70 - ((progress * 55) % 100);
+        const orb2X = -Math.cos(progress * Math.PI * 2) * 15;
         orb2Ref.current.style.transform = `translate3d(${orb2X}vw, ${orb2Y}vh, 0)`;
       }
 
@@ -67,7 +67,7 @@ export default function DynamicScrollGradient() {
       className="fixed inset-0 pointer-events-none -z-20 overflow-hidden select-none"
       style={{ contain: "paint" }}
     >
-      {/* 1. Base Real-Time Interpolating Foundation */}
+      {/* 1. Base Real-Time Foundation */}
       <div
         className="absolute inset-0 transition-colors duration-200 ease-out"
         style={{ backgroundColor: "var(--scroll-bg-current, #081F18)" }}
@@ -94,25 +94,24 @@ export default function DynamicScrollGradient() {
         }}
       />
 
-      {/* 3. Floating Luxury Radial Bloom 01 (Deep Emerald / Biscuit Gold) */}
+      {/* 3. Floating Luxury Radial Blooms (Rendered on Desktop / Tablet for 120fps efficiency) */}
       <div
         ref={orb1Ref}
-        className="absolute -top-32 -left-32 w-[600px] sm:w-[900px] h-[600px] sm:h-[900px] rounded-full pointer-events-none will-change-transform opacity-50 dark:opacity-40"
+        className="hidden md:block absolute -top-32 -left-32 w-[600px] sm:w-[900px] h-[600px] sm:h-[900px] rounded-full pointer-events-none will-change-transform opacity-40 dark:opacity-30"
         style={{
           background: isDark
-            ? "radial-gradient(circle, rgba(16, 58, 44, 0.7) 0%, rgba(35, 22, 18, 0.4) 50%, transparent 70%)"
-            : "radial-gradient(circle, rgba(238, 226, 210, 0.8) 0%, rgba(225, 210, 190, 0.4) 50%, transparent 70%)",
+            ? "radial-gradient(circle, rgba(16, 58, 44, 0.7) 0%, rgba(35, 22, 18, 0.3) 50%, transparent 70%)"
+            : "radial-gradient(circle, rgba(238, 226, 210, 0.8) 0%, rgba(225, 210, 190, 0.3) 50%, transparent 70%)",
         }}
       />
 
-      {/* 4. Floating Luxury Radial Bloom 02 (Rich Espresso / Warm Sandstone) */}
       <div
         ref={orb2Ref}
-        className="absolute -bottom-32 -right-32 w-[550px] sm:w-[850px] h-[550px] sm:h-[850px] rounded-full pointer-events-none will-change-transform opacity-45 dark:opacity-35"
+        className="hidden md:block absolute -bottom-32 -right-32 w-[550px] sm:w-[850px] h-[550px] sm:h-[850px] rounded-full pointer-events-none will-change-transform opacity-35 dark:opacity-25"
         style={{
           background: isDark
-            ? "radial-gradient(circle, rgba(42, 26, 20, 0.7) 0%, rgba(14, 48, 36, 0.4) 50%, transparent 70%)"
-            : "radial-gradient(circle, rgba(230, 216, 196, 0.8) 0%, rgba(245, 242, 235, 0.4) 50%, transparent 70%)",
+            ? "radial-gradient(circle, rgba(42, 26, 20, 0.7) 0%, rgba(14, 48, 36, 0.3) 50%, transparent 70%)"
+            : "radial-gradient(circle, rgba(230, 216, 196, 0.8) 0%, rgba(245, 242, 235, 0.3) 50%, transparent 70%)",
         }}
       />
     </div>

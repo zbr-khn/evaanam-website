@@ -7,6 +7,9 @@ export default function GeometricMarginFrame() {
   const rightProgressBarRef = useRef(null);
 
   useEffect(() => {
+    // Disable on mobile/small viewports to conserve battery & 60-120fps CPU performance
+    if (window.innerWidth < 768) return;
+
     let ticking = false;
 
     const updateScroll = () => {
@@ -43,7 +46,7 @@ export default function GeometricMarginFrame() {
   return (
     <div
       aria-hidden="true"
-      className="fixed inset-0 pointer-events-none z-30 select-none overflow-hidden"
+      className="hidden md:block fixed inset-0 pointer-events-none z-30 select-none overflow-hidden"
     >
       {/* ================================================================ */}
       {/* 1. LEFT ARCHITECTURAL MARGIN LINE & LIVE SCROLL PROGRESS          */}

@@ -14,7 +14,7 @@ function SingleStat({ value, suffix, label, desc }) {
       if (hasAnimatedRef.current) return;
       hasAnimatedRef.current = true;
 
-      const duration = 2400; // 2.4s smooth, sustained count-up
+      const duration = 2000; // 2 seconds steady, fluid count-up
       const startTime = performance.now();
       const targetValue = value;
 
@@ -22,7 +22,7 @@ function SingleStat({ value, suffix, label, desc }) {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
 
-        // Smooth Ease-Out Cubic curve: 1 - (1 - t)^3
+        // Smooth Ease-Out Cubic: 1 - (1 - t)^3
         const easeProgress = 1 - Math.pow(1 - progress, 3);
         const currentNumber = Math.round(easeProgress * targetValue);
 
@@ -49,7 +49,7 @@ function SingleStat({ value, suffix, label, desc }) {
       },
       {
         threshold: 0.1,
-        rootMargin: "0px 0px -10px 0px",
+        rootMargin: "0px 0px -20px 0px",
       }
     );
 
@@ -69,7 +69,11 @@ function SingleStat({ value, suffix, label, desc }) {
         <div className="flex items-baseline space-x-1 mb-1.5">
           <span
             ref={numberRef}
-            className="font-serif text-4xl sm:text-5xl lg:text-6xl font-light text-chocolate-950 dark:text-cream-50 tracking-tight will-change-contents font-mono sm:font-serif"
+            style={{
+              fontVariantNumeric: "tabular-nums",
+              letterSpacing: "-0.02em",
+            }}
+            className="font-serif text-4xl sm:text-5xl lg:text-6xl font-light text-chocolate-950 dark:text-cream-50 tracking-tight will-change-contents inline-block"
           >
             0
           </span>
