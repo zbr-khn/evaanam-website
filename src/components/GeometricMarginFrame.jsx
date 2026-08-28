@@ -1,22 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 
 export default function GeometricMarginFrame() {
-  const [scrollProgress, setScrollProgress] = useState(0);
   const location = useLocation();
+  const progressBarRef = useRef(null);
 
   useEffect(() => {
     let ticking = false;
 
     const updateScroll = () => {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop || 0;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? Math.min(1, Math.max(0, scrollTop / docHeight)) : 0;
 
-      if (docHeight > 0) {
-        const progress = Math.min(1, Math.max(0, scrollTop / docHeight));
-        setScrollProgress(progress);
-      } else {
-        setScrollProgress(0);
+      if (progressBarRef.current) {
+        progressBarRef.current.style.transform = `scaleY(${progress}) translate3d(0, 0, 0)`;
       }
       ticking = false;
     };
@@ -62,16 +60,6 @@ export default function GeometricMarginFrame() {
 
         {/* Vertical Margin Hairline (Full Height) */}
         <div className="absolute top-0 bottom-0 left-0 w-[1px] bg-gradient-to-b from-bronze-500/25 via-chocolate-700/10 dark:via-bronze-500/15 to-bronze-500/25">
-          {/* Dynamic Real-Time Live Scroll Progress Glow Bar (Instant GPU Scaled) */}
-          <div
-            className="w-[1px] h-full bg-gradient-to-b from-bronze-400 via-bronze-500 to-amber-400 shadow-[0_0_8px_rgba(176,141,87,0.8)]"
-            style={{
-              transformOrigin: "top center",
-              transform: `scaleY(${scrollProgress}) translate3d(0, 0, 0)`,
-              willChange: "transform",
-            }}
-          />
-
           {/* Hash Marks along Margin Line */}
           <div className="absolute top-[25%] -left-1 w-2.5 h-[1px] bg-bronze-500/40" />
           <div className="absolute top-[50%] -left-1.5 w-3.5 h-[1px] bg-bronze-500/60 flex items-center justify-center">
@@ -109,13 +97,13 @@ export default function GeometricMarginFrame() {
 
         {/* Vertical Margin Hairline (Full Height) */}
         <div className="absolute top-0 bottom-0 right-0 w-[1px] bg-gradient-to-b from-bronze-500/25 via-chocolate-700/10 dark:via-bronze-500/15 to-bronze-500/25">
-          {/* Dynamic Real-Time Live Scroll Progress Glow Bar (Instant GPU Scaled) */}
+          {/* Dynamic Real-Time Live Scroll Progress Glow Bar (Instant GPU Scaled via Ref) */}
           <div
-            className="w-[1px] h-full bg-gradient-to-b from-bronze-400 via-bronze-500 to-amber-400 shadow-[0_0_8px_rgba(176,141,87,0.8)]"
+            ref={progressBarRef}
+            className="w-[1px] h-full bg-gradient-to-b from-bronze-400 via-bronze-500 to-amber-400 shadow-[0_0_8px_rgba(176,141,87,0.8)] will-change-transform"
             style={{
               transformOrigin: "top center",
-              transform: `scaleY(${scrollProgress}) translate3d(0, 0, 0)`,
-              willChange: "transform",
+              transform: "scaleY(0) translate3d(0, 0, 0)",
             }}
           />
 

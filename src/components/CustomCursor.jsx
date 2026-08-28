@@ -1,19 +1,17 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 export default function CustomCursor() {
-  const [position, setPosition] = useState({ x: -100, y: -100 });
-  const [trailingPos, setTrailingPos] = useState({ x: -100, y: -100 });
-  const [isHovered, setIsHovered] = useState(false);
-  const [isClicked, setIsClicked] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const dotRef = useRef(null);
+  const ringRef = useRef(null);
 
-  const requestRef = useRef();
   const mousePos = useRef({ x: -100, y: -100 });
   const trailing = useRef({ x: -100, y: -100 });
+  const isHovered = useRef(false);
+  const isClicked = useRef(false);
+  const isVisible = useRef(false);
 
   useEffect(() => {
-    // Check if device is touch-enabled
     if (window.matchMedia("(pointer: coarse)").matches || "ontouchstart" in window) {
       setIsTouchDevice(true);
       return;
@@ -21,55 +19,85 @@ export default function CustomCursor() {
 
     const handleMouseMove = (e) => {
       mousePos.current = { x: e.clientX, y: e.clientY };
-      setPosition({ x: e.clientX, y: e.clientY });
-      if (!isVisible) setIsVisible(true);
+      if (!isVisible.current) {
+        isVisible.current = true;
+        if (dotRef.current) dotRef.current.style.opacity = "1";
+        if (ringRef.current) ringRef.current.style.opacity = "1";
+      }
 
-      // Check if current target or ancestor is interactive
+      // Fast check without heavy getComputedStyle
       const target = e.target;
-      const isInteractive = target && (
+      const interactive = target && (
         target.tagName === "BUTTON" ||
         target.tagName === "A" ||
         target.tagName === "INPUT" ||
         target.tagName === "TEXTAREA" ||
         target.tagName === "SELECT" ||
-        target.getAttribute("role") === "button" ||
         target.closest("button") ||
         target.closest("a") ||
         target.closest("input") ||
         target.closest("[role='button']") ||
-        target.classList.contains("cursor-pointer") ||
-        window.getComputedStyle(target).cursor === "pointer"
+        target.classList.contains("cursor-pointer")
       );
 
-      setIsHovered(!!isInteractive);
+      isHovered.current = !!interactive;
     };
 
-    const handleMouseDown = () => setIsClicked(true);
-    const handleMouseUp = () => setIsClicked(false);
-    const handleMouseLeave = () => setIsVisible(false);
-    const handleMouseEnter = () => setIsVisible(true);
+    const handleMouseDown = () => {
+      isClicked.current = true;
+    };
 
-    // Smooth Lerp Animation for the outer ring
-    const animateTrailing = () => {
-      const ease = 0.18; // smooth lag factor
+    const handleMouseUp = () => {
+      isClicked.current = false;
+    };
+
+    const handleMouseLeave = () => {
+      isVisible.current = false;
+      if (dotRef.current) dotRef.current.style.opacity = "0";
+      if (ringRef.current) ringRef.current.style.opacity = "0";
+    };
+
+    const handleMouseEnter = () => {
+      isVisible.current = true;
+      if (dotRef.current) dotRef.current.style.opacity = "1";
+      if (ringRef.current) ringRef.current.style.opacity = "1";
+    };
+
+    // 60-120fps GPU Lerp Loop (ZERO React re-renders)
+    let animationId;
+    const animate = () => {
+      const ease = 0.22;
       trailing.current.x += (mousePos.current.x - trailing.current.x) * ease;
       trailing.current.y += (mousePos.current.y - trailing.current.y) * ease;
-      
-      setTrailingPos({
-        x: trailing.current.x,
-        y: trailing.current.y,
-      });
 
-      requestRef.current = requestAnimationFrame(animateTrailing);
+      const scaleRing = isClicked.current ? 0.75 : isHovered.current ? 1.5 : 1;
+      const scaleDot = isHovered.current ? 0.5 : 1;
+
+      if (dotRef.current) {
+        dotRef.current.style.transform = `translate3d(${mousePos.current.x}px, ${mousePos.current.y}px, 0) translate(-50%, -50%) scale(${scaleDot})`;
+      }
+
+      if (ringRef.current) {
+        ringRef.current.style.transform = `translate3d(${trailing.current.x}px, ${trailing.current.y}px, 0) translate(-50%, -50%) scale(${scaleRing})`;
+        if (isHovered.current) {
+          ringRef.current.style.borderColor = "rgba(212, 175, 55, 0.8)";
+          ringRef.current.style.backgroundColor = "rgba(212, 175, 55, 0.08)";
+        } else {
+          ringRef.current.style.borderColor = "rgba(212, 175, 55, 0.4)";
+          ringRef.current.style.backgroundColor = "transparent";
+        }
+      }
+
+      animationId = requestAnimationFrame(animate);
     };
 
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
-    window.addEventListener("mousedown", handleMouseDown);
-    window.addEventListener("mouseup", handleMouseUp);
-    document.addEventListener("mouseleave", handleMouseLeave);
-    document.addEventListener("mouseenter", handleMouseEnter);
+    window.addEventListener("mousedown", handleMouseDown, { passive: true });
+    window.addEventListener("mouseup", handleMouseUp, { passive: true });
+    document.addEventListener("mouseleave", handleMouseLeave, { passive: true });
+    document.addEventListener("mouseenter", handleMouseEnter, { passive: true });
 
-    requestRef.current = requestAnimationFrame(animateTrailing);
+    animationId = requestAnimationFrame(animate);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
@@ -77,51 +105,30 @@ export default function CustomCursor() {
       window.removeEventListener("mouseup", handleMouseUp);
       document.removeEventListener("mouseleave", handleMouseLeave);
       document.removeEventListener("mouseenter", handleMouseEnter);
-      if (requestRef.current) cancelAnimationFrame(requestRef.current);
+      cancelAnimationFrame(animationId);
     };
-  }, [isVisible]);
+  }, []);
 
-  if (isTouchDevice || !isVisible) return null;
+  if (isTouchDevice) return null;
 
   return (
-    <>
-      {/* 1. Precision Inner Point (Instant Follow) */}
+    <div
+      aria-hidden="true"
+      className="fixed inset-0 pointer-events-none z-[9999] overflow-hidden select-none"
+    >
+      {/* Precision Micro Dot */}
       <div
-        className="fixed top-0 left-0 pointer-events-none z-[9999] transition-opacity duration-300"
-        style={{
-          transform: `translate3d(${position.x}px, ${position.y}px, 0)`,
-          willChange: "transform",
-        }}
-      >
-        <div
-          className={`-translate-x-1/2 -translate-y-1/2 rounded-full transition-transform duration-200 ${
-            isHovered
-              ? "w-2.5 h-2.5 bg-bronze-500 shadow-md shadow-bronze-500/50"
-              : isClicked
-              ? "w-1.5 h-1.5 bg-chocolate-900 dark:bg-cream-50"
-              : "w-2 h-2 bg-bronze-600 dark:bg-bronze-400"
-          }`}
-        />
-      </div>
+        ref={dotRef}
+        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-bronze-400 opacity-0 pointer-events-none will-change-transform shadow-[0_0_8px_rgba(212,175,55,0.8)]"
+      />
 
-      {/* 2. Outer Smooth Halo Ring (Eased Follow) */}
+      {/* Luxury Trailing Outer Ring */}
       <div
-        className="fixed top-0 left-0 pointer-events-none z-[9998] transition-opacity duration-300"
-        style={{
-          transform: `translate3d(${trailingPos.x}px, ${trailingPos.y}px, 0)`,
-          willChange: "transform",
-        }}
+        ref={ringRef}
+        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-bronze-500/40 opacity-0 pointer-events-none will-change-transform transition-[border-color,background-color] duration-150 ease-out flex items-center justify-center"
       >
-        <div
-          className={`-translate-x-1/2 -translate-y-1/2 rounded-full border transition-all duration-300 ease-out ${
-            isHovered
-              ? "w-12 h-12 border-bronze-500/80 bg-bronze-500/10 dark:bg-bronze-400/15 backdrop-blur-[0.5px] scale-110"
-              : isClicked
-              ? "w-7 h-7 border-bronze-600/90 bg-bronze-500/20 scale-90"
-              : "w-9 h-9 border-bronze-500/40 dark:border-bronze-400/40 bg-transparent"
-          }`}
-        />
+        <div className="w-1 h-1 bg-bronze-400/30 rounded-full" />
       </div>
-    </>
+    </div>
   );
 }

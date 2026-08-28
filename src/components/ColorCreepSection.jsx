@@ -2,9 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 /**
  * ColorCreepSection Component
- * Creates an editorial scroll-driven "color creeping up" background transition:
- * - Content (text, headlines, cards) is rendered in the crisp foreground (z-10).
- * - A luxury tone backdrop smoothly rises up with a feathered leading edge as you scroll into view.
+ * Ultra-smooth, hardware-accelerated 60-120fps background transition section.
  */
 export default function ColorCreepSection({
   tone = "a", // "a" (Green in Dark / White in Light) | "b" (Brown in Dark / Biscuit in Light)
@@ -20,6 +18,9 @@ export default function ColorCreepSection({
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsCrept(true);
+          if (sectionRef.current) {
+            observer.unobserve(sectionRef.current);
+          }
         }
       },
       {
@@ -44,18 +45,17 @@ export default function ColorCreepSection({
       data-tone={tone}
       className={`relative overflow-hidden ${toneClass} ${className}`}
     >
-      {/* 1. Creeping Color Backdrop Curtain (Rises up smoothly behind the text) */}
+      {/* 1. Hardware-Accelerated Creeping Color Backdrop Curtain */}
       <div
         aria-hidden="true"
-        className={`absolute inset-0 z-0 pointer-events-none transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        className={`absolute inset-0 z-0 pointer-events-none transition-all duration-700 ease-out will-change-transform ${
           isCrept
             ? "opacity-100 transform translate-y-0"
-            : "opacity-25 transform translate-y-20"
+            : "opacity-20 transform translate-y-12"
         }`}
       >
-        {/* Soft Feathered Blend at Top & Bottom Boundaries */}
-        <div className="absolute top-0 left-0 right-0 h-28 sm:h-40 bg-gradient-to-b from-transparent via-current/10 to-transparent pointer-events-none opacity-40" />
-        <div className="absolute bottom-0 left-0 right-0 h-28 sm:h-40 bg-gradient-to-t from-transparent via-current/10 to-transparent pointer-events-none opacity-40" />
+        {/* Soft Feathered Blend */}
+        <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent via-current/10 to-transparent pointer-events-none opacity-30" />
       </div>
 
       {/* 2. Stable Foreground Content Layer */}
