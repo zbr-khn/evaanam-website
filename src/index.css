@@ -84,15 +84,108 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center px-7 py-3.5 bg-brand-green dark:bg-bronze-500 text-cream-50 dark:text-night-950 font-sans text-xs font-bold uppercase tracking-[0.2em] border border-bronze-400/40 dark:border-bronze-400/60 rounded-sm transition-all duration-300 hover:bg-bronze-500 hover:text-chocolate-950 dark:hover:bg-amber-400 hover:shadow-lg hover:scale-[1.03] focus:outline-none focus:ring-2 focus:ring-bronze-500 focus:ring-offset-2 shadow-md active:scale-[0.98];
+    @apply relative overflow-hidden inline-flex items-center justify-center px-7 py-3.5 bg-brand-green dark:bg-bronze-500 text-cream-50 dark:text-night-950 font-sans text-xs font-bold uppercase tracking-[0.2em] border border-bronze-400/40 dark:border-bronze-400/60 rounded-sm focus:outline-none focus:ring-2 focus:ring-bronze-500 focus:ring-offset-2 shadow-md cursor-pointer;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease;
+  }
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+  }
+  .btn-primary:hover {
+    @apply bg-bronze-500 text-chocolate-950 dark:bg-amber-400;
+    transform: translate3d(0, -2px, 0) scale(1.02);
+    box-shadow: 0 10px 25px -4px rgba(176, 141, 87, 0.4);
+  }
+  .btn-primary:hover::after {
+    left: 160%;
+  }
+  .btn-primary svg {
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .btn-primary:hover svg {
+    transform: translate3d(2.5px, -2.5px, 0);
+  }
+  .btn-primary:active {
+    transform: translate3d(0, 0, 0) scale(0.98);
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-7 py-3.5 border-2 border-chocolate-800/50 dark:border-bronze-400/70 text-chocolate-950 dark:text-cream-50 bg-cream-100/60 dark:bg-night-800/60 font-sans text-xs font-bold uppercase tracking-[0.2em] rounded-sm transition-all duration-300 hover:border-bronze-500 hover:bg-brand-green hover:text-cream-50 dark:hover:bg-bronze-500 dark:hover:text-night-950 hover:shadow-md hover:scale-[1.03] focus:outline-none focus:ring-2 focus:ring-bronze-500 focus:ring-offset-2 shadow-sm active:scale-[0.98];
+    @apply relative overflow-hidden inline-flex items-center justify-center px-7 py-3.5 border-2 border-chocolate-800/50 dark:border-bronze-400/70 text-chocolate-950 dark:text-cream-50 bg-cream-100/60 dark:bg-night-800/60 font-sans text-xs font-bold uppercase tracking-[0.2em] rounded-sm focus:outline-none focus:ring-2 focus:ring-bronze-500 focus:ring-offset-2 shadow-sm cursor-pointer;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease;
+  }
+  .btn-secondary::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+  }
+  .btn-secondary:hover {
+    @apply border-bronze-500 bg-brand-green text-cream-50 dark:bg-bronze-500 dark:text-night-950;
+    transform: translate3d(0, -2px, 0) scale(1.02);
+    box-shadow: 0 10px 25px -4px rgba(8, 31, 24, 0.25);
+  }
+  html.dark .btn-secondary:hover {
+    box-shadow: 0 10px 25px -4px rgba(212, 175, 55, 0.3);
+  }
+  .btn-secondary:hover::after {
+    left: 160%;
+  }
+  .btn-secondary svg {
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .btn-secondary:hover svg {
+    transform: translate3d(3px, 0, 0);
+  }
+  .btn-secondary:active {
+    transform: translate3d(0, 0, 0) scale(0.98);
   }
 
   .btn-bronze {
-    @apply inline-flex items-center justify-center px-7 py-3.5 bg-bronze-500 text-cream-50 dark:text-night-950 font-sans text-xs font-bold uppercase tracking-[0.2em] border border-bronze-400/50 rounded-sm transition-all duration-300 hover:bg-amber-400 hover:text-chocolate-950 dark:hover:bg-amber-300 hover:shadow-lg hover:scale-[1.03] focus:outline-none focus:ring-2 focus:ring-bronze-500 focus:ring-offset-2 shadow-md active:scale-[0.98];
+    @apply relative overflow-hidden inline-flex items-center justify-center px-7 py-3.5 bg-bronze-500 text-cream-50 dark:text-night-950 font-sans text-xs font-bold uppercase tracking-[0.2em] border border-bronze-400/50 rounded-sm focus:outline-none focus:ring-2 focus:ring-bronze-500 focus:ring-offset-2 shadow-md cursor-pointer;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease;
+  }
+  .btn-bronze::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+  }
+  .btn-bronze:hover {
+    @apply bg-amber-400 text-chocolate-950 dark:bg-amber-300;
+    transform: translate3d(0, -2px, 0) scale(1.02);
+    box-shadow: 0 10px 25px -4px rgba(212, 175, 55, 0.45);
+  }
+  .btn-bronze:hover::after {
+    left: 160%;
+  }
+  .btn-bronze svg {
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .btn-bronze:hover svg {
+    transform: translate3d(2.5px, -2.5px, 0);
+  }
+  .btn-bronze:active {
+    transform: translate3d(0, 0, 0) scale(0.98);
   }
 
   .card-luxury {
