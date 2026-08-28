@@ -20,23 +20,24 @@ export default function OperationsTimeline() {
   const overrideTimerRef = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (manualOverride) return;
-      if (!sectionRef.current) return;
+    let ticking = false;
+
+    const updateStageOnScroll = () => {
+      if (manualOverride || !sectionRef.current) {
+        ticking = false;
+        return;
+      }
 
       const rect = sectionRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
 
       // Start scrolling progress ONLY when the section and its detail card are clearly in the active viewport
-      // Trigger zone: from when top of section reaches 35% of viewport down to when bottom reaches 65% of viewport
       const startOffset = windowHeight * 0.35;
-      const endOffset = -rect.height * 0.4;
-      const effectiveTravel = (windowHeight - startOffset) - endOffset;
-
       const currentPosition = windowHeight - rect.top - startOffset;
 
       if (currentPosition <= 0) {
         setActiveStage(0);
+        ticking = false;
         return;
       }
 
@@ -48,6 +49,14 @@ export default function OperationsTimeline() {
       );
 
       setActiveStage(calculatedStage);
+      ticking = false;
+    };
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateStageOnScroll);
+        ticking = true;
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });

@@ -30,6 +30,7 @@ export default function useScrollBackground() {
   useEffect(() => {
     let cachedSections = [];
     let ticking = false;
+    let lastColor = "";
 
     // Cache section layout metrics on load and resize (Zero layout thrashing on scroll)
     const computeSectionMetrics = () => {
@@ -85,14 +86,16 @@ export default function useScrollBackground() {
           activeColor = `rgb(${c[0]}, ${c[1]}, ${c[2]})`;
         }
       } else {
-        const docHeight = document.documentElement.scrollHeight - viewportHeight;
+        const docHeight = (document.documentElement.scrollHeight || document.body.scrollHeight) - viewportHeight;
         const progress = docHeight > 0 ? Math.max(0, Math.min(1, scrollY / docHeight)) : 0;
         const wave = (Math.sin(progress * Math.PI * 4 - Math.PI / 2) + 1) / 2;
         activeColor = interpolateRGB(modeColors.a, modeColors.b, wave);
       }
 
-      document.documentElement.style.setProperty("--scroll-bg-current", activeColor);
-      document.documentElement.style.backgroundColor = activeColor;
+      if (activeColor !== lastColor) {
+        lastColor = activeColor;
+        document.documentElement.style.setProperty("--scroll-bg-current", activeColor);
+      }
       ticking = false;
     };
 
@@ -112,14 +115,16 @@ export default function useScrollBackground() {
     setTimeout(() => {
       computeSectionMetrics();
       updateBackground();
-    }, 50);
+    }, 80);
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleResize, { passive: true });
+    window.addEventListener("orientationchange", handleResize, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
+      window.removeEventListener("orientationchange", handleResize);
     };
   }, [location.pathname, isDark]);
 }

@@ -19,9 +19,16 @@
     --color-brand-emerald: #0D3025;
   }
 
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
   body {
     @apply bg-cream-50 text-chocolate-950 antialiased font-sans selection:bg-bronze-500 selection:text-cream-50;
     overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
   }
 
   /* Hide default browser cursor on desktop with mouse pointer to avoid dual cursor overlap */
