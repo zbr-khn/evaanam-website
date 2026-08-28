@@ -446,52 +446,52 @@ export default function HomePage() {
       </ColorCreepSection>
 
       {/* ========================================================================= */}
-      {/* 9. MEET EVA SPOTLIGHT (TONE A: Racing Green / Alabaster White)             */}
+      {/* 9. MEET EVA SPOTLIGHT                                                     */}
       {/* ========================================================================= */}
       <ColorCreepSection tone="a" className="py-20 px-6 sm:px-8 lg:px-12 border-b border-chocolate-700/15 dark:border-emerald-500/20">
         <ScrollReveal variant="scale" threshold={0.12}>
           <div className="max-w-7xl mx-auto">
-            <div className="relative overflow-hidden rounded-lg bg-gradient-to-br from-brand-green via-night-900 to-night-950 border border-bronze-500/30 p-8 sm:p-12 shadow-2xl text-cream-100">
-              <div className="absolute top-0 right-0 w-96 h-96 bg-bronze-500/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="relative overflow-hidden rounded-lg bg-cream-100/95 dark:bg-gradient-to-br dark:from-brand-green dark:via-night-900 dark:to-night-950 border-2 border-chocolate-700/20 dark:border-bronze-500/30 p-8 sm:p-12 shadow-2xl text-chocolate-950 dark:text-cream-100 transition-all duration-300">
+              <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 dark:bg-bronze-500/10 rounded-full blur-3xl pointer-events-none" />
               <div className="absolute bottom-0 left-0 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
               <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 {/* Left Column: Information & Brand Pitch */}
                 <div className="lg:col-span-7 space-y-5">
-                  <div className="inline-flex items-center space-x-2 px-3 py-1 bg-night-900/90 border border-bronze-400/40 rounded-full text-amber-300">
+                  <div className="inline-flex items-center space-x-2 px-3 py-1 bg-cream-200 dark:bg-night-900/90 border border-amber-600/30 dark:border-bronze-400/40 rounded-full text-amber-800 dark:text-amber-300 shadow-sm">
                     <Sparkles className="w-3.5 h-3.5 animate-pulse" />
-                    <span className="text-[10px] font-mono uppercase tracking-widest font-semibold">
+                    <span className="text-[10px] font-mono uppercase tracking-widest font-bold">
                       AI Operations Concierge · 24/7
                     </span>
                   </div>
 
-                  <h2 className="editorial-heading text-3xl sm:text-4xl md:text-5xl text-cream-50 leading-tight">
-                    Meet <span className="italic text-amber-300">Eva</span> — Your Instant Staffing &amp; Operations Assistant.
+                  <h2 className="editorial-heading text-3xl sm:text-4xl md:text-5xl text-chocolate-950 dark:text-cream-50 leading-tight">
+                    Meet <span className="italic text-amber-700 dark:text-amber-300">Eva</span> — Your Instant Staffing &amp; Operations Assistant.
                   </h2>
 
-                  <p className="text-xs sm:text-sm text-cream-200/90 font-light leading-relaxed max-w-xl">
+                  <p className="text-xs sm:text-sm text-chocolate-700 dark:text-cream-200/90 font-light leading-relaxed max-w-xl">
                     Planning an event in Delhi NCR or pan-India? Eva estimates your exact crew headcounts, verifies venue logistics across 40+ five-star hotels, and transfers structured briefing requisitions directly to our on-duty WhatsApp dispatch coordinators.
                   </p>
 
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-                    <div className="p-3 bg-night-850/80 border border-bronze-500/20 rounded-sm">
-                      <p className="text-[11px] font-bold text-cream-50">⚡ Instant Headcounts</p>
-                      <p className="text-[10px] text-cream-300/70 font-light mt-0.5">Calculates stewards, VIP shadows &amp; runners</p>
+                    <div className="p-3 bg-cream-200/90 dark:bg-night-850/80 border border-chocolate-700/15 dark:border-bronze-500/20 rounded-sm shadow-sm">
+                      <p className="text-[11px] font-bold text-chocolate-950 dark:text-cream-50">⚡ Instant Headcounts</p>
+                      <p className="text-[10px] text-chocolate-600 dark:text-cream-300/70 font-light mt-0.5">Calculates stewards, VIP shadows &amp; runners</p>
                     </div>
-                    <div className="p-3 bg-night-850/80 border border-bronze-500/20 rounded-sm">
-                      <p className="text-[11px] font-bold text-cream-50">📍 40+ Venues</p>
-                      <p className="text-[10px] text-cream-300/70 font-light mt-0.5">Taj, ITC, Leela &amp; Pragati Maidan ready</p>
+                    <div className="p-3 bg-cream-200/90 dark:bg-night-850/80 border border-chocolate-700/15 dark:border-bronze-500/20 rounded-sm shadow-sm">
+                      <p className="text-[11px] font-bold text-chocolate-950 dark:text-cream-50">📍 40+ Venues</p>
+                      <p className="text-[10px] text-chocolate-600 dark:text-cream-300/70 font-light mt-0.5">Taj, ITC, Leela &amp; Pragati Maidan ready</p>
                     </div>
-                    <div className="p-3 bg-night-850/80 border border-bronze-500/20 rounded-sm">
-                      <p className="text-[11px] font-bold text-cream-50">💬 1-Click WhatsApp</p>
-                      <p className="text-[10px] text-cream-300/70 font-light mt-0.5">Pre-formatted roster briefing sent in 1 tap</p>
+                    <div className="p-3 bg-cream-200/90 dark:bg-night-850/80 border border-chocolate-700/15 dark:border-bronze-500/20 rounded-sm shadow-sm">
+                      <p className="text-[11px] font-bold text-chocolate-950 dark:text-cream-50">💬 1-Click WhatsApp</p>
+                      <p className="text-[10px] text-chocolate-600 dark:text-cream-300/70 font-light mt-0.5">Pre-formatted roster briefing sent in 1 tap</p>
                     </div>
                   </div>
 
                   <div className="pt-3 flex flex-wrap items-center gap-4">
                     <button
                       onClick={() => window.dispatchEvent(new CustomEvent("open-eva-chat"))}
-                      className="px-6 py-3.5 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-night-950 rounded-sm font-bold text-xs uppercase tracking-wider shadow-lg flex items-center space-x-2 transition-all duration-300 hover:scale-105"
+                      className="px-6 py-3.5 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 dark:from-amber-500 dark:to-amber-600 text-cream-50 dark:text-night-950 rounded-sm font-bold text-xs uppercase tracking-wider shadow-lg flex items-center space-x-2 transition-all duration-300 hover:scale-105"
                     >
                       <MessageSquare className="w-4 h-4" />
                       <span>Chat with Eva Now</span>
@@ -501,10 +501,10 @@ export default function HomePage() {
                       href="https://wa.me/919310039929?text=Hello%20Eva%20%26%20EVAANAM%20Team,%20I%20would%20like%20to%20consult%20on%20manpower%20staffing%20for%20an%20upcoming%20event."
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-6 py-3.5 bg-cream-100/10 hover:bg-cream-100/20 text-cream-100 border border-bronze-500/40 rounded-sm font-semibold text-xs uppercase tracking-wider transition-all duration-300 flex items-center space-x-2"
+                      className="px-6 py-3.5 bg-cream-200 hover:bg-cream-300 dark:bg-cream-100/10 dark:hover:bg-cream-100/20 text-chocolate-900 dark:text-cream-100 border border-chocolate-700/20 dark:border-bronze-500/40 rounded-sm font-semibold text-xs uppercase tracking-wider transition-all duration-300 flex items-center space-x-2 shadow-sm"
                     >
                       <span>Open Direct WhatsApp</span>
-                      <ArrowUpRight className="w-4 h-4 text-bronze-400" />
+                      <ArrowUpRight className="w-4 h-4 text-amber-700 dark:text-bronze-400" />
                     </a>
                   </div>
                 </div>
@@ -513,35 +513,35 @@ export default function HomePage() {
                 <div className="lg:col-span-5 flex justify-center">
                   <div
                     onClick={() => window.dispatchEvent(new CustomEvent("open-eva-chat"))}
-                    className="w-full max-w-sm bg-night-900/90 border border-bronze-500/40 rounded-lg p-5 shadow-2xl space-y-4 cursor-pointer hover:border-amber-400/70 transition-all duration-300 group"
+                    className="w-full max-w-sm bg-cream-50 dark:bg-night-900/90 border-2 border-chocolate-700/20 dark:border-bronze-500/40 rounded-lg p-5 shadow-2xl space-y-4 cursor-pointer hover:border-amber-500/70 dark:hover:border-amber-400/70 transition-all duration-300 group"
                   >
-                    <div className="flex items-center justify-between border-b border-chocolate-700/30 pb-3">
+                    <div className="flex items-center justify-between border-b border-chocolate-700/15 dark:border-chocolate-700/30 pb-3">
                       <div className="flex items-center space-x-2.5">
-                        <div className="w-8 h-8 rounded-full bg-bronze-500/20 border border-bronze-400/40 flex items-center justify-center text-amber-300">
+                        <div className="w-8 h-8 rounded-full bg-amber-500/15 dark:bg-bronze-500/20 border border-amber-500/30 dark:border-bronze-400/40 flex items-center justify-center text-amber-700 dark:text-amber-300">
                           <Sparkles className="w-4 h-4" />
                         </div>
                         <div>
-                          <h4 className="text-xs font-bold text-cream-50 flex items-center space-x-1">
+                          <h4 className="text-xs font-bold text-chocolate-950 dark:text-cream-50 flex items-center space-x-1">
                             <span>Eva</span>
-                            <span className="text-[8px] font-mono px-1 py-0.2 bg-amber-400/20 text-amber-300 rounded font-bold">AI</span>
+                            <span className="text-[8px] font-mono px-1 py-0.2 bg-amber-500/20 text-amber-800 dark:text-amber-300 rounded font-bold">AI</span>
                           </h4>
-                          <p className="text-[9px] font-mono text-emerald-400">● Active Dispatch Concierge</p>
+                          <p className="text-[9px] font-mono text-emerald-700 dark:text-emerald-400 font-semibold">● Active Dispatch Concierge</p>
                         </div>
                       </div>
-                      <span className="text-[10px] font-mono text-bronze-400 uppercase tracking-widest group-hover:text-amber-300 transition-colors">
+                      <span className="text-[10px] font-mono text-amber-800 dark:text-bronze-400 uppercase tracking-widest group-hover:text-amber-600 dark:group-hover:text-amber-300 transition-colors">
                         Tap to Chat →
                       </span>
                     </div>
 
                     <div className="space-y-2.5 text-xs">
-                      <div className="p-3 bg-night-800/90 rounded text-cream-200 text-[11px] leading-relaxed border border-chocolate-700/20">
+                      <div className="p-3 bg-cream-200 dark:bg-night-800/90 rounded text-chocolate-800 dark:text-cream-200 text-[11px] leading-relaxed border border-chocolate-700/15 dark:border-chocolate-700/20 shadow-sm">
                         "Hi! I can calculate the exact number of stewards, hostesses, and supervisors needed for your banquet floor. Where is your event taking place?"
                       </div>
                       <div className="flex flex-wrap gap-1.5 pt-1">
-                        <span className="text-[10px] px-2.5 py-1 bg-amber-500/20 text-amber-200 border border-amber-500/40 rounded-full font-mono">
+                        <span className="text-[10px] px-2.5 py-1 bg-amber-500/15 dark:bg-amber-500/20 text-amber-900 dark:text-amber-200 border border-amber-500/30 dark:border-amber-500/40 rounded-full font-mono">
                           ITC Maurya / Taj Palace
                         </span>
-                        <span className="text-[10px] px-2.5 py-1 bg-night-800 text-cream-300 border border-chocolate-700/30 rounded-full font-mono">
+                        <span className="text-[10px] px-2.5 py-1 bg-cream-200 dark:bg-night-800 text-chocolate-700 dark:text-cream-300 border border-chocolate-700/20 dark:border-chocolate-700/30 rounded-full font-mono">
                           Yashobhoomi / Expo
                         </span>
                       </div>
