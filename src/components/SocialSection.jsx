@@ -1,46 +1,38 @@
 import React, { useState } from "react";
-import { ChevronDown, ArrowUpRight, Sparkles, Heart, MessageCircle, Play, ExternalLink } from "lucide-react";
+import { ChevronDown, ArrowUpRight, Sparkles, Play, ExternalLink } from "lucide-react";
 import { InstagramIcon, FacebookIcon, YoutubeIcon, WhatsappIcon } from "./SocialIcons";
 
 const HOSPITALITY_INSTA_FEED = [
   {
     id: "feed-w1",
     src: "./images/gallery-weddings/IMG-6449-JPG.jpg",
-    caption: "Silver service banquet alignment at ITC Maurya ballroom. Precision in every place setting. ✨ #EVAANAM",
-    likes: 342,
-    comments: 28,
+    caption: "Silver service banquet alignment at ITC Maurya ballroom. Precision in every place setting.",
+    venue: "ITC Maurya, New Delhi",
     isReel: false,
-    date: "2 days ago",
     url: "https://instagram.com/evaanamhospitalitypvt.ltd",
   },
   {
     id: "feed-w2",
     src: "./images/gallery-weddings/IMG-6650-JPG.jpg",
-    caption: "Ceremonial floral welcome and traditional aarti hostesses for celebrity wedding arrivals at The Leela Palace. 🌸",
-    likes: 489,
-    comments: 41,
+    caption: "Ceremonial floral welcome and traditional aarti hostesses for wedding arrivals at The Leela Palace.",
+    venue: "The Leela Palace, Chanakyapuri",
     isReel: true,
-    date: "4 days ago",
     url: "https://instagram.com/evaanamhospitalitypvt.ltd",
   },
   {
     id: "feed-w3",
     src: "./images/gallery-weddings/IMG-2923-JPG.jpg",
-    caption: "Royal courtyard mandap supervision & guest escort crew at ITC Grand Bharat. Flawless sunset transition. 🏰",
-    likes: 512,
-    comments: 36,
+    caption: "Royal courtyard mandap supervision & guest escort crew at ITC Grand Bharat.",
+    venue: "ITC Grand Bharat, Gurgaon",
     isReel: false,
-    date: "1 week ago",
     url: "https://instagram.com/evaanamhospitalitypvt.ltd",
   },
   {
     id: "feed-w4",
     src: "./images/gallery-weddings/IMG-20260301-WA0010-jpg.jpg",
-    caption: "Behind the scenes: Pre-shift grooming check & VIP shadow channel alignment before the baraat arrival. 🎙️",
-    likes: 275,
-    comments: 19,
+    caption: "Pre-shift grooming check & VIP shadow channel alignment before the baraat arrival.",
+    venue: "Taj Palace, New Delhi",
     isReel: true,
-    date: "1 week ago",
     url: "https://instagram.com/evaanamhospitalitypvt.ltd",
   },
 ];
@@ -49,41 +41,33 @@ const CORPORATE_INSTA_FEED = [
   {
     id: "feed-c1",
     src: "./images/home-highlights/vivo.png",
-    caption: "Interactive brand demonstration crew managing high-density footfall at Vivo Experience Pavilion. 📱 #BrandActivation",
-    likes: 418,
-    comments: 32,
+    caption: "Interactive brand demonstration crew managing high-density footfall at Vivo Experience Pavilion.",
+    venue: "Pragati Maidan (IECC)",
     isReel: false,
-    date: "3 days ago",
     url: "https://instagram.com/evaanampvt.ltd",
   },
   {
     id: "feed-c2",
     src: "./images/home-highlights/indigo.png",
-    caption: "Leadership Plenary registration & C-suite protocol team for IndiGo aviation summit at Yashobhoomi IICC. ✈️",
-    likes: 563,
-    comments: 47,
+    caption: "Leadership Plenary registration & C-suite protocol team for IndiGo aviation summit.",
+    venue: "Yashobhoomi (IICC), Dwarka",
     isReel: true,
-    date: "5 days ago",
     url: "https://instagram.com/evaanampvt.ltd",
   },
   {
     id: "feed-c3",
     src: "./images/home-highlights/boman.png",
-    caption: "Executive VIP transit escort & green room security coordination for actor Boman Irani. 🎬",
-    likes: 684,
-    comments: 53,
+    caption: "Executive VIP transit escort & green room security coordination for keynote speaker Boman Irani.",
+    venue: "Convention Grand Ballroom",
     isReel: false,
-    date: "1 week ago",
     url: "https://instagram.com/evaanampvt.ltd",
   },
   {
     id: "feed-c4",
     src: "./images/home-highlights/pronto.png",
-    caption: "Multi-booth product launch facilitators and bilingual stall crew driving visitor engagement at Pronto expo. 🚀",
-    likes: 319,
-    comments: 24,
+    caption: "Multi-booth product launch facilitators and bilingual stall crew driving visitor engagement at Pronto expo.",
+    venue: "India Exposition Mart (IEML)",
     isReel: true,
-    date: "2 weeks ago",
     url: "https://instagram.com/evaanampvt.ltd",
   },
 ];
@@ -97,12 +81,10 @@ const SOCIAL_ACCOUNTS = [
     handle: "@evaanamhospitalitypvt.ltd",
     title: "EVAANAM Hospitality Pvt. Ltd.",
     bio: "Real-time wedding hospitality deployments, bridal shadows, traditional welcome hostesses, and banquet floor setups across Delhi NCR's premier five-star luxury hotels.",
-    badge: "Active Floor Feed",
-    highlight: "Live Wedding Deployments",
+    badge: "Official Hospitality Feed",
+    highlight: "Weddings & Five-Star Banquets",
     ctaText: "Follow @evaanamhospitalitypvt.ltd",
     url: "https://instagram.com/evaanamhospitalitypvt.ltd",
-    postsCount: "101 Posts",
-    followersCount: "4,200+ Followers",
     feedItems: HOSPITALITY_INSTA_FEED,
     iconBg: "bg-gradient-to-tr from-amber-500/20 to-orange-500/20 text-amber-700 dark:text-amber-300",
     accentColor: "border-amber-500/40",
@@ -115,12 +97,10 @@ const SOCIAL_ACCOUNTS = [
     handle: "@evaanampvt.ltd",
     title: "EVAANAM Corporate & Operations",
     bio: "Exhibition hall marshaling, C-suite boardroom protocol, registration check-in desks, and technical show runners at Pragati Maidan, Yashobhoomi & IEML.",
-    badge: "Operations Feed",
-    highlight: "Corporate Event Rosters",
+    badge: "Official Corporate Feed",
+    highlight: "Conclaves & Trade Expos",
     ctaText: "Follow @evaanampvt.ltd",
     url: "https://instagram.com/evaanampvt.ltd",
-    postsCount: "84 Posts",
-    followersCount: "3,800+ Followers",
     feedItems: CORPORATE_INSTA_FEED,
     iconBg: "bg-gradient-to-tr from-emerald-500/20 to-teal-500/20 text-emerald-800 dark:text-emerald-300",
     accentColor: "border-emerald-500/40",
@@ -148,35 +128,34 @@ const SOCIAL_ACCOUNTS = [
     handle: "EVAANAM Official Page",
     title: "EVAANAM Operations Desk",
     bio: "Official corporate news, upcoming event notices, operational updates, and event industry collaborations across the National Capital Region.",
-    badge: "Official Page",
-    highlight: "Company Announcements",
-    ctaText: "Visit Facebook Page",
-    url: "https://www.facebook.com/share/1UVz6xkxaY/",
-    iconBg: "bg-gradient-to-tr from-blue-500/20 to-indigo-500/20 text-blue-800 dark:text-blue-300",
+    badge: "Official Corporate Page",
+    highlight: "Company Bulletins",
+    ctaText: "Connect on Facebook",
+    url: "https://facebook.com/evaanam",
+    iconBg: "bg-gradient-to-tr from-blue-500/20 to-indigo-500/20 text-blue-700 dark:text-blue-300",
     accentColor: "border-blue-500/40",
   },
   {
     id: "whatsapp-direct",
-    platform: "WhatsApp Operations",
+    platform: "WhatsApp",
     icon: WhatsappIcon,
-    tag: "Operations Support Line",
+    tag: "Instant 24/7 Operations Desk Dispatch",
     handle: "+91 93100 39929",
-    title: "EVAANAM Direct Operations Desk",
-    bio: "Direct chat line for event planners, venue managers, and production teams. Staffing requirements, roster inquiries, and operational coordination across Delhi NCR.",
-    badge: "Direct Desk",
-    highlight: "Dedicated Operations Support",
-    ctaText: "Chat On WhatsApp",
+    title: "EVAANAM Operations Coordinator",
+    bio: "Real-time coordinator channel for urgent manpower requisitions, shift additions, supervisor briefings, and immediate event floor coordination.",
+    badge: "Direct Operations Desk",
+    highlight: "Instant 24/7 Support",
+    ctaText: "Chat on WhatsApp Now",
     url: "https://wa.me/919310039929",
-    iconBg: "bg-gradient-to-tr from-emerald-600/20 to-green-500/20 text-emerald-700 dark:text-emerald-300",
+    iconBg: "bg-gradient-to-tr from-emerald-500/20 to-green-500/20 text-emerald-700 dark:text-emerald-300",
     accentColor: "border-emerald-500/40",
   },
 ];
 
-export default function SocialSection({ showHeader = true, className = "" }) {
-  // Store expanded item IDs (first item open by default for immediate discoverability)
-  const [expandedIds, setExpandedIds] = useState(["insta-hospitality"]);
+export default function SocialSection({ className = "", showHeader = true }) {
+  const [expandedIds, setExpandedIds] = useState(["insta-hospitality", "insta-corporate"]);
 
-  const toggleItem = (id) => {
+  const toggleExpand = (id) => {
     setExpandedIds((prev) =>
       prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
     );
@@ -186,7 +165,7 @@ export default function SocialSection({ showHeader = true, className = "" }) {
     if (expandedIds.length === SOCIAL_ACCOUNTS.length) {
       setExpandedIds([]);
     } else {
-      setExpandedIds(SOCIAL_ACCOUNTS.map((acc) => acc.id));
+      setExpandedIds(SOCIAL_ACCOUNTS.map((a) => a.id));
     }
   };
 
@@ -234,42 +213,34 @@ export default function SocialSection({ showHeader = true, className = "" }) {
                 key={acc.id}
                 className={`border-2 rounded-sm transition-all duration-400 overflow-hidden shadow-sm ${
                   isOpen
-                    ? "bg-cream-100 dark:bg-night-800 border-bronze-500/70 shadow-xl"
-                    : "bg-cream-100/80 dark:bg-night-850/80 border-chocolate-700/15 dark:border-bronze-500/30 hover:border-bronze-500/60 hover:bg-cream-50 dark:hover:bg-night-800"
+                    ? "bg-cream-100 dark:bg-night-800 border-amber-500/70 shadow-xl"
+                    : "bg-cream-100/80 dark:bg-night-850/80 border-chocolate-700/15 dark:border-bronze-500/30 hover:border-amber-500/60 hover:bg-cream-50 dark:hover:bg-night-800"
                 }`}
               >
-                {/* 1. COMPACT COLLAPSIBLE BANNER HEADER */}
+                {/* 1. COMPACT CLICKABLE BANNER HEADER */}
                 <button
                   type="button"
-                  onClick={() => toggleItem(acc.id)}
+                  onClick={() => toggleExpand(acc.id)}
+                  className="w-full p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-left transition-colors cursor-pointer"
                   aria-expanded={isOpen}
-                  className="w-full p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-left focus:outline-none transition-colors cursor-pointer"
                 >
-                  {/* Left: Icon & Platform Info */}
                   <div className="flex items-center space-x-4">
                     <div
-                      className={`w-12 h-12 rounded-full flex items-center justify-center border-2 border-chocolate-700/10 dark:border-bronze-500/30 shrink-0 shadow-sm transition-transform duration-300 ${acc.iconBg} ${
+                      className={`w-12 h-12 rounded-sm flex items-center justify-center border shrink-0 transition-transform duration-300 ${
                         isOpen ? "scale-105" : ""
-                      }`}
+                      } ${acc.iconBg} ${acc.accentColor}`}
                     >
-                      <Icon className="w-5 h-5" />
+                      <Icon className="w-6 h-6" />
                     </div>
 
-                    <div className="space-y-0.5">
-                      <div className="flex items-center space-x-2">
-                        <span className="text-[10px] uppercase font-mono tracking-widest font-extrabold text-bronze-600 dark:text-amber-300">
-                          {acc.platform}
-                        </span>
-                        <span className="text-chocolate-400 dark:text-night-dim text-xs">•</span>
-                        <span className="text-xs text-chocolate-500 dark:text-night-muted font-sans hidden sm:inline">
-                          {acc.tag}
-                        </span>
-                      </div>
-
-                      <h3 className="font-serif text-xl sm:text-2xl text-chocolate-950 dark:text-cream-50 font-medium leading-snug">
+                    <div>
+                      <span className="text-[10px] uppercase font-mono tracking-widest font-extrabold text-amber-700 dark:text-amber-400">
+                        {acc.tag}
+                      </span>
+                      <h3 className="font-serif text-xl sm:text-2xl font-medium text-chocolate-950 dark:text-cream-50 leading-tight mt-0.5">
                         {acc.title}
                       </h3>
-                      <p className="text-xs font-mono text-chocolate-500 dark:text-night-dim font-bold">
+                      <p className="text-xs font-mono text-chocolate-600 dark:text-night-dim font-bold">
                         {acc.handle}
                       </p>
                     </div>
@@ -301,26 +272,14 @@ export default function SocialSection({ showHeader = true, className = "" }) {
                       {/* Profile Overview Bar */}
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-chocolate-700/10 dark:border-night-750">
                         <div className="flex items-center space-x-3">
-                          <div className="flex items-center space-x-1.5 text-xs font-bold text-bronze-600 dark:text-amber-300 font-mono">
+                          <div className="flex items-center space-x-1.5 text-xs font-bold text-amber-700 dark:text-amber-300 font-mono">
                             <Sparkles className="w-3.5 h-3.5" />
                             <span>{acc.highlight}</span>
                           </div>
-                          {acc.postsCount && (
-                            <>
-                              <span className="text-chocolate-400 dark:text-night-dim">•</span>
-                              <span className="text-xs font-mono font-semibold text-chocolate-700 dark:text-cream-200">
-                                {acc.postsCount}
-                              </span>
-                            </>
-                          )}
-                          {acc.followersCount && (
-                            <>
-                              <span className="text-chocolate-400 dark:text-night-dim">•</span>
-                              <span className="text-xs font-mono font-semibold text-chocolate-700 dark:text-cream-200">
-                                {acc.followersCount}
-                              </span>
-                            </>
-                          )}
+                          <span className="text-chocolate-400 dark:text-night-dim">•</span>
+                          <span className="text-xs font-mono font-semibold text-chocolate-700 dark:text-cream-200">
+                            {acc.handle}
+                          </span>
                         </div>
 
                         <div className="flex items-center space-x-2">
@@ -329,7 +288,7 @@ export default function SocialSection({ showHeader = true, className = "" }) {
                             <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
                           </span>
                           <span className="text-xs font-mono text-emerald-700 dark:text-emerald-400 font-bold uppercase tracking-wider">
-                            Live Feed
+                            Active Desk Feed
                           </span>
                         </div>
                       </div>
@@ -345,12 +304,12 @@ export default function SocialSection({ showHeader = true, className = "" }) {
                       {isInstagram && acc.feedItems && (
                         <div className="space-y-3 pt-2">
                           <div className="flex items-center justify-between">
-                            <span className="text-[10px] uppercase font-mono tracking-widest font-extrabold text-chocolate-500 dark:text-bronze-400 flex items-center space-x-1.5">
+                            <span className="text-[10px] uppercase font-mono tracking-widest font-extrabold text-chocolate-600 dark:text-bronze-400 flex items-center space-x-1.5">
                               <InstagramIcon className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
-                              <span>Recent Deployments Feed</span>
+                              <span>Recent Deployments &amp; Reels</span>
                             </span>
                             <span className="text-[10px] font-mono text-chocolate-400 dark:text-night-dim">
-                              Tap post to view on Instagram
+                              Tap post to open on Instagram
                             </span>
                           </div>
 
@@ -379,24 +338,15 @@ export default function SocialSection({ showHeader = true, className = "" }) {
                                   </div>
                                 )}
 
-                                {/* Bottom Info & Interactions */}
+                                {/* Bottom Info: Venue & Caption */}
                                 <div className="relative z-10 p-2.5 text-cream-100 space-y-1 transform translate-y-1 group-hover:translate-y-0 transition-transform">
                                   <p className="text-[10px] text-cream-200 font-sans line-clamp-2 leading-tight drop-shadow-sm font-light">
                                     {post.caption}
                                   </p>
 
                                   <div className="flex items-center justify-between text-[9px] font-mono text-amber-300/90 pt-1 border-t border-cream-100/10">
-                                    <div className="flex items-center space-x-2">
-                                      <span className="flex items-center space-x-0.5">
-                                        <Heart className="w-2.5 h-2.5 fill-amber-400 text-amber-400" />
-                                        <span>{post.likes}</span>
-                                      </span>
-                                      <span className="flex items-center space-x-0.5">
-                                        <MessageCircle className="w-2.5 h-2.5 text-cream-300" />
-                                        <span>{post.comments}</span>
-                                      </span>
-                                    </div>
-                                    <span className="text-[8.5px] text-cream-400/70">{post.date}</span>
+                                    <span className="truncate">{post.venue}</span>
+                                    <ArrowUpRight className="w-3 h-3 opacity-80 shrink-0 ml-1" />
                                   </div>
                                 </div>
                               </a>
@@ -408,7 +358,7 @@ export default function SocialSection({ showHeader = true, className = "" }) {
                       {/* Footer Actions: Follow Channel Button */}
                       <div className="pt-4 border-t border-chocolate-700/10 dark:border-night-750 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                         <div className="text-xs font-mono text-chocolate-600 dark:text-night-muted">
-                          Official feed verified by EVAANAM Operations Desk
+                          Official channel verified by EVAANAM Operations Desk
                         </div>
 
                         <a
