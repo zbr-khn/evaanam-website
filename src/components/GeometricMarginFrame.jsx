@@ -7,9 +7,6 @@ export default function GeometricMarginFrame() {
   const rightProgressBarRef = useRef(null);
 
   useEffect(() => {
-    // Disable on mobile/small viewports to conserve battery & 60-120fps CPU performance
-    if (window.innerWidth < 768) return;
-
     let ticking = false;
 
     const updateScroll = () => {
@@ -46,25 +43,25 @@ export default function GeometricMarginFrame() {
   return (
     <div
       aria-hidden="true"
-      className="hidden md:block fixed inset-0 pointer-events-none z-30 select-none overflow-hidden"
+      className="fixed inset-0 pointer-events-none z-30 select-none overflow-hidden"
     >
       {/* ================================================================ */}
       {/* 1. LEFT ARCHITECTURAL MARGIN LINE & LIVE SCROLL PROGRESS          */}
       {/* ================================================================ */}
-      <div className="absolute top-0 bottom-0 left-2 sm:left-6 lg:left-12 xl:left-16 flex flex-col justify-between">
-        {/* Top-Left Geographic Coordinates */}
-        <div className="pt-24 flex flex-col items-center -ml-[7px]">
-          <span className="hidden xl:block -rotate-90 origin-left translate-y-12 text-[8px] font-mono tracking-[0.28em] uppercase text-chocolate-400/70 dark:text-bronze-400/50">
+      <div className="absolute top-0 bottom-0 left-1.5 sm:left-4 md:left-6 lg:left-12 xl:left-16 flex flex-col justify-between">
+        {/* Top-Left Geographic Coordinates (Desktop) */}
+        <div className="pt-24 flex flex-col items-center -ml-[7px] hidden xl:flex">
+          <span className="-rotate-90 origin-left translate-y-12 text-[8px] font-mono tracking-[0.28em] uppercase text-chocolate-400/70 dark:text-bronze-400/50">
             NCR · 28.6139° N
           </span>
         </div>
 
-        {/* Vertical Margin Hairline (Clean, Continuous) */}
-        <div className="absolute top-0 bottom-0 left-0 w-[1px] bg-gradient-to-b from-bronze-500/20 via-chocolate-700/10 dark:via-bronze-500/10 to-bronze-500/20">
+        {/* Vertical Margin Hairline (Clean, Continuous across all devices) */}
+        <div className="absolute top-0 bottom-0 left-0 w-[1.5px] bg-gradient-to-b from-amber-500/25 via-chocolate-700/15 dark:via-bronze-500/15 to-amber-500/25">
           {/* Dynamic Real-Time Live Scroll Progress Glow Bar (LEFT SIDE) */}
           <div
             ref={leftProgressBarRef}
-            className="w-[1px] h-full bg-gradient-to-b from-bronze-400 via-bronze-500 to-amber-400 shadow-[0_0_8px_rgba(176,141,87,0.8)] will-change-transform"
+            className="w-[1.5px] h-full bg-gradient-to-b from-amber-400 via-amber-500 to-amber-600 dark:from-bronze-400 dark:via-amber-400 dark:to-amber-500 shadow-[0_0_8px_rgba(212,186,140,0.9)] will-change-transform"
             style={{
               transformOrigin: "top center",
               transform: "scaleY(0) translate3d(0, 0, 0)",
@@ -76,20 +73,20 @@ export default function GeometricMarginFrame() {
       {/* ================================================================ */}
       {/* 2. RIGHT ARCHITECTURAL MARGIN LINE & LIVE SCROLL PROGRESS         */}
       {/* ================================================================ */}
-      <div className="absolute top-0 bottom-0 right-2 sm:right-6 lg:right-12 xl:right-16 flex flex-col justify-between">
-        {/* Top-Right Geographic Coordinates */}
-        <div className="pt-24 flex flex-col items-center -mr-[7px]">
-          <span className="hidden xl:block rotate-90 origin-right translate-y-12 text-[8px] font-mono tracking-[0.28em] uppercase text-chocolate-400/70 dark:text-bronze-400/50">
+      <div className="absolute top-0 bottom-0 right-1.5 sm:right-4 md:right-6 lg:right-12 xl:right-16 flex flex-col justify-between">
+        {/* Top-Right Geographic Coordinates (Desktop) */}
+        <div className="pt-24 flex flex-col items-center -mr-[7px] hidden xl:flex">
+          <span className="rotate-90 origin-right translate-y-12 text-[8px] font-mono tracking-[0.28em] uppercase text-chocolate-400/70 dark:text-bronze-400/50">
             DELHI · 77.2090° E
           </span>
         </div>
 
-        {/* Vertical Margin Hairline (Clean, Continuous) */}
-        <div className="absolute top-0 bottom-0 right-0 w-[1px] bg-gradient-to-b from-bronze-500/20 via-chocolate-700/10 dark:via-bronze-500/10 to-bronze-500/20">
+        {/* Vertical Margin Hairline (Clean, Continuous across all devices) */}
+        <div className="absolute top-0 bottom-0 right-0 w-[1.5px] bg-gradient-to-b from-amber-500/25 via-chocolate-700/15 dark:via-bronze-500/15 to-amber-500/25">
           {/* Dynamic Real-Time Live Scroll Progress Glow Bar (RIGHT SIDE) */}
           <div
             ref={rightProgressBarRef}
-            className="w-[1px] h-full bg-gradient-to-b from-bronze-400 via-bronze-500 to-amber-400 shadow-[0_0_8px_rgba(176,141,87,0.8)] will-change-transform"
+            className="w-[1.5px] h-full bg-gradient-to-b from-amber-400 via-amber-500 to-amber-600 dark:from-bronze-400 dark:via-amber-400 dark:to-amber-500 shadow-[0_0_8px_rgba(212,186,140,0.9)] will-change-transform"
             style={{
               transformOrigin: "top center",
               transform: "scaleY(0) translate3d(0, 0, 0)",
