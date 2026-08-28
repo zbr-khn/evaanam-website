@@ -19,8 +19,8 @@ export default function ServicesPage() {
 
   return (
     <div className="animate-fade-in pt-28">
-      {/* 1. DEDICATED PAGE INTRODUCTION HERO (TONE A: Green / Alabaster White) */}
-      <section className="section-tone-a py-20 px-6 sm:px-8 lg:px-12 border-b border-chocolate-700/15 dark:border-emerald-500/20">
+      {/* 1. DEDICATED PAGE INTRODUCTION HERO (BLEED B -> A) */}
+      <section className="bleed-b-to-a section-tone-a py-20 px-6 sm:px-8 lg:px-12">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl space-y-6">
             <span className="micro-label">OUR SERVICES</span>
@@ -35,8 +35,8 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* 2. WEDDING HOSPITALITY SECTION (TONE B: Espresso Brown / Sandstone) */}
-      <section className="section-tone-b py-24 px-6 sm:px-8 lg:px-12 border-b border-chocolate-700/15 dark:border-bronze-500/20">
+      {/* 2. WEDDING HOSPITALITY SECTION (BLEED A -> B) */}
+      <section className="bleed-a-to-b section-tone-b py-24 px-6 sm:px-8 lg:px-12">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
             {/* Left Header info */}
@@ -65,7 +65,7 @@ export default function ServicesPage() {
 
             {/* Right Expandable Accordion of 14 Roles */}
             <div className="lg:col-span-8 space-y-3">
-              <div className="flex items-center justify-between pb-3 border-b border-chocolate-700/15 dark:border-bronze-500/20 text-xs uppercase tracking-wider font-semibold text-chocolate-700 dark:text-night-muted">
+              <div className="flex items-center justify-between pb-3 border-b border-chocolate-700/15 dark:border-bronze-500/20 text-xs uppercase tracking-wider font-semibold">
                 <span>Operational Role</span>
                 <span>Scope &amp; Deployment</span>
               </div>
@@ -77,8 +77,8 @@ export default function ServicesPage() {
                     key={role.id}
                     className={`border transition-all duration-300 rounded-sm ${
                       isOpen
-                        ? "bg-cream-50 dark:bg-night-800 border-amber-500/60 dark:border-bronze-500/60 shadow-md"
-                        : "bg-cream-100/80 dark:bg-night-850/80 border-chocolate-700/10 dark:border-bronze-500/15 hover:border-amber-500/40"
+                        ? "bg-cream-50 dark:bg-night-800 border-amber-500/60 shadow-md"
+                        : "bg-cream-100/80 dark:bg-night-850/80 border-chocolate-700/10 dark:border-bronze-500/20 hover:border-amber-500/40"
                     }`}
                   >
                     <button
@@ -100,12 +100,12 @@ export default function ServicesPage() {
                     </button>
 
                     {isOpen && (
-                      <div className="px-6 pb-6 pt-1 text-xs sm:text-sm text-chocolate-700 dark:text-night-muted font-light leading-relaxed border-t border-chocolate-700/10 dark:border-night-700 animate-fade-in">
+                      <div className="px-6 pb-6 pt-1 text-xs sm:text-sm font-light leading-relaxed border-t border-chocolate-700/10 dark:border-night-700 animate-fade-in">
                         <p>{role.desc}</p>
-                        <div className="mt-4 pt-3 flex flex-wrap items-center gap-4 text-[11px] font-mono text-chocolate-600 dark:text-night-dim">
+                        <div className="mt-4 pt-3 flex flex-wrap items-center gap-4 text-[11px] font-mono">
                           <span className="flex items-center space-x-1 text-amber-700 dark:text-amber-400 font-semibold">
                             <Check className="w-3.5 h-3.5" />
-                            <span>Trained &amp; Uniformed</span>
+                            <span>Groomed &amp; Uniformed</span>
                           </span>
                           <span className="flex items-center space-x-1 text-amber-700 dark:text-amber-400 font-semibold">
                             <Check className="w-3.5 h-3.5" />
@@ -113,7 +113,7 @@ export default function ServicesPage() {
                           </span>
                           <span className="flex items-center space-x-1 text-amber-700 dark:text-amber-400 font-semibold">
                             <Check className="w-3.5 h-3.5" />
-                            <span>Supervisor Managed</span>
+                            <span>Pre-Shift Briefed</span>
                           </span>
                         </div>
                       </div>
@@ -126,8 +126,8 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* 3. CORPORATE & EXPOS SECTION (TONE A: Racing Green / Alabaster White) */}
-      <section className="section-tone-a py-24 px-6 sm:px-8 lg:px-12 border-b border-chocolate-700/15 dark:border-emerald-500/20">
+      {/* 3. CORPORATE & EXPOS SECTION (BLEED B -> A) */}
+      <section className="bleed-b-to-a section-tone-a py-24 px-6 sm:px-8 lg:px-12">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
             {/* Left Header info */}
@@ -137,11 +137,11 @@ export default function ServicesPage() {
                 <h2 className="editorial-heading text-3xl sm:text-4xl">
                   Corporate &amp; Expos
                 </h2>
-                <p className="text-base text-emerald-800 dark:text-emerald-400 font-serif italic">
+                <p className="text-base text-emerald-800 dark:text-emerald-300 font-serif italic">
                   Expos, activations, launches and conventions.
                 </p>
                 <p className="text-xs font-light leading-relaxed">
-                  Engineered for high-throughput delegate scanning, multi-hall management, C-suite hospitality, and live show running across Delhi NCR's top convention venues.
+                  From high-throughput badge registration to stage show running, our 13 specialized corporate personnel ensure smooth coordination for conclaves, auto expos, tech summits, and brand popups.
                 </p>
                 <div className="pt-4">
                   <a
@@ -217,13 +217,13 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* 4. MANPOWER ROSTER CALCULATOR SECTION (TONE B: Espresso Brown / Sandstone) */}
-      <section id="calculator-section" className="section-tone-b py-24 px-6 sm:px-8 lg:px-12 border-b border-chocolate-700/15 dark:border-bronze-500/20">
+      {/* 4. MANPOWER ROSTER CALCULATOR SECTION (BLEED A -> B) */}
+      <section id="calculator-section" className="bleed-a-to-b section-tone-b py-24 px-6 sm:px-8 lg:px-12">
         <ManpowerCalculator />
       </section>
 
-      {/* 5. EVENT TYPES (TONE A: Racing Green / Alabaster White) */}
-      <section className="section-tone-a py-24 px-6 sm:px-8 lg:px-12 border-b border-chocolate-700/15 dark:border-emerald-500/20">
+      {/* 5. EVENT TYPES (BLEED B -> A) */}
+      <section className="bleed-b-to-a section-tone-a py-24 px-6 sm:px-8 lg:px-12">
         <div className="max-w-7xl mx-auto">
           <div className="mb-16">
             <span className="micro-label">SECTOR SPECIALIZATION</span>
@@ -314,8 +314,8 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* 6. BOTTOM CONVERSION CTA (TONE B: Espresso Brown / Sandstone) */}
-      <section className="section-tone-b py-20 px-6 sm:px-8 lg:px-12 text-center">
+      {/* 6. BOTTOM CONVERSION CTA (BLEED A -> B) */}
+      <section className="bleed-a-to-b section-tone-b py-20 px-6 sm:px-8 lg:px-12 text-center">
         <div className="max-w-3xl mx-auto space-y-6">
           <span className="micro-label text-amber-700 dark:text-amber-400 font-bold">CUSTOM ROSTER DEPLOYMENT</span>
           <h3 className="editorial-heading text-3xl sm:text-4xl">

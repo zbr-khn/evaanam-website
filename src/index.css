@@ -10,10 +10,6 @@
     --scroll-bg-current: #081F18;
     --scroll-bg-light: #FCFAF6;
     --scroll-bg-dark: #081F18;
-    --tone-a-color: #FAF8F3;
-    --tone-b-color: #EFE8DE;
-    --tone-a-to-b-mid: #F5EFEB;
-    --tone-b-to-a-mid: #F5EFEB;
   }
 
   html {
@@ -27,10 +23,6 @@
   }
 
   html.dark {
-    --tone-a-color: #081F18;
-    --tone-b-color: #1A120B;
-    --tone-a-to-b-mid: #111912;
-    --tone-b-to-a-mid: #111912;
     background-color: #081F18;
     color: #F5F1E8;
   }
@@ -212,29 +204,37 @@
 }
 
 /* =========================================================================
-   DUAL-TONE ALTERNATING PAGE BACKGROUNDS & ADAPTIVE TYPOGRAPHY
+   PURE CONTINUOUS GRADIENT BLEEDS (NO HARD BORDERS, NO FAINTED LINES)
    ========================================================================= */
 
-/* TONE A: Deep British Racing Green (Dark Mode) <-> Crisp Alabaster White (Light Mode) */
+/* Tone A: Deep Racing Green (Dark) / Crisp Alabaster White (Light) */
 .section-tone-a {
-  background-color: #FAF8F3;
   color: #12241C;
-  border-color: rgba(18, 36, 28, 0.08);
 }
 html.dark .section-tone-a {
-  background-color: #081F18;
   color: #FCFAF6;
-  border-color: rgba(104, 211, 145, 0.12);
 }
 
-/* TONE B: Rich Espresso Chocolate Brown (Dark Mode) <-> Warm Light Biscuit Sandstone (Light Mode) */
+/* Tone B: Rich Espresso Chocolate (Dark) / Warm Biscuit Sandstone (Light) */
 .section-tone-b {
-  background-color: #EFE8DE;
   color: #2B1A0E;
-  border-color: rgba(43, 26, 14, 0.10);
 }
 html.dark .section-tone-b {
-  background-color: #1A120B;
   color: #FCFAF6;
-  border-color: rgba(212, 175, 55, 0.14);
+}
+
+/* Gradient Bleed: From Tone A (Green/White) into Tone B (Espresso/Biscuit) */
+.bleed-a-to-b {
+  background: linear-gradient(180deg, #FAF8F3 0%, #F5EFE7 35%, #F0E8DD 70%, #EFE8DE 100%);
+}
+html.dark .bleed-a-to-b {
+  background: linear-gradient(180deg, #081F18 0%, #0E1D16 35%, #151610 70%, #1A120B 100%);
+}
+
+/* Gradient Bleed: From Tone B (Espresso/Biscuit) into Tone A (Green/White) */
+.bleed-b-to-a {
+  background: linear-gradient(180deg, #EFE8DE 0%, #F0E8DD 35%, #F5EFE7 70%, #FAF8F3 100%);
+}
+html.dark .bleed-b-to-a {
+  background: linear-gradient(180deg, #1A120B 0%, #151610 35%, #0E1D16 70%, #081F18 100%);
 }

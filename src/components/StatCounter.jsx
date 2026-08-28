@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { COMPANY_INFO } from "../data/evaanamData";
 
-function SingleStat({ value, suffix, label, desc, isLast }) {
+function SingleStat({ value, suffix, label, desc }) {
   const [count, setCount] = useState(0);
   const [hasAnimated, setHasAnimated] = useState(false);
   const elementRef = useRef(null);
@@ -50,12 +50,10 @@ function SingleStat({ value, suffix, label, desc, isLast }) {
   return (
     <div
       ref={elementRef}
-      className={`flex flex-col justify-between py-8 px-6 sm:px-8 transition-colors duration-400 ${
-        !isLast ? "border-b lg:border-b-0 lg:border-r border-chocolate-700/10 dark:border-night-700" : ""
-      }`}
+      className="flex flex-col justify-between py-6 px-4 sm:px-6 transition-colors duration-400"
     >
       <div>
-        <div className="flex items-baseline space-x-1 mb-2">
+        <div className="flex items-baseline space-x-1 mb-1.5">
           <span className="font-serif text-4xl sm:text-5xl lg:text-6xl font-light text-chocolate-950 dark:text-cream-50 tracking-tight">
             {count}
           </span>
@@ -63,12 +61,12 @@ function SingleStat({ value, suffix, label, desc, isLast }) {
             {suffix}
           </span>
         </div>
-        <p className="text-xs uppercase tracking-[0.18em] font-semibold text-chocolate-700 dark:text-cream-200 font-sans mb-1.5">
+        <p className="text-xs uppercase tracking-[0.18em] font-semibold text-chocolate-700 dark:text-cream-200 font-sans mb-1">
           {label}
         </p>
       </div>
       {desc && (
-        <p className="text-[12px] text-chocolate-500 dark:text-night-muted font-light leading-relaxed mt-2">
+        <p className="text-[12px] text-chocolate-500 dark:text-night-muted font-light leading-relaxed mt-1.5">
           {desc}
         </p>
       )}
@@ -76,24 +74,21 @@ function SingleStat({ value, suffix, label, desc, isLast }) {
   );
 }
 
-export default function StatCounter({ className = "", light = false }) {
+export default function StatCounter({ className = "" }) {
   return (
     <section
       aria-label="EVAANAM Operational Statistics"
-      className={`border-y border-chocolate-700/10 dark:border-bronze-500/15 transition-colors duration-400 ${
-        light ? "bg-cream-100/70 dark:bg-night-850/70" : "bg-cream-100 dark:bg-night-850"
-      } ${className}`}
+      className={`py-8 bg-transparent text-chocolate-700 dark:text-cream-100 transition-colors duration-400 ${className}`}
     >
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-          {COMPANY_INFO.stats.map((stat, idx) => (
+      <div className="max-w-7xl mx-auto px-6 sm:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {COMPANY_INFO.stats.map((stat) => (
             <SingleStat
               key={stat.label}
               value={stat.value}
               suffix={stat.suffix}
               label={stat.label}
               desc={stat.desc}
-              isLast={idx === COMPANY_INFO.stats.length - 1}
             />
           ))}
         </div>

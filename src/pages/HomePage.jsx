@@ -4,7 +4,6 @@ import { ArrowUpRight, ChevronRight, Sparkles, Check, Crown, Briefcase, MessageS
 import StatCounter from "../components/StatCounter";
 import VenueMarquee from "../components/VenueMarquee";
 import SocialSection from "../components/SocialSection";
-import GeometricDivider from "../components/GeometricDivider";
 import ExecutiveCarousel from "../components/ExecutiveCarousel";
 import TestimonialMarquee from "../components/TestimonialMarquee";
 import ScrollReveal from "../components/ScrollReveal";
@@ -21,7 +20,7 @@ export default function HomePage() {
       {/* ========================================================================= */}
       {/* 1. HERO SECTION                                                            */}
       {/* ========================================================================= */}
-      <section data-tone="a" className="relative min-h-[92vh] sm:min-h-screen flex items-center justify-center pt-28 pb-16 px-6 sm:px-8 lg:px-12 overflow-hidden text-cream-100">
+      <section data-tone="a" className="relative min-h-[92vh] sm:min-h-screen flex items-center justify-center pt-28 pb-16 px-6 sm:px-8 lg:px-12 overflow-hidden text-cream-100 bg-brand-dark">
         {/* Background Image with slow Ken Burns effect & luxury dark overlay */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
@@ -30,9 +29,6 @@ export default function HomePage() {
             className="w-full h-full object-cover object-center ken-burns opacity-35 dark:opacity-25"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-night-950 via-night-950/80 to-night-950/90" />
-          {/* Fine bronze decorative lines */}
-          <div className="absolute top-0 left-12 bottom-0 w-[1px] bg-bronze-500/15 hidden lg:block" />
-          <div className="absolute top-0 right-12 bottom-0 w-[1px] bg-bronze-500/15 hidden lg:block" />
         </div>
 
         {/* Hero Content Container */}
@@ -109,7 +105,7 @@ export default function HomePage() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 2. EXECUTIVE ENGAGEMENTS CAROUSEL (TONE B: Espresso Brown / Sandstone)     */}
+      {/* 2. EXECUTIVE ENGAGEMENTS CAROUSEL (BLEED A -> B)                           */}
       {/* ========================================================================= */}
       <ColorCreepSection tone="b">
         <ScrollReveal variant="up" threshold={0.1}>
@@ -118,15 +114,15 @@ export default function HomePage() {
       </ColorCreepSection>
 
       {/* ========================================================================= */}
-      {/* 3. STATS STRIP & PHILOSOPHY (TONE A: Racing Green / Alabaster White)       */}
+      {/* 3. STATS STRIP & PHILOSOPHY (BLEED B -> A)                                 */}
       {/* ========================================================================= */}
       <ColorCreepSection tone="a">
         <ScrollReveal variant="up" threshold={0.15}>
-          <StatCounter light={true} />
+          <StatCounter />
         </ScrollReveal>
 
         <ScrollReveal variant="up" threshold={0.15}>
-          <div className="py-24 px-6 sm:px-8 lg:px-12">
+          <div className="py-20 px-6 sm:px-8 lg:px-12">
             <div className="max-w-4xl mx-auto text-center space-y-8">
               <span className="micro-label">THE EVAANAM PHILOSOPHY</span>
               <h2 className="editorial-heading text-4xl sm:text-5xl md:text-6xl">
@@ -146,14 +142,12 @@ export default function HomePage() {
                 </Link>
               </div>
             </div>
-
-            <GeometricDivider className="max-w-4xl mx-auto mt-16" label="OPERATIONAL DIVISIONS" />
           </div>
         </ScrollReveal>
       </ColorCreepSection>
 
       {/* ========================================================================= */}
-      {/* 4. TWO PRIMARY SERVICE VERTICALS (TONE B: Espresso Brown / Sandstone)      */}
+      {/* 4. TWO PRIMARY SERVICE VERTICALS (BLEED A -> B)                            */}
       {/* ========================================================================= */}
       <ColorCreepSection tone="b" className="py-24 px-6 sm:px-8 lg:px-12">
         <div className="max-w-7xl mx-auto">
@@ -355,7 +349,7 @@ export default function HomePage() {
       </ColorCreepSection>
 
       {/* ========================================================================= */}
-      {/* 5. OPERATIONAL ASSURANCE BANNER (TONE A: Racing Green / Alabaster White)   */}
+      {/* 5. OPERATIONAL ASSURANCE BANNER (BLEED B -> A)                             */}
       {/* ========================================================================= */}
       <ColorCreepSection tone="a">
         <ScrollReveal variant="scale" threshold={0.15}>
@@ -384,7 +378,7 @@ export default function HomePage() {
       </ColorCreepSection>
 
       {/* ========================================================================= */}
-      {/* 6. VENUE FOOTPRINT (TONE B: Espresso Brown / Sandstone)                    */}
+      {/* 6. VENUE FOOTPRINT (BLEED A -> B)                                          */}
       {/* ========================================================================= */}
       <ColorCreepSection tone="b" className="py-16">
         <ScrollReveal variant="up" threshold={0.12}>
@@ -409,7 +403,7 @@ export default function HomePage() {
       </ColorCreepSection>
 
       {/* ========================================================================= */}
-      {/* 7. TESTIMONIALS (TONE A: Racing Green / Alabaster White)                   */}
+      {/* 7. TESTIMONIALS (BLEED B -> A)                                             */}
       {/* ========================================================================= */}
       <ColorCreepSection tone="a" className="py-20">
         <ScrollReveal variant="up" threshold={0.12}>
@@ -437,7 +431,7 @@ export default function HomePage() {
       </ColorCreepSection>
 
       {/* ========================================================================= */}
-      {/* 8. SOCIAL JOURNEY (TONE B: Espresso Brown / Sandstone)                     */}
+      {/* 8. SOCIAL JOURNEY (BLEED A -> B)                                           */}
       {/* ========================================================================= */}
       <ColorCreepSection tone="b">
         <ScrollReveal variant="up" threshold={0.12}>
@@ -446,7 +440,7 @@ export default function HomePage() {
       </ColorCreepSection>
 
       {/* ========================================================================= */}
-      {/* 9. MEET EVA SPOTLIGHT                                                     */}
+      {/* 9. MEET EVA SPOTLIGHT (BLEED B -> A)                                       */}
       {/* ========================================================================= */}
       <ColorCreepSection tone="a" className="py-20 px-6 sm:px-8 lg:px-12">
         <ScrollReveal variant="scale" threshold={0.12}>
@@ -555,7 +549,7 @@ export default function HomePage() {
       </ColorCreepSection>
 
       {/* ========================================================================= */}
-      {/* 10. EVENT REQUISITION CONTACT FORM (TOWARDS THE END OF THE HOMEPAGE)       */}
+      {/* 10. EVENT REQUISITION CONTACT FORM (BLEED A -> B)                          */}
       {/* ========================================================================= */}
       <ColorCreepSection tone="b" id="contact-form-section" className="py-24 px-6 sm:px-8 lg:px-12">
         <ScrollReveal variant="up" threshold={0.08}>
@@ -564,7 +558,7 @@ export default function HomePage() {
       </ColorCreepSection>
 
       {/* ========================================================================= */}
-      {/* 11. FINAL CALL TO CONVERSATION (TONE A: Racing Green / Alabaster White)    */}
+      {/* 11. FINAL CALL TO CONVERSATION (BLEED B -> A)                              */}
       {/* ========================================================================= */}
       <ColorCreepSection tone="a" className="py-24 px-6 sm:px-8 lg:px-12">
         <ScrollReveal variant="up" threshold={0.15}>
