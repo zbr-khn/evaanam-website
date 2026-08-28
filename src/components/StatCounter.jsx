@@ -1,47 +1,75 @@
 import React, { useEffect, useRef } from "react";
 import { COMPANY_INFO } from "../data/evaanamData";
 
-function SingleStat({ value, suffix, label, desc, startAnimation }) {
+function SingleStat({ value, suffix, label, desc }) {
+  const containerRef = useRef(null);
   const numberRef = useRef(null);
   const hasAnimatedRef = useRef(false);
 
   useEffect(() => {
-    if (!startAnimation || hasAnimatedRef.current) return;
-    hasAnimatedRef.current = true;
+    const el = containerRef.current;
+    if (!el) return;
 
-    const duration = 1500; // 1.5s smooth, fluid count-up
-    const startTime = performance.now();
-    const targetValue = value;
+    const startCountAnimation = () => {
+      if (hasAnimatedRef.current) return;
+      hasAnimatedRef.current = true;
 
-    const animate = (currentTime) => {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
+      const duration = 1400; // 1.4s smooth fluid count-up
+      const startTime = performance.now();
+      const targetValue = value;
 
-      // Smooth Ease-Out Quart curve: 1 - (1 - t)^4
-      const easeProgress = 1 - Math.pow(1 - progress, 4);
-      const currentNumber = Math.round(easeProgress * targetValue);
+      const animate = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
 
-      if (numberRef.current) {
-        numberRef.current.textContent = currentNumber;
-      }
+        // Smooth Ease-Out Quart curve
+        const easeProgress = 1 - Math.pow(1 - progress, 4);
+        const currentNumber = Math.round(easeProgress * targetValue);
 
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      } else if (numberRef.current) {
-        numberRef.current.textContent = targetValue;
-      }
+        if (numberRef.current) {
+          numberRef.current.textContent = currentNumber;
+        }
+
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else if (numberRef.current) {
+          numberRef.current.textContent = targetValue;
+        }
+      };
+
+      requestAnimationFrame(animate);
     };
 
-    requestAnimationFrame(animate);
-  }, [startAnimation, value]);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          startCountAnimation();
+          observer.unobserve(el);
+        }
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -10px 0px",
+      }
+    );
+
+    observer.observe(el);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [value]);
 
   return (
-    <div className="flex flex-col justify-between py-6 px-4 sm:px-6 transition-colors duration-400">
+    <div
+      ref={containerRef}
+      className="flex flex-col justify-between py-6 px-4 sm:px-6 transition-colors duration-400"
+    >
       <div>
         <div className="flex items-baseline space-x-1 mb-1.5">
           <span
             ref={numberRef}
-            className="font-serif text-4xl sm:text-5xl lg:text-6xl font-light text-chocolate-950 dark:text-cream-50 tracking-tight will-change-contents font-tabular-nums"
+            className="font-serif text-4xl sm:text-5xl lg:text-6xl font-light text-chocolate-950 dark:text-cream-50 tracking-tight will-change-contents font-mono sm:font-serif"
           >
             0
           </span>
@@ -63,39 +91,8 @@ function SingleStat({ value, suffix, label, desc, startAnimation }) {
 }
 
 export default function StatCounter({ className = "" }) {
-  const sectionRef = useRef(null);
-  const isTriggeredRef = useRef(false);
-  const [startAll, setStartAll] = React.useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        // Trigger only once when user scrolls to reach the section
-        if (entry.isIntersecting && !isTriggeredRef.current) {
-          isTriggeredRef.current = true;
-          setStartAll(true);
-          if (sectionRef.current) {
-            observer.unobserve(sectionRef.current);
-          }
-        }
-      },
-      {
-        threshold: 0.15,
-        rootMargin: "0px 0px -30px 0px",
-      }
-    );
-
-    const el = sectionRef.current;
-    if (el) observer.observe(el);
-
-    return () => {
-      if (el) observer.unobserve(el);
-    };
-  }, []);
-
   return (
     <section
-      ref={sectionRef}
       aria-label="EVAANAM Operational Statistics"
       className={`py-8 bg-transparent text-chocolate-700 dark:text-cream-100 transition-colors duration-400 ${className}`}
     >
@@ -108,7 +105,6 @@ export default function StatCounter({ className = "" }) {
               suffix={stat.suffix}
               label={stat.label}
               desc={stat.desc}
-              startAnimation={startAll}
             />
           ))}
         </div>
