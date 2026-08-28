@@ -1,15 +1,25 @@
 import React, { useState, useEffect } from "react";
+import { useTheme } from "../context/ThemeContext";
 
 /**
  * SignaturePreloader (Optimized 60fps/120fps Smooth Performance)
- * - Big Sacred Concentric Circle Astrolabe layered directly BEHIND the "EVAANAM" typography
- * - Signature Colors: Deep British Racing Green (#081F18), Imperial Gold (#D4BA8C), Alabaster Cream (#FAF8F3)
- * - Finale: Big Circle smoothly zooms in across the entire viewport (GPU hardware accelerated) and fades into the Hero Landing Page.
+ * - Detects Light Mode vs Dark Mode on initialization.
+ * - Light Mode: Crisp Alabaster White (#FAF8F3) canvas with Antique Gold & Forest Emerald accents.
+ * - Dark Mode: Deep British Racing Green (#081F18) canvas with Imperial Gold & Alabaster Cream accents.
+ * - Big Sacred Concentric Circle Astrolabe layered directly BEHIND the "EVAANAM" typography.
+ * - Finale: Big Circle smoothly zooms in across the entire viewport (GPU accelerated) and dissolves into the matching theme.
  */
 export default function SignaturePreloader({ onComplete }) {
+  const { isDark } = useTheme();
   const [phase, setPhase] = useState(0);
   const [isExiting, setIsExiting] = useState(false);
   const [isRemoved, setIsRemoved] = useState(false);
+
+  // Synchronous theme detection fallback
+  const isDarkMode =
+    typeof document !== "undefined"
+      ? document.documentElement.classList.contains("dark")
+      : isDark;
 
   const letters = ["E", "V", "A", "A", "N", "A", "M"];
 
@@ -56,11 +66,24 @@ export default function SignaturePreloader({ onComplete }) {
 
   if (isRemoved) return null;
 
+  // Palette variables based on mode
+  const bgCanvas = isDarkMode ? "bg-[#081F18] text-[#FAF8F3]" : "bg-[#FAF8F3] text-[#12241C]";
+  const gridColor = isDarkMode ? "rgba(212, 186, 140, 0.12)" : "rgba(176, 141, 87, 0.12)";
+  const ambientOrbGradient = isDarkMode
+    ? "radial-gradient(circle, rgba(13, 48, 37, 0.9) 0%, rgba(8, 31, 24, 0.8) 55%, #05140F 100%)"
+    : "radial-gradient(circle, rgba(235, 222, 206, 0.85) 0%, rgba(245, 240, 230, 0.6) 55%, #FAF8F3 100%)";
+
+  const primaryStroke = isDarkMode ? "#D4BA8C" : "#846231";
+  const secondaryStroke = isDarkMode ? "#B08D57" : "#B08D57";
+  const vertexDotColor = isDarkMode ? "#FAF8F3" : "#12241C";
+  const coreFill = isDarkMode ? "#FAF8F3" : "#12241C";
+  const coreStroke = isDarkMode ? "#D4BA8C" : "#B08D57";
+
   return (
     <div
       role="status"
       aria-label="EVAANAM Experience Loading"
-      className={`fixed inset-0 z-[999999] w-screen h-screen bg-[#081F18] text-[#FAF8F3] flex items-center justify-center overflow-hidden select-none transition-opacity duration-800 ease-out pointer-events-auto ${
+      className={`fixed inset-0 z-[999999] w-screen h-screen ${bgCanvas} flex items-center justify-center overflow-hidden select-none transition-opacity duration-800 ease-out pointer-events-auto ${
         isExiting ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
       style={{
@@ -89,7 +112,7 @@ export default function SignaturePreloader({ onComplete }) {
             opacity: 1;
           }
         }
-        .shimmer-gold-text {
+        .shimmer-dark-gold-text {
           background: linear-gradient(
             110deg,
             #FAF8F3 0%,
@@ -102,26 +125,39 @@ export default function SignaturePreloader({ onComplete }) {
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
+        .shimmer-light-gold-text {
+          background: linear-gradient(
+            110deg,
+            #12241C 0%,
+            #12241C 35%,
+            #B08D57 50%,
+            #12241C 65%,
+            #12241C 100%
+          );
+          background-size: 200% 100%;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
       `}</style>
 
-      {/* 1. Deep Brand Green Vignette & Architectural Grid */}
+      {/* 1. Vignette & Architectural Grid */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-15"
+        className="absolute inset-0 pointer-events-none opacity-20"
         style={{
           backgroundImage: `
-            linear-gradient(to right, rgba(212, 186, 140, 0.15) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(212, 186, 140, 0.15) 1px, transparent 1px)
+            linear-gradient(to right, ${gridColor} 1px, transparent 1px),
+            linear-gradient(to bottom, ${gridColor} 1px, transparent 1px)
           `,
           backgroundSize: "75px 75px",
           backgroundPosition: "center center",
         }}
       />
 
-      {/* Center Emerald Ambient Light Orb */}
+      {/* Center Ambient Light Orb */}
       <div
         className="absolute w-[600px] sm:w-[850px] h-[600px] sm:h-[850px] rounded-full pointer-events-none opacity-90"
         style={{
-          background: "radial-gradient(circle, rgba(13, 48, 37, 0.9) 0%, rgba(8, 31, 24, 0.8) 55%, #05140F 100%)",
+          background: ambientOrbGradient,
         }}
       />
 
@@ -152,7 +188,7 @@ export default function SignaturePreloader({ onComplete }) {
               style={{
                 transformOrigin: "200px 200px",
                 animation: phase >= 2 ? "circularRotateClockwise 60s linear infinite" : "none",
-                opacity: phase >= 2 ? 0.45 : 0,
+                opacity: phase >= 2 ? (isDarkMode ? 0.45 : 0.55) : 0,
                 transition: "opacity 0.8s ease-out",
                 willChange: "transform",
               }}
@@ -161,15 +197,15 @@ export default function SignaturePreloader({ onComplete }) {
                 cx="200"
                 cy="200"
                 r="175"
-                stroke="#B08D57"
+                stroke={secondaryStroke}
                 strokeWidth="0.8"
                 strokeDasharray="4 8"
               />
               {/* 4 Cardinal Crosshair Extensions */}
-              <line x1="200" y1="12" x2="200" y2="28" stroke="#D4BA8C" strokeWidth="1.5" />
-              <line x1="200" y1="372" x2="200" y2="388" stroke="#D4BA8C" strokeWidth="1.5" />
-              <line x1="12" y1="200" x2="28" y2="200" stroke="#D4BA8C" strokeWidth="1.5" />
-              <line x1="372" y1="200" x2="388" y2="200" stroke="#D4BA8C" strokeWidth="1.5" />
+              <line x1="200" y1="12" x2="200" y2="28" stroke={primaryStroke} strokeWidth="1.5" />
+              <line x1="200" y1="372" x2="200" y2="388" stroke={primaryStroke} strokeWidth="1.5" />
+              <line x1="12" y1="200" x2="28" y2="200" stroke={primaryStroke} strokeWidth="1.5" />
+              <line x1="372" y1="200" x2="388" y2="200" stroke={primaryStroke} strokeWidth="1.5" />
             </g>
 
             {/* 2. Primary Outer Sacred Circle */}
@@ -177,13 +213,13 @@ export default function SignaturePreloader({ onComplete }) {
               cx="200"
               cy="200"
               r="140"
-              stroke="#D4BA8C"
+              stroke={primaryStroke}
               strokeWidth="1.5"
               strokeDasharray="880"
               strokeDashoffset={phase >= 2 ? "0" : "880"}
               style={{
                 transition: "stroke-dashoffset 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s",
-                opacity: phase >= 2 ? 0.9 : 0,
+                opacity: phase >= 2 ? (isDarkMode ? 0.9 : 0.85) : 0,
               }}
             />
 
@@ -192,7 +228,7 @@ export default function SignaturePreloader({ onComplete }) {
               style={{
                 transformOrigin: "200px 200px",
                 animation: phase >= 2 ? "circularRotateCounter 45s linear infinite" : "none",
-                opacity: phase >= 2 ? 0.65 : 0,
+                opacity: phase >= 2 ? (isDarkMode ? 0.65 : 0.6) : 0,
                 transition: "opacity 0.8s ease-out",
                 willChange: "transform",
               }}
@@ -201,7 +237,7 @@ export default function SignaturePreloader({ onComplete }) {
                 cx="200"
                 cy="200"
                 r="105"
-                stroke="#B08D57"
+                stroke={secondaryStroke}
                 strokeWidth="1"
                 strokeDasharray="10 5"
               />
@@ -212,7 +248,7 @@ export default function SignaturePreloader({ onComplete }) {
               cx="200"
               cy="200"
               r="70"
-              stroke="#D4BA8C"
+              stroke={primaryStroke}
               strokeWidth="1.4"
               strokeDasharray="440"
               strokeDashoffset={phase >= 2 ? "0" : "440"}
@@ -227,7 +263,7 @@ export default function SignaturePreloader({ onComplete }) {
               cx="200"
               cy="200"
               r="38"
-              stroke="#B08D57"
+              stroke={secondaryStroke}
               strokeWidth="1"
               strokeDasharray="240"
               strokeDashoffset={phase >= 1 ? "0" : "240"}
@@ -240,10 +276,10 @@ export default function SignaturePreloader({ onComplete }) {
             {/* 4 Orbital Vertex Flares on the Primary Circle */}
             {phase >= 3 && (
               <g className="transition-opacity duration-600">
-                <circle cx="200" cy="60" r="3" fill="#FAF8F3" />
-                <circle cx="340" cy="200" r="3" fill="#FAF8F3" />
-                <circle cx="200" cy="340" r="3" fill="#FAF8F3" />
-                <circle cx="60" cy="200" r="3" fill="#FAF8F3" />
+                <circle cx="200" cy="60" r="3" fill={vertexDotColor} />
+                <circle cx="340" cy="200" r="3" fill={vertexDotColor} />
+                <circle cx="200" cy="340" r="3" fill={vertexDotColor} />
+                <circle cx="60" cy="200" r="3" fill={vertexDotColor} />
               </g>
             )}
 
@@ -252,8 +288,8 @@ export default function SignaturePreloader({ onComplete }) {
               cx="200"
               cy="200"
               r="6"
-              fill="#FAF8F3"
-              stroke="#D4BA8C"
+              fill={coreFill}
+              stroke={coreStroke}
               strokeWidth="2"
               style={{
                 transformOrigin: "200px 200px",
@@ -277,7 +313,9 @@ export default function SignaturePreloader({ onComplete }) {
           {/* Staggered Letter-by-Letter EVAANAM Title Reveal */}
           <div className="flex items-center justify-center">
             <h1
-              className="shimmer-gold-text font-serif text-5xl sm:text-7xl md:text-9xl font-normal uppercase tracking-[0.24em] text-[#FAF8F3] flex justify-center"
+              className={`${
+                isDarkMode ? "shimmer-dark-gold-text text-[#FAF8F3]" : "shimmer-light-gold-text text-[#12241C]"
+              } font-serif text-5xl sm:text-7xl md:text-9xl font-normal uppercase tracking-[0.24em] flex justify-center`}
               style={{
                 letterSpacing: "0.24em",
                 textIndent: "0.24em",
@@ -305,9 +343,21 @@ export default function SignaturePreloader({ onComplete }) {
               phase >= 5 ? "opacity-100 scale-100" : "opacity-0 scale-75"
             }`}
           >
-            <div className="h-[1px] w-14 sm:w-28 bg-gradient-to-r from-transparent via-[#D4BA8C]/60 to-[#D4BA8C]" />
-            <div className="w-1.5 h-1.5 rotate-45 bg-[#D4BA8C]" />
-            <div className="h-[1px] w-14 sm:w-28 bg-gradient-to-l from-transparent via-[#D4BA8C]/60 to-[#D4BA8C]" />
+            <div
+              className={`h-[1px] w-14 sm:w-28 bg-gradient-to-r from-transparent ${
+                isDarkMode ? "via-[#D4BA8C]/60 to-[#D4BA8C]" : "via-[#B08D57]/60 to-[#B08D57]"
+              }`}
+            />
+            <div
+              className={`w-1.5 h-1.5 rotate-45 ${
+                isDarkMode ? "bg-[#D4BA8C]" : "bg-[#B08D57]"
+              }`}
+            />
+            <div
+              className={`h-[1px] w-14 sm:w-28 bg-gradient-to-l from-transparent ${
+                isDarkMode ? "via-[#D4BA8C]/60 to-[#D4BA8C]" : "via-[#B08D57]/60 to-[#B08D57]"
+              }`}
+            />
           </div>
 
           {/* Corporate Division Subtitles */}
@@ -316,11 +366,19 @@ export default function SignaturePreloader({ onComplete }) {
               phase >= 5 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
             }`}
           >
-            <p className="text-[10px] sm:text-xs md:text-sm font-mono uppercase tracking-[0.38em] text-[#D4BA8C] font-semibold">
+            <p
+              className={`text-[10px] sm:text-xs md:text-sm font-mono uppercase tracking-[0.38em] font-semibold ${
+                isDarkMode ? "text-[#D4BA8C]" : "text-[#846231]"
+              }`}
+            >
               MANPOWER &amp; EXECUTION
             </p>
 
-            <p className="text-[9px] sm:text-[10px] md:text-xs font-mono uppercase tracking-[0.42em] text-[#B08D57] font-medium">
+            <p
+              className={`text-[9px] sm:text-[10px] md:text-xs font-mono uppercase tracking-[0.42em] font-medium ${
+                isDarkMode ? "text-[#B08D57]" : "text-[#967442]"
+              }`}
+            >
               PRIVATE LIMITED
             </p>
           </div>
@@ -331,7 +389,11 @@ export default function SignaturePreloader({ onComplete }) {
               phase >= 6 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
             }`}
           >
-            <p className="font-serif italic text-xs sm:text-sm md:text-base tracking-[0.24em] text-[#D4BA8C]/90 font-light">
+            <p
+              className={`font-serif italic text-xs sm:text-sm md:text-base tracking-[0.24em] font-light ${
+                isDarkMode ? "text-[#D4BA8C]/90" : "text-[#5C4522]"
+              }`}
+            >
               WHERE EVERY DETAIL IS AN EXPERIENCE
             </p>
           </div>
