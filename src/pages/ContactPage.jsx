@@ -1,12 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import { Calculator, FileText, ArrowUpRight } from "lucide-react";
+import { Calculator, FileText, ArrowUpRight, ArrowDown } from "lucide-react";
 import FollowTheFloor from "../components/FollowTheFloor";
 import ManpowerCalculator from "../components/ManpowerCalculator";
 import ContactFormSection from "../components/ContactFormSection";
 
 export default function ContactPage() {
   const [activeMode, setActiveMode] = useState("form"); // 'form' | 'calculator'
+  const contentSectionRef = useRef(null);
+
+  const handleModeSwitch = (mode) => {
+    setActiveMode(mode);
+    // Smoothly scroll the screen down so the selected tool/form is immediately visible to the user
+    setTimeout(() => {
+      if (contentSectionRef.current) {
+        const topOffset = contentSectionRef.current.getBoundingClientRect().top + window.pageYOffset - 85;
+        window.scrollTo({
+          top: topOffset,
+          behavior: "smooth",
+        });
+      }
+    }, 60);
+  };
 
   return (
     <div className="animate-fade-in pt-28">
@@ -23,48 +38,52 @@ export default function ContactPage() {
               Tell us what the floor needs. Share your event dates, venue location, and staffing expectations. Our senior operations desk will structure an optimized deployment roster.
             </p>
 
-            {/* Mode Switcher Tabs with Rich Hover Animations & Bold Enclosed Design */}
+            {/* Mode Switcher Tabs with Auto-Scroll Animation & Signature Design */}
             <div className="pt-2 flex flex-wrap items-center gap-3">
               <button
                 type="button"
-                onClick={() => setActiveMode("form")}
-                className={`px-6 py-3.5 text-xs font-bold uppercase tracking-[0.18em] transition-all flex items-center space-x-2.5 rounded-sm border-2 cursor-pointer shadow-sm hover:scale-105 active:scale-95 duration-300 ${
+                onClick={() => handleModeSwitch("form")}
+                className={`btn-primary group py-3.5 px-6 text-xs font-bold uppercase tracking-[0.18em] flex items-center space-x-2.5 cursor-pointer shadow-md transition-all duration-300 ${
                   activeMode === "form"
-                    ? "bg-brand-green dark:bg-bronze-500 text-cream-50 dark:text-night-950 border-amber-400 shadow-lg ring-2 ring-amber-400/30"
-                    : "bg-cream-100 dark:bg-night-800 text-chocolate-800 dark:text-cream-100 border-chocolate-700/20 dark:border-bronze-500/30 hover:border-amber-400 hover:bg-cream-50 dark:hover:bg-night-750"
+                    ? "ring-2 ring-amber-400 border-amber-400"
+                    : "opacity-90 hover:opacity-100"
                 }`}
               >
-                <FileText className="w-4 h-4" />
+                <FileText className="w-4 h-4 text-amber-300 dark:text-night-950" />
                 <span>Contact &amp; Requisition Form</span>
+                <ArrowDown className="w-3.5 h-3.5 opacity-70 group-hover:translate-y-0.5 transition-transform" />
               </button>
 
               <button
                 type="button"
-                onClick={() => setActiveMode("calculator")}
-                className={`px-6 py-3.5 text-xs font-bold uppercase tracking-[0.18em] transition-all flex items-center space-x-2.5 rounded-sm border-2 cursor-pointer shadow-sm hover:scale-105 active:scale-95 duration-300 ${
+                onClick={() => handleModeSwitch("calculator")}
+                className={`btn-secondary group py-3.5 px-6 text-xs font-bold uppercase tracking-[0.18em] flex items-center space-x-2.5 cursor-pointer shadow-md transition-all duration-300 ${
                   activeMode === "calculator"
-                    ? "bg-brand-green dark:bg-bronze-500 text-cream-50 dark:text-night-950 border-amber-400 shadow-lg ring-2 ring-amber-400/30"
-                    : "bg-cream-100 dark:bg-night-800 text-chocolate-800 dark:text-cream-100 border-chocolate-700/20 dark:border-bronze-500/30 hover:border-amber-400 hover:bg-cream-50 dark:hover:bg-night-750"
+                    ? "ring-2 ring-amber-400 border-amber-400"
+                    : "opacity-90 hover:opacity-100"
                 }`}
               >
-                <Calculator className="w-4 h-4 text-amber-500 dark:text-amber-300" />
+                <Calculator className="w-4 h-4 text-amber-400" />
                 <span>Roster Calculator + WhatsApp</span>
+                <ArrowDown className="w-3.5 h-3.5 opacity-70 group-hover:translate-y-0.5 transition-transform" />
               </button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 2. TAB CONTENT: EITHER FORM OR CALCULATOR (TONE B: Espresso Brown / Sandstone) */}
-      {activeMode === "calculator" ? (
-        <section className="section-tone-b py-20 px-6 sm:px-8 lg:px-12 border-b border-chocolate-700/15 dark:border-bronze-500/20">
-          <ManpowerCalculator />
-        </section>
-      ) : (
-        <section className="section-tone-b py-24 px-6 sm:px-8 lg:px-12 border-b border-chocolate-700/15 dark:border-bronze-500/20">
-          <ContactFormSection />
-        </section>
-      )}
+      {/* 2. TAB CONTENT CONTAINER WITH REF FOR AUTO-SCROLL FOCUS */}
+      <div ref={contentSectionRef} id="contact-content-section">
+        {activeMode === "calculator" ? (
+          <section className="section-tone-b py-20 px-6 sm:px-8 lg:px-12 border-b border-chocolate-700/15 dark:border-bronze-500/20">
+            <ManpowerCalculator />
+          </section>
+        ) : (
+          <section className="section-tone-b py-24 px-6 sm:px-8 lg:px-12 border-b border-chocolate-700/15 dark:border-bronze-500/20">
+            <ContactFormSection />
+          </section>
+        )}
+      </div>
 
       {/* 3. SOCIAL / FOLLOW THE FLOOR (TONE A: Racing Green / Alabaster White) */}
       <section className="section-tone-a border-b border-chocolate-700/15 dark:border-emerald-500/20">
