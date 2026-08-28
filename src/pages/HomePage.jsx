@@ -131,13 +131,13 @@ export default function HomePage() {
               <p className="text-base sm:text-lg font-light leading-relaxed max-w-2xl mx-auto">
                 In luxury hospitality, there is no second take. EVAANAM was founded to replace unvetted freelance chaos with structured, disciplined, and professionally supervised workforce operations.
               </p>
-              <div className="pt-2">
+              <div className="pt-4 flex justify-center">
                 <Link
                   to="/why-us"
-                  className="inline-flex items-center space-x-2 text-xs uppercase tracking-[0.2em] font-semibold text-emerald-800 dark:text-emerald-400 hover:opacity-80 transition-opacity border-b border-emerald-500/40 pb-1"
+                  className="btn-primary group"
                 >
                   <span>Explore The Workforce Operations System™</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
+                  <ArrowUpRight className="w-4 h-4 ml-2.5 text-bronze-300 dark:text-night-950 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </Link>
               </div>
             </div>
@@ -484,9 +484,9 @@ export default function HomePage() {
                   <div className="pt-3 flex flex-wrap items-center gap-4">
                     <button
                       onClick={() => window.dispatchEvent(new CustomEvent("open-eva-chat"))}
-                      className="px-6 py-3.5 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 dark:from-amber-500 dark:to-amber-600 text-cream-50 dark:text-night-950 rounded-sm font-bold text-xs uppercase tracking-wider shadow-lg flex items-center space-x-2 transition-all duration-300 hover:scale-105"
+                      className="btn-bronze group"
                     >
-                      <MessageSquare className="w-4 h-4" />
+                      <MessageSquare className="w-4 h-4 mr-2" />
                       <span>Chat with Eva Now</span>
                     </button>
 
@@ -494,10 +494,10 @@ export default function HomePage() {
                       href="https://wa.me/919310039929?text=Hello%20Eva%20%26%20EVAANAM%20Team,%20I%20would%20like%20to%20consult%20on%20manpower%20staffing%20for%20an%20upcoming%20event."
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-6 py-3.5 bg-cream-200 hover:bg-cream-300 dark:bg-cream-100/10 dark:hover:bg-cream-100/20 text-chocolate-900 dark:text-cream-100 border border-chocolate-700/20 dark:border-bronze-500/40 rounded-sm font-semibold text-xs uppercase tracking-wider transition-all duration-300 flex items-center space-x-2 shadow-sm"
+                      className="btn-secondary group"
                     >
                       <span>Open Direct WhatsApp</span>
-                      <ArrowUpRight className="w-4 h-4 text-amber-700 dark:text-bronze-400" />
+                      <ArrowUpRight className="w-4 h-4 ml-2 text-amber-500 dark:text-bronze-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                     </a>
                   </div>
                 </div>
@@ -575,13 +575,13 @@ export default function HomePage() {
                 href="#contact-form-section"
                 className="btn-primary px-10 py-4 text-xs font-bold"
               >
-                Request Manpower
+                <span>Request Manpower</span>
               </a>
               <a
                 href={`tel:${COMPANY_INFO.phones[0].number}`}
-                className="text-xs uppercase tracking-[0.2em] font-semibold text-emerald-900 dark:text-emerald-300 hover:opacity-80 transition-opacity"
+                className="btn-secondary px-8 py-4 text-xs font-bold"
               >
-                Or Call Operations: {COMPANY_INFO.phones[0].display}
+                <span>Call Operations: {COMPANY_INFO.phones[0].display}</span>
               </a>
             </div>
           </div>
