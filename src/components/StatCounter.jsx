@@ -1,57 +1,40 @@
 import React, { useState, useEffect, useRef } from "react";
 import { COMPANY_INFO } from "../data/evaanamData";
 
-function SingleStat({ value, suffix, label, desc }) {
+function SingleStat({ value, suffix, label, desc, startAnimation }) {
   const [count, setCount] = useState(0);
-  const [hasAnimated, setHasAnimated] = useState(false);
-  const elementRef = useRef(null);
+  const hasAnimatedRef = useRef(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated) {
-          setHasAnimated(true);
+    if (!startAnimation || hasAnimatedRef.current) return;
+    hasAnimatedRef.current = true;
 
-          const duration = 1000; // 1 second
-          const startTime = performance.now();
-          const targetValue = value;
+    const duration = 1600; // 1.6 seconds smooth count-up
+    const startTime = performance.now();
+    const targetValue = value;
 
-          const animate = (currentTime) => {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            
-            // Ease-out cubic
-            const easeProgress = 1 - Math.pow(1 - progress, 3);
-            const currentNumber = Math.floor(easeProgress * targetValue);
+    const animate = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
 
-            setCount(currentNumber);
+      // Smooth Ease-Out Expo curve
+      const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      const currentNumber = Math.floor(easeProgress * targetValue);
 
-            if (progress < 1) {
-              requestAnimationFrame(animate);
-            } else {
-              setCount(targetValue);
-            }
-          };
+      setCount(currentNumber);
 
-          requestAnimationFrame(animate);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.25 }
-    );
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        setCount(targetValue);
+      }
+    };
 
-    if (elementRef.current) {
-      observer.observe(elementRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, [hasAnimated, value]);
+    requestAnimationFrame(animate);
+  }, [startAnimation, value]);
 
   return (
-    <div
-      ref={elementRef}
-      className="flex flex-col justify-between py-6 px-4 sm:px-6 transition-colors duration-400"
-    >
+    <div className="flex flex-col justify-between py-6 px-4 sm:px-6 transition-colors duration-400">
       <div>
         <div className="flex items-baseline space-x-1 mb-1.5">
           <span className="font-serif text-4xl sm:text-5xl lg:text-6xl font-light text-chocolate-950 dark:text-cream-50 tracking-tight">
@@ -75,8 +58,37 @@ function SingleStat({ value, suffix, label, desc }) {
 }
 
 export default function StatCounter({ className = "" }) {
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Trigger only when user actually scrolls into view
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          if (sectionRef.current) {
+            observer.unobserve(sectionRef.current);
+          }
+        }
+      },
+      {
+        threshold: 0.2,
+        rootMargin: "0px 0px -40px 0px",
+      }
+    );
+
+    const el = sectionRef.current;
+    if (el) observer.observe(el);
+
+    return () => {
+      if (el) observer.unobserve(el);
+    };
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       aria-label="EVAANAM Operational Statistics"
       className={`py-8 bg-transparent text-chocolate-700 dark:text-cream-100 transition-colors duration-400 ${className}`}
     >
@@ -89,6 +101,7 @@ export default function StatCounter({ className = "" }) {
               suffix={stat.suffix}
               label={stat.label}
               desc={stat.desc}
+              startAnimation={isVisible}
             />
           ))}
         </div>
