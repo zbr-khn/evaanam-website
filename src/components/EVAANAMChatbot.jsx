@@ -30,7 +30,7 @@ export default function EVAANAMChatbot() {
     {
       id: 1,
       sender: "bot",
-      text: "Namaste & Welcome. I am Eva, your 24/7 Operations Assistant at EVAANAM. What type of event manpower do you require?",
+      text: "Welcome to EVAANAM. I am Eva, your 24/7 Operations Assistant. What type of event manpower do you require?",
       options: [
         { label: "💍 Luxury Wedding Hospitality", value: "Wedding Hospitality" },
         { label: "🏢 Corporate Summit & Expo", value: "Corporate & Expos" },

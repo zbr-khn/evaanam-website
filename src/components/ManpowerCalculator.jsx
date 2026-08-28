@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react";
-import { Plus, Minus, Check, Trash2, Send, Calculator, Users, Calendar, MapPin, Sparkles, RefreshCw, Copy, CheckCheck } from "lucide-react";
+import { Plus, Minus, Check, Trash2, Send, Calculator, Users, Calendar, MapPin, Sparkles, RefreshCw, Copy, CheckCheck, ArrowUpRight } from "lucide-react";
 import { WEDDING_ROLES, CORPORATE_ROLES, COMPANY_INFO } from "../data/evaanamData";
 import { WhatsappIcon } from "./SocialIcons";
 
