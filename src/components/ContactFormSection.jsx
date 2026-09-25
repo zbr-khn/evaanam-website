@@ -82,7 +82,7 @@ export default function ContactFormSection({ className = "" }) {
         _captcha: "false",
       };
 
-      await fetch("https://formsubmit.co/ajax/ops@evaanam.com", {
+      await fetch("https://formsubmit.co/ajax/contact@eventworkforce.demo", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -134,7 +134,7 @@ ${formData.message || "Please share staffing options and availability."}
 _Submitted via EVAANAM Website Contact Form_`;
 
     const encoded = encodeURIComponent(waText);
-    window.open(`https://wa.me/919310039929?text=${encoded}`, "_blank");
+    window.open(`https://wa.me/?text=${encoded}`, "_blank");
   };
 
   return (
@@ -215,8 +215,7 @@ _Submitted via EVAANAM Website Contact Form_`;
                   <p className="font-mono font-bold text-chocolate-900 dark:text-cream-50">
                     {COMPANY_INFO.name}
                   </p>
-                  <p>{COMPANY_INFO.address.street}, {COMPANY_INFO.address.locality}</p>
-                  <p>{COMPANY_INFO.address.city}, {COMPANY_INFO.address.state} – {COMPANY_INFO.address.pincode}</p>
+                  <p>{COMPANY_INFO.address.full}</p>
                 </div>
               </div>
             </div>

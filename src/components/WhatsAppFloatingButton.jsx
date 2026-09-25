@@ -5,7 +5,7 @@ export default function WhatsAppFloatingButton() {
   const [hovered, setHovered] = useState(false);
 
   const waUrl =
-    "https://wa.me/919310039929?text=Hello%20EVAANAM%2C%20I%20would%20like%20to%20inquire%20about%20event%20manpower%20and%20crew%20deployment%20for%20an%20upcoming%20event.";
+    "https://wa.me/?text=Hello%20EVAANAM%2C%20I%20would%20like%20to%20inquire%20about%20event%20manpower%20and%20crew%20deployment%20for%20an%20upcoming%20event.";
 
   return (
     <div className="relative group">

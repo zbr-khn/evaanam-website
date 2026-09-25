@@ -99,7 +99,7 @@ export default function EVAANAMChatbot() {
     }
 
     if (val === "OPEN_WHATSAPP_DIRECT") {
-      const url = `https://wa.me/919310039929?text=${encodeURIComponent(
+      const url = `https://wa.me/?text=${encodeURIComponent(
         "Hello Eva & Operations Desk, I would like to schedule a direct consultation for manpower staffing."
       )}`;
       window.open(url, "_blank", "noopener,noreferrer");
@@ -107,7 +107,7 @@ export default function EVAANAMChatbot() {
     }
 
     if (val === "CALL_OPS_DIRECT") {
-      window.location.href = "tel:+919310039929";
+      window.location.href = `tel:${COMPANY_INFO.phones[0].number}`;
       return;
     }
 
@@ -185,9 +185,9 @@ export default function EVAANAMChatbot() {
 
       const summaryText = `📋 Requisition Summary:\n• Event: ${chatData.eventType}\n• Scale: ${chatData.headcount}\n• Venue Hub: ${chatData.venueLocation}\n• Urgency: ${finalTimeline}`;
 
-      // Transmit background email backup to ops@evaanam.com
+      // Transmit simulated background email backup
       try {
-        fetch("https://formsubmit.co/ajax/ops@evaanam.com", {
+        fetch("https://formsubmit.co/ajax/contact@eventworkforce.demo", {
           method: "POST",
           headers: { "Content-Type": "application/json", Accept: "application/json" },
           body: JSON.stringify({
@@ -210,7 +210,7 @@ export default function EVAANAMChatbot() {
           text: `${summaryText}\n\nYour deployment requisition has been structured! Tap below to forward this brief directly to our on-duty WhatsApp dispatch manager for instant availability & rates.`,
           options: [
             { label: "💬 Send Brief to WhatsApp Now", value: "DISPATCH_WHATSAPP_FINAL" },
-            { label: "📞 Call Senior Operations Desk", value: "CALL_OPS_DIRECT" },
+            { label: "📋 Proceed to Requisition Form", value: "GO_TO_FORM" },
             { label: "🔄 Start a New Inquiry", value: "START_OVER" },
           ],
         },
@@ -220,8 +220,10 @@ export default function EVAANAMChatbot() {
 
     if (val === "DISPATCH_WHATSAPP_FINAL") {
       const waMsg = `*New Manpower Requisition via Eva Assistant*\n\n• *Event Scope:* ${chatData.eventType || "General"}\n• *Crew Scale:* ${chatData.headcount || "Standard"}\n• *Venue Location:* ${chatData.venueLocation || "Delhi NCR"}\n• *Timeline:* ${chatData.timeline || "Upcoming"}\n\n_Please confirm crew availability, shift rates, and supervisor allocation._`;
-      const url = `https://wa.me/919310039929?text=${encodeURIComponent(waMsg)}`;
+      const url = `https://wa.me/?text=${encodeURIComponent(waMsg)}`;
       window.open(url, "_blank", "noopener,noreferrer");
+    } else if (val === "GO_TO_FORM") {
+      window.location.href = "/contact";
     }
   };
 

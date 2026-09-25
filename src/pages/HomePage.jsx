@@ -61,21 +61,21 @@ export default function HomePage() {
       icon: ShieldCheck,
       badge: "7-Stage Standard · Zero Ghosting",
       themeColor: "amber",
-      image: "./images/gallery-corporate/IMG-20250419-WA0011-jpg.jpg"
+      image: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1000&q=80"
     },
     {
       id: "gallery",
       number: "04",
       tag: "FLOOR DOSSIER",
       title: "Visual Gallery",
-      subtitle: "Active Deployments & Celebrity Highlights",
-      desc: "View our photo and video documentation: real-time banquet silver service alignments, mandap coordination, behind-the-scenes muster briefings, and executive celebrity escorts including Boman Irani and Rajpal Yadav.",
+      subtitle: "Active Deployments & Executive Highlights",
+      desc: "View our photo and video documentation: real-time banquet silver service alignments, mandap coordination, behind-the-scenes muster briefings, and executive VIP protocol escorts.",
       link: "/gallery",
       linkText: "View Floor Gallery",
       icon: Camera,
       badge: "Floor Photos & VIP Highlights",
       themeColor: "emerald",
-      image: "./images/home-highlights/boman.png"
+      image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=1000&q=80"
     },
     {
       id: "location",
@@ -83,7 +83,7 @@ export default function HomePage() {
       tag: "CENTRAL BASE",
       title: "Location & Transit",
       subtitle: "Operations HQ & Rapid Response Hubs",
-      desc: "Inspect our central operations office in New Friends Colony, South Delhi. View rapid transit routes via Jamia Millia Islamia Metro Station (Magenta Line) and our 4 regional response corridors covering Central Delhi, Aerocity, Gurgaon, and Noida.",
+      desc: "Inspect our central operations base in New Delhi. View rapid transit routes and our regional response corridors covering South & Central Delhi, Aerocity, Gurgaon, and Noida.",
       link: "/location",
       linkText: "View Location & Metro Guide",
       icon: MapPin,
@@ -116,7 +116,7 @@ export default function HomePage() {
         {/* Background Image with slow Ken Burns effect & luxury dark overlay */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
-            src="./gallery/hero-updated.png"
+            src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1920&q=80"
             alt="EVAANAM Luxury Event Floor Manpower & Execution"
             className="w-full h-full object-cover object-center ken-burns opacity-35 dark:opacity-25"
           />
@@ -336,7 +336,7 @@ export default function HomePage() {
                     </button>
 
                     <a
-                      href="https://wa.me/919310039929?text=Hello%20Eva%20%26%20EVAANAM%20Team,%20I%20would%20like%20to%20consult%20on%20manpower%20staffing%20for%20an%20upcoming%20event."
+                      href="https://wa.me/?text=Hello%20Event%20Operations%20Team,%20I%20would%20like%20to%20consult%20on%20manpower%20staffing%20for%20an%20upcoming%20event."
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn-secondary group py-3 px-6 text-xs font-bold uppercase tracking-wider cursor-pointer"
@@ -395,12 +395,12 @@ export default function HomePage() {
                 <ArrowUpRight className="w-4 h-4 ml-2 text-amber-300 dark:text-night-950 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </Link>
 
-              <a
-                href={`tel:${COMPANY_INFO.phones[0].number}`}
+              <Link
+                to="/contact"
                 className="btn-secondary group px-8 py-4 text-xs font-bold uppercase tracking-wider"
               >
-                <span>Call Hotline: {COMPANY_INFO.phones[0].display}</span>
-              </a>
+                <span>Contact Operations Desk</span>
+              </Link>
             </div>
           </div>
         </ScrollReveal>

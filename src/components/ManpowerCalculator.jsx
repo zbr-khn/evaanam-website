@@ -188,7 +188,7 @@ _Requisition configured via EVAANAM Operational Manpower Calculator_`;
     } catch (err) {}
 
     const encoded = encodeURIComponent(rawMsg);
-    const waUrl = `https://wa.me/919310039929?text=${encoded}`;
+    const waUrl = `https://wa.me/?text=${encoded}`;
     window.open(waUrl, "_blank", "noopener,noreferrer");
   };
 

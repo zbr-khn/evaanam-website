@@ -194,26 +194,22 @@ export default function Navbar() {
             <div>
               <p className="micro-label mb-1">Direct Operations</p>
               <div className="space-y-1">
-                <a
-                  href={`tel:${COMPANY_INFO.phones[0].number}`}
-                  className="flex items-center space-x-2 hover:text-bronze-600 dark:hover:text-bronze-400 transition-colors"
-                >
-                  <Phone className="w-3.5 h-3.5 text-bronze-500" />
-                  <span>{COMPANY_INFO.phones[0].display}</span>
-                </a>
-                <a
-                  href={`tel:${COMPANY_INFO.phones[1].number}`}
-                  className="flex items-center space-x-2 hover:text-bronze-600 dark:hover:text-bronze-400 transition-colors"
-                >
-                  <Phone className="w-3.5 h-3.5 text-bronze-500" />
-                  <span>{COMPANY_INFO.phones[1].display}</span>
-                </a>
+                {COMPANY_INFO.phones.map((phone, idx) => (
+                  <a
+                    key={idx}
+                    href={`tel:${phone.number}`}
+                    className="flex items-center space-x-2 hover:text-bronze-600 dark:hover:text-bronze-400 transition-colors"
+                  >
+                    <Phone className="w-3.5 h-3.5 text-bronze-500" />
+                    <span>{phone.display}</span>
+                  </a>
+                ))}
               </div>
             </div>
             <div>
               <p className="micro-label mb-1">HQ &amp; Registered Desk</p>
               <p className="text-chocolate-500 dark:text-night-dim text-[11px] leading-relaxed">
-                New Friends Colony, New Delhi – 110025
+                {COMPANY_INFO.address.full}
               </p>
             </div>
           </div>

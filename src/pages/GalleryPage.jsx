@@ -167,7 +167,7 @@ export default function GalleryPage() {
                       Executive Engagements &amp; Brand Activations
                     </h2>
                     <p className="text-xs font-light mt-1 max-w-2xl">
-                      High-profile celebrity VIP escorts (Boman Irani, Rajpal Yadav), tech pavilions (Vivo), and aviation summits (IndiGo, Pronto).
+                      High-profile celebrity VIP escorts, international technology pavilions, global trade expos, and executive summits.
                     </p>
                   </div>
                   <button

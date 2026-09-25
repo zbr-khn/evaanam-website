@@ -8,8 +8,8 @@ export default function LocationPage() {
   const [copied, setCopied] = useState(false);
   const [mapType, setMapType] = useState("roadmap"); // 'roadmap' | 'satellite'
 
-  const fullAddress = "C-58, 1st Floor, Block-C, Johri Farm, New Friends Colony, New Delhi, Delhi – 110025";
-  const embedMapUrl = `https://maps.google.com/maps?q=C-58%2C%201st%20Floor%2C%20Block-C%2C%20Johri%20Farm%2C%20New%20Friends%20Colony%2C%20New%20Delhi%20110025&t=${mapType === "satellite" ? "k" : ""}&z=16&ie=UTF8&iwloc=&output=embed`;
+  const fullAddress = COMPANY_INFO.address.full;
+  const embedMapUrl = `https://maps.google.com/maps?q=New%20Delhi%2C%20India&t=${mapType === "satellite" ? "k" : ""}&z=12&ie=UTF8&iwloc=&output=embed`;
 
   const handleCopyAddress = () => {
     navigator.clipboard.writeText(fullAddress);
@@ -32,7 +32,7 @@ export default function LocationPage() {
               <span className="italic text-emerald-700 dark:text-emerald-400">and where to find us.</span>
             </h1>
             <p className="text-base sm:text-lg text-chocolate-600 dark:text-night-muted font-light leading-relaxed">
-              Our central operations office is situated in New Friends Colony, South Delhi — strategically connected to Ring Road and Mathura Road for rapid crew deployment across Delhi, Aerocity, Gurgaon, and Noida.
+              Our central operations hub coordinates workforce deployments across Delhi NCR — strategically serving luxury hotel ballrooms and convention arenas across South Delhi, Aerocity, Gurgaon, and Noida.
             </p>
 
             <div className="pt-2 flex flex-wrap items-center gap-3">
@@ -110,10 +110,10 @@ export default function LocationPage() {
                 <div className="absolute bottom-4 left-4 p-3.5 bg-night-900/90 backdrop-blur-md border border-bronze-500/30 text-cream-100 text-xs font-mono space-y-1 shadow-lg pointer-events-none hidden sm:block">
                   <div className="flex items-center space-x-1.5 text-amber-400 font-bold">
                     <MapPin className="w-3.5 h-3.5" />
-                    <span>EVAANAM Operations Base</span>
+                    <span>EVAANAM Operations Hub</span>
                   </div>
-                  <p className="text-[11px] text-cream-300">Johri Farm, New Friends Colony, New Delhi</p>
-                  <p className="text-[10px] text-cream-400/80">LAT 28.5630° N · LON 77.2750° E</p>
+                  <p className="text-[11px] text-cream-300">Central Business District, New Delhi</p>
+                  <p className="text-[10px] text-cream-400/80">Delhi NCR Operations Corridor</p>
                 </div>
               </div>
 
@@ -125,7 +125,7 @@ export default function LocationPage() {
                     <span className="text-[11px] font-mono font-bold uppercase tracking-wider">Metro Access</span>
                   </div>
                   <p className="text-xs text-chocolate-900 dark:text-cream-100 font-medium">Jamia Millia Islamia</p>
-                  <p className="text-[11px] text-chocolate-500 dark:text-night-dim">Magenta Line (~1.2 km / 4 mins)</p>
+                  <p className="text-[11px] text-chocolate-500 dark:text-night-dim">Magenta Line Corridor</p>
                 </div>
 
                 <div className="p-4 bg-cream-100 dark:bg-night-800 border-2 border-chocolate-700/10 dark:border-bronze-500/15 rounded-sm space-y-1 hover:border-amber-400 transition-all">
@@ -152,7 +152,7 @@ export default function LocationPage() {
             <div className="lg:col-span-4 space-y-6">
               <div className="p-8 space-y-6 bg-cream-100/90 dark:bg-night-800/90 border-2 border-chocolate-700/15 dark:border-bronze-500/25 rounded-sm shadow-md">
                 <div>
-                  <span className="micro-label text-amber-700 dark:text-amber-400 font-bold">REGISTERED OFFICE</span>
+                  <span className="micro-label text-amber-700 dark:text-amber-400 font-bold">OPERATIONS HUB</span>
                   <h3 className="font-serif text-2xl text-chocolate-950 dark:text-cream-50 font-medium mt-1">
                     Central Operations Base
                   </h3>
@@ -163,10 +163,8 @@ export default function LocationPage() {
                   <div className="flex items-start space-x-2.5">
                     <MapPin className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-1" />
                     <div className="text-xs text-chocolate-700 dark:text-cream-100 leading-relaxed font-light">
-                      <strong className="block font-semibold text-chocolate-950 dark:text-cream-50">EVAANAM Manpower &amp; Execution Pvt. Ltd.</strong>
-                      C-58, 1st Floor, Block-C,<br />
-                      Johri Farm, New Friends Colony,<br />
-                      New Delhi, Delhi – 110025
+                      <strong className="block font-semibold text-chocolate-950 dark:text-cream-50">{COMPANY_INFO.name}</strong>
+                      {COMPANY_INFO.address.full}
                     </div>
                   </div>
                 </div>

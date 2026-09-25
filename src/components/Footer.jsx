@@ -142,27 +142,24 @@ export default function Footer() {
             {/* Column 4: Contact, Social & Dispatch (3 Cols) */}
             <div className="lg:col-span-3 space-y-4">
               <p className="text-xs uppercase tracking-[0.25em] font-extrabold text-amber-400 font-mono">
-                Operations HQ
+                Operations Hub
               </p>
               <div className="space-y-3 text-xs text-cream-300/80">
                 <div className="flex items-start space-x-2.5">
                   <MapPin className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
                   <span className="leading-relaxed">
-                    {COMPANY_INFO.address.street}, {COMPANY_INFO.address.locality}, {COMPANY_INFO.address.city} – {COMPANY_INFO.address.pincode}
+                    {COMPANY_INFO.address.full}
                   </span>
                 </div>
 
                 <div className="space-y-1.5 pt-1">
-                  {COMPANY_INFO.phones.map((phone) => (
-                    <a
-                      key={phone.number}
-                      href={`tel:${phone.number}`}
-                      className="flex items-center space-x-2.5 hover:text-amber-300 transition-colors"
-                    >
-                      <Phone className="w-3.5 h-3.5 text-amber-400" />
-                      <span className="font-mono">{phone.display}</span>
-                    </a>
-                  ))}
+                  <Link
+                    to="/contact"
+                    className="flex items-center space-x-2.5 hover:text-amber-300 transition-colors"
+                  >
+                    <Phone className="w-3.5 h-3.5 text-amber-400" />
+                    <span className="font-mono">Central Requisition Desk</span>
+                  </Link>
                   <a
                     href={`mailto:${COMPANY_INFO.email}`}
                     className="flex items-center space-x-2.5 hover:text-amber-300 transition-colors"
@@ -215,7 +212,7 @@ export default function Footer() {
                     <FacebookIcon className="w-3.5 h-3.5" />
                   </a>
                   <a
-                    href="https://wa.me/919310039929"
+                    href="https://wa.me/?text=Hello%20Event%20Operations%2C%20I%20would%20like%20to%20inquire%20about%20event%20crew%20deployment."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="p-2 rounded-sm bg-chocolate-900 dark:bg-night-800 hover:bg-emerald-600 hover:text-night-950 text-cream-300 transition-all shadow-sm"
@@ -236,9 +233,9 @@ export default function Footer() {
                 {COMPANY_INFO.name}
               </span>
               <span className="hidden sm:inline text-chocolate-700 dark:text-night-dim">|</span>
-              <span>CIN: <strong className="text-cream-300 font-mono font-normal">{COMPANY_INFO.cin}</strong></span>
+              <span>Registry: <strong className="text-cream-300 font-mono font-normal">Delhi NCR Operations</strong></span>
               <span className="hidden sm:inline text-chocolate-700 dark:text-night-dim">|</span>
-              <span>GSTIN: <strong className="text-cream-300 font-mono font-normal">{COMPANY_INFO.gstin}</strong></span>
+              <span>Standards: <strong className="text-cream-300 font-mono font-normal">5-Star Vetted &amp; Verified</strong></span>
             </div>
 
             <div className="flex items-center space-x-6">
@@ -290,31 +287,31 @@ export default function Footer() {
               {legalModal === 'privacy' ? (
                 <>
                   <p>
-                    EVAANAM Manpower &amp; Execution Pvt. Ltd. (CIN: {COMPANY_INFO.cin}) is committed to safeguarding the privacy and confidential information of our clients, event partners, and workforce personnel.
+                    EVAANAM Event Workforce &amp; Operations is committed to safeguarding the privacy and confidential information of our clients, event partners, and workforce personnel.
                   </p>
                   <p>
-                    <strong>1. Information Collection:</strong> We collect contact details, event dates, venue specifications, and operational requirements solely for fulfilling manpower contracts, staffing rosters, and regulatory compliance.
+                    <strong>1. Information Collection:</strong> We collect contact details, event dates, venue specifications, and operational requirements solely for fulfilling event staffing rosters, shift scheduling, and coordination.
                   </p>
                   <p>
-                    <strong>2. Confidentiality on High-Profile Floors:</strong> All EVAANAM crew members undergo NDA onboarding protocols. Photography of private client areas, dignitary green rooms, or confidential event materials is strictly prohibited.
+                    <strong>2. Confidentiality on High-Profile Floors:</strong> All event crew members undergo standard onboarding and confidentiality protocols. Photography of private client areas, dignitary green rooms, or confidential event materials is strictly prohibited.
                   </p>
                   <p>
-                    <strong>3. Data Security:</strong> Client event dossiers and crew verification records are stored on encrypted infrastructure and never sold or shared with unassociated third parties.
+                    <strong>3. Data Security:</strong> Client event briefs and crew rosters are stored securely and never sold or shared with unassociated third parties.
                   </p>
                 </>
               ) : (
                 <>
                   <p>
-                    These terms govern the engagement and deployment of trained event manpower by EVAANAM Manpower &amp; Execution Pvt. Ltd. for events across Delhi NCR.
+                    These terms govern the engagement and deployment of trained event manpower by EVAANAM Event Workforce &amp; Operations for events across Delhi NCR.
                   </p>
                   <p>
                     <strong>1. Deployment &amp; Briefing:</strong> Manpower rosters are finalized following requirement sign-off. Pre-shift muster takes place on-site ahead of event call-time.
                   </p>
                   <p>
-                    <strong>2. Verified Backup Buffer:</strong> EVAANAM coordinates stand-by personnel to maintain operational continuity on active event floors.
+                    <strong>2. Verified Backup Buffer:</strong> An active standby bench is maintained to ensure continuous operational coverage on active event floors.
                   </p>
                   <p>
-                    <strong>3. Statutory Compliance:</strong> All deployed personnel adhere to regulatory guidelines, state labor compliances, and verified identity screening before reaching venue floors.
+                    <strong>3. Statutory Compliance:</strong> All deployed personnel adhere to professional guidelines, state labor standards, and verified identity screening before reaching venue floors.
                   </p>
                 </>
               )}

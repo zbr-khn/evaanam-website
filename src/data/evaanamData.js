@@ -1,49 +1,48 @@
 // EVAANAM Verified Data Store
-// Source of truth for EVAANAM Manpower & Execution Pvt. Ltd.
+// Source of truth for EVAANAM Event Workforce & Operations (Generic Showcase)
 
 export const COMPANY_INFO = {
-  name: "EVAANAM Manpower & Execution Pvt. Ltd.",
+  name: "EVAANAM Event Workforce & Operations",
   shortName: "EVAANAM",
   tagline: "Trained Event Manpower & Crew in Delhi NCR",
-  cin: "U78300DL2026PTC468049",
-  gstin: "07AAJCE8033H1ZK",
+  cin: "DEMO-DL-2026-REG",
+  gstin: "07AAXXX0000X0ZX",
   phones: [
-    { label: "Operations Line 1", number: "9310039929", display: "+91 93100 39929" },
-    { label: "Operations Line 2", number: "7678622843", display: "+91 76786 22843" },
+    { label: "Operations Requisition Desk", number: "01100000000", display: "+91 (0) 11 0000 0000" },
   ],
-  email: "ops@evaanam.com",
+  email: "contact@eventworkforce.demo",
   address: {
-    line1: "C-58, 1st Floor, Block-C, Johri Farm",
-    locality: "New Friends Colony",
+    line1: "Central Operations Hub",
+    locality: "Connaught Place / South Delhi Corridor",
     city: "New Delhi",
-    region: "South Delhi",
-    pincode: "110025",
+    region: "Delhi NCR",
+    pincode: "110001",
     country: "India",
-    full: "C-58, 1st Floor, Block-C, Johri Farm, New Friends Colony, New Delhi, South Delhi – 110025"
+    full: "Central Operations Hub, New Delhi, Delhi NCR – 110001, India"
   },
   socials: {
     instagramHospitality: {
-      handle: "@evaanamhospitalitypvt.ltd",
-      url: "https://instagram.com/evaanamhospitalitypvt.ltd",
-      title: "EVAANAM Hospitality Pvt. Ltd.",
+      handle: "@luxuryhospitality.demo",
+      url: "https://instagram.com",
+      title: "Luxury Hospitality Operations",
       bio: "Wedding hospitality crew · Five-star floors · Delhi NCR",
-      postsCount: 101
+      postsCount: 120
     },
     instagramCorporate: {
-      handle: "@evaanampvt.ltd",
-      url: "https://instagram.com/evaanampvt.ltd",
-      title: "EVAANAM Corporate & Operations",
+      handle: "@corporateoperations.demo",
+      url: "https://instagram.com",
+      title: "Corporate Summits & Operations",
       bio: "Corporate summits, expos & large activations across Delhi NCR"
     },
     facebook: {
-      name: "EVAANAM Operations",
-      handle: "EVAANAM Official",
-      url: "https://www.facebook.com/share/1UVz6xkxaY/"
+      name: "Event Operations Platform",
+      handle: "@eventoperations.demo",
+      url: "https://facebook.com"
     },
     youtube: {
-      name: "EVAANAM Crew On The Floor",
-      handle: "@evaanam_pvt._ltd",
-      url: "https://youtube.com/@evaanam_pvt._ltd"
+      name: "Floor Deployments & Highlights",
+      handle: "@eventoperations.demo",
+      url: "https://youtube.com"
     }
   },
   stats: [
@@ -211,7 +210,7 @@ export const WORKFORCE_SYSTEM_STAGES = [
     number: "06",
     name: "Live Supervision",
     summary: "Active on-ground management & standby buffer",
-    desc: "Dedicated EVAANAM Floor Supervisors monitor zone performance, coordinate meal rotations, and liaise directly with event planners.",
+    desc: "Dedicated Floor Supervisors monitor zone performance, coordinate meal rotations, and liaise directly with event planners.",
     deliverable: "Real-time floor coordination"
   },
   {
@@ -270,7 +269,7 @@ export const CONVENTION_AND_ARENAS = [
 ];
 
 export const GALLERY_IMAGES = [
-  // 9 Wedding Hospitality Photos (Including User Uploaded Floor Photos)
+  // 9 Wedding Hospitality Photos (Generic Curated Unsplash Luxury Event Photography)
   {
     id: "w1",
     category: "wedding",
@@ -278,7 +277,7 @@ export const GALLERY_IMAGES = [
     title: "Grand Banquet Table & Service Alignment",
     subtitle: "ITC Maurya Ballroom · VIP Table Stewards",
     aspect: "tall",
-    src: "./images/gallery-weddings/IMG-6449-JPG.jpg",
+    src: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80",
     desc: "Precision banquet alignment and discreet high-touch hospitality for wedding guests."
   },
   {
@@ -288,7 +287,7 @@ export const GALLERY_IMAGES = [
     title: "Ceremonial Welcome & Aarti Hostesses",
     subtitle: "The Leela Palace · Welcome Hostesses",
     aspect: "wide",
-    src: "./images/gallery-weddings/IMG-6650-JPG.jpg",
+    src: "https://images.unsplash.com/photo-1519225438865-c8160e1d09e3?auto=format&fit=crop&w=1200&q=80",
     desc: "Ceremonial greetings and floral welcome for high-profile wedding entourage."
   },
   {
@@ -298,7 +297,7 @@ export const GALLERY_IMAGES = [
     title: "Palace Courtyard Mandap Supervision",
     subtitle: "ITC Grand Bharat · Floor Supervisors",
     aspect: "square",
-    src: "./images/gallery-weddings/IMG-2923-JPG.jpg",
+    src: "https://images.unsplash.com/photo-1544077960-604201fe74bc?auto=format&fit=crop&w=1200&q=80",
     desc: "Continuous coordination between ritual pandits, wedding planners, and hospitality runners."
   },
   {
@@ -308,7 +307,7 @@ export const GALLERY_IMAGES = [
     title: "VIP Bridal & Groom Shadow Escort",
     subtitle: "Taj Palace · Dedicated Personal Shadows",
     aspect: "tall",
-    src: "./images/gallery-weddings/IMG-20260301-WA0010-jpg.jpg",
+    src: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1200&q=80",
     desc: "Attentive bridal assistance, attire care, and immediate touch-up coordination."
   },
   {
@@ -318,7 +317,7 @@ export const GALLERY_IMAGES = [
     title: "Guest Concierge & Hamper Distribution",
     subtitle: "JW Marriott Aerocity · Helpdesk Crew",
     aspect: "wide",
-    src: "./images/gallery-weddings/IMG-20260305-WA0003-jpg.jpg",
+    src: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
     desc: "Seamless check-in flow and hamper distribution for residential wedding attendees."
   },
   {
@@ -328,7 +327,7 @@ export const GALLERY_IMAGES = [
     title: "Sangeet Stage Runner Coordination",
     subtitle: "The Oberoi · Backstage Show Runners",
     aspect: "square",
-    src: "./images/gallery-weddings/IMG-20260509-WA0009(1)-jpg.jpg",
+    src: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=1200&q=80",
     desc: "Backstage green-room cues and choreography synchronization during live celebrity performances."
   },
   {
@@ -338,7 +337,7 @@ export const GALLERY_IMAGES = [
     title: "Fine Dining Silver Service & Stewards",
     subtitle: "The Westin Gurgaon · Trained Stewards",
     aspect: "wide",
-    src: "./images/gallery-weddings/IMG-0856.avif",
+    src: "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=1200&q=80",
     desc: "Discreet multi-course plated dinner service for state dignitaries and family elders."
   },
   {
@@ -348,7 +347,7 @@ export const GALLERY_IMAGES = [
     title: "Overnight Reception & Transition Desk",
     subtitle: "Roseate House · Night Desk Crew",
     aspect: "tall",
-    src: "./images/gallery-weddings/IMG-7056.avif",
+    src: "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1200&q=80",
     desc: "24-hour continuous support managing transfers, baraat setups, and morning transitions."
   },
   {
@@ -358,11 +357,11 @@ export const GALLERY_IMAGES = [
     title: "Procession & Aisle Marshaling",
     subtitle: "Andaz Delhi · Ushers & Floor Leads",
     aspect: "square",
-    src: "./images/gallery-weddings/IMG-7965.avif",
+    src: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1200&q=80",
     desc: "Calm, dignified crowd circulation directing guests seamlessly from cocktail lawns to banquet hall."
   },
 
-  // 10 Corporate & Expo Photos (Including User Uploaded Floor Photos)
+  // 10 Corporate & Expo Photos (Generic Curated Unsplash Corporate Photography)
   {
     id: "c1",
     category: "corporate",
@@ -370,7 +369,7 @@ export const GALLERY_IMAGES = [
     title: "Plenary Hall Stage Management & Registration",
     subtitle: "Bharat Mandapam · Corporate Floor Team",
     aspect: "wide",
-    src: "./images/gallery-corporate/IMG-20250419-WA0007-jpg.jpg",
+    src: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80",
     desc: "Precision timing, registration desk coordination, and delegate check-in management."
   },
   {
@@ -380,7 +379,7 @@ export const GALLERY_IMAGES = [
     title: "Digital Badge Printing & Express Check-In",
     subtitle: "Yashobhoomi (IICC) · Registration Crew",
     aspect: "tall",
-    src: "./images/gallery-corporate/IMG-20250419-WA0011-jpg.jpg",
+    src: "https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=1200&q=80",
     desc: "High-throughput QR scanning desks processing attendees during morning peak hours."
   },
   {
@@ -390,7 +389,7 @@ export const GALLERY_IMAGES = [
     title: "Global Tech Expo Stall Engagement",
     subtitle: "Pragati Maidan (IECC) · Exhibition Stall Crew",
     aspect: "square",
-    src: "./images/gallery-corporate/IMG-20251023-WA0046-jpg.jpg",
+    src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80",
     desc: "Lead qualification, collateral dissemination, and executive booth hosting."
   },
   {
@@ -400,7 +399,7 @@ export const GALLERY_IMAGES = [
     title: "C-Suite VIP Lounge Hospitality",
     subtitle: "Leela Ambience Convention · Corporate Hostesses",
     aspect: "tall",
-    src: "./images/gallery-corporate/IMG-20251108-WA0002-jpg.jpg",
+    src: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
     desc: "Discreet catering coordination and meeting room facilitation for enterprise leaders."
   },
   {
@@ -410,7 +409,7 @@ export const GALLERY_IMAGES = [
     title: "Automotive Brand Activation Pavilion",
     subtitle: "India Exposition Mart (IEML) · Brand Ambassadors",
     aspect: "wide",
-    src: "./images/gallery-corporate/IMG-20260221-WA0010-jpg.jpg",
+    src: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=1200&q=80",
     desc: "Product unveiling walkthroughs and interactive simulator onboarding."
   },
   {
@@ -420,7 +419,7 @@ export const GALLERY_IMAGES = [
     title: "Leadership Gala Awards & Felicitations",
     subtitle: "Pullman Aerocity · Professional Ushers & Crew",
     aspect: "square",
-    src: "./images/gallery-corporate/IMG-20260309-WA0022-jpg-(1).jpg",
+    src: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=1200&q=80",
     desc: "Trophy handover decorum and onstage dignitary alignment during annual corporate gala."
   },
   {
@@ -430,7 +429,7 @@ export const GALLERY_IMAGES = [
     title: "Executive Convention Floor Operations",
     subtitle: "India Habitat Centre · Event Crew",
     aspect: "wide",
-    src: "./images/gallery-corporate/IMG.png",
+    src: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?auto=format&fit=crop&w=1200&q=80",
     desc: "Full floor management, badge issuance, and delegate directional guidance."
   },
   {
@@ -440,194 +439,194 @@ export const GALLERY_IMAGES = [
     title: "Exhibition Roster Briefing & Floor Alignment",
     subtitle: "Pragati Maidan (IECC) · Exhibition Crew",
     aspect: "wide",
-    src: "./images/gallery-corporate/Screenshot 2026-08-28 012011.png",
+    src: "https://images.unsplash.com/photo-1551818255-e6e10975bc17?auto=format&fit=crop&w=1200&q=80",
     desc: "Pre-event briefing, hall entrance access control, and delegate crowd circulation."
   },
 
-  // 9 Behind The Scenes & Operational Deployments (No Captions)
+  // 9 Behind The Scenes & Operational Deployments (Generic Curated Unsplash Event Staging)
   {
     id: "b1",
     category: "bts",
     categoryLabel: "Behind The Scenes",
-    title: "",
-    subtitle: "",
+    title: "Audio-Visual Console & Production Sync",
+    subtitle: "Plenary Hall Tech Control",
     aspect: "tall",
-    src: "./images/gallery-bts/Screenshot 2026-08-28 014230.png",
-    desc: ""
+    src: "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1200&q=80",
+    desc: "Stage AV coordination and live lighting cues sync."
   },
   {
     id: "b2",
     category: "bts",
     categoryLabel: "Behind The Scenes",
-    title: "",
-    subtitle: "",
+    title: "Pre-Shift Crew Muster & Briefing",
+    subtitle: "Convention Staging Corridor",
     aspect: "wide",
-    src: "./images/gallery-bts/Screenshot 2026-08-28 014407.png",
-    desc: ""
+    src: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
+    desc: "Floor assignments and timing synchronization before doors open."
   },
   {
     id: "b3",
     category: "bts",
     categoryLabel: "Behind The Scenes",
-    title: "",
-    subtitle: "",
+    title: "Radio Channel Coordination",
+    subtitle: "Backstage Operations Desk",
     aspect: "square",
-    src: "./images/gallery-bts/Screenshot 2026-08-28 014432.png",
-    desc: ""
+    src: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80",
+    desc: "Continuous wireless communication across all active zones."
   },
   {
     id: "b4",
     category: "bts",
     categoryLabel: "Behind The Scenes",
-    title: "",
-    subtitle: "",
+    title: "Fine Dining Place Setting Inspection",
+    subtitle: "Grand Ballroom Alignment",
     aspect: "tall",
-    src: "./images/gallery-bts/Screenshot 2026-08-28 014736.png",
-    desc: ""
+    src: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80",
+    desc: "Precision silver service verification prior to guest seating."
   },
   {
     id: "b5",
     category: "bts",
     categoryLabel: "Behind The Scenes",
-    title: "",
-    subtitle: "",
+    title: "Stage Rigging & Lighting Check",
+    subtitle: "Arena Production Rig",
     aspect: "wide",
-    src: "./images/gallery-bts/Screenshot 2026-08-28 014815.png",
-    desc: ""
+    src: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1200&q=80",
+    desc: "Overhead safety inspection and stage luminaire focusing."
   },
   {
     id: "b6",
     category: "bts",
     categoryLabel: "Behind The Scenes",
-    title: "",
-    subtitle: "",
+    title: "Wireless Microphone Soundcheck",
+    subtitle: "Auditorium Technical Run",
     aspect: "square",
-    src: "./images/gallery-bts/Screenshot 2026-08-28 015039.png",
-    desc: ""
+    src: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1200&q=80",
+    desc: "Frequency tuning and acoustics calibration for keynote speakers."
   },
   {
     id: "b7",
     category: "bts",
     categoryLabel: "Behind The Scenes",
-    title: "",
-    subtitle: "",
+    title: "Uniform & Grooming Alignment",
+    subtitle: "Crew Assembly Area",
     aspect: "wide",
-    src: "./images/gallery-bts/Screenshot 2026-08-28 015124.png",
-    desc: ""
+    src: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=80",
+    desc: "Standardized grooming check adhering to five-star manual."
   },
   {
     id: "b8",
     category: "bts",
     categoryLabel: "Behind The Scenes",
-    title: "",
-    subtitle: "",
+    title: "Logistics Load-In & Material Movement",
+    subtitle: "Docking Bay & Service Lift",
     aspect: "tall",
-    src: "./images/gallery-bts/Screenshot 2026-08-28 015214.png",
-    desc: ""
+    src: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80",
+    desc: "Careful transport of fragile banquet and exhibition assets."
   },
   {
     id: "b9",
     category: "bts",
     categoryLabel: "Behind The Scenes",
-    title: "",
-    subtitle: "",
+    title: "Central Operations Command",
+    subtitle: "Master Event Control",
     aspect: "square",
-    src: "./images/gallery-bts/Screenshot 2026-08-28 015319.png",
-    desc: ""
+    src: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
+    desc: "Real-time headcount tracking and dispatch coordination."
   },
 
-  // 5 Brand Activations & Executive Celebrity Highlight Moments
+  // 5 Brand Activations & Executive Celebrity Highlight Moments (Generic High-Profile Formats)
   {
     id: "h1",
     category: "activations",
     categoryLabel: "Executive & Activations",
-    title: "Celebrity Escort & Keynote Coordination: Boman Irani",
+    title: "Celebrity Escort & Keynote Coordination",
     subtitle: "Luxury Conclave · VIP Personal Escort",
     aspect: "tall",
-    src: "./images/home-highlights/boman.png",
-    desc: "Dedicated green-room liaison, stage handover, and protocol escort for celebrity keynote speaker Boman Irani."
+    src: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=1200&q=80",
+    desc: "Dedicated green-room liaison, stage handover, and protocol escort for celebrity keynote speakers."
   },
   {
     id: "h2",
     category: "activations",
     categoryLabel: "Executive & Activations",
-    title: "Artist Liaison & Backstage Escort: Rajpal Yadav",
+    title: "Artist Liaison & Backstage Escort",
     subtitle: "Live Event Arena · Artist Show Runners",
     aspect: "tall",
-    src: "./images/home-highlights/rajpal.png",
-    desc: "Close-protection escort, backstage queue coordination, and stage entry synchronization for actor Rajpal Yadav."
+    src: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80",
+    desc: "Close-protection escort, backstage queue coordination, and stage entry synchronization for featured performers."
   },
   {
     id: "h3",
     category: "activations",
     categoryLabel: "Executive & Activations",
-    title: "Tech Experience Pavilion: Vivo Smartphone",
+    title: "Tech Experience Pavilion & Brand Activation",
     subtitle: "Brand Activation Pavilion · Experience Crew",
     aspect: "wide",
-    src: "./images/home-highlights/vivo.png",
+    src: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=1200&q=80",
     desc: "Product demonstration crew, experiential booth staffing, and customer walkthrough facilitation."
   },
   {
     id: "h4",
     category: "activations",
     categoryLabel: "Executive & Activations",
-    title: "Aviation Summit & Corporate Assembly: IndiGo",
+    title: "Aviation Summit & Corporate Leadership Assembly",
     subtitle: "Corporate Conclave · Registration & Usher Crew",
     aspect: "wide",
-    src: "./images/home-highlights/indigo.png",
+    src: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80",
     desc: "High-level aviation conclave management, executive seating ushering, and plenary coordination."
   },
   {
     id: "h5",
     category: "activations",
     categoryLabel: "Executive & Activations",
-    title: "Corporate Summit Floor Operations: Pronto",
+    title: "Corporate Summit Floor Operations & Pavilion Leads",
     subtitle: "Convention Floor · Operations Crew",
     aspect: "square",
-    src: "./images/home-highlights/pronto.png",
+    src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80",
     desc: "Full venue staffing, stage timing synchronization, and multi-hall delegate flow management."
   }
 ];
 
 export const FEATURED_HIGHLIGHTS = [
   {
-    id: "hl-boman",
+    id: "hl-keynote",
     tag: "Celebrity VIP Protocol",
-    title: "Celebrity Keynote Escort: Boman Irani",
+    title: "Celebrity Keynote Escort",
     client: "Executive Gala",
-    src: "./images/home-highlights/boman.png",
+    src: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=1200&q=80",
     desc: "High-touch green room coordination and stage entry liaison."
   },
   {
-    id: "hl-rajpal",
+    id: "hl-artist",
     tag: "Artist Management",
-    title: "Live Arena Artist Liaison: Rajpal Yadav",
+    title: "Live Arena Artist Liaison",
     client: "Live Production",
-    src: "./images/home-highlights/rajpal.png",
+    src: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80",
     desc: "Backstage cue synchronisation and close-protection escort."
   },
   {
-    id: "hl-vivo",
+    id: "hl-tech",
     tag: "Brand Activation",
-    title: "Experience Pavilion: Vivo",
+    title: "Experience Pavilion: Tech Innovation",
     client: "Product Launch",
-    src: "./images/home-highlights/vivo.png",
+    src: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=1200&q=80",
     desc: "Interactive product demo crew and attendee walkthroughs."
   },
   {
-    id: "hl-indigo",
+    id: "hl-summit",
     tag: "Corporate Conclave",
-    title: "Aviation Conclave: IndiGo",
+    title: "Aviation & Leadership Conclave",
     client: "Corporate Assembly",
-    src: "./images/home-highlights/indigo.png",
+    src: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80",
     desc: "Executive ushering and plenary floor operations."
   },
   {
-    id: "hl-pronto",
+    id: "hl-trade",
     tag: "Summit Operations",
-    title: "Floor Operations: Pronto",
+    title: "Floor Operations: Trade Summit",
     client: "Annual Summit",
-    src: "./images/home-highlights/pronto.png",
+    src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80",
     desc: "Full floor deployment and delegate flow management."
   }
 ];
@@ -636,8 +635,8 @@ export const TESTIMONIALS = [
   {
     id: "t1",
     quote: "The team was professional and well-trained. They made our conference seamless.",
-    author: "Arsh",
-    role: "Tech Company Lead",
+    author: "Operations Lead",
+    role: "Global Tech Summit",
     location: "Noida",
     category: "Corporate & Tech",
     rating: 5,
@@ -646,8 +645,8 @@ export const TESTIMONIALS = [
   {
     id: "t2",
     quote: "We've worked with many staffing agencies, but Evaanam stands out for their reliability.",
-    author: "Manoj",
-    role: "Senior Event Planner",
+    author: "Senior Event Producer",
+    role: "National Roadshows",
     location: "Mumbai",
     category: "Event Production",
     rating: 5,
@@ -656,8 +655,8 @@ export const TESTIMONIALS = [
   {
     id: "t3",
     quote: "Last-minute request handled perfectly. Will definitely work with them again.",
-    author: "Sahil",
-    role: "Wedding Host",
+    author: "Wedding Hospitality Chair",
+    role: "Grand Wedding Reception",
     location: "Delhi",
     category: "Wedding Hospitality",
     rating: 5,
@@ -666,8 +665,8 @@ export const TESTIMONIALS = [
   {
     id: "t4",
     quote: "Our event had zero manpower issues – Evaanam handled everything like pros.",
-    author: "Satyansh",
-    role: "Corporate Operations Lead",
+    author: "Corporate Operations Director",
+    role: "National Leadership Summit",
     location: "Delhi",
     category: "Corporate Summit",
     rating: 5,
@@ -676,8 +675,8 @@ export const TESTIMONIALS = [
   {
     id: "t5",
     quote: "As a promoter, I finally feel respected and paid on time. Thank you Evaanam!",
-    author: "Sujal",
-    role: "Event Crew & Promoter",
+    author: "Lead Team Supervisor",
+    role: "Exhibition Roster",
     location: "Gurgaon",
     category: "Workforce & Talent",
     rating: 5,
@@ -686,8 +685,8 @@ export const TESTIMONIALS = [
   {
     id: "t6",
     quote: "Quick response time and reliable service. Highly recommend Evaanam for any event.",
-    author: "Jay Prakash",
-    role: "Exhibition Manager",
+    author: "Trade Fair Coordinator",
+    role: "Pragati Maidan Expo",
     location: "Delhi NCR",
     category: "Trade Expos",
     rating: 5,
@@ -696,8 +695,8 @@ export const TESTIMONIALS = [
   {
     id: "t7",
     quote: "Professionalism at its best! The staff arrived on time and were perfectly groomed.",
-    author: "Rohan",
-    role: "Brand Manager",
+    author: "Brand Experience Manager",
+    role: "Consumer Brand Pavilion",
     location: "Delhi NCR",
     category: "Brand Activations",
     rating: 5,
@@ -705,19 +704,19 @@ export const TESTIMONIALS = [
   },
   {
     id: "t8",
-    quote: "We've been using Evaanam for all our mall activations. Consistent quality every time.",
-    author: "Priya",
-    role: "Marketing Head",
+    quote: "We've been using Evaanam for all our activations. Consistent quality every time.",
+    author: "Marketing Operations Lead",
+    role: "Retail Experience Series",
     location: "Delhi NCR",
     category: "Retail Activations",
     rating: 5,
-    eventCount: "Mall Tour Series"
+    eventCount: "Retail Series"
   },
   {
     id: "t9",
     quote: "The team handled our high-profile corporate event with discretion and efficiency.",
-    author: "Devendar",
-    role: "Event Coordinator",
+    author: "VIP Conclave Coordinator",
+    role: "Dignitary Conclave",
     location: "Delhi NCR",
     category: "VIP Corporate Conclave",
     rating: 5,
@@ -726,8 +725,8 @@ export const TESTIMONIALS = [
   {
     id: "t10",
     quote: "Best manpower partner in Delhi NCR. Their staff are always well-trained and presentable.",
-    author: "Prayanshu",
-    role: "Luxury Wedding Planner",
+    author: "Senior Luxury Wedding Planner",
+    role: "Destination Wedding Series",
     location: "Delhi NCR",
     category: "Wedding Hospitality",
     rating: 5,
