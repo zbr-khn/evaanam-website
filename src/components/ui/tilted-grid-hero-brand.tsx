@@ -39,7 +39,7 @@ export const EVAANAM_BRAND_IMAGES = [
     alt: "Brand Showcase & Product Launch: Pronto",
   },
   {
-    src: "./images/gallery-corporate/IMG-20260301-WA0012-jpg.jpg",
+    src: "./images/gallery-corporate/IMG-20250419-WA0007-jpg.jpg",
     alt: "Trade Expo Stall Management",
   },
 ];

@@ -14,7 +14,6 @@ import {
   Briefcase
 } from "lucide-react";
 import StatCounter from "../components/StatCounter";
-import ExecutiveCarousel from "../components/ExecutiveCarousel";
 import ScrollReveal from "../components/ScrollReveal";
 import ColorCreepSection from "../components/ColorCreepSection";
 import { COMPANY_INFO } from "../data/evaanamData";
@@ -113,30 +112,35 @@ export default function HomePage() {
   return (
     <div className="animate-fade-in">
       {/* ========================================================================= */}
-      {/* 1. HERO SECTION: CURVED HORIZON ARC                                        */}
+      {/* 1. HERO SECTION: 3D CURVED HORIZON ARC BACKGROUND + GLASSMORPHISM           */}
       {/* ========================================================================= */}
-      <section data-tone="a" className="relative text-cream-100 bg-night-950 overflow-hidden">
-        <TiltedGridHero
-          images={EVAANAM_BRAND_IMAGES}
-          speed={5}
-          tileHeight={30}
-          aspectRatio={16 / 9}
-          gap={6}
-          axis={52}
-          curve={75}
-          fade={14}
-          className="relative min-h-[90vh] sm:min-h-[95vh] flex items-center justify-center pt-28 pb-16 px-6 sm:px-8 lg:px-12 bg-night-950"
-        >
-          {/* Subtle dark gradient overlay so moving 3D tiles remain visible in backdrop while ensuring high contrast for typography */}
-          <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-night-950 via-night-950/70 to-night-950/80" />
+      <section data-tone="a" className="relative min-h-[92vh] sm:min-h-[96vh] flex items-center justify-center pt-28 pb-16 px-6 sm:px-8 lg:px-12 text-cream-100 bg-night-950 overflow-hidden">
+        {/* 3D Curved Horizon Arc Background (Continuously Streaming Behind Hero) */}
+        <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0">
+          <TiltedGridHero
+            images={EVAANAM_BRAND_IMAGES}
+            speed={4.5}
+            tileHeight={34}
+            aspectRatio={16 / 9}
+            gap={6}
+            axis={48}
+            curve={75}
+            fade={15}
+            className="w-full h-full"
+          />
+        </div>
 
-          {/* Hero Content Container */}
-          <div className="relative z-10 max-w-6xl mx-auto w-full">
+        {/* Subtle Ambient Radial Lighting for Luxury Glass Depth */}
+        <div className="pointer-events-none absolute inset-0 z-[1] bg-radial from-transparent via-night-950/30 to-night-950/75" />
+
+        {/* Glassmorphic Hero Foreground Card */}
+        <div className="relative z-10 max-w-6xl mx-auto w-full">
+          <div className="backdrop-blur-2xl bg-night-950/50 dark:bg-night-950/60 border border-white/15 dark:border-white/10 rounded-3xl p-8 sm:p-12 lg:p-14 shadow-[0_8px_32px_0_rgba(0,0,0,0.5)]">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
               <div className="lg:col-span-8 space-y-6">
-                {/* Micro Eyebrow */}
-                <div className="inline-flex items-center space-x-2.5 px-3 py-1.5 bg-night-900/90 border border-amber-500/30 rounded-sm">
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                {/* Micro Eyebrow with Glass Tint */}
+                <div className="inline-flex items-center space-x-2.5 px-3.5 py-1.5 backdrop-blur-md bg-amber-500/10 border border-amber-500/30 rounded-full">
+                  <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
                   <span className="micro-label text-amber-300 font-bold">
                     Event Manpower &amp; Execution · Delhi NCR
                   </span>
@@ -149,15 +153,15 @@ export default function HomePage() {
                 </h1>
 
                 {/* Supporting Text */}
-                <p className="text-base sm:text-lg text-cream-200 font-light max-w-2xl leading-relaxed">
+                <p className="text-base sm:text-lg text-cream-200/90 font-light max-w-2xl leading-relaxed">
                   Trained, verified and professionally managed event crews engineered for five-star wedding banquets, corporate summits, and large-scale industrial exhibitions across Delhi NCR.
                 </p>
 
-                {/* CTAs */}
+                {/* CTAs with Glass Styling */}
                 <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center space-y-3.5 sm:space-y-0 sm:space-x-4">
                   <Link
                     to="/services#calculator-section"
-                    className="btn-primary group"
+                    className="btn-primary group shadow-lg backdrop-blur-md"
                   >
                     <Calculator className="w-3.5 h-3.5 mr-2 text-amber-300 dark:text-night-950 group-hover:rotate-12 transition-transform duration-300" />
                     <span>Configure Crew Roster ⚡</span>
@@ -165,15 +169,15 @@ export default function HomePage() {
 
                   <Link
                     to="/contact"
-                    className="btn-secondary group"
+                    className="backdrop-blur-md bg-white/10 hover:bg-white/20 border border-white/20 text-cream-100 px-6 py-3.5 rounded-sm font-sans text-xs uppercase tracking-widest font-semibold flex items-center justify-center group transition-all duration-300 shadow-md"
                   >
                     <span>Request Floor Booking</span>
-                    <ArrowUpRight className="w-4 h-4 ml-2 text-amber-400 dark:text-cream-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    <ArrowUpRight className="w-4 h-4 ml-2 text-amber-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   </Link>
                 </div>
 
                 {/* Credibility Line */}
-                <div className="pt-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-sans tracking-wider text-amber-400/90 font-medium">
+                <div className="pt-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-sans tracking-wider text-amber-300/90 font-medium">
                   <span>200+ Crew Network</span>
                   <span className="text-cream-400/40">·</span>
                   <span>300+ Projects</span>
@@ -186,14 +190,14 @@ export default function HomePage() {
 
               {/* Hero Quick Badge Column */}
               <div className="lg:col-span-4 hidden lg:block">
-                <div className="p-6 bg-night-900/85 backdrop-blur-md border border-amber-500/30 text-cream-200 space-y-4 shadow-2xl rounded-sm">
+                <div className="p-6 backdrop-blur-2xl bg-white/[0.06] dark:bg-night-900/60 border border-white/20 dark:border-white/15 text-cream-200 space-y-4 shadow-2xl rounded-2xl">
                   <span className="micro-label text-amber-400 font-bold">
                     OPERATIONAL ASSURANCE
                   </span>
                   <p className="font-serif text-xl italic text-cream-100 leading-snug">
                     "Structured workforce operations with verified stand-by personnel and zero dropouts."
                   </p>
-                  <div className="pt-2 border-t border-amber-500/20 flex items-center justify-between text-xs text-cream-300/80 font-mono">
+                  <div className="pt-2 border-t border-white/10 flex items-center justify-between text-xs text-cream-300/80 font-mono">
                     <span>Delhi NCR Ready</span>
                     <span className="text-amber-400 font-semibold">24/7 Desk</span>
                   </div>
@@ -201,29 +205,24 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-        </TiltedGridHero>
+        </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 2. EXECUTIVE PHOTO CAROUSEL (HIGHLIGHT MOMENTS)                            */}
+      {/* 2. REAL-TIME STATS STRIP (GLASSMORPHISM)                                   */}
       {/* ========================================================================= */}
-      <ColorCreepSection tone="b" className="py-4">
-        <ScrollReveal variant="up" threshold={0.1}>
-          <ExecutiveCarousel />
-        </ScrollReveal>
+      <ColorCreepSection tone="a" className="py-14 border-b border-chocolate-700/10 dark:border-bronze-500/15">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <ScrollReveal variant="up" threshold={0.15}>
+            <div className="backdrop-blur-xl bg-cream-100/50 dark:bg-night-900/40 border border-chocolate-700/10 dark:border-white/10 rounded-3xl p-8 sm:p-10 shadow-[0_8px_32px_0_rgba(0,0,0,0.08)] dark:shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
+              <StatCounter />
+            </div>
+          </ScrollReveal>
+        </div>
       </ColorCreepSection>
 
       {/* ========================================================================= */}
-      {/* 3. REAL-TIME STATS STRIP (TONE A)                                          */}
-      {/* ========================================================================= */}
-      <ColorCreepSection tone="a" className="py-12 border-b border-chocolate-700/10 dark:border-bronze-500/15">
-        <ScrollReveal variant="up" threshold={0.15}>
-          <StatCounter />
-        </ScrollReveal>
-      </ColorCreepSection>
-
-      {/* ========================================================================= */}
-      {/* 4. EXECUTIVE PORTAL FEED: WHAT TO FIND ON EACH PAGE                        */}
+      {/* 3. EXECUTIVE PORTAL FEED: WHAT TO FIND ON EACH PAGE                        */}
       {/* ========================================================================= */}
       <ColorCreepSection tone="b" className="py-24 px-6 sm:px-8 lg:px-12">
         <div className="max-w-7xl mx-auto space-y-16">
@@ -243,13 +242,13 @@ export default function HomePage() {
             </div>
           </ScrollReveal>
 
-          {/* 6 Clean Portal Cards Grid */}
+          {/* 6 Clean Portal Cards Grid with Glassmorphism */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {PORTAL_PAGES.map((page, idx) => {
               const Icon = page.icon;
               return (
                 <ScrollReveal key={page.id} variant="up" delay={idx * 80}>
-                  <div className="group relative rounded-sm p-8 flex flex-col justify-between overflow-hidden bg-cream-100/90 dark:bg-night-800/90 border-2 border-chocolate-700/15 dark:border-bronze-500/20 shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-400 ease-out hover:border-amber-500/70 dark:hover:border-amber-400/70 h-full">
+                  <div className="group relative rounded-2xl p-8 flex flex-col justify-between overflow-hidden backdrop-blur-xl bg-cream-100/60 dark:bg-night-900/50 border border-chocolate-700/15 dark:border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.08)] dark:shadow-[0_8px_32px_0_rgba(0,0,0,0.35)] hover:border-amber-500/50 hover:shadow-[0_16px_48px_0_rgba(0,0,0,0.2)] hover:-translate-y-1.5 transition-all duration-400 ease-out h-full">
                     
                     {/* Top Indicator & Number */}
                     <div className="space-y-5">
@@ -258,7 +257,7 @@ export default function HomePage() {
                           CHAPTER {page.number}
                         </span>
 
-                        <div className="p-2.5 rounded-sm bg-cream-200 dark:bg-night-750 border border-chocolate-700/10 dark:border-bronze-500/20 text-amber-700 dark:text-amber-400 group-hover:bg-amber-500 group-hover:text-night-950 transition-colors duration-300">
+                        <div className="p-2.5 rounded-xl backdrop-blur-md bg-cream-200/80 dark:bg-white/5 border border-chocolate-700/10 dark:border-white/10 text-amber-700 dark:text-amber-400 group-hover:bg-amber-500 group-hover:text-night-950 transition-colors duration-300">
                           <Icon className="w-5 h-5" />
                         </div>
                       </div>
@@ -281,19 +280,19 @@ export default function HomePage() {
                         {page.desc}
                       </p>
 
-                      {/* Badge Tag */}
+                      {/* Badge Tag with Frosted Pill */}
                       <div className="pt-2">
-                        <span className="inline-block text-[10.5px] font-mono font-semibold px-3 py-1 bg-cream-200/90 dark:bg-night-850 text-chocolate-800 dark:text-cream-200 border border-chocolate-700/10 dark:border-bronze-500/20 rounded-sm">
+                        <span className="inline-block text-[10.5px] font-mono font-semibold px-3 py-1 backdrop-blur-md bg-cream-200/80 dark:bg-white/5 text-chocolate-800 dark:text-cream-200 border border-chocolate-700/10 dark:border-white/10 rounded-full">
                           {page.badge}
                         </span>
                       </div>
                     </div>
 
                     {/* Bottom CTA Button */}
-                    <div className="mt-8 pt-6 border-t border-chocolate-700/10 dark:border-night-700">
+                    <div className="mt-8 pt-6 border-t border-chocolate-700/10 dark:border-white/10">
                       <Link
                         to={page.link}
-                        className="btn-primary group w-full py-3.5 px-5 text-xs font-bold uppercase tracking-wider flex items-center justify-between"
+                        className="btn-primary group w-full py-3.5 px-5 text-xs font-bold uppercase tracking-wider flex items-center justify-between shadow-sm backdrop-blur-md"
                       >
                         <span>{page.linkText}</span>
                         <ArrowUpRight className="w-4 h-4 ml-1.5 text-amber-300 dark:text-night-950 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -308,17 +307,17 @@ export default function HomePage() {
       </ColorCreepSection>
 
       {/* ========================================================================= */}
-      {/* 5. MEET EVA AI OPERATIONS ASSISTANT BANNER (TONE A)                        */}
+      {/* 4. MEET EVA AI OPERATIONS ASSISTANT BANNER (GLASSMORPHISM)                 */}
       {/* ========================================================================= */}
       <ColorCreepSection tone="a" className="py-20 px-6 sm:px-8 lg:px-12">
         <ScrollReveal variant="scale" threshold={0.12}>
           <div className="max-w-7xl mx-auto">
-            <div className="relative overflow-hidden rounded-sm bg-cream-100/95 dark:bg-night-900 border-2 border-chocolate-700/20 dark:border-amber-500/30 p-8 sm:p-12 shadow-2xl text-chocolate-950 dark:text-cream-100 transition-all duration-300">
+            <div className="relative overflow-hidden rounded-3xl backdrop-blur-2xl bg-cream-100/70 dark:bg-night-900/60 border border-chocolate-700/15 dark:border-white/15 p-8 sm:p-12 shadow-2xl text-chocolate-950 dark:text-cream-100 transition-all duration-300">
               <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 
                 {/* Left Pitch */}
                 <div className="lg:col-span-8 space-y-4">
-                  <div className="inline-flex items-center space-x-2 px-3 py-1 bg-cream-200 dark:bg-night-850 border border-amber-600/30 dark:border-amber-400/40 rounded-full text-amber-800 dark:text-amber-300 shadow-sm">
+                  <div className="inline-flex items-center space-x-2 px-3 py-1 backdrop-blur-md bg-amber-500/15 border border-amber-600/30 dark:border-amber-400/40 rounded-full text-amber-800 dark:text-amber-300 shadow-sm">
                     <Sparkles className="w-3.5 h-3.5 animate-pulse" />
                     <span className="text-[10px] font-mono uppercase tracking-widest font-bold">
                       24/7 AI OPERATIONS CONCIERGE
@@ -337,7 +336,7 @@ export default function HomePage() {
                     <button
                       type="button"
                       onClick={() => window.dispatchEvent(new CustomEvent("open-eva-chat"))}
-                      className="btn-primary group py-3 px-6 text-xs font-bold uppercase tracking-wider cursor-pointer"
+                      className="btn-primary group py-3 px-6 text-xs font-bold uppercase tracking-wider cursor-pointer shadow-lg backdrop-blur-md"
                     >
                       <Sparkles className="w-4 h-4 mr-2" />
                       <span>Chat with Eva Now</span>
@@ -347,7 +346,7 @@ export default function HomePage() {
                       href="https://wa.me/?text=Hello%20Event%20Operations%20Team,%20I%20would%20like%20to%20consult%20on%20manpower%20staffing%20for%20an%20upcoming%20event."
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn-secondary group py-3 px-6 text-xs font-bold uppercase tracking-wider cursor-pointer"
+                      className="backdrop-blur-md bg-white/10 hover:bg-white/20 border border-chocolate-700/15 dark:border-white/15 py-3 px-6 text-xs font-bold uppercase tracking-wider cursor-pointer rounded-sm flex items-center transition-all duration-300"
                     >
                       <span>WhatsApp Operations Desk</span>
                       <ArrowUpRight className="w-4 h-4 ml-1.5 text-amber-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -357,17 +356,17 @@ export default function HomePage() {
 
                 {/* Right Feature Highlights */}
                 <div className="lg:col-span-4 space-y-2.5">
-                  <div className="p-3.5 bg-cream-200/80 dark:bg-night-800 border border-chocolate-700/10 dark:border-bronze-500/20 rounded-sm">
+                  <div className="p-3.5 backdrop-blur-md bg-cream-200/60 dark:bg-white/5 border border-chocolate-700/10 dark:border-white/10 rounded-xl">
                     <p className="text-xs font-bold text-chocolate-950 dark:text-cream-50">⚡ Instant Headcounts</p>
                     <p className="text-[11px] text-chocolate-600 dark:text-night-muted font-light mt-0.5">Calculates stewards, hostesses, shadows &amp; supervisors</p>
                   </div>
 
-                  <div className="p-3.5 bg-cream-200/80 dark:bg-night-800 border border-chocolate-700/10 dark:border-bronze-500/20 rounded-sm">
+                  <div className="p-3.5 backdrop-blur-md bg-cream-200/60 dark:bg-white/5 border border-chocolate-700/10 dark:border-white/10 rounded-xl">
                     <p className="text-xs font-bold text-chocolate-950 dark:text-cream-50">📍 40+ Venues NCR</p>
                     <p className="text-[11px] text-chocolate-600 dark:text-night-muted font-light mt-0.5">Taj, ITC, Leela, Yashobhoomi &amp; Pragati Maidan ready</p>
                   </div>
 
-                  <div className="p-3.5 bg-cream-200/80 dark:bg-night-800 border border-chocolate-700/10 dark:border-bronze-500/20 rounded-sm">
+                  <div className="p-3.5 backdrop-blur-md bg-cream-200/60 dark:bg-white/5 border border-chocolate-700/10 dark:border-white/10 rounded-xl">
                     <p className="text-xs font-bold text-chocolate-950 dark:text-cream-50">💬 1-Tap Dispatch</p>
                     <p className="text-[11px] text-chocolate-600 dark:text-night-muted font-light mt-0.5">Structured briefing sent to WhatsApp in seconds</p>
                   </div>
@@ -380,24 +379,24 @@ export default function HomePage() {
       </ColorCreepSection>
 
       {/* ========================================================================= */}
-      {/* 6. BOTTOM DIRECT CALL TO ACTION (TONE B)                                   */}
+      {/* 5. BOTTOM DIRECT CALL TO ACTION (GLASSMORPHISM)                            */}
       {/* ========================================================================= */}
       <ColorCreepSection tone="b" className="py-20 px-6 sm:px-8 lg:px-12 text-center border-t border-chocolate-700/10 dark:border-bronze-500/15">
         <ScrollReveal variant="up">
-          <div className="max-w-3xl mx-auto space-y-6">
+          <div className="max-w-4xl mx-auto backdrop-blur-xl bg-cream-100/50 dark:bg-night-900/40 border border-chocolate-700/10 dark:border-white/10 rounded-3xl p-10 sm:p-14 shadow-xl space-y-6">
             <span className="micro-label text-amber-700 dark:text-amber-400 font-bold">
               LET'S BUILD YOUR EVENT TEAM
             </span>
             <h2 className="editorial-heading text-4xl sm:text-5xl">
               Ready to deploy structured event manpower?
             </h2>
-            <p className="text-sm font-light max-w-xl mx-auto leading-relaxed">
+            <p className="text-sm font-light max-w-xl mx-auto leading-relaxed text-chocolate-700 dark:text-cream-200/90">
               Share your schedule, headcount requirements, and shift timings. Our operations desk will structure fully briefed personnel matching your exact venue standards.
             </p>
             <div className="pt-3 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 to="/contact"
-                className="btn-primary group px-8 py-4 text-xs font-bold uppercase tracking-wider"
+                className="btn-primary group px-8 py-4 text-xs font-bold uppercase tracking-wider shadow-lg backdrop-blur-md"
               >
                 <span>Book Deployment Crew</span>
                 <ArrowUpRight className="w-4 h-4 ml-2 text-amber-300 dark:text-night-950 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -405,7 +404,7 @@ export default function HomePage() {
 
               <Link
                 to="/contact"
-                className="btn-secondary group px-8 py-4 text-xs font-bold uppercase tracking-wider"
+                className="backdrop-blur-md bg-white/10 hover:bg-white/20 border border-chocolate-700/15 dark:border-white/15 px-8 py-4 text-xs font-bold uppercase tracking-wider rounded-sm transition-all duration-300"
               >
                 <span>Contact Operations Desk</span>
               </Link>
