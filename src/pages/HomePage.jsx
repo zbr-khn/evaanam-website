@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { 
   ArrowUpRight, 
@@ -18,8 +18,29 @@ import ExecutiveCarousel from "../components/ExecutiveCarousel";
 import ScrollReveal from "../components/ScrollReveal";
 import ColorCreepSection from "../components/ColorCreepSection";
 import { COMPANY_INFO } from "../data/evaanamData";
+import { ThreeDPhotoCarousel } from "../components/ui/3d-carousel";
+import { TiltedGridHeroBrandDemo } from "../components/ui/tilted-grid-hero-brand";
+
+const GALLERY_3D_CARDS = [
+  "./images/home-highlights/vivo.png",
+  "./images/gallery-weddings/IMG-6449-JPG.jpg",
+  "./images/home-highlights/indigo.png",
+  "./images/gallery-weddings/IMG-6650-JPG.jpg",
+  "./images/home-highlights/boman.png",
+  "./images/gallery-corporate/IMG-20250419-WA0011-jpg.jpg",
+  "./images/home-highlights/rajpal.png",
+  "./images/gallery-weddings/IMG-2923-JPG.jpg",
+  "./images/home-highlights/pronto.png",
+  "./images/gallery-corporate/IMG-20260301-WA0012-jpg.jpg",
+  "./images/gallery-weddings/IMG-20260301-WA0010-jpg.jpg",
+  "./images/gallery-corporate/IMG-20260301-WA0013-jpg.jpg",
+  "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=600&q=80",
+  "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=80"
+];
 
 export default function HomePage() {
+  const [galleryViewMode, setGalleryViewMode] = useState("cylinder"); // 'cylinder' | 'arc'
+
   const PORTAL_PAGES = [
     {
       id: "services",
@@ -70,10 +91,10 @@ export default function HomePage() {
       title: "Visual Gallery",
       subtitle: "Active Deployments & Executive Highlights",
       desc: "View our photo and video documentation: real-time banquet silver service alignments, mandap coordination, behind-the-scenes muster briefings, and executive VIP protocol escorts.",
-      link: "/gallery",
-      linkText: "View Floor Gallery",
+      link: "/#gallery",
+      linkText: "Scroll to 3D Gallery",
       icon: Camera,
-      badge: "Floor Photos & VIP Highlights",
+      badge: "Interactive 3D Cylinder Reel",
       themeColor: "emerald",
       image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=1000&q=80"
     },
@@ -116,7 +137,7 @@ export default function HomePage() {
         {/* Background Image with slow Ken Burns effect & luxury dark overlay */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
-            src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1920&q=80"
+            src="./gallery/hero-updated.png"
             alt="EVAANAM Luxury Event Floor Manpower & Execution"
             className="w-full h-full object-cover object-center ken-burns opacity-35 dark:opacity-25"
           />
@@ -215,7 +236,79 @@ export default function HomePage() {
       </ColorCreepSection>
 
       {/* ========================================================================= */}
-      {/* 4. EXECUTIVE PORTAL FEED: WHAT TO FIND ON EACH PAGE                        */}
+      {/* 4. ON-FLOOR 3D VISUAL GALLERY SECTION (MAIN PAGE EMBEDDED)                */}
+      {/* ========================================================================= */}
+      <section id="gallery" className="scroll-mt-20">
+        <ColorCreepSection tone="a" className="py-20 px-6 sm:px-8 lg:px-12 border-b border-chocolate-700/10 dark:border-bronze-500/15">
+          <div className="max-w-7xl mx-auto space-y-10">
+            <ScrollReveal variant="up">
+              <div className="text-center max-w-3xl mx-auto space-y-3">
+                <span className="micro-label text-amber-700 dark:text-amber-400 font-bold flex items-center justify-center space-x-2">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>CHAPTER 04 / INTERACTIVE 3D GALLERY</span>
+                </span>
+                <h2 className="editorial-heading text-4xl sm:text-5xl md:text-6xl text-chocolate-950 dark:text-cream-50">
+                  The Work, in 3D Motion.
+                </h2>
+                <p className="text-base sm:text-lg text-chocolate-600 dark:text-night-muted font-light leading-relaxed">
+                  Interactive 3D spatial showcases of active event deployments across Delhi NCR. Switch between the 3D Rotating Cylinder and the Curved Horizon Arc below.
+                </p>
+
+                {/* Interactive 3D Mode Selector */}
+                <div className="pt-4 flex items-center justify-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setGalleryViewMode("cylinder")}
+                    className={`px-5 py-2.5 text-xs font-mono uppercase tracking-wider rounded-full transition-all duration-300 flex items-center space-x-2 ${
+                      galleryViewMode === "cylinder"
+                        ? "bg-amber-600 dark:bg-amber-500 text-cream-50 font-bold shadow-lg scale-105"
+                        : "bg-cream-100 dark:bg-night-800 text-chocolate-700 dark:text-night-muted hover:text-amber-600 border border-chocolate-700/15 dark:border-bronze-500/20"
+                    }`}
+                  >
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>3D Rotating Cylinder</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setGalleryViewMode("arc")}
+                    className={`px-5 py-2.5 text-xs font-mono uppercase tracking-wider rounded-full transition-all duration-300 flex items-center space-x-2 ${
+                      galleryViewMode === "arc"
+                        ? "bg-amber-600 dark:bg-amber-500 text-cream-50 font-bold shadow-lg scale-105"
+                        : "bg-cream-100 dark:bg-night-800 text-chocolate-700 dark:text-night-muted hover:text-amber-600 border border-chocolate-700/15 dark:border-bronze-500/20"
+                    }`}
+                  >
+                    <span>Curved Horizon Arc</span>
+                  </button>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            {/* Dynamic 3D Animation Showcase */}
+            {galleryViewMode === "cylinder" ? (
+              <div className="w-full relative py-2">
+                <ThreeDPhotoCarousel cards={GALLERY_3D_CARDS} autoRotateSpeed={14} />
+              </div>
+            ) : (
+              <div className="w-full relative py-2 animate-fade-in">
+                <TiltedGridHeroBrandDemo />
+              </div>
+            )}
+
+            {/* Interactive Guidance Micro-Pill */}
+            <div className="flex items-center justify-center space-x-3 text-xs font-mono text-chocolate-500 dark:text-night-dim">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span>
+                {galleryViewMode === "cylinder"
+                  ? "Auto-revolving 3D Cylinder • Drag left/right to spin • Hover to pause • Tap to zoom"
+                  : "Continuous 3D Cylindrical Arc • Smooth real-time infinite orbital motion"}
+              </span>
+            </div>
+          </div>
+        </ColorCreepSection>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 5. EXECUTIVE PORTAL FEED: WHAT TO FIND ON EACH PAGE                        */}
       {/* ========================================================================= */}
       <ColorCreepSection tone="b" className="py-24 px-6 sm:px-8 lg:px-12">
         <div className="max-w-7xl mx-auto space-y-16">
