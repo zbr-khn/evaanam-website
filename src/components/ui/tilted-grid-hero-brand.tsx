@@ -53,17 +53,15 @@ export function TiltedGridHeroBrandDemo() {
       <div className="relative z-10 flex h-full flex-col items-center justify-between py-12 text-center">
         <div className="px-6">
           <span className="micro-label text-bronze-400 font-mono tracking-widest uppercase">
-            Curved Dynamic Cylinder
+            Operations Showcase
           </span>
           <h2 className="editorial-heading text-balance text-3xl sm:text-5xl mt-3 text-cream-100 font-serif">
-            Verified Deployments,
-            <br />
-            Curved in Motion.
+            Verified Event Deployments
           </h2>
         </div>
         <p className="max-w-lg text-balance px-6 text-xs sm:text-sm text-cream-300/70 font-sans leading-relaxed">
           Celebrity escorts, five-star banquet hospitality, and aviation conclave
-          crews streaming along an interactive 3D cylindrical arc.
+          crews on active floors across Delhi NCR.
         </p>
       </div>
     </TiltedGridHero>

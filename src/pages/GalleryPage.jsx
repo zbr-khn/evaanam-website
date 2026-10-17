@@ -4,7 +4,6 @@ import { Maximize2, Sparkles, Crown, Briefcase, Camera, ArrowUpRight, Award } fr
 import LightboxModal from "../components/LightboxModal";
 import GeometricDivider from "../components/GeometricDivider";
 import { GALLERY_IMAGES } from "../data/evaanamData";
-import { TiltedGridHeroBrandDemo } from "../components/ui/tilted-grid-hero-brand";
 
 export default function GalleryPage() {
   const [activeCategory, setActiveCategory] = useState("all"); // 'all' | 'activations' | 'wedding' | 'corporate' | 'bts'
@@ -71,11 +70,6 @@ export default function GalleryPage() {
               <span>•</span>
               <span><strong>{btsImages.length}</strong> Behind The Scenes</span>
             </div>
-          </div>
-
-          {/* 3D Curved Cylindrical Motion Reel */}
-          <div className="mt-12">
-            <TiltedGridHeroBrandDemo />
           </div>
         </div>
       </section>

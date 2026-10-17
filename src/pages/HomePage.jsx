@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { 
   ArrowUpRight, 
@@ -18,28 +18,10 @@ import ExecutiveCarousel from "../components/ExecutiveCarousel";
 import ScrollReveal from "../components/ScrollReveal";
 import ColorCreepSection from "../components/ColorCreepSection";
 import { COMPANY_INFO } from "../data/evaanamData";
-import { ThreeDPhotoCarousel } from "../components/ui/3d-carousel";
-import { TiltedGridHeroBrandDemo } from "../components/ui/tilted-grid-hero-brand";
-
-const GALLERY_3D_CARDS = [
-  "./images/home-highlights/vivo.png",
-  "./images/gallery-weddings/IMG-6449-JPG.jpg",
-  "./images/home-highlights/indigo.png",
-  "./images/gallery-weddings/IMG-6650-JPG.jpg",
-  "./images/home-highlights/boman.png",
-  "./images/gallery-corporate/IMG-20250419-WA0011-jpg.jpg",
-  "./images/home-highlights/rajpal.png",
-  "./images/gallery-weddings/IMG-2923-JPG.jpg",
-  "./images/home-highlights/pronto.png",
-  "./images/gallery-corporate/IMG-20260301-WA0012-jpg.jpg",
-  "./images/gallery-weddings/IMG-20260301-WA0010-jpg.jpg",
-  "./images/gallery-corporate/IMG-20260301-WA0013-jpg.jpg",
-  "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=600&q=80",
-  "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=80"
-];
+import { TiltedGridHero } from "../components/ui/tilted-grid-hero";
+import { EVAANAM_BRAND_IMAGES } from "../components/ui/tilted-grid-hero-brand";
 
 export default function HomePage() {
-  const [galleryViewMode, setGalleryViewMode] = useState("cylinder"); // 'cylinder' | 'arc'
 
   const PORTAL_PAGES = [
     {
@@ -90,11 +72,11 @@ export default function HomePage() {
       tag: "FLOOR DOSSIER",
       title: "Visual Gallery",
       subtitle: "Active Deployments & Executive Highlights",
-      desc: "View our photo and video documentation: real-time banquet silver service alignments, mandap coordination, behind-the-scenes muster briefings, and executive VIP protocol escorts.",
-      link: "/#gallery",
-      linkText: "Scroll to 3D Gallery",
+      desc: "View our comprehensive photo and video documentation: real-time banquet silver service alignments, mandap coordination, behind-the-scenes muster briefings, and executive VIP protocol escorts.",
+      link: "/gallery",
+      linkText: "View Photo Portfolio",
       icon: Camera,
-      badge: "Interactive 3D Cylinder Reel",
+      badge: "Operations Photo Archive",
       themeColor: "emerald",
       image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=1000&q=80"
     },
@@ -131,90 +113,95 @@ export default function HomePage() {
   return (
     <div className="animate-fade-in">
       {/* ========================================================================= */}
-      {/* 1. HERO SECTION                                                            */}
+      {/* 1. HERO SECTION: CURVED HORIZON ARC                                        */}
       {/* ========================================================================= */}
-      <section data-tone="a" className="relative min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center pt-28 pb-16 px-6 sm:px-8 lg:px-12 overflow-hidden text-cream-100 bg-brand-dark">
-        {/* Background Image with slow Ken Burns effect & luxury dark overlay */}
-        <div className="absolute inset-0 z-0 overflow-hidden">
-          <img
-            src="./gallery/hero-updated.png"
-            alt="EVAANAM Luxury Event Floor Manpower & Execution"
-            className="w-full h-full object-cover object-center ken-burns opacity-35 dark:opacity-25"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-night-950 via-night-950/80 to-night-950/90" />
-        </div>
+      <section data-tone="a" className="relative text-cream-100 bg-night-950 overflow-hidden">
+        <TiltedGridHero
+          images={EVAANAM_BRAND_IMAGES}
+          speed={5}
+          tileHeight={30}
+          aspectRatio={16 / 9}
+          gap={6}
+          axis={52}
+          curve={75}
+          fade={14}
+          className="relative min-h-[90vh] sm:min-h-[95vh] flex items-center justify-center pt-28 pb-16 px-6 sm:px-8 lg:px-12 bg-night-950"
+        >
+          {/* Subtle dark gradient overlay so moving 3D tiles remain visible in backdrop while ensuring high contrast for typography */}
+          <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-night-950 via-night-950/70 to-night-950/80" />
 
-        {/* Hero Content Container */}
-        <div className="relative z-10 max-w-6xl mx-auto w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
-            <div className="lg:col-span-8 space-y-6">
-              {/* Micro Eyebrow */}
-              <div className="inline-flex items-center space-x-2.5 px-3 py-1.5 bg-night-900/90 border border-amber-500/30 rounded-sm">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-                <span className="micro-label text-amber-300 font-bold">
-                  Event Manpower &amp; Execution · Delhi NCR
-                </span>
-              </div>
+          {/* Hero Content Container */}
+          <div className="relative z-10 max-w-6xl mx-auto w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+              <div className="lg:col-span-8 space-y-6">
+                {/* Micro Eyebrow */}
+                <div className="inline-flex items-center space-x-2.5 px-3 py-1.5 bg-night-900/90 border border-amber-500/30 rounded-sm">
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                  <span className="micro-label text-amber-300 font-bold">
+                    Event Manpower &amp; Execution · Delhi NCR
+                  </span>
+                </div>
 
-              {/* Main Headline */}
-              <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-cream-50 leading-[1.04] tracking-tight">
-                The Right People <br />
-                <span className="italic font-normal text-amber-300">For Every Floor.</span>
-              </h1>
+                {/* Main Headline */}
+                <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-cream-50 leading-[1.04] tracking-tight">
+                  The Right People <br />
+                  <span className="italic font-normal text-amber-300">For Every Floor.</span>
+                </h1>
 
-              {/* Supporting Text */}
-              <p className="text-base sm:text-lg text-cream-200 font-light max-w-2xl leading-relaxed">
-                Trained, verified and professionally managed event crews engineered for five-star wedding banquets, corporate summits, and large-scale industrial exhibitions across Delhi NCR.
-              </p>
-
-              {/* CTAs */}
-              <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center space-y-3.5 sm:space-y-0 sm:space-x-4">
-                <Link
-                  to="/services#calculator-section"
-                  className="btn-primary group"
-                >
-                  <Calculator className="w-3.5 h-3.5 mr-2 text-amber-300 dark:text-night-950 group-hover:rotate-12 transition-transform duration-300" />
-                  <span>Configure Crew Roster ⚡</span>
-                </Link>
-
-                <Link
-                  to="/contact"
-                  className="btn-secondary group"
-                >
-                  <span>Request Floor Booking</span>
-                  <ArrowUpRight className="w-4 h-4 ml-2 text-amber-400 dark:text-cream-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </Link>
-              </div>
-
-              {/* Credibility Line */}
-              <div className="pt-6 flex items-center space-x-2 text-xs font-sans tracking-wider text-amber-400/90 font-medium">
-                <span>200+ Crew Network</span>
-                <span className="text-cream-400/40">·</span>
-                <span>300+ Projects</span>
-                <span className="text-cream-400/40">·</span>
-                <span>30+ Five-Star Venues</span>
-                <span className="text-cream-400/40">·</span>
-                <span>24-Hr Rapid Dispatch</span>
-              </div>
-            </div>
-
-            {/* Hero Quick Badge Column */}
-            <div className="lg:col-span-4 hidden lg:block">
-              <div className="p-6 bg-night-900/85 backdrop-blur-md border border-amber-500/30 text-cream-200 space-y-4 shadow-2xl rounded-sm">
-                <span className="micro-label text-amber-400 font-bold">
-                  OPERATIONAL ASSURANCE
-                </span>
-                <p className="font-serif text-xl italic text-cream-100 leading-snug">
-                  "Structured workforce operations with verified stand-by personnel and zero dropouts."
+                {/* Supporting Text */}
+                <p className="text-base sm:text-lg text-cream-200 font-light max-w-2xl leading-relaxed">
+                  Trained, verified and professionally managed event crews engineered for five-star wedding banquets, corporate summits, and large-scale industrial exhibitions across Delhi NCR.
                 </p>
-                <div className="pt-2 border-t border-amber-500/20 flex items-center justify-between text-xs text-cream-300/80 font-mono">
-                  <span>Delhi NCR Ready</span>
-                  <span className="text-amber-400 font-semibold">24/7 Desk</span>
+
+                {/* CTAs */}
+                <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center space-y-3.5 sm:space-y-0 sm:space-x-4">
+                  <Link
+                    to="/services#calculator-section"
+                    className="btn-primary group"
+                  >
+                    <Calculator className="w-3.5 h-3.5 mr-2 text-amber-300 dark:text-night-950 group-hover:rotate-12 transition-transform duration-300" />
+                    <span>Configure Crew Roster ⚡</span>
+                  </Link>
+
+                  <Link
+                    to="/contact"
+                    className="btn-secondary group"
+                  >
+                    <span>Request Floor Booking</span>
+                    <ArrowUpRight className="w-4 h-4 ml-2 text-amber-400 dark:text-cream-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </Link>
+                </div>
+
+                {/* Credibility Line */}
+                <div className="pt-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-sans tracking-wider text-amber-400/90 font-medium">
+                  <span>200+ Crew Network</span>
+                  <span className="text-cream-400/40">·</span>
+                  <span>300+ Projects</span>
+                  <span className="text-cream-400/40">·</span>
+                  <span>30+ Five-Star Venues</span>
+                  <span className="text-cream-400/40">·</span>
+                  <span>24-Hr Rapid Dispatch</span>
+                </div>
+              </div>
+
+              {/* Hero Quick Badge Column */}
+              <div className="lg:col-span-4 hidden lg:block">
+                <div className="p-6 bg-night-900/85 backdrop-blur-md border border-amber-500/30 text-cream-200 space-y-4 shadow-2xl rounded-sm">
+                  <span className="micro-label text-amber-400 font-bold">
+                    OPERATIONAL ASSURANCE
+                  </span>
+                  <p className="font-serif text-xl italic text-cream-100 leading-snug">
+                    "Structured workforce operations with verified stand-by personnel and zero dropouts."
+                  </p>
+                  <div className="pt-2 border-t border-amber-500/20 flex items-center justify-between text-xs text-cream-300/80 font-mono">
+                    <span>Delhi NCR Ready</span>
+                    <span className="text-amber-400 font-semibold">24/7 Desk</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </TiltedGridHero>
       </section>
 
       {/* ========================================================================= */}
@@ -236,79 +223,7 @@ export default function HomePage() {
       </ColorCreepSection>
 
       {/* ========================================================================= */}
-      {/* 4. ON-FLOOR 3D VISUAL GALLERY SECTION (MAIN PAGE EMBEDDED)                */}
-      {/* ========================================================================= */}
-      <section id="gallery" className="scroll-mt-20">
-        <ColorCreepSection tone="a" className="py-20 px-6 sm:px-8 lg:px-12 border-b border-chocolate-700/10 dark:border-bronze-500/15">
-          <div className="max-w-7xl mx-auto space-y-10">
-            <ScrollReveal variant="up">
-              <div className="text-center max-w-3xl mx-auto space-y-3">
-                <span className="micro-label text-amber-700 dark:text-amber-400 font-bold flex items-center justify-center space-x-2">
-                  <Sparkles className="w-3.5 h-3.5" />
-                  <span>CHAPTER 04 / INTERACTIVE 3D GALLERY</span>
-                </span>
-                <h2 className="editorial-heading text-4xl sm:text-5xl md:text-6xl text-chocolate-950 dark:text-cream-50">
-                  The Work, in 3D Motion.
-                </h2>
-                <p className="text-base sm:text-lg text-chocolate-600 dark:text-night-muted font-light leading-relaxed">
-                  Interactive 3D spatial showcases of active event deployments across Delhi NCR. Switch between the 3D Rotating Cylinder and the Curved Horizon Arc below.
-                </p>
-
-                {/* Interactive 3D Mode Selector */}
-                <div className="pt-4 flex items-center justify-center gap-2">
-                  <button
-                    type="button"
-                    onClick={() => setGalleryViewMode("cylinder")}
-                    className={`px-5 py-2.5 text-xs font-mono uppercase tracking-wider rounded-full transition-all duration-300 flex items-center space-x-2 ${
-                      galleryViewMode === "cylinder"
-                        ? "bg-amber-600 dark:bg-amber-500 text-cream-50 font-bold shadow-lg scale-105"
-                        : "bg-cream-100 dark:bg-night-800 text-chocolate-700 dark:text-night-muted hover:text-amber-600 border border-chocolate-700/15 dark:border-bronze-500/20"
-                    }`}
-                  >
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                    <span>3D Rotating Cylinder</span>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setGalleryViewMode("arc")}
-                    className={`px-5 py-2.5 text-xs font-mono uppercase tracking-wider rounded-full transition-all duration-300 flex items-center space-x-2 ${
-                      galleryViewMode === "arc"
-                        ? "bg-amber-600 dark:bg-amber-500 text-cream-50 font-bold shadow-lg scale-105"
-                        : "bg-cream-100 dark:bg-night-800 text-chocolate-700 dark:text-night-muted hover:text-amber-600 border border-chocolate-700/15 dark:border-bronze-500/20"
-                    }`}
-                  >
-                    <span>Curved Horizon Arc</span>
-                  </button>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* Dynamic 3D Animation Showcase */}
-            {galleryViewMode === "cylinder" ? (
-              <div className="w-full relative py-2">
-                <ThreeDPhotoCarousel cards={GALLERY_3D_CARDS} autoRotateSpeed={14} />
-              </div>
-            ) : (
-              <div className="w-full relative py-2 animate-fade-in">
-                <TiltedGridHeroBrandDemo />
-              </div>
-            )}
-
-            {/* Interactive Guidance Micro-Pill */}
-            <div className="flex items-center justify-center space-x-3 text-xs font-mono text-chocolate-500 dark:text-night-dim">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>
-                {galleryViewMode === "cylinder"
-                  ? "Auto-revolving 3D Cylinder • Drag left/right to spin • Hover to pause • Tap to zoom"
-                  : "Continuous 3D Cylindrical Arc • Smooth real-time infinite orbital motion"}
-              </span>
-            </div>
-          </div>
-        </ColorCreepSection>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* 5. EXECUTIVE PORTAL FEED: WHAT TO FIND ON EACH PAGE                        */}
+      {/* 4. EXECUTIVE PORTAL FEED: WHAT TO FIND ON EACH PAGE                        */}
       {/* ========================================================================= */}
       <ColorCreepSection tone="b" className="py-24 px-6 sm:px-8 lg:px-12">
         <div className="max-w-7xl mx-auto space-y-16">
