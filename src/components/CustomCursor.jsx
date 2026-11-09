@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 
 export default function CustomCursor() {
   const [isTouchDevice, setIsTouchDevice] = useState(false);
-  const dotRef = useRef(null);
   const ringRef = useRef(null);
 
   const mousePos = useRef({ x: -100, y: -100 });
@@ -21,11 +20,9 @@ export default function CustomCursor() {
       mousePos.current = { x: e.clientX, y: e.clientY };
       if (!isVisible.current) {
         isVisible.current = true;
-        if (dotRef.current) dotRef.current.style.opacity = "1";
         if (ringRef.current) ringRef.current.style.opacity = "1";
       }
 
-      // Fast check without heavy getComputedStyle
       const target = e.target;
       const interactive = target && (
         target.tagName === "BUTTON" ||
@@ -53,37 +50,30 @@ export default function CustomCursor() {
 
     const handleMouseLeave = () => {
       isVisible.current = false;
-      if (dotRef.current) dotRef.current.style.opacity = "0";
       if (ringRef.current) ringRef.current.style.opacity = "0";
     };
 
     const handleMouseEnter = () => {
       isVisible.current = true;
-      if (dotRef.current) dotRef.current.style.opacity = "1";
       if (ringRef.current) ringRef.current.style.opacity = "1";
     };
 
-    // 60-120fps GPU Lerp Loop (ZERO React re-renders)
+    // 60-120fps GPU Lerp Loop
     let animationId;
     const animate = () => {
-      const ease = 0.22;
+      const ease = 0.2;
       trailing.current.x += (mousePos.current.x - trailing.current.x) * ease;
       trailing.current.y += (mousePos.current.y - trailing.current.y) * ease;
 
-      const scaleRing = isClicked.current ? 0.75 : isHovered.current ? 1.5 : 1;
-      const scaleDot = isHovered.current ? 0.5 : 1;
-
-      if (dotRef.current) {
-        dotRef.current.style.transform = `translate3d(${mousePos.current.x}px, ${mousePos.current.y}px, 0) translate(-50%, -50%) scale(${scaleDot})`;
-      }
+      const scaleRing = isClicked.current ? 0.8 : isHovered.current ? 1.6 : 1;
 
       if (ringRef.current) {
         ringRef.current.style.transform = `translate3d(${trailing.current.x}px, ${trailing.current.y}px, 0) translate(-50%, -50%) scale(${scaleRing})`;
         if (isHovered.current) {
-          ringRef.current.style.borderColor = "rgba(212, 175, 55, 0.8)";
-          ringRef.current.style.backgroundColor = "rgba(212, 175, 55, 0.08)";
+          ringRef.current.style.borderColor = "rgba(245, 158, 11, 0.7)";
+          ringRef.current.style.backgroundColor = "rgba(245, 158, 11, 0.08)";
         } else {
-          ringRef.current.style.borderColor = "rgba(212, 175, 55, 0.4)";
+          ringRef.current.style.borderColor = "rgba(212, 186, 140, 0.35)";
           ringRef.current.style.backgroundColor = "transparent";
         }
       }
@@ -116,18 +106,12 @@ export default function CustomCursor() {
       aria-hidden="true"
       className="fixed inset-0 pointer-events-none z-[9999] overflow-hidden select-none"
     >
-      {/* Precision Micro Dot */}
-      <div
-        ref={dotRef}
-        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-bronze-400 opacity-0 pointer-events-none will-change-transform shadow-[0_0_8px_rgba(212,175,55,0.8)]"
-      />
-
-      {/* Luxury Trailing Outer Ring */}
+      {/* Luxury Trailing Outer Glow Ring */}
       <div
         ref={ringRef}
-        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-bronze-500/40 opacity-0 pointer-events-none will-change-transform transition-[border-color,background-color] duration-150 ease-out flex items-center justify-center"
+        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-amber-400/35 opacity-0 pointer-events-none will-change-transform transition-[border-color,background-color] duration-200 ease-out flex items-center justify-center shadow-[0_0_12px_rgba(212,186,140,0.3)]"
       >
-        <div className="w-1 h-1 bg-bronze-400/30 rounded-full" />
+        <div className="w-1 h-1 bg-amber-400/40 rounded-full" />
       </div>
     </div>
   );
