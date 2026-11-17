@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { Users, Calculator, Sparkles, ArrowUpRight, CheckCircle2, ShieldCheck } from "lucide-react";
+import { Users, Calculator, ArrowUpRight, CheckCircle2, ShieldCheck } from "lucide-react";
 import { WhatsappIcon } from "./SocialIcons";
 
 export default function HomeRosterEstimator() {
@@ -67,7 +67,7 @@ export default function HomeRosterEstimator() {
               Interactive Crew Roster Estimator
             </h3>
             <p className="text-xs sm:text-sm text-chocolate-600 dark:text-night-muted font-light mt-1">
-              Select your event format and attendee scale for instant Five-Star ratio recommendations.
+              Select your event format and attendee scale for instant hospitality ratio recommendations.
             </p>
           </div>
 
@@ -82,7 +82,7 @@ export default function HomeRosterEstimator() {
                   : "text-chocolate-700 dark:text-night-muted hover:text-amber-600"
               }`}
             >
-              💍 Wedding
+              Wedding
             </button>
             <button
               type="button"
@@ -93,7 +93,7 @@ export default function HomeRosterEstimator() {
                   : "text-chocolate-700 dark:text-night-muted hover:text-amber-600"
               }`}
             >
-              🏢 Corporate
+              Corporate
             </button>
             <button
               type="button"
@@ -104,156 +104,140 @@ export default function HomeRosterEstimator() {
                   : "text-chocolate-700 dark:text-night-muted hover:text-amber-600"
               }`}
             >
-              🚀 Expo / Pavilion
+              Expo &amp; Pavilion
             </button>
           </div>
         </div>
 
-        {/* Interactive Slider & Grid Content */}
+        {/* Interactive Slider & Output Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 pt-8 items-center">
-          {/* Left Column: Headcount Slider & Summary */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="space-y-3">
-              <div className="flex items-center justify-between text-xs font-mono font-bold">
-                <span className="text-chocolate-700 dark:text-night-muted uppercase tracking-wider">
-                  Expected Attendees / Guests
+          
+          {/* Left: Attendee Scale Slider */}
+          <div className="lg:col-span-6 space-y-6">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-mono font-bold uppercase tracking-wider text-chocolate-700 dark:text-night-muted">
+                Expected Guest Count
+              </span>
+              <span className="font-serif text-3xl font-medium text-amber-700 dark:text-amber-400">
+                {guestCount.toLocaleString()} <span className="text-xs font-sans text-chocolate-600 dark:text-night-muted font-normal">Guests</span>
+              </span>
+            </div>
+
+            {/* Range Slider */}
+            <input
+              type="range"
+              min={100}
+              max={2500}
+              step={50}
+              value={guestCount}
+              onChange={(e) => setGuestCount(Number(e.target.value))}
+              className="w-full h-2.5 bg-cream-200 dark:bg-night-800 rounded-lg appearance-none cursor-pointer accent-amber-500"
+            />
+
+            <div className="flex items-center justify-between text-[11px] font-mono text-chocolate-500 dark:text-night-dim">
+              <span>100 Intimate</span>
+              <span>800 Grand Ballroom</span>
+              <span>2,500+ Mega Convention</span>
+            </div>
+
+            {/* Standard Metrics Note */}
+            <div className="p-4 rounded-2xl bg-white/40 dark:bg-white/[0.03] border border-chocolate-700/10 dark:border-white/10 space-y-1.5 text-xs">
+              <div className="flex items-center space-x-2 text-amber-700 dark:text-amber-400 font-semibold">
+                <ShieldCheck className="w-4 h-4" />
+                <span>Supervised Operations Standard</span>
+              </div>
+              <p className="text-chocolate-600 dark:text-night-muted leading-relaxed font-light">
+                Recommended staffing includes a dedicated 1:12 supervisor-to-crew ratio, pre-shift muster inspections, and an active reserve backup bench.
+              </p>
+            </div>
+          </div>
+
+          {/* Right: Estimated Personnel Breakdown */}
+          <div className="lg:col-span-6 space-y-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <div className="p-4 rounded-2xl bg-white/60 dark:bg-night-800/80 border border-chocolate-700/10 dark:border-white/10">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-chocolate-500 dark:text-night-dim block">
+                  Stewards
                 </span>
-                <span className="text-amber-600 dark:text-amber-400 text-base font-serif font-bold">
-                  {guestCount.toLocaleString()} Guests
+                <span className="font-serif text-2xl sm:text-3xl font-medium text-chocolate-950 dark:text-cream-50 mt-1 block">
+                  {calculation.stewards}
                 </span>
+                <span className="text-[10px] text-chocolate-500 dark:text-night-muted">F&amp;B / Banquet Service</span>
               </div>
 
-              {/* Range Slider */}
-              <input
-                type="range"
-                min="100"
-                max="2000"
-                step="50"
-                value={guestCount}
-                onChange={(e) => setGuestCount(Number(e.target.value))}
-                className="w-full h-2 bg-cream-200 dark:bg-night-800 rounded-lg appearance-none cursor-pointer accent-amber-500"
-              />
-              <div className="flex justify-between text-[10px] font-mono text-chocolate-400 dark:text-night-dim">
-                <span>100 Intimate</span>
-                <span>500 Grand</span>
-                <span>1,000 Major</span>
-                <span>2,000+ Mega</span>
+              <div className="p-4 rounded-2xl bg-white/60 dark:bg-night-800/80 border border-chocolate-700/10 dark:border-white/10">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-chocolate-500 dark:text-night-dim block">
+                  Hostesses
+                </span>
+                <span className="font-serif text-2xl sm:text-3xl font-medium text-chocolate-950 dark:text-cream-50 mt-1 block">
+                  {calculation.hostesses}
+                </span>
+                <span className="text-[10px] text-chocolate-500 dark:text-night-muted">Welcome &amp; Registration</span>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-white/60 dark:bg-night-800/80 border border-chocolate-700/10 dark:border-white/10">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-chocolate-500 dark:text-night-dim block">
+                  VIP Shadows
+                </span>
+                <span className="font-serif text-2xl sm:text-3xl font-medium text-chocolate-950 dark:text-cream-50 mt-1 block">
+                  {calculation.shadows}
+                </span>
+                <span className="text-[10px] text-chocolate-500 dark:text-night-muted">Principals &amp; Dignitaries</span>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-white/60 dark:bg-night-800/80 border border-chocolate-700/10 dark:border-white/10">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-chocolate-500 dark:text-night-dim block">
+                  Runners
+                </span>
+                <span className="font-serif text-2xl sm:text-3xl font-medium text-chocolate-950 dark:text-cream-50 mt-1 block">
+                  {calculation.runners}
+                </span>
+                <span className="text-[10px] text-chocolate-500 dark:text-night-muted">Backstage Logistics</span>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-white/60 dark:bg-night-800/80 border border-chocolate-700/10 dark:border-white/10">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-chocolate-500 dark:text-night-dim block">
+                  Captains
+                </span>
+                <span className="font-serif text-2xl sm:text-3xl font-medium text-chocolate-950 dark:text-cream-50 mt-1 block">
+                  {calculation.supervisors}
+                </span>
+                <span className="text-[10px] text-chocolate-500 dark:text-night-muted">Floor Management</span>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-amber-500/15 dark:bg-amber-400/10 border border-amber-500/30">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-amber-800 dark:text-amber-300 font-bold block">
+                  Total Crew
+                </span>
+                <span className="font-serif text-2xl sm:text-3xl font-bold text-amber-800 dark:text-amber-300 mt-1 block">
+                  {calculation.total}
+                </span>
+                <span className="text-[10px] text-amber-800/80 dark:text-amber-300/80 font-medium">On-Duty Deployment</span>
               </div>
             </div>
 
-            {/* Total Personnel Highlight Card */}
-            <div className="p-6 backdrop-blur-md bg-white/40 dark:bg-white/[0.04] border border-amber-500/30 rounded-2xl flex items-center justify-between">
-              <div>
-                <span className="text-[10px] font-mono uppercase tracking-widest text-amber-700 dark:text-amber-400 font-bold block">
-                  RECOMMENDED DEPLOYMENT
-                </span>
-                <p className="font-serif text-3xl sm:text-4xl text-chocolate-950 dark:text-cream-50 font-medium">
-                  {calculation.total} <span className="text-sm font-sans text-chocolate-500 dark:text-night-muted">Crew Members</span>
-                </p>
-                <p className="text-[11px] text-chocolate-600 dark:text-night-muted mt-1">
-                  Includes backup bench allocation &amp; supervisor.
-                </p>
-              </div>
-
-              <div className="w-14 h-14 rounded-full bg-amber-500/20 border border-amber-500/40 flex items-center justify-center shrink-0">
-                <Users className="w-6 h-6 text-amber-600 dark:text-amber-400" />
-              </div>
-            </div>
-
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            {/* Action Bar */}
+            <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
               <a
                 href={`https://wa.me/?text=${whatsappMessage}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary group py-3.5 px-6 text-xs flex-1 justify-center"
+                className="btn-primary w-full sm:w-auto px-6 py-3.5 flex items-center justify-center space-x-2 text-xs font-bold"
               >
-                <WhatsappIcon className="w-4 h-4 mr-2" />
-                <span>Instant WhatsApp Quote</span>
+                <WhatsappIcon className="w-4 h-4 text-emerald-400" />
+                <span>Send Sizing to Operations Desk</span>
               </a>
 
               <Link
                 to="/services#calculator-section"
-                className="backdrop-blur-md bg-white/10 hover:bg-white/20 border border-chocolate-700/15 dark:border-white/15 px-5 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider text-center transition-all flex items-center justify-center group"
+                className="w-full sm:w-auto px-6 py-3.5 rounded-full border border-chocolate-700/15 dark:border-white/10 hover:border-amber-400 bg-white/40 dark:bg-white/5 text-chocolate-900 dark:text-cream-100 text-xs font-bold uppercase tracking-wider flex items-center justify-center space-x-1.5 transition-all text-center"
               >
-                <span>Full Calculator</span>
-                <ArrowUpRight className="w-4 h-4 ml-1.5 text-amber-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                <span>Advanced 27-Role Calculator</span>
+                <ArrowUpRight className="w-3.5 h-3.5 ml-1" />
               </Link>
             </div>
           </div>
 
-          {/* Right Column: Role Breakdown Chips */}
-          <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-3.5">
-            <div className="p-4 rounded-2xl backdrop-blur-md bg-white/30 dark:bg-white/[0.03] border border-chocolate-700/10 dark:border-white/10 space-y-1">
-              <span className="text-2xl font-serif font-bold text-amber-600 dark:text-amber-400">
-                {calculation.stewards}
-              </span>
-              <p className="text-xs font-bold text-chocolate-950 dark:text-cream-50 leading-tight">
-                Banquet Stewards
-              </p>
-              <p className="text-[10.5px] text-chocolate-500 dark:text-night-muted font-light">
-                Silver service, table alignment &amp; food pass
-              </p>
-            </div>
-
-            <div className="p-4 rounded-2xl backdrop-blur-md bg-white/30 dark:bg-white/[0.03] border border-chocolate-700/10 dark:border-white/10 space-y-1">
-              <span className="text-2xl font-serif font-bold text-amber-600 dark:text-amber-400">
-                {calculation.hostesses}
-              </span>
-              <p className="text-xs font-bold text-chocolate-950 dark:text-cream-50 leading-tight">
-                Welcome Hostesses
-              </p>
-              <p className="text-[10.5px] text-chocolate-500 dark:text-night-muted font-light">
-                Registration, guest greetings &amp; aarti welcome
-              </p>
-            </div>
-
-            <div className="p-4 rounded-2xl backdrop-blur-md bg-white/30 dark:bg-white/[0.03] border border-chocolate-700/10 dark:border-white/10 space-y-1">
-              <span className="text-2xl font-serif font-bold text-amber-600 dark:text-amber-400">
-                {calculation.shadows}
-              </span>
-              <p className="text-xs font-bold text-chocolate-950 dark:text-cream-50 leading-tight">
-                VIP / Principal Shadows
-              </p>
-              <p className="text-[10.5px] text-chocolate-500 dark:text-night-muted font-light">
-                Close assistance for bride, groom &amp; speakers
-              </p>
-            </div>
-
-            <div className="p-4 rounded-2xl backdrop-blur-md bg-white/30 dark:bg-white/[0.03] border border-chocolate-700/10 dark:border-white/10 space-y-1">
-              <span className="text-2xl font-serif font-bold text-amber-600 dark:text-amber-400">
-                {calculation.supervisors}
-              </span>
-              <p className="text-xs font-bold text-chocolate-950 dark:text-cream-50 leading-tight">
-                On-Floor Supervisors
-              </p>
-              <p className="text-[10.5px] text-chocolate-500 dark:text-night-muted font-light">
-                Single POC, radio sync &amp; muster check-in
-              </p>
-            </div>
-
-            <div className="p-4 rounded-2xl backdrop-blur-md bg-white/30 dark:bg-white/[0.03] border border-chocolate-700/10 dark:border-white/10 space-y-1">
-              <span className="text-2xl font-serif font-bold text-amber-600 dark:text-amber-400">
-                {calculation.runners}
-              </span>
-              <p className="text-xs font-bold text-chocolate-950 dark:text-cream-50 leading-tight">
-                Backstage Runners
-              </p>
-              <p className="text-[10.5px] text-chocolate-500 dark:text-night-muted font-light">
-                Green room transit, gifts &amp; logistics handoff
-              </p>
-            </div>
-
-            <div className="p-4 rounded-2xl backdrop-blur-md bg-amber-500/10 dark:bg-amber-400/5 border border-amber-500/30 flex flex-col justify-center space-y-1 text-center">
-              <ShieldCheck className="w-5 h-5 text-amber-600 dark:text-amber-400 mx-auto" />
-              <p className="text-[11px] font-mono font-bold text-chocolate-950 dark:text-cream-50">
-                Zero Dropouts
-              </p>
-              <p className="text-[9.5px] text-chocolate-500 dark:text-night-dim">
-                Standby bench on active call
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </div>

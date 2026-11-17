@@ -19,7 +19,7 @@ export const COMPANY_INFO = {
     region: "South Delhi",
     pincode: "110025",
     country: "India",
-    full: "C-58, 1st Floor, Block-C, Johri Farm, New Friends Colony, New Delhi, South Delhi – 110025"
+    full: "C-58, 1st Floor, Block-C, Johri Farm, New Friends Colony, New Delhi, South Delhi, 110025"
   },
   socials: {
     instagramHospitality: {
@@ -83,7 +83,7 @@ export const CORPORATE_ROLES = [
   { id: "entertainment-crew", title: "Entertainment Crew", desc: "Artist managers handling green room riders, backstage security, stage transit, and soundcheck liaison." },
   { id: "production-supervisors", title: "Production Supervisors", desc: "Technical coordinators ensuring stage safety, truss rigging oversight, LED wall uptime, and vendor sync." },
   { id: "corporate-hostesses", title: "Corporate Hostesses", desc: "Refined hosts managing C-suite VIP lounges, boardroom meetings, international delegations, and protocol." },
-  { id: "bulk-event-crew", title: "Bulk Event Crew", desc: "Scalable 50–200+ crew deployments for massive crowd marshaling, entry gating, and arena logistics." },
+  { id: "bulk-event-crew", title: "Bulk Event Crew", desc: "Scalable 50-200+ crew deployments for massive crowd marshaling, entry gating, and arena logistics." },
   { id: "bouncers", title: "Bouncers", desc: "Certified, disciplined executive security personnel for red carpets, backstage containment, and access management." },
 ];
 
@@ -665,7 +665,7 @@ export const TESTIMONIALS = [
   },
   {
     id: "t4",
-    quote: "Our event had zero manpower issues – Evaanam handled everything like pros.",
+    quote: "Our event had zero manpower issues, Evaanam handled everything like pros.",
     author: "Satyansh",
     role: "Corporate Operations Lead",
     location: "Delhi",

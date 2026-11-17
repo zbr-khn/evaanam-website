@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin, CheckCircle2, ArrowUpRight, Send, Loader2, MessageSquare, Clock, ShieldCheck, Sparkles } from "lucide-react";
+import { Phone, Mail, MapPin, CheckCircle2, ArrowUpRight, Send, Loader2, MessageSquare, Clock, ShieldCheck, Sparkles, AlertCircle } from "lucide-react";
 import { COMPANY_INFO } from "../data/evaanamData";
 
 export default function ContactFormSection({ className = "" }) {
@@ -117,21 +117,21 @@ export default function ContactFormSection({ className = "" }) {
   };
 
   const handleSendViaWhatsApp = () => {
-    const waText = `🏛️ *EVAANAM MANPOWER INQUIRY*
-━━━━━━━━━━━━━━━━━━━━
-👤 *Full Name:* ${formData.fullName}
-📧 *Email:* ${formData.email}
-📞 *Phone:* ${formData.phone}
-🏢 *Company / Organization:* ${formData.company || "Individual / Private Event"}
-📅 *Event Date:* ${formData.eventDate}
-📍 *Venue & City:* ${formData.venue || "To be decided"}
-🎪 *Event Category:* ${formData.eventType}
-👥 *Estimated Crew:* ${formData.crewCount || "To be discussed"}
+    const waText = `*EVAANAM MANPOWER INQUIRY*
+----------------------------------------
+• Full Name: ${formData.fullName}
+• Email: ${formData.email}
+• Phone: ${formData.phone}
+• Company / Organization: ${formData.company || "Individual / Private Event"}
+• Event Date: ${formData.eventDate}
+• Venue & City: ${formData.venue || "To be decided"}
+• Event Category: ${formData.eventType}
+• Estimated Crew: ${formData.crewCount || "To be discussed"}
 
-📝 *Requirement Notes:*
+• Requirement Notes:
 ${formData.message || "Please share staffing options and availability."}
-━━━━━━━━━━━━━━━━━━━━
-_Submitted via EVAANAM Website Contact Form_`;
+----------------------------------------
+Submitted via EVAANAM Website Contact Form`;
 
     const encoded = encodeURIComponent(waText);
     window.open(`https://wa.me/?text=${encoded}`, "_blank");
@@ -249,8 +249,9 @@ _Submitted via EVAANAM Website Contact Form_`;
 
             {/* Error Banner */}
             {formError && (
-              <div className="mb-6 p-4 bg-red-500/10 border border-red-500/30 text-red-700 dark:text-red-300 text-xs rounded-sm">
-                ⚠️ {formError}
+              <div className="mb-6 p-4 bg-red-500/10 border border-red-500/30 text-red-700 dark:text-red-300 text-xs rounded-xl flex items-center space-x-2">
+                <AlertCircle className="w-4 h-4 shrink-0 text-red-500" />
+                <span>{formError}</span>
               </div>
             )}
 

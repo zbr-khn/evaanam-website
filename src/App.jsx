@@ -6,11 +6,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import MobileStickyCTA from "./components/MobileStickyCTA";
 import FloatingActions from "./components/FloatingActions";
 import SignaturePreloader from "./components/SignaturePreloader";
-import CustomCursor from "./components/CustomCursor";
 import GeometricMarginFrame from "./components/GeometricMarginFrame";
-import DynamicScrollGradient from "./components/DynamicScrollGradient";
-import EVAANAMChatbot from "./components/EVAANAMChatbot";
-import useScrollBackground from "./hooks/useScrollBackground";
 
 // Code-split pages for instant client performance and lightweight bundle execution
 const HomePage = lazy(() => import("./pages/HomePage"));
@@ -20,6 +16,8 @@ const WhyUsPage = lazy(() => import("./pages/WhyUsPage"));
 const GalleryPage = lazy(() => import("./pages/GalleryPage"));
 const ContactPage = lazy(() => import("./pages/ContactPage"));
 const LocationPage = lazy(() => import("./pages/LocationPage"));
+const PrivacyPolicyPage = lazy(() => import("./pages/PrivacyPolicyPage"));
+const TermsPage = lazy(() => import("./pages/TermsPage"));
 
 function PageLoadingSkeleton() {
   return (
@@ -60,18 +58,9 @@ function NotFoundPage() {
 
 export default function App() {
   const [showPreloader, setShowPreloader] = useState(true);
-  
-  // Register global scroll background color shifts
-  useScrollBackground();
 
   return (
-    <div className="flex flex-col min-h-screen bg-transparent text-chocolate-700 dark:text-cream-200 font-sans selection:bg-bronze-500 selection:text-chocolate-950 transition-colors duration-400 relative">
-      {/* Dynamic Scroll-Driven Ambient Atmospheric Gradient */}
-      <DynamicScrollGradient />
-
-      {/* Luxury Custom Dynamic Cursor (Desktop) */}
-      <CustomCursor />
-
+    <div className="flex flex-col min-h-screen bg-cream-50 dark:bg-night-950 text-chocolate-700 dark:text-cream-200 font-sans selection:bg-bronze-500 selection:text-chocolate-950 transition-colors duration-400 relative">
       {/* Architectural Geometric Margin Frame & Lines */}
       <GeometricMarginFrame />
 
@@ -94,6 +83,10 @@ export default function App() {
             <Route path="/gallery" element={<GalleryPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/location" element={<LocationPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route path="/privacy" element={<PrivacyPolicyPage />} />
+            <Route path="/terms-and-conditions" element={<TermsPage />} />
+            <Route path="/terms" element={<TermsPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
@@ -101,9 +94,6 @@ export default function App() {
 
       {/* Floating Actions: Live Progress Back-To-Top + Dedicated WhatsApp Button */}
       <FloatingActions />
-
-      {/* EVAANAM AI Operations Concierge Chatbot */}
-      <EVAANAMChatbot />
 
       <Footer />
       <MobileStickyCTA />

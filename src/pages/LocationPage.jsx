@@ -33,7 +33,7 @@ export default function LocationPage() {
               <span className="italic text-glow-amber">and where to find us.</span>
             </h1>
             <p className="text-base sm:text-lg text-chocolate-600 dark:text-night-muted font-light leading-relaxed">
-              Our central operations hub coordinates workforce deployments across Delhi NCR — strategically serving luxury hotel ballrooms and convention arenas across South Delhi, Aerocity, Gurgaon, and Noida.
+              Our central operations hub coordinates workforce deployments across Delhi NCR, strategically serving luxury hotel ballrooms and convention arenas across South Delhi, Aerocity, Gurgaon, and Noida.
             </p>
 
             <div className="pt-2 flex flex-wrap items-center gap-3">
@@ -223,7 +223,7 @@ export default function LocationPage() {
                 <div className="pt-2 border-t border-chocolate-700/10 dark:border-white/10 space-y-2">
                   <div className="flex items-center space-x-2 text-xs text-chocolate-700 dark:text-cream-200">
                     <Clock className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" />
-                    <span>Office Desk: Mon – Sat (9:30 AM – 7:30 PM)</span>
+                    <span>Office Desk: Mon - Sat (9:30 AM to 7:30 PM)</span>
                   </div>
                   <div className="flex items-center space-x-2 text-xs text-chocolate-700 dark:text-cream-200">
                     <ShieldCheck className="w-4 h-4 text-emerald-500 shrink-0" />

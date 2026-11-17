@@ -132,7 +132,7 @@ const SOCIAL_ACCOUNTS = [
     highlight: "Industry Bulletins",
     ctaText: "Connect on Facebook",
     url: "https://facebook.com",
-    iconBg: "bg-gradient-to-tr from-blue-500/20 to-indigo-500/20 text-blue-700 dark:text-blue-300",
+    iconBg: "bg-blue-500/15 text-blue-700 dark:text-blue-300 border border-blue-500/20",
     accentColor: "border-blue-500/40",
   },
   {

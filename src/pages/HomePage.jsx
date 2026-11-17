@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { 
   ArrowUpRight, 
-  Sparkles, 
   Users, 
   Building2, 
   ShieldCheck, 
@@ -10,9 +9,6 @@ import {
   MapPin, 
   PhoneCall, 
   Calculator,
-  Crown,
-  Briefcase,
-  Star,
   CheckCircle2
 } from "lucide-react";
 import StatCounter from "../components/StatCounter";
@@ -21,8 +17,6 @@ import ColorCreepSection from "../components/ColorCreepSection";
 import VenueMarquee from "../components/VenueMarquee";
 import HomeRosterEstimator from "../components/HomeRosterEstimator";
 import HomeOperationsPillars from "../components/HomeOperationsPillars";
-import TestimonialMarquee from "../components/TestimonialMarquee";
-import { COMPANY_INFO } from "../data/evaanamData";
 import { TiltedGridHero } from "../components/ui/tilted-grid-hero";
 import { EVAANAM_BRAND_IMAGES } from "../components/ui/tilted-grid-hero-brand";
 
@@ -60,7 +54,7 @@ export default function HomePage() {
       id: "why-us",
       number: "03",
       tag: "STANDARDS & ASSURANCE",
-      title: "Why Us System™",
+      title: "Why Us System",
       subtitle: "Structured Workforce Operations",
       desc: "Learn about the EVAANAM quality guarantee: our 7-stage recruitment to performance review protocol, verified standby backup bench (zero ghosting), 5-star grooming standards, and dedicated on-floor supervisory management.",
       link: "/why-us",
@@ -117,7 +111,7 @@ export default function HomePage() {
   return (
     <div className="animate-fade-in">
       {/* ========================================================================= */}
-      {/* 1. HERO SECTION: 3D CURVED HORIZON ARC WITH REFINED EDITORIAL GLASS FOREGROUND */}
+      {/* 1. HERO SECTION: 3D CURVED HORIZON ARC WITH REFINED EDITORIAL FOREGROUND */}
       {/* ========================================================================= */}
       <section data-tone="a" className="relative min-h-[92vh] sm:min-h-[96vh] flex items-center justify-center pt-28 pb-16 px-6 sm:px-8 lg:px-12 text-cream-100 bg-night-950 overflow-hidden">
         {/* Continuous 3D Curved Horizon Arc Background */}
@@ -135,7 +129,7 @@ export default function HomePage() {
           />
         </div>
 
-        {/* Ambient Radial Vignette: Dark in center for maximum text legibility while revealing the sweeping 3D arc on sides */}
+        {/* Ambient Radial Vignette */}
         <div className="pointer-events-none absolute inset-0 z-[1] bg-radial from-night-950/75 via-night-950/50 to-night-950/85" />
 
         {/* Hero Foreground Container */}
@@ -144,7 +138,7 @@ export default function HomePage() {
             <div className="lg:col-span-8 space-y-6">
               {/* Micro Eyebrow with Glass Tint */}
               <div className="inline-flex items-center space-x-2.5 px-4 py-2 backdrop-blur-xl bg-black/40 border border-amber-500/40 rounded-full shadow-lg">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                 <span className="text-[11px] font-mono tracking-widest text-amber-300 font-bold uppercase">
                   Event Manpower &amp; Execution · Delhi NCR
                 </span>
@@ -163,14 +157,14 @@ export default function HomePage() {
                 Trained, verified and professionally managed event crews engineered for five-star wedding banquets, corporate summits, and large-scale industrial exhibitions across Delhi NCR.
               </p>
 
-              {/* CTAs with Luxury Glass Styling */}
+              {/* CTAs */}
               <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center space-y-3.5 sm:space-y-0 sm:space-x-4">
                 <Link
                   to="/services#calculator-section"
                   className="btn-primary group shadow-2xl backdrop-blur-md"
                 >
-                  <Calculator className="w-3.5 h-3.5 mr-2 text-amber-300 dark:text-night-950 group-hover:rotate-12 transition-transform duration-300" />
-                  <span>Configure Crew Roster ⚡</span>
+                  <Calculator className="w-3.5 h-3.5 mr-2 text-amber-300 dark:text-night-950" />
+                  <span>Configure Crew Roster</span>
                 </Link>
 
                 <Link
@@ -182,38 +176,45 @@ export default function HomePage() {
                 </Link>
               </div>
 
-              {/* Credibility Chips Ribbon */}
+              {/* Grounded Operational Standards Ribbon */}
               <div className="pt-4 flex flex-wrap items-center gap-2.5 text-xs font-sans tracking-wide">
-                <span className="px-3 py-1.5 backdrop-blur-md bg-black/40 border border-white/15 rounded-full text-amber-300 font-medium">
-                  ✓ 200+ Crew Network
+                <span className="px-3.5 py-1.5 backdrop-blur-md bg-black/40 border border-white/15 rounded-full text-amber-300 font-medium">
+                  Five-Star Venue Protocols
                 </span>
-                <span className="px-3 py-1.5 backdrop-blur-md bg-black/40 border border-white/15 rounded-full text-cream-200 font-medium">
-                  ✓ 300+ Projects NCR
+                <span className="px-3.5 py-1.5 backdrop-blur-md bg-black/40 border border-white/15 rounded-full text-cream-200 font-medium">
+                  Dedicated Floor Supervisors
                 </span>
-                <span className="px-3 py-1.5 backdrop-blur-md bg-black/40 border border-white/15 rounded-full text-cream-200 font-medium">
-                  ✓ 40+ Five-Star Venues
+                <span className="px-3.5 py-1.5 backdrop-blur-md bg-black/40 border border-white/15 rounded-full text-cream-200 font-medium">
+                  Biometric Identity Verification
                 </span>
-                <span className="px-3 py-1.5 backdrop-blur-md bg-black/40 border border-amber-500/30 rounded-full text-emerald-300 font-medium">
-                  ✓ Zero Ghosting Guarantee
+                <span className="px-3.5 py-1.5 backdrop-blur-md bg-black/40 border border-amber-500/30 rounded-full text-emerald-300 font-medium">
+                  Active Standby Backup
                 </span>
               </div>
             </div>
 
-            {/* Hero Quick Badge Column */}
+            {/* Quick Navigation Card */}
             <div className="lg:col-span-4 hidden lg:block">
-              <div className="p-7 backdrop-blur-2xl bg-black/40 border border-white/15 text-cream-200 space-y-4 shadow-[0_12px_40px_rgba(0,0,0,0.6)] rounded-3xl">
-                <div className="flex items-center justify-between">
-                  <span className="micro-label text-amber-400 font-bold">
-                    OPERATIONAL ASSURANCE
+              <div className="backdrop-blur-2xl bg-black/40 border border-white/15 rounded-3xl p-6 space-y-4 shadow-2xl">
+                <div className="flex items-center justify-between border-b border-white/10 pb-3">
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-amber-400 font-bold">
+                    OPERATIONAL DIVISIONS
                   </span>
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="text-[10px] font-mono text-cream-400">Delhi NCR Hub</span>
                 </div>
-                <p className="font-serif text-xl italic text-cream-100 leading-snug">
-                  "Structured workforce operations with verified stand-by personnel and zero dropouts."
-                </p>
-                <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs text-cream-300/80 font-mono">
-                  <span>Delhi NCR Ready</span>
-                  <span className="text-amber-400 font-semibold">24/7 Desk Active</span>
+                <div className="space-y-3">
+                  <Link to="/services" className="flex items-center justify-between p-3 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors group">
+                    <span className="text-xs font-medium text-cream-100">Wedding Hospitality (14 Roles)</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-amber-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </Link>
+                  <Link to="/services" className="flex items-center justify-between p-3 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors group">
+                    <span className="text-xs font-medium text-cream-100">Corporate &amp; Summits (13 Roles)</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-amber-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </Link>
+                  <Link to="/venues" className="flex items-center justify-between p-3 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors group">
+                    <span className="text-xs font-medium text-cream-100">40+ Delhi NCR Venues</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-amber-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </Link>
                 </div>
               </div>
             </div>
@@ -222,29 +223,23 @@ export default function HomePage() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 2. ELITE VENUE & BRAND PARTNER MARQUEE TICKER                             */}
+      {/* 2. SLOW HORIZONTAL MARQUEE / TICKER                                       */}
       {/* ========================================================================= */}
-      <div className="border-y border-chocolate-700/10 dark:border-white/10 backdrop-blur-md bg-cream-100/40 dark:bg-night-950/40">
+      <div className="border-y border-chocolate-700/10 dark:border-white/10 bg-cream-100/50 dark:bg-night-950/50 backdrop-blur-md">
         <VenueMarquee />
       </div>
 
       {/* ========================================================================= */}
-      {/* 3. REAL-TIME STATS STRIP (GLASSMORPHISM)                                   */}
+      {/* 3. GROUNDED OPERATIONAL STANDARDS STRIP                                   */}
       {/* ========================================================================= */}
-      <ColorCreepSection tone="a" className="py-14 border-b border-chocolate-700/10 dark:border-white/10">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <ScrollReveal variant="up" threshold={0.15}>
-            <div className="backdrop-blur-2xl bg-cream-100/50 dark:bg-night-900/40 border border-chocolate-700/10 dark:border-white/10 rounded-3xl p-8 sm:p-10 shadow-[0_8px_32px_0_rgba(0,0,0,0.08)] dark:shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
-              <StatCounter />
-            </div>
-          </ScrollReveal>
-        </div>
+      <ColorCreepSection tone="b">
+        <StatCounter />
       </ColorCreepSection>
 
       {/* ========================================================================= */}
-      {/* 4. INTERACTIVE MANPOWER ROSTER ESTIMATOR (INSTANT CALCULATION)             */}
+      {/* 4. INTERACTIVE LIVE ROSTER ESTIMATOR (HERO COMPANION)                     */}
       {/* ========================================================================= */}
-      <ColorCreepSection tone="b" className="py-20 px-6 sm:px-8 lg:px-12 border-b border-chocolate-700/10 dark:border-white/10">
+      <ColorCreepSection tone="a" className="py-20 px-6 sm:px-8 lg:px-12 border-b border-chocolate-700/10 dark:border-white/10">
         <div className="max-w-7xl mx-auto">
           <ScrollReveal variant="up">
             <HomeRosterEstimator />
@@ -253,84 +248,71 @@ export default function HomePage() {
       </ColorCreepSection>
 
       {/* ========================================================================= */}
-      {/* 5. EXECUTIVE PORTAL FEED: WHAT TO FIND ON EACH PAGE (6 CHAPTERS)           */}
+      {/* 5. THE SIX CORE DIRECTORY CHAPTERS                                        */}
       {/* ========================================================================= */}
       <ColorCreepSection tone="b" className="py-24 px-6 sm:px-8 lg:px-12 border-b border-chocolate-700/10 dark:border-white/10">
         <div className="max-w-7xl mx-auto space-y-16">
-          
-          {/* Section Header */}
           <ScrollReveal variant="up">
             <div className="max-w-3xl space-y-4">
-              <div className="inline-flex items-center space-x-2 px-3 py-1 bg-amber-500/15 border border-amber-500/30 rounded-full text-amber-700 dark:text-amber-300 text-xs font-mono font-bold">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>WEBSITE DIRECTORY &amp; CHAPTERS</span>
-              </div>
+              <span className="micro-label text-amber-700 dark:text-amber-400 font-bold">
+                OPERATIONAL DIRECTORY
+              </span>
               <h2 className="editorial-heading text-4xl sm:text-5xl md:text-6xl text-chocolate-950 dark:text-cream-50">
-                Explore the EVAANAM Platform
+                Explore The EVAANAM Standard
               </h2>
-              <p className="text-base sm:text-lg text-chocolate-600 dark:text-night-muted font-light leading-relaxed">
-                Select a section below to dive directly into detailed role descriptions, venue intelligence, operational standards, or booking tools.
+              <p className="text-base font-light text-chocolate-700 dark:text-night-muted leading-relaxed">
+                Structured into six focused chapters detailing our workforce pedigree, venue coverage, compliance systems, and priority dispatch desk.
               </p>
             </div>
           </ScrollReveal>
 
-          {/* 6 Clean Portal Cards Grid with Glassmorphism */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* 6 Portal Cards Grid with Glassmorphism */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {PORTAL_PAGES.map((page, idx) => {
               const Icon = page.icon;
               return (
                 <ScrollReveal key={page.id} variant="up" delay={idx * 80}>
-                  <div className="group relative rounded-3xl p-8 flex flex-col justify-between overflow-hidden backdrop-blur-2xl bg-cream-100/60 dark:bg-night-900/50 border border-chocolate-700/15 dark:border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.08)] dark:shadow-[0_8px_32px_0_rgba(0,0,0,0.35)] hover:border-amber-500/50 hover:shadow-[0_16px_48px_0_rgba(0,0,0,0.2)] hover:-translate-y-1.5 transition-all duration-400 ease-out h-full">
-                    
-                    {/* Top Indicator & Number */}
+                  <Link
+                    to={page.link}
+                    className="glass-card glass-card-hover rounded-3xl p-8 flex flex-col justify-between group h-full block cursor-pointer relative overflow-hidden"
+                  >
                     <div className="space-y-5">
                       <div className="flex items-center justify-between">
-                        <span className="font-mono text-xs font-extrabold text-amber-700 dark:text-amber-400 tracking-widest px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full">
-                          CHAPTER {page.number}
+                        <span className="font-mono text-sm font-extrabold text-amber-600 dark:text-amber-400">
+                          {page.number}
                         </span>
-
-                        <div className="p-3 rounded-2xl backdrop-blur-md bg-cream-200/80 dark:bg-white/5 border border-chocolate-700/10 dark:border-white/10 text-amber-700 dark:text-amber-400 group-hover:bg-amber-500 group-hover:text-night-950 transition-colors duration-300">
+                        <div className="w-11 h-11 rounded-2xl bg-amber-500/10 dark:bg-white/5 border border-amber-500/20 dark:border-white/10 flex items-center justify-center text-amber-600 dark:text-amber-400 group-hover:bg-amber-500 group-hover:text-night-950 transition-all duration-300">
                           <Icon className="w-5 h-5" />
                         </div>
                       </div>
 
-                      {/* Title & Subtitle */}
-                      <div>
-                        <span className="text-[10px] uppercase font-mono tracking-widest text-chocolate-500 dark:text-night-dim font-bold block mb-1">
+                      <div className="space-y-1.5">
+                        <span className="text-[10px] uppercase font-mono tracking-widest text-chocolate-500 dark:text-night-dim font-bold block">
                           {page.tag}
                         </span>
-                        <h3 className="font-serif text-2xl sm:text-3xl text-chocolate-950 dark:text-cream-50 font-medium group-hover:text-amber-800 dark:group-hover:text-amber-300 transition-colors">
+                        <h3 className="font-serif text-2xl sm:text-3xl font-medium text-chocolate-950 dark:text-cream-50 group-hover:text-amber-600 dark:group-hover:text-amber-300 transition-colors">
                           {page.title}
                         </h3>
-                        <p className="text-xs text-amber-800 dark:text-amber-300/90 font-serif italic mt-0.5">
+                        <p className="text-xs font-serif italic text-amber-700 dark:text-amber-400">
                           {page.subtitle}
                         </p>
                       </div>
 
-                      {/* Brief Explanation */}
-                      <p className="text-xs sm:text-sm text-chocolate-700 dark:text-night-muted font-light leading-relaxed">
+                      <p className="text-xs text-chocolate-600 dark:text-night-muted font-light leading-relaxed">
                         {page.desc}
                       </p>
-
-                      {/* Badge Tag with Frosted Pill */}
-                      <div className="pt-2">
-                        <span className="inline-block text-[10.5px] font-mono font-semibold px-3 py-1 backdrop-blur-md bg-cream-200/80 dark:bg-white/5 text-chocolate-800 dark:text-cream-200 border border-chocolate-700/10 dark:border-white/10 rounded-full">
-                          {page.badge}
-                        </span>
-                      </div>
                     </div>
 
-                    {/* Bottom CTA Button */}
-                    <div className="mt-8 pt-6 border-t border-chocolate-700/10 dark:border-white/10">
-                      <Link
-                        to={page.link}
-                        className="btn-primary group w-full py-3.5 px-5 text-xs font-bold uppercase tracking-wider flex items-center justify-between shadow-sm backdrop-blur-md"
-                      >
+                    <div className="pt-6 mt-6 border-t border-chocolate-700/10 dark:border-white/10 flex items-center justify-between">
+                      <span className="text-xs font-bold uppercase tracking-wider text-chocolate-900 dark:text-cream-100 group-hover:text-amber-600 dark:group-hover:text-amber-300 transition-colors flex items-center">
                         <span>{page.linkText}</span>
-                        <ArrowUpRight className="w-4 h-4 ml-1.5 text-amber-300 dark:text-night-950 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                      </Link>
+                        <ArrowUpRight className="w-3.5 h-3.5 ml-1.5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                      </span>
+                      <span className="text-[10px] font-mono px-2.5 py-1 rounded-full bg-white/40 dark:bg-white/5 border border-chocolate-700/10 dark:border-white/10 text-chocolate-600 dark:text-night-muted">
+                        {page.badge}
+                      </span>
                     </div>
-                  </div>
+                  </Link>
                 </ScrollReveal>
               );
             })}
@@ -339,7 +321,7 @@ export default function HomePage() {
       </ColorCreepSection>
 
       {/* ========================================================================= */}
-      {/* 6. OPERATIONAL ASSURANCE: 7-STAGE RELIABILITY STANDARD                      */}
+      {/* 6. OPERATIONAL ASSURANCE: 6-STAGE RELIABILITY STANDARD                      */}
       {/* ========================================================================= */}
       <ColorCreepSection tone="a" className="py-24 px-6 sm:px-8 lg:px-12 border-b border-chocolate-700/10 dark:border-white/10">
         <div className="max-w-7xl mx-auto">
@@ -350,104 +332,7 @@ export default function HomePage() {
       </ColorCreepSection>
 
       {/* ========================================================================= */}
-      {/* 7. VERIFIED EVENT REVIEWS & TESTIMONIALS                                   */}
-      {/* ========================================================================= */}
-      <ColorCreepSection tone="b" className="py-20 px-6 sm:px-8 lg:px-12 border-b border-chocolate-700/10 dark:border-white/10">
-        <div className="max-w-7xl mx-auto space-y-8">
-          <ScrollReveal variant="up">
-            <div className="text-center max-w-2xl mx-auto space-y-3">
-              <span className="micro-label text-amber-700 dark:text-amber-400 font-bold">
-                VERIFIED TESTIMONIALS
-              </span>
-              <h2 className="editorial-heading text-4xl sm:text-5xl text-chocolate-950 dark:text-cream-50">
-                Trusted by Top Event Leads
-              </h2>
-              <p className="text-sm font-light text-chocolate-600 dark:text-night-muted">
-                Feedback from luxury wedding planners and corporate event directors across Delhi NCR.
-              </p>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal variant="up" delay={100}>
-            <TestimonialMarquee />
-          </ScrollReveal>
-        </div>
-      </ColorCreepSection>
-
-      {/* ========================================================================= */}
-      {/* 8. MEET EVA AI OPERATIONS ASSISTANT BANNER (GLASSMORPHISM)                 */}
-      {/* ========================================================================= */}
-      <ColorCreepSection tone="a" className="py-20 px-6 sm:px-8 lg:px-12">
-        <ScrollReveal variant="scale" threshold={0.12}>
-          <div className="max-w-7xl mx-auto">
-            <div className="relative overflow-hidden rounded-3xl backdrop-blur-2xl bg-cream-100/70 dark:bg-night-900/60 border border-chocolate-700/15 dark:border-white/15 p-8 sm:p-12 shadow-2xl text-chocolate-950 dark:text-cream-100 transition-all duration-300">
-              <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                
-                {/* Left Pitch */}
-                <div className="lg:col-span-8 space-y-4">
-                  <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 backdrop-blur-md bg-amber-500/15 border border-amber-600/30 dark:border-amber-400/40 rounded-full text-amber-800 dark:text-amber-300 shadow-sm">
-                    <Sparkles className="w-3.5 h-3.5 animate-pulse" />
-                    <span className="text-[10px] font-mono uppercase tracking-widest font-bold">
-                      24/7 AI OPERATIONS CONCIERGE
-                    </span>
-                  </div>
-
-                  <h3 className="editorial-heading text-3xl sm:text-4xl text-chocolate-950 dark:text-cream-50 leading-tight">
-                    Need instant headcount estimates or urgent crew coverage?
-                  </h3>
-
-                  <p className="text-xs sm:text-sm text-chocolate-700 dark:text-cream-200/90 font-light leading-relaxed max-w-xl">
-                    Meet <strong>Eva</strong>, our operations assistant. Calculate exact banquet stewards, hostesses, and supervisors, or forward your brief directly to our on-duty WhatsApp coordinators.
-                  </p>
-
-                  <div className="pt-2 flex flex-wrap items-center gap-3">
-                    <button
-                      type="button"
-                      onClick={() => window.dispatchEvent(new CustomEvent("open-eva-chat"))}
-                      className="btn-primary group py-3 px-6 text-xs font-bold uppercase tracking-wider cursor-pointer shadow-lg backdrop-blur-md"
-                    >
-                      <Sparkles className="w-4 h-4 mr-2" />
-                      <span>Chat with Eva Now</span>
-                    </button>
-
-                    <a
-                      href="https://wa.me/?text=Hello%20Event%20Operations%20Team,%20I%20would%20like%20to%20consult%20on%20manpower%20staffing%20for%20an%20upcoming%20event."
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="backdrop-blur-md bg-white/10 hover:bg-white/20 border border-chocolate-700/15 dark:border-white/15 py-3.5 px-6 text-xs font-bold uppercase tracking-wider cursor-pointer rounded-full flex items-center transition-all duration-300 shadow-md"
-                    >
-                      <span>WhatsApp Operations Desk</span>
-                      <ArrowUpRight className="w-4 h-4 ml-1.5 text-amber-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                    </a>
-                  </div>
-                </div>
-
-                {/* Right Feature Highlights */}
-                <div className="lg:col-span-4 space-y-2.5">
-                  <div className="p-3.5 backdrop-blur-md bg-cream-200/60 dark:bg-white/5 border border-chocolate-700/10 dark:border-white/10 rounded-2xl">
-                    <p className="text-xs font-bold text-chocolate-950 dark:text-cream-50">⚡ Instant Headcounts</p>
-                    <p className="text-[11px] text-chocolate-600 dark:text-night-muted font-light mt-0.5">Calculates stewards, hostesses, shadows &amp; supervisors</p>
-                  </div>
-
-                  <div className="p-3.5 backdrop-blur-md bg-cream-200/60 dark:bg-white/5 border border-chocolate-700/10 dark:border-white/10 rounded-2xl">
-                    <p className="text-xs font-bold text-chocolate-950 dark:text-cream-50">📍 40+ Venues NCR</p>
-                    <p className="text-[11px] text-chocolate-600 dark:text-night-muted font-light mt-0.5">Taj, ITC, Leela, Yashobhoomi &amp; Pragati Maidan ready</p>
-                  </div>
-
-                  <div className="p-3.5 backdrop-blur-md bg-cream-200/60 dark:bg-white/5 border border-chocolate-700/10 dark:border-white/10 rounded-2xl">
-                    <p className="text-xs font-bold text-chocolate-950 dark:text-cream-50">💬 1-Tap Dispatch</p>
-                    <p className="text-[11px] text-chocolate-600 dark:text-night-muted font-light mt-0.5">Structured briefing sent to WhatsApp in seconds</p>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </ScrollReveal>
-      </ColorCreepSection>
-
-      {/* ========================================================================= */}
-      {/* 9. BOTTOM DIRECT CALL TO ACTION (GLASSMORPHISM)                            */}
+      {/* 7. BOTTOM DIRECT CALL TO ACTION                                            */}
       {/* ========================================================================= */}
       <ColorCreepSection tone="b" className="py-24 px-6 sm:px-8 lg:px-12 text-center border-t border-chocolate-700/10 dark:border-white/10">
         <ScrollReveal variant="up">
@@ -472,7 +357,7 @@ export default function HomePage() {
 
               <Link
                 to="/contact"
-                className="backdrop-blur-md bg-white/10 hover:bg-white/20 border border-chocolate-700/15 dark:border-white/15 px-8 py-4 text-xs font-bold uppercase tracking-wider rounded-full transition-all duration-300 shadow-md"
+                className="backdrop-blur-md bg-white/10 hover:bg-white/20 border border-chocolate-700/15 dark:border-white/15 px-8 py-4 text-xs font-bold uppercase tracking-wider rounded-full transition-all duration-300 shadow-md text-chocolate-900 dark:text-cream-100"
               >
                 <span>Contact Operations Desk</span>
               </Link>

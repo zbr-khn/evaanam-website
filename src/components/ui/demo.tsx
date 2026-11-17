@@ -1,6 +1,6 @@
 import { TiltedGridHero } from "@/components/ui/tilted-grid-hero";
 
-// Our R2 artwork, alternating photos with gradients — the same set as the
+// Our R2 artwork, alternating photos with gradients, the same set as the
 // Halo Reel demo. Portrait sources are cropped to the tiles by object-cover.
 const CDN = "https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev";
 

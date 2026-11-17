@@ -137,21 +137,21 @@ export default function ManpowerCalculator({ className = "" }) {
       rosterBreakdown = "• Custom Manpower Inquiry (General Roster)\n";
     }
 
-    const message = `🏛️ *EVAANAM MANPOWER REQUISITION*
-━━━━━━━━━━━━━━━━━━━━
-👤 *Client Name:* ${nameStr}
-📞 *Contact Number:* ${phoneStr}
-🎪 *Event Type:* ${typeStr}
-📅 *Event Dates / Duration:* ${dateStr} (${shiftStr})
-📍 *Venue & Location:* ${venueStr}
+    const message = `*EVAANAM MANPOWER REQUISITION*
+----------------------------------------
+• Client Name: ${nameStr}
+• Contact Number: ${phoneStr}
+• Event Type: ${typeStr}
+• Event Dates / Duration: ${dateStr} (${shiftStr})
+• Venue & Location: ${venueStr}
 
-📋 *CALCULATED CREW ROSTER:*
+• CALCULATED CREW ROSTER:
 ${rosterBreakdown}
-⭐ *Auto-Recommended Supervisors:* ${recommendedSupervisors} Floor Lead(s)
-👥 *ESTIMATED TOTAL CREW:* *${totalCrewCount} Personnel*
-${notesStr ? `\n📝 *Special Instructions:*\n${notesStr}` : ""}
-━━━━━━━━━━━━━━━━━━━━
-_Requisition configured via EVAANAM Operational Manpower Calculator_`;
+• Recommended Supervisors: ${recommendedSupervisors} Floor Lead(s)
+• ESTIMATED TOTAL CREW: ${totalCrewCount} Personnel
+${notesStr ? `\n• Special Instructions:\n${notesStr}` : ""}
+----------------------------------------
+Requisition configured via EVAANAM Operational Manpower Calculator`;
 
     return message;
   };
@@ -305,7 +305,7 @@ _Requisition configured via EVAANAM Operational Manpower Calculator_`;
                       </span>
                       {isSelected && (
                         <span className="text-[10px] font-semibold text-bronze-600 dark:text-bronze-400 font-mono">
-                          ✓ ACTIVE ON ROSTER
+                          ACTIVE ON ROSTER
                         </span>
                       )}
                     </div>
